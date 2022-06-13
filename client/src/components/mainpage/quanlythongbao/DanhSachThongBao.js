@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { GlobalState } from "../../../GlobalState";
 import axios from "axios";
 import ChiTietThongBao from "./ChiTietThongBao";
+import {apiUrl} from '../../../contexts/constant'
 
 function Thongbaochungs() {
   const state = useContext(GlobalState);
@@ -13,20 +14,18 @@ function Thongbaochungs() {
   const [id, setID] = useState("");
   const [onEdit, setOnEdit] = useState(false);
 
-  const [chitiet, setChiTiet] = useState(false);
-  const showChiTiet = () => setChiTiet(chitiet);
-  const hiddenChiTiet = () => setChiTiet(!chitiet);
+  const [chitiet, setChiTiet] = useState(false)
 
   const createThongbaochung = async (e) => {
     e.preventDefault();
     try {
       if (onEdit) {
-        const res = await axios.put(`/thongbao/thongbaochung/${id}`, {
+        const res = await axios.put(`${apiUrl}/thongbao/thongbaochung/${id}`, {
           name: thongbaochung,
         });
         alert(res.data.msg);
       } else {
-        const res = await axios.post("/thongbao/thongbaochung", {
+        const res = await axios.post("${apiUrl}/thongbao/thongbaochung", {
           name: thongbaochung,
         });
         alert(res.data.msg);
@@ -48,7 +47,7 @@ function Thongbaochungs() {
   const deleteThongbaochung = async (id) => {
     try {
       const res = await axios.delete(
-        `http://localhost:5000/thongbao/thongbaochung/${id}`
+        `${apiUrl}/thongbao/thongbaochung/${id}`
       );
       alert(res.data.msg);
       setCallback(!callback);
@@ -75,10 +74,10 @@ function Thongbaochungs() {
       <Table borderless bordered hover style={{ cursor: "pointer" }}>
         <thead>
           <tr>
-            <th style={{ textAlign: "center" }}>Tiêu đề</th>
-            <th style={{ textAlign: "center" }}>Ngày thông báo</th>
-            <th style={{ textAlign: "center" }}>Người thông báo</th>
-            <th style={{ textAlign: "center" }}>Chức năng</th>
+            <th style={{ textAlign: "center", color: '#495057'}}>Tiêu đề</th>
+            <th style={{ textAlign: "center", color: '#495057' }}>Ngày thông báo</th>
+            <th style={{ textAlign: "center", color: '#495057' }}>Người thông báo</th>
+            <th style={{ textAlign: "center", color: '#495057' }}>Chức năng</th>
           </tr>
         </thead>
         <tbody>

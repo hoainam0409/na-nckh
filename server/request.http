@@ -47,3 +47,13 @@ Content-Type: application/json
     "trangthai": "Mở đăng ký"
 
 }
+
+###
+POST http://localhost:5000/thongbao/thongbaochung
+Content-Type: application/json
+
+{
+    "tieude": "Thông báo",
+    "nguoithongbao": "Hoàng Thị Lan Anh",
+    "noidung": "Thông báo đăng ký....."
+}

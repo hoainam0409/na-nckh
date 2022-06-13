@@ -69,7 +69,7 @@ function ChiTietThongBao(props) {
           justifyContent: "center",
         }}
       >
-        <ButtonGroup style={{ float: "right" }} aria-label="Basic example">
+        <div style={{ float: "right" }} aria-label="Basic example">
           <Button style={{ margin: " 0 5px 0 5px" }} variant="outline-primary">
             Lưu
           </Button>
@@ -80,7 +80,7 @@ function ChiTietThongBao(props) {
           >
             Đóng
           </Button>
-        </ButtonGroup>
+        </div>
       </div>
     </div>
   ) : (
