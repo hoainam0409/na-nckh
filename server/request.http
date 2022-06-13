@@ -1,0 +1,49 @@
+
+POST http://localhost:5000/user/register
+Content-Type: application/json
+
+{
+    "username": "anhhtl1",
+    "password": "123456",
+    "hovaten": "Hoàng Thị Lan Ánh"
+}
+
+###
+POST http://localhost:5000/user/login
+Content-Type: application/json
+
+{
+    "username": "anhhtl",
+    "password": "123456"
+}
+
+
+###
+POST http://localhost:5000/danhmuc/hocvi
+Content-Type: application/json
+{
+    "mahocvi": "5",
+    "ten": "Thạc sĩ 5"                                                                                                                                                                                                                                                                                                                                                                                                                        
+}
+
+###
+POST http://localhost:5000/danhmuc/chucvu
+Content-Type: application/json
+{
+    "machucvu": "PTP",
+    "ten": "Phó Trưởng Phòng"                                                                                                                                                                                                                                                                                                                                                                                                                        
+}
+
+###
+POST http://localhost:5000/detai/dotdangky
+Content-Type: application/json
+
+
+{
+    "madot": "DTSV2023",
+    "tendot": "Đợt đăng ký đề tài sinh viên năm 2023",
+    "nam": "2023",
+    "ghichu": "note",
+    "trangthai": "Mở đăng ký"
+
+}
