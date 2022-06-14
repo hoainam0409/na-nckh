@@ -14,8 +14,8 @@ const thongbaochungCtrl = {
     addThongbaochung: async (req, res) => {
         try {
             const { tieude, nguoithongbao,  ngaythongbao, noidung, dinhkem } = req.body
-            const thongbaochung = await Thongbaochung.findOne({ tieude})
-            if (thongbaochung) return res.status(400).json({ msg: "Thông báo" })
+            // const thongbaochung = await Thongbaochung.findOne({ tieude})
+            // if (thongbaochung) return res.status(400).json({ msg: "Thông báo" })
 
             const newThongbaochung = new Thongbaochung({ tieude, nguoithongbao,  ngaythongbao, noidung, dinhkem})
             await newThongbaochung.save()
