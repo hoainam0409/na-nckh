@@ -4,7 +4,8 @@ import Button from "react-bootstrap/Button";
 import { GlobalState } from "../../../GlobalState";
 import axios from "axios";
 import ChiTietThongBao from "./ChiTietThongBao";
-import {apiUrl} from '../../../contexts/constant'
+import ThemMoiThongBao from './ThemThongBao'
+import { apiUrl } from "../../../contexts/constant";
 
 function Thongbaochungs() {
   const state = useContext(GlobalState);
@@ -14,7 +15,8 @@ function Thongbaochungs() {
   const [id, setID] = useState("");
   const [onEdit, setOnEdit] = useState(false);
 
-  const [chitiet, setChiTiet] = useState(false)
+  const [chitiet, setChiTiet] = useState(false);
+  const [themmoi, setThemMoi] = useState(false);
 
   const createThongbaochung = async (e) => {
     e.preventDefault();
@@ -46,9 +48,7 @@ function Thongbaochungs() {
 
   const deleteThongbaochung = async (id) => {
     try {
-      const res = await axios.delete(
-        `${apiUrl}/thongbao/thongbaochung/${id}`
-      );
+      const res = await axios.delete(`${apiUrl}/thongbao/thongbaochung/${id}`);
       alert(res.data.msg);
       setCallback(!callback);
     } catch (err) {
@@ -66,18 +66,27 @@ function Thongbaochungs() {
         Danh sách thông báo
       </h1>
       <Button
-        style={{ marginTop: "70px", marginBottom: "20px" }}
-        variant="primary"
+        style={{
+          marginTop: "70px",
+          marginBottom: "20px",
+          backgroundColor: "#337AB7",
+          borderColor: "#2d6da3",
+        }}
+        onClick={() => setThemMoi(true)}
       >
         Thêm mới
       </Button>
       <Table borderless bordered hover style={{ cursor: "pointer" }}>
         <thead>
           <tr>
-            <th style={{ textAlign: "center", color: '#495057'}}>Tiêu đề</th>
-            <th style={{ textAlign: "center", color: '#495057' }}>Ngày thông báo</th>
-            <th style={{ textAlign: "center", color: '#495057' }}>Người thông báo</th>
-            <th style={{ textAlign: "center", color: '#495057' }}>Chức năng</th>
+            <th style={{ textAlign: "center", color: "#495057" }}>Tiêu đề</th>
+            <th style={{ textAlign: "center", color: "#495057" }}>
+              Ngày thông báo
+            </th>
+            <th style={{ textAlign: "center", color: "#495057" }}>
+              Người thông báo
+            </th>
+            <th style={{ textAlign: "center", color: "#495057" }}>Chức năng</th>
           </tr>
         </thead>
         <tbody>
@@ -87,11 +96,22 @@ function Thongbaochungs() {
               <td>{thongbaochung.ngaythongbao}</td>
               <td>{thongbaochung.nguoithongbao}</td>
               <td style={{ textAlign: "center" }}>
-                <Button onClick={() => setChiTiet(true)} variant="primary">
+                <Button
+                  onClick={() => setChiTiet(true)}
+                  style={{ backgroundColor: "#337AB7", borderColor: "#2d6da3" }}
+                >
                   Xem
                 </Button>
-                <Button variant="info">Sửa</Button>
-                <Button variant="danger">Xóa</Button>
+                <Button
+                  style={{ backgroundColor: "#5bc0de", borderColor: "#269abc" }}
+                >
+                  Sửa
+                </Button>
+                <Button
+                  style={{ backgroundColor: "#c9302c", borderColor: "#ac2925" }}
+                >
+                  Xóa
+                </Button>
               </td>
             </tr>
           ))}
@@ -101,6 +121,10 @@ function Thongbaochungs() {
         trigger={chitiet}
         setTrigger={setChiTiet}
       ></ChiTietThongBao>
+      <ThemMoiThongBao
+      trigger={themmoi}
+      setTrigger={setThemMoi}
+      ></ThemMoiThongBao>
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import CloseButton from "react-bootstrap/CloseButton";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
 
 function ChiTietThongBao(props) {
@@ -17,7 +16,7 @@ function ChiTietThongBao(props) {
         style={{
           height: "50px",
           width: "100%",
-          backgroundColor: "#3192e1",
+          backgroundColor: "#337AB7",
           borderButtom: "1px solid #9ec3e0",
         }}
       >
