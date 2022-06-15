@@ -35,6 +35,6 @@ button{
 
 
 /* ------------- Login/Register ----------------- */
-@import url("./components/mainpage/auth/login.css");
+@import url("./components/auth/login.css");
 
 

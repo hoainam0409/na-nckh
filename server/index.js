@@ -4,17 +4,7 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 
 
-// const authRouter = require('./middleware/auth')
-// const bodyParser = require('body-parser')
 
-
-
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true, limit: '30mb' }))
-// app.use(cors());
-
-// app.use('/post', post)
-// app.get('/', (req,res)=> res.send('hello post'))
 
 const app = express()
 app.use(express.json())

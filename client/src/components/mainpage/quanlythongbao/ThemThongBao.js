@@ -25,6 +25,8 @@ function ThemThongBao(props) {
 
   const navigate = useNavigate();
   const param = useParams();
+  const [token] = state.token
+
 
   const [thongbaochungs] = state.thongbaochungsAPI.thongbaochungs;
   const [onEdit, setOnEdit] = useState(false);
@@ -58,12 +60,14 @@ function ThemThongBao(props) {
       if (onEdit) {
         await axios.put(
           `${apiUrl}/thongbao/thongbaochung/${thongbaochung._id}`
-        ); //xem có thongbaochung._id không?
+        );
       } else {
-        await axios.post(`${apiUrl}/thongbao/thongbaochung`);
+        await axios.post(`${apiUrl}/thongbao/thongbaochung`, {...thongbaochung}, {
+          headers: {Authorization: token}
+      })
       }
       setCallback(!callback);
-      navigate.push("/"); ///mục đích để làm gì?
+      // navigate.push("/"); 
     } catch (err) {
       alert(err.response.data.msg);
     }
@@ -72,8 +76,6 @@ function ThemThongBao(props) {
   return props.trigger ? (
     <div
       style={{
-        // width: "50%",
-        // height: "50%",
         border: "1px solid #dddddd",
       }}
     >
@@ -102,28 +104,28 @@ function ThemThongBao(props) {
         />
         {props.children}
       </div>
-      <Form style={{ margin: "20px" }}>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+      <Form style={{ margin: "20px" }} onSubmit = {handleSubmit}>
+        <Form.Group className="mb-3">
           <Form.Label>Tiêu đề</Form.Label>
-          <Form.Control type="email" placeholder="name@example.com" />
+          <Form.Control type="text" name="tieude" onChange={handleChangeInput}/>
         </Form.Group>
         <div>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Group className="mb-3" >
             <Form.Label>Người thông báo</Form.Label>
-            <Form.Control type="email" placeholder="name@example.com" />
+            <Form.Control type="text" name="nguoithongbao" onChange={handleChangeInput} />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Group className="mb-3" >
             <Form.Label>Ngày thông báo</Form.Label>
-            <Form.Control type="email" placeholder="name@example.com" />
+            <Form.Control type="text" name="ngaythongbao" onChange={handleChangeInput} />
           </Form.Group>
         </div>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+        <Form.Group className="mb-3" >
           <Form.Label>Nội dung</Form.Label>
-          <Form.Control as="textarea" rows={3} />
+          <Form.Control as="textarea" rows={3} name = "noidung" onChange={handleChangeInput} />
         </Form.Group>
-        <Form.Group controlId="formFile" className="mb-3">
+        <Form.Group className="mb-3">
           <Form.Label>File đính kèm</Form.Label>
-          <Form.Control type="file" />
+          <Form.Control type="file" name="dinhkem" onChange={handleChangeInput} />
         </Form.Group>
       </Form>
       <div
@@ -134,7 +136,7 @@ function ThemThongBao(props) {
         }}
       >
         <div style={{ float: "right" }} aria-label="Basic example">
-          <Button style={{ margin: " 0 5px 0 5px" }} variant="outline-primary">
+          <Button style={{ margin: " 0 5px 0 5px" }} variant="outline-primary" type= 'submit'>
             Lưu
           </Button>
           <Button

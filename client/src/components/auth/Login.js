@@ -3,7 +3,7 @@ import "./login.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { BiCheckbox } from "react-icons/bi";
-import Logo from "../../../assets/images/logo/LOGO-GTVT-Trans2.png";
+import Logo from "../../assets/images/logo/LOGO-GTVT-Trans2.png";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -37,7 +37,7 @@ function Login() {
           <div className="row">
             <div className="content-left">
               <div className="bxinfo">
-                <h1 className="titu">TRƯỜNG ĐẠI HỌC GIAO THÔNG VẬN TẢI</h1>
+                <h1 className="titu">TRƯỜNG ĐẠI HỌC.....</h1>
                 <div>Địa chỉ: </div>
                 <div>
                   <span>Điện thoại: </span>
@@ -52,7 +52,7 @@ function Login() {
                   <div className="tn-logo">
                     <img className="tn-logo-img" src={Logo} alt="" />
                     <div className="tn-logo-text">
-                      TRƯỜNG ĐẠI HỌC GIAO THÔNG VẬN TẢI
+                      TRƯỜNG ĐẠI HỌC....
                     </div>
                   </div>
                 </div>
