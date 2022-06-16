@@ -23,7 +23,7 @@ function ThemThongBao(props) {
   const state = useContext(GlobalState);
   const [thongbaochung, setThongbaochung] = useState(initialState);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const param = useParams();
   const [token] = state.token
 

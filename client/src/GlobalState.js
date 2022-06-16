@@ -1,8 +1,9 @@
 import React, {createContext, useState, useEffect} from 'react'
+import UserAPI from './api/userAPI'
 import ThongbaochungsAPI from './api/ThongbaochungAPI'
-import { apiUrl } from './contexts/constant';
+import { apiUrl } from "./contexts/constant";
+
 import axios from 'axios'
-import UserAPI from '../src/api/userAPI'
 
 export const GlobalState = createContext()
 
@@ -15,14 +16,15 @@ export const DataProvider = ({children}) =>{
         const firstLogin = localStorage.getItem('firstLogin')
         if(firstLogin){
             const refreshToken = async () =>{
-                const res = await axios.get(`${apiUrl}/user/refresh_token`)
+                const res = await axios.get(`${apiUrl}/user/refresh_token`) 
         
                 setToken(res.data.accesstoken)
     
                 setTimeout(() => {
-                    refreshToken()
+                refreshToken()
                 }, 10 * 60 * 1000)
             }
+            refreshToken()
         }
     },[])
 
