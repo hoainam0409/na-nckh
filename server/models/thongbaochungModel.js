@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-
-const thongbaochungSchema = new mongoose.Schema({
+const thongbaochungSchema = new Schema({
     tieude:{
         type: String,
         required: true
@@ -19,7 +19,12 @@ const thongbaochungSchema = new mongoose.Schema({
     },
     dinhkem:{
         type: Object,
-    }
+    },
+    user: {
+		type: Schema.Types.ObjectId,
+		ref: 'users'
+	}
+    // user: {type: String, required: true, unique: true}
 }, {
     timestamps: true //important
 })

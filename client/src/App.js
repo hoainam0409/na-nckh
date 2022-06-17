@@ -2,19 +2,19 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Mainpages from "./components/mainpage/Pages";
 import { DataProvider } from "./GlobalState";
-import Sidebar from '../src/components/sidebar/SideBar'
+// import Sidebar from '../src/components/sidebar/SideBar'
 
 
 function App() {
   return (
-    <DataProvider>
+    // <DataProvider>
       <Router>
         <div className="App">
-          <Sidebar/>
+          {/* <Sidebar/> */}
           <Mainpages />
         </div>
       </Router>
-    </DataProvider>
+    // </DataProvider>
   );
 }
 

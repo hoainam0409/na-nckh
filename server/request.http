@@ -3,9 +3,9 @@ POST http://localhost:5000/user/register
 Content-Type: application/json
 
 {
-    "username": "anhhtl2",
+    "username": "hoaint",
     "password": "123456",
-    "hovaten": "Hoàng Thị Lan Ánh"
+    "hovaten": "Nguyễn Thị Hoài"
 }
 
 ###
@@ -13,8 +13,8 @@ POST http://localhost:5000/user/login
 Content-Type: application/json
 
 {
-    "username": "anhhtl",
-    "password": "123456"
+    "username": "phuongnth",
+    "password": "1234567"
 }
 
 
@@ -51,9 +51,9 @@ Content-Type: application/json
 ###
 POST http://localhost:5000/thongbao/thongbaochung
 Content-Type: application/json
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWM4NWNjNDMxMjFhNTMxMmE5OTI1YSIsImlhdCI6MTY1NTQ4MjQ4OSwiZXhwIjoxNjU1NDgzMTQ5fQ.--psQNlSZA2WAGyCGZHMj4DF4t09wcdFgaY1u4xy6mE
 {
-    "tieude": "Thông báo",
-    "nguoithongbao": "Hoàng Thị Lan Anh",
-    "noidung": "Thông báo đăng ký....."
+    "tieude": "Thông báo tạo",
+    "noidung": "Thông báo đăng ký.....",
+    "nguoithongbao": "Nguyễn Thị Hoaì 2"
 }
