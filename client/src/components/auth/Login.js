@@ -1,35 +1,44 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./login.css";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link} from "react-router-dom";
 import { BiCheckbox } from "react-icons/bi";
 import Logo from "../../assets/images/logo/LOGO-GTVT-Trans2.png";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { AuthContext } from "../../contexts/authContext";
+
 
 function Login() {
-  const [user, setUser] = useState({
+  //constext
+  const {loginUser} = useContext(AuthContext)
+  const [loginForm, setLoginForm] = useState({
     username: "",
     password: "",
   });
 
   const onChangeInput = (e) => {
     const { name, value } = e.target;
-    setUser({ ...user, [name]: value });
+    setLoginForm({ ...loginForm, [name]: value });
   };
 
-  const loginSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post("http://localhost:5000/user/login", { ...user });
+  const loginSubmit = async event => {
+		event.preventDefault()
 
-      localStorage.setItem("firstLogin", true);
+		try {
+			const loginData = await loginUser(loginForm)
+      console.log(loginData)
+      if(loginData.success){
+        window.location.href =    ('/nckh/dashboard')
 
-      window.location.href = "/";
-    } catch (err) {
-      alert(err.response.data.msg);
-    }
-  };
+      }
+			// if (!loginData.success) {
+			// 	setAlert({ type: 'danger', message: loginData.message })
+			// 	setTimeout(() => setAlert(null), 5000)
+			// }
+		} catch (error) {
+			console.log(error)
+		}
+	};
   return (
     <div className="login">
       <div className="login-page">
@@ -37,7 +46,7 @@ function Login() {
           <div className="row">
             <div className="content-left">
               <div className="bxinfo">
-                <h1 className="titu">TRƯỜNG ĐẠI HỌC.....</h1>
+                <h1 className="titu">TRƯỜNG ĐẠI HỌC THÔNG MINH</h1>
                 <div>Địa chỉ: </div>
                 <div>
                   <span>Điện thoại: </span>
@@ -52,7 +61,7 @@ function Login() {
                   <div className="tn-logo">
                     <img className="tn-logo-img" src={Logo} alt="" />
                     <div className="tn-logo-text">
-                      TRƯỜNG ĐẠI HỌC....
+                      TRƯỜNG ĐẠI HỌC THÔNG MINH
                     </div>
                   </div>
                 </div>
@@ -63,7 +72,7 @@ function Login() {
                       placeholder="Username"
                       name="username"
                       required
-                      value={user.username}
+                      value={loginForm.username}
                       onChange={onChangeInput}
                     />
                   </Form.Group>
@@ -74,7 +83,7 @@ function Login() {
                       name="password"
                       required
                       autoComplete="on"
-                      value={user.password}
+                      value={loginForm.password}
                       onChange={onChangeInput}
                     />
                   </Form.Group>
