@@ -1,5 +1,7 @@
 export const apiUrl = 'http://localhost:5000'
 
+export const LOCAL_STORAGE_TOKEN_NAME = 'quanly-nckh'
+
 export const TB_LOADED_SUCCESS = 'TB_LOADED_SUCCESS'
 export const TB_LOADED_FAIL = 'TB_LOADED_FAIL'
 export const ADD_TB = 'ADD_TB'
