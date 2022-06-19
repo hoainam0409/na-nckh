@@ -1,59 +1,54 @@
-import React, { useState, useContext } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
+import { useContext, useState, useEffect } from "react";
 import { ThongbaochungContext } from "../../../contexts/ThongbaochungContext";
 
-const ThemThongBao = () => {
-  //context
-  const { showThemThongBao, setShowThemThongBao, addThongBaoChung, setShowToast } =
-    useContext(ThongbaochungContext);
+const SuaThongBao = () => {
+  // Contexts
+  const {
+    thongbaochungState: { thongbaochung },
+    showSuaThongBaoChung,
+    setShowSuaThongBaoChung,
+    updateThongBaoChung,
+    setShowToast,
+  } = useContext(ThongbaochungContext);
 
-  //State
-  const [newThongBaoChung, setNewThongBaoChung] = useState({
-    tieude: "",
-    nguoithongbao: "",
-    ngaythongbao: Date.now,
-    noidung: "",
-    dinhkem: "",
-  });
+  // State
+  const [updatedThongBaoChung, setUpdatedThongBaoChung] =
+    useState(thongbaochung);
+
+  useEffect(() => setUpdatedThongBaoChung(thongbaochung), [thongbaochung]);
+
   const { tieude, nguoithongbao, ngaythongbao, noidung, dinhkem } =
-    newThongBaoChung;
+    updatedThongBaoChung;
 
-  const onChangeInput = (event) =>
-    setNewThongBaoChung({
-      ...newThongBaoChung,
+  const onChangeUpdated = (event) =>
+    setUpdatedThongBaoChung({
+      ...updatedThongBaoChung,
       [event.target.name]: event.target.value,
     });
 
-  const resetAddThongBaoChung = () => {
-    setNewThongBaoChung({
-      tieude: "",
-      nguoithongbao: "",
-      ngaythongbao: "",
-      noidung: "",
-      dinhkem: "",
-    });
-    setShowThemThongBao(false);
-  };
   const closeDialog = () => {
-    resetAddThongBaoChung();
+    setUpdatedThongBaoChung(thongbaochung);
+    setShowSuaThongBaoChung(false);
   };
 
-  const onSubmit = async event => {
-      event.preventDefault()
-      const { success, message } = await addThongBaoChung(newThongBaoChung)
-      resetAddThongBaoChung()
-      setShowToast({ show: true, message, type: success ? 'success' : 'danger' })
-    }
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    const { success, message } = await updateThongBaoChung(
+      updatedThongBaoChung
+    );
+    setShowSuaThongBaoChung(false);
+    setShowToast({ show: true, message, type: success ? "success" : "danger" });
+  };
 
   return (
-    <Modal show={showThemThongBao} onHide={closeDialog}>
+    <Modal show={showSuaThongBaoChung} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Thêm mới thông báo</Modal.Title>
+        <Modal.Title>Chỉnh sửa thông báo</Modal.Title>
       </Modal.Header>
-      <Form onSubmit = {onSubmit}>
+      <Form onSubmit={onSubmit}>
         <Modal.Body>
           <Form.Group>
             <Form.Label>Tiêu đề</Form.Label>
@@ -63,7 +58,7 @@ const ThemThongBao = () => {
               required
               aria-describedby="title-help"
               value={tieude}
-              onChange={onChangeInput}
+              onChange={onChangeUpdated}
             />
           </Form.Group>
           <Form.Group>
@@ -74,7 +69,7 @@ const ThemThongBao = () => {
               required
               aria-describedby="title-help"
               value={nguoithongbao}
-              onChange={onChangeInput}
+              onChange={onChangeUpdated}
             />
           </Form.Group>
           <Form.Group>
@@ -83,7 +78,7 @@ const ThemThongBao = () => {
               type="text"
               name="ngaythongbao"
               value={ngaythongbao}
-              onChange={onChangeInput}
+              onChange={onChangeUpdated}
             />
           </Form.Group>
           <Form.Group>
@@ -93,7 +88,7 @@ const ThemThongBao = () => {
               rows={3}
               name="noidung"
               value={noidung}
-              onChange={onChangeInput}
+              onChange={onChangeUpdated}
             />
           </Form.Group>
           <Form.Group>
@@ -102,7 +97,7 @@ const ThemThongBao = () => {
               type="file"
               name="dinhkem"
               value={dinhkem}
-              onChange={onChangeInput}
+              onChange={onChangeUpdated}
             />
           </Form.Group>
         </Modal.Body>
@@ -118,4 +113,5 @@ const ThemThongBao = () => {
     </Modal>
   );
 };
-export default ThemThongBao;
+
+export default SuaThongBao;

@@ -193,7 +193,7 @@ const Sidebar = () => {
               <BsFillGridFill
                 style={{ color: "#337ab7 ", marginLeft: "10px" }}
               />
-              <span style={{ marginLeft: "10px" }}>Quản lý đề tài NCKH</span>
+              <span style={{ marginLeft: "10px"}}>Quản lý đề tài NCKH</span>
               <AiIcons.AiOutlineClose onClick={hiddenSidebar} />
             </NavIcon>
             {SidebarData.map((item, index) => {

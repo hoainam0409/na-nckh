@@ -24,34 +24,7 @@ const Thongbaocanhan = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Thông báo đăng ký đề tài sinh viên cấp trường năm 2022</td>
-              <td>
-                <Button variant="primary">Xem chi tiết</Button>
-              </td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Thông báo đăng ký đề tài sinh viên cấp trường năm 2022</td>
-              <td>
-                <Button variant="primary">Xem chi tiết</Button>
-              </td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Thông báo đăng ký đề tài sinh viên cấp trường năm 2022</td>
-              <td>
-                <Button variant="primary">Xem chi tiết</Button>
-              </td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Thông báo đăng ký đề tài sinh viên cấp trường năm 2022</td>
-              <td>
-                <Button variant="primary">Xem chi tiết</Button>
-              </td>
-            </tr>
+            
           </tbody>
         </Table>
       </div>

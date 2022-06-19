@@ -1,6 +1,6 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import Login from '../../view/Login'
+import Login from '../auth/Login'
 import Home from './home-nckh/Home-nckh'
 import Landing from '../layout/Landing'
 import DanhSachThongBao from '../mainpage/quanlythongbao/DanhSachThongBao'

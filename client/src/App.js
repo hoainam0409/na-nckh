@@ -2,8 +2,8 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import Mainpages from "./components/mainpage/Pages";
-import AuthContextProvider from "../src/contexts/AuthContext";
-import ThongbaochungContextProvider from "../src/contexts/thongbaochungContext";
+import AuthContextProvider from "./contexts/AuthContext";
+import ThongbaochungContextProvider from "./contexts/ThongbaochungContext";
 
 function App() {
   return (

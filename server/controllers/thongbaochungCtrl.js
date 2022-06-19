@@ -9,7 +9,7 @@ const thongbaochungCtrl = {
       ]);
       res.json({ success: true, thongbaochungs });
     } catch (err) {
-      return res.status(500).json({ msg: err.message });
+      return res.status(500).json({ message: err.message });
     }
   },
   //CREATE
@@ -32,11 +32,11 @@ const thongbaochungCtrl = {
       await newThongbaochung.save();
       res.json({
         success: true,
-        msg: "Thêm mới thông báo thành công!",
+        message: "Thêm mới thông báo thành công!",
         thongbaochung: newThongbaochung,
       });
     } catch (err) {
-      return res.status(500).json({ msg: err.message });
+      return res.status(500).json({ message: err.message });
     }
   },
   //EDIT
@@ -72,20 +72,20 @@ const thongbaochungCtrl = {
 
       res.json({
         success: true,
-        msg: "Chỉnh sửa thông báo thành công!",
+        message: "Chỉnh sửa thông báo thành công!",
         thongbaochung: updatedThongbaochung,
       });
     } catch (err) {
-      return res.status(500).json({ success: false, msg: err.message });
+      return res.status(500).json({ success: false, message: err.message });
     }
   },
   //DELETE
   deleteThongbaochung: async (req, res) => {
     try {
       await Thongbaochung.findByIdAndDelete(req.params.id);
-      res.json({ success: true, msg: "Xóa thông báo thành công" });
+      res.json({ success: true, message: "Xóa thông báo thành công" });
     } catch (err) {
-      return res.status(500).json({ msg: err.message });
+      return res.status(500).json({ message: err.message });
     }
   },
 };
