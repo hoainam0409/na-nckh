@@ -1,51 +1,75 @@
 require('dotenv').config()
 const Users = require('../models/UserModel')
-const bcrypt = require('bcrypt')
+// const bcrypt = require('bcrypt')
+const argon2 = require('argon2')
 const jwt = require('jsonwebtoken')
 
 const userCtrl = {
     register: async (req, res) =>{
-        try {
-            const {username, password, hovaten} = req.body;
+        const { username, password, hovaten} = req.body
 
-            const user = await Users.findOne({username})
-            if(user) return res.status(400).json({msg: "The account already exists."})
+	// Simple validation
+	if (!username || !password)
+		return res
+			.status(400)
+			.json({ success: false, message: 'Missing username and/or password' })
 
-            if(password.length < 6) 
-                return res.status(400).json({msg: "Password is at least 6 characters long."})
+	try {
+		// Check for existing user
+		const user = await Users.findOne({ username })
 
-            // Password Encryption
-            const passwordHash = await bcrypt.hash(password, 10)
-            const newUser = new Users({
-                username, password: passwordHash, hovaten
-            })
+		if (user)
+			return res
+				.status(400)
+				.json({ success: false, message: 'Username already taken' })
 
-            // Save mongodb
-            await newUser.save()
+		// All good
+		const hashedPassword = await argon2.hash(password)
+		const newUser = new Users({ username, password: hashedPassword, hovaten})
+		await newUser.save()
 
-            // Then create jsonwebtoken to authentication
-            const accesstoken = createAccessToken({id: newUser._id})
-            
-            res.json({accesstoken})
+		// Return token
+		const accessToken = jwt.sign(
+			{ userId: newUser._id },
+			process.env.ACCESS_TOKEN_SECRET
+		)
 
-        } catch (err) {
-            return res.status(500).json({msg: err.message})
-        }
+		res.json({
+			success: true,
+			message: 'User created successfully',
+			accessToken
+		})
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({ success: false, message: 'Internal server error' })
+	}
     },
     login: async (req, res) => {
+        const { username, password } = req.body
+
+        // Simple validation
+        if (!username || !password)
+            return res
+                .status(400)
+                .json({ success: false, message: 'Missing username and/or password' })
+    
         try {
-            const { username, password } = req.body;
-
+            // Check for existing user
             const user = await Users.findOne({ username })
-            if (!user) return res.status(400).json({ success:false, msg: "Incorrect username or password!" })
-
-            const isMatch = await bcrypt.compare(password, user.password)
-            if (!isMatch) return res.status(400).json({success:false, msg: "Incorrect password!" })
-
-            // If login success , create access token 
-            // const accesstoken = createAccessToken({ id: user._id })
-            // res.json({ accesstoken })
-
+            if (!user)
+                return res
+                    .status(400)
+                    .json({ success: false, message: 'Incorrect username or password' })
+    
+            // Username found
+            const passwordValid = await argon2.verify(user.password, password)
+            if (!passwordValid)
+                return res
+                    .status(400)
+                    .json({ success: false, message: 'Incorrect username or password' })
+    
+            // All good
+            // Return token
             const accessToken = jwt.sign(
                 { userId: user._id },
                 process.env.ACCESS_TOKEN_SECRET
@@ -55,54 +79,33 @@ const userCtrl = {
                 success: true,
                 message: 'User logged in successfully',
                 accessToken
-            })  
-
-
-        } catch (err) {
-            return { success : false, msg: err.message }
+            })
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({ success: false, message: 'Internal server error' })
         }
     },
     getUser: async (req, res) =>{
         try {
-            const user = await Users.findById(req.user.id).select('-password')
-            if(!user) return res.status(400).json({msg: "User does not exist."})
-
-            res.json(user)
-        } catch (err) {
-            return { success : false, msg: err.message }
+            const user = await Users.findById(req.userId).select('-password')
+            if (!user)
+                return res.status(400).json({ success: false, message: 'User not found' })
+            res.json({ success: true, user })
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({ success: false, message: 'Internal server error' })
         }
     },
     logout: async (req, res) =>{
         try {
             res.clearCookie('refreshtoken', {path: '/user/refresh_token'})
-            return res.json({msg: "Logged out"})
+            return res.json({message: "Logged out"})
         } catch (err) {
-            return res.status(500).json({msg: err.message})
+            return res.status(500).json({message: err.message})
         }
     },
-    // refreshToken: (req, res) =>{
-    //     try {
-    //         const rf_token = req.cookies.refreshtoken;
-    //         if(!rf_token) return res.status(400).json({msg: "Please Login or Register"})
-
-    //         jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) =>{
-    //             if(err) return res.status(400).json({msg: "Please Login or Register"})
-
-    //             const accesstoken = createAccessToken({id: user.id})
-
-    //             res.json({accesstoken})
-    //         })
-
-    //     } catch (err) {
-    //         return { success : false, msg: err.message }
-    //     }
-        
-    // },
 }
 const createAccessToken = (user) => {
     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '11m' })
 }
-// const createRefreshToken = (user) => {
-//     return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' })
-// }
 module.exports = userCtrl

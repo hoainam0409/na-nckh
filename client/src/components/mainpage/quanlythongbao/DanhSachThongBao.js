@@ -1,61 +1,25 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import { GlobalState } from "../../../GlobalState";
-import axios from "axios";
-import ChiTietThongBao from "./ChiTietThongBao";
-import ThemMoiThongBao from './ThemThongBao'
-import { apiUrl } from "../../../contexts/constant";
+import { ThongbaochungContext } from "../../../contexts/thongbaochungContext";
+import { AuthContext } from "../../../contexts/AuthContext";
 
-function Thongbaochungs() {
-  const state = useContext(GlobalState);
-  const [thongbaochungs] = state.thongbaochungsAPI.thongbaochungs;
-  const [thongbaochung, setThongbaochung] = useState("");
-  const [callback, setCallback] = state.thongbaochungsAPI.callback;
-  const [id, setID] = useState("");
-  const [onEdit, setOnEdit] = useState(false);
 
-  const [chitiet, setChiTiet] = useState(false);
-  const [themmoi, setThemMoi] = useState(false);
+const Thongbaochungs = () =>{
+  // Contexts
+	// const {
+	// 	authState: {
+	// 		user: {username}
+	// 	}
+	// } = useContext(AuthContext)
 
-  const createThongbaochung = async (e) => {
-    e.preventDefault();
-    try {
-      if (onEdit) {
-        const res = await axios.put(`${apiUrl}/thongbao/thongbaochung/${id}`, {
-          name: thongbaochung,
-        });
-        alert(res.data.msg);
-      } else {
-        const res = await axios.post("${apiUrl}/thongbao/thongbaochung", {
-          name: thongbaochung,
-        });
-        alert(res.data.msg);
-      }
-      setOnEdit(false);
-      setThongbaochung("");
-      setCallback(!callback);
-    } catch (err) {
-      alert(err.response.data.msg);
-    }
-  };
+	const {
+		thongbaochungState: { thongbaochungs, thongbaochungsLoading },
+		getThongbaochungs
+	} = useContext(ThongbaochungContext)
 
-  const editThongbaochung = async (id, name) => {
-    setID(id);
-    setThongbaochung(name);
-    setOnEdit(true);
-  };
-
-  const deleteThongbaochung = async (id) => {
-    try {
-      const res = await axios.delete(`${apiUrl}/thongbao/thongbaochung/${id}`);
-      alert(res.data.msg);
-      setCallback(!callback);
-    } catch (err) {
-      alert(err.response.data.msg);
-    }
-  };
-
+  // Start: Get all 
+	useEffect(() => getThongbaochungs(), [])
   return (
     <div style={{ margin: "10px 20px 20px 330px" }}>
       <h1
@@ -72,7 +36,7 @@ function Thongbaochungs() {
           backgroundColor: "#337AB7",
           borderColor: "#2d6da3",
         }}
-        onClick={() => setThemMoi(true)}
+        
       >
         Thêm mới
       </Button>
@@ -89,7 +53,7 @@ function Thongbaochungs() {
             <th style={{ textAlign: "center", color: "#495057" }}>Chức năng</th>
           </tr>
         </thead>
-        <tbody>
+        {/* <tbody>
           {thongbaochungs.map((thongbaochung) => (
             <tr key={thongbaochung._id}>
               <td>{thongbaochung.tieude}</td>
@@ -97,7 +61,7 @@ function Thongbaochungs() {
               <td>{thongbaochung.nguoithongbao}</td>
               <td style={{ textAlign: "center" }}>
                 <Button
-                  onClick={() => setChiTiet(true)}
+                  
                   style={{ backgroundColor: "#337AB7", borderColor: "#2d6da3" }}
                 >
                   Xem
@@ -115,16 +79,9 @@ function Thongbaochungs() {
               </td>
             </tr>
           ))}
-        </tbody>
+        </tbody> */}
       </Table>
-      <ChiTietThongBao
-        trigger={chitiet}
-        setTrigger={setChiTiet}
-      ></ChiTietThongBao>
-      <ThemMoiThongBao
-      trigger={themmoi}
-      setTrigger={setThemMoi}
-      ></ThemMoiThongBao>
+      
     </div>
   );
 }

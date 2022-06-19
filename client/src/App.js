@@ -1,20 +1,19 @@
 import React from "react";
+import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import Mainpages from "./components/mainpage/Pages";
-import AuthContextProvider from "../src/contexts/authContext";
-// import Sidebar from '../src/components/sidebar/SideBar'
-
+import AuthContextProvider from "../src/contexts/AuthContext";
+import ThongbaochungContextProvider from "../src/contexts/thongbaochungContext";
 
 function App() {
   return (
     <AuthContextProvider>
-      <Router>
-        <div className="App">
-          {/* <Sidebar/> */}
+      <ThongbaochungContextProvider>
+        <Router>
           <Mainpages />
-        </div>
-      </Router>
- </AuthContextProvider>
+        </Router>
+      </ThongbaochungContextProvider>
+    </AuthContextProvider>
   );
 }
 
