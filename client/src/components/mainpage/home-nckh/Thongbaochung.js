@@ -1,44 +1,67 @@
-import React  from "react";
-import Table from 'react-bootstrap/Table'
-import Button from 'react-bootstrap/Button'
+import React, { useContext, useEffect } from "react";
+import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
+import { ThongbaochungContext } from "../../../contexts/ThongbaochungContext";
 
-function Thongbaochungs() {
 
+const Thongbaochungs = () => {
+
+  const {
+    thongbaochungState: { thongbaochungs, thongbaochungsLoading },
+    getThongbaochungs,
+  } = useContext(ThongbaochungContext);
+
+  // Start: Get all
+  useEffect(() => {getThongbaochungs()} , []);
   return (
-    <div style ={{margin: '20px'}}>
-     <h1 style = {{textTransform: 'uppercase', color: '#337ab7', fontSize: '20px'}}>Thông báo chung</h1>
-      <Table hover style = {{cursor: 'pointer'}}>
-        <thead>
-          <tr>
-            <th>STT</th>
-            <th>Tiêu đề</th>
-            <th>Chức năng</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Thông báo đăng ký đề tài sinh viên cấp trường năm 2022</td>
-            <td><Button variant="primary">Xem chi tiết</Button></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Thông báo đăng ký đề tài sinh viên cấp trường năm 2022</td>
-            <td><Button variant="primary">Xem chi tiết</Button></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td >Thông báo đăng ký đề tài sinh viên cấp trường năm 2022</td>
-            <td><Button variant="primary">Xem chi tiết</Button></td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td >Thông báo đăng ký đề tài sinh viên cấp trường năm 2022</td>
-            <td><Button variant="primary">Xem chi tiết</Button></td>
-          </tr>
-        </tbody>
-      </Table>
-    </div>
+    <div>
+      
+        <h1
+         style={{
+          textTransform: "uppercase",
+          color: "#337ab7",
+          fontSize: "20px",
+        }}
+        >
+          Danh sách thông báo
+        </h1>
+
+        <Table borderless bordered hover style={{ cursor: "pointer" }}>
+          <thead>
+            <tr>
+              <th style={{ textAlign: "center", color: "#495057" }}>Tiêu đề</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>
+                Ngày thông báo
+              </th>
+              <th style={{ textAlign: "center", color: "#495057" }}>
+                Người thông báo
+              </th>
+              <th style={{ textAlign: "center", color: "#495057" }}>
+                Chức năng
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {thongbaochungs.map((thongbaochung) => (
+              <tr key={thongbaochung._id}>
+                <td>{thongbaochung.tieude}</td>
+                <td>{thongbaochung.ngaythongbao}</td>
+                <td>{thongbaochung.nguoithongbao}</td>
+                <td style={{ textAlign: "center" }}>
+                  <Button
+                    style={{
+                      backgroundColor: "#337AB7",
+                      borderColor: "#2d6da3",
+                    }}
+                  >
+                    Xem chi tiết
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
   );
 };
 
