@@ -1,7 +1,7 @@
 import { createContext, useReducer, useState } from "react";
 import { thongbaochungReducer } from "../reducers/thongbaochungReducer";
 import axios from "axios";
-import { apiUrl, TB_LOADED_FAIL, TB_LOADED_SUCCESS, TB_ADD, DELETE_TB, UPDATE_TB } from "./constant";
+import { apiUrl, TB_LOADED_FAIL, TB_LOADED_SUCCESS, TB_ADD, DELETE_TB, UPDATE_TB, FIND_TB } from "./constant";
 
 export const ThongbaochungContext = createContext();
 
@@ -68,10 +68,10 @@ const ThongbaochungContextProvider = ({ children }) => {
 }
 
 // Tìm thông báo khi thực hiện chỉnh sửa
-// const findThongBaoChung = id => {
-// 	const thongbaochung = thongbaochungState.thongbaochungs.find(thongbaochung => thongbaochung._id === id)
-// 	dispatch({ type: FIND_TB, payload: thongbaochung })
-// }
+const findThongBaoChung = id => {
+	const thongbaochung = thongbaochungState.thongbaochungs.find(thongbaochung => thongbaochung._id === id)
+	dispatch({ type: FIND_TB, payload: thongbaochung })
+}
 
 // Chỉnh sửa thông báo
 const updateThongBaoChung = async updatedThongBaoChung => {
@@ -107,6 +107,7 @@ const updateThongBaoChung = async updatedThongBaoChung => {
 	updateThongBaoChung,
 	showSuaThongBaoChung,
     setShowSuaThongBaoChung,
+    findThongBaoChung
 	
   };
 
