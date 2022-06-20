@@ -6,7 +6,7 @@ import { ThongbaochungContext } from "../../../contexts/ThongbaochungContext";
 import { AuthContext } from "../../../contexts/AuthContext";
 import SideBar from "../../sidebar/SideBar";
 import ThemThongBao from "./ThemThongBao";
-// import SuaThongBao from "./SuaThongBao";
+import SuaThongBao from "./SuaThongBao";
 
 const Thongbaochungs = () => {
   // Contexts
@@ -17,17 +17,27 @@ const Thongbaochungs = () => {
   // } = useContext(AuthContext)
 
   const {
-    thongbaochungState: { thongbaochungs, thongbaochungsLoading },
+    thongbaochungState: {
+      thongbaochung,
+      thongbaochungs,
+      thongbaochungsLoading,
+    },
     getThongbaochungs,
     setShowThemThongBao,
     showToast: { show, message, type },
     setShowToast,
     deleteThongBaoChung,
-    // setShowSuaThongBao
+    findThongBaoChung,
+    setShowSuaThongBaoChung,
   } = useContext(ThongbaochungContext);
 
   // Start: Get all
   useEffect(() => getThongbaochungs(), []);
+
+  const chooseThongBaoChung = (thongbaochungId) => {
+    findThongBaoChung(thongbaochungId);
+    setShowSuaThongBaoChung(true);
+  };
   return (
     <div>
       <SideBar />
@@ -67,7 +77,7 @@ const Thongbaochungs = () => {
           Thêm mới
         </Button>
         <ThemThongBao />
-        {/* <SuaThongBao /> */}
+        {thongbaochung !== null && <SuaThongBao />}
 
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
@@ -88,7 +98,12 @@ const Thongbaochungs = () => {
             {thongbaochungs.map((thongbaochung) => (
               <tr key={thongbaochung._id}>
                 <td>{thongbaochung.tieude}</td>
-                <td>{thongbaochung.ngaythongbao}</td>
+                <td>
+                  {new Date(thongbaochung.ngaythongbao).toLocaleDateString([
+                    "ban",
+                    "id",
+                  ])}
+                </td>
                 <td>{thongbaochung.nguoithongbao}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
@@ -96,6 +111,7 @@ const Thongbaochungs = () => {
                       backgroundColor: "#337AB7",
                       borderColor: "#2d6da3",
                     }}
+                    onClick={chooseThongBaoChung.bind(this, thongbaochung._id)}
                   >
                     Xem
                   </Button>
@@ -104,7 +120,7 @@ const Thongbaochungs = () => {
                       backgroundColor: "#5bc0de",
                       borderColor: "#269abc",
                     }}
-                    // onClick={setShowSuaThongBao.bind(this, true)}
+                    onClick={chooseThongBaoChung.bind(this, thongbaochung._id)}
                   >
                     Sửa
                   </Button>

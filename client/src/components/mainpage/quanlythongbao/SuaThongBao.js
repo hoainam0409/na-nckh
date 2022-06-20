@@ -75,7 +75,7 @@ const SuaThongBao = () => {
           <Form.Group>
             <Form.Label>Ngày thông báo</Form.Label>
             <Form.Control
-              type="text"
+              type="date"
               name="ngaythongbao"
               value={ngaythongbao}
               onChange={onChangeUpdated}

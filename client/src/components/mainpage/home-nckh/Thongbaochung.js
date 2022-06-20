@@ -2,17 +2,26 @@ import React, { useContext, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import { ThongbaochungContext } from "../../../contexts/ThongbaochungContext";
+import SuaThongBao from "../quanlythongbao/SuaThongBao";
+
 
 
 const Thongbaochungs = () => {
 
   const {
-    thongbaochungState: { thongbaochungs, thongbaochungsLoading },
+    thongbaochungState: { thongbaochung, thongbaochungs, thongbaochungsLoading },
     getThongbaochungs,
+    findThongBaoChung,
+    setShowSuaThongBaoChung,
   } = useContext(ThongbaochungContext);
 
   // Start: Get all
   useEffect(() => {getThongbaochungs()} , []);
+
+  const chooseThongBaoChung = (thongbaochungId) => {
+    findThongBaoChung(thongbaochungId);
+    setShowSuaThongBaoChung(true);
+  };
   return (
     <div>
       
@@ -25,7 +34,7 @@ const Thongbaochungs = () => {
         >
           Danh sách thông báo
         </h1>
-
+        {thongbaochung !== null && <SuaThongBao />}
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr>
@@ -45,7 +54,8 @@ const Thongbaochungs = () => {
             {thongbaochungs.map((thongbaochung) => (
               <tr key={thongbaochung._id}>
                 <td>{thongbaochung.tieude}</td>
-                <td>{thongbaochung.ngaythongbao}</td>
+                <td>{new Date(thongbaochung.ngaythongbao).toLocaleDateString(['ban', 'id'])}</td>
+
                 <td>{thongbaochung.nguoithongbao}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
@@ -53,6 +63,7 @@ const Thongbaochungs = () => {
                       backgroundColor: "#337AB7",
                       borderColor: "#2d6da3",
                     }}
+                    onClick={chooseThongBaoChung.bind(this, thongbaochung._id)}
                   >
                     Xem chi tiết
                   </Button>

@@ -44,31 +44,29 @@ const thongbaochungCtrl = {
     const { tieude, nguoithongbao, ngaythongbao, noidung, dinhkem } = req.body;
     // Simple validation
     if (!tieude || !nguoithongbao)
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "Vui lòng nhập thông tin trường bắt buộc",
-        });
+      return res.status(400).json({
+        success: false,
+        message: "Vui lòng nhập thông tin trường bắt buộc",
+      });
     try {
       let updatedThongbaochung = {
         tieude,
         nguoithongbao,
-        ngaythongbao: ngaythongbao||'',
-        noidung: noidung||'',
-        dinhkem: dinhkem||'',
+        ngaythongbao: ngaythongbao || "",
+        noidung: noidung || "",
+        dinhkem: dinhkem || "",
       };
-      updateThongbaochung = await Thongbaochung.findOneAndUpdate(
+      updatedThongbaochung = await Thongbaochung.findOneAndUpdate(
         { _id: req.params.id },
         updatedThongbaochung,
         { new: true }
       );
       // User not authorised to update post or post not found
-		if (!updatedThongbaochung)
+      if (!updatedThongbaochung)
         return res.status(401).json({
-            success: false,
-            message: 'Post not found or user not authorised'
-        })
+          success: false,
+          message: "Post not found or user not authorised",
+        });
 
       res.json({
         success: true,
@@ -85,7 +83,7 @@ const thongbaochungCtrl = {
       await Thongbaochung.findByIdAndDelete(req.params.id);
       res.json({ success: true, message: "Xóa thông báo thành công" });
     } catch (err) {
-      return res.status(500).json({ message: err.message });
+      return res.status(500).json({ success: false, message: err.message });
     }
   },
 };

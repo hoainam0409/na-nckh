@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
 import { ThongbaochungContext } from "../../../contexts/ThongbaochungContext";
 
 const ThemThongBao = () => {
@@ -14,7 +13,7 @@ const ThemThongBao = () => {
   const [newThongBaoChung, setNewThongBaoChung] = useState({
     tieude: "",
     nguoithongbao: "",
-    ngaythongbao: Date.now,
+    ngaythongbao: "",
     noidung: "",
     dinhkem: "",
   });
@@ -80,7 +79,7 @@ const ThemThongBao = () => {
           <Form.Group>
             <Form.Label>Ngày thông báo</Form.Label>
             <Form.Control
-              type="text"
+              type="date"
               name="ngaythongbao"
               value={ngaythongbao}
               onChange={onChangeInput}

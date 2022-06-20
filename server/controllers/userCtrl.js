@@ -31,7 +31,7 @@ const userCtrl = {
 		// Return token
 		const accessToken = jwt.sign(
 			{ userId: newUser._id },
-			process.env.ACCESS_TOKEN_SECRET
+			process.env.ACCESS_TOKEN_SECRET,  { expiresIn: '11m' }
 		)
 
 		res.json({
@@ -105,7 +105,7 @@ const userCtrl = {
         }
     },
 }
-const createAccessToken = (user) => {
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '11m' })
-}
+// const createAccessToken = (user) => {
+//     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '11m' })
+// }
 module.exports = userCtrl
