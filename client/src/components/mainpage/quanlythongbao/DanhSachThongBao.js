@@ -44,7 +44,7 @@ const Thongbaochungs = () => {
       <div style={{ margin: "10px 20px 20px 330px" }}>
         <h1
           style={{
-            fontSize: "20px",
+            fontSize: "24px",
           }}
         >
           Danh sách thông báo
@@ -99,10 +99,7 @@ const Thongbaochungs = () => {
               <tr key={thongbaochung._id}>
                 <td>{thongbaochung.tieude}</td>
                 <td>
-                  {new Date(thongbaochung.ngaythongbao).toLocaleDateString([
-                    "ban",
-                    "id",
-                  ])}
+                  {new Date(thongbaochung.ngaythongbao).toLocaleDateString()}
                 </td>
                 <td>{thongbaochung.nguoithongbao}</td>
                 <td style={{ textAlign: "center" }}>

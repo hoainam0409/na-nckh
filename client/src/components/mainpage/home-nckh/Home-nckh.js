@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import Thongbaocanhan from './Thongbaocanhan';
+// import Thongbaocanhan from './Thongbaocanhan';
 import Thongbaochung from './Thongbaochung';
 import Sidebar from '../../sidebar/SideBar';
 
@@ -14,7 +14,7 @@ function Home() {
       <Sidebar></Sidebar>
       <MainDash>
         <Thongbaochung ></Thongbaochung>
-        <Thongbaocanhan></Thongbaocanhan>
+        {/* <Thongbaocanhan></Thongbaocanhan> */}
 
       </MainDash>
     </div>

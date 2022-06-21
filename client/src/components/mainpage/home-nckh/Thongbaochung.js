@@ -23,19 +23,16 @@ const Thongbaochungs = () => {
     setShowSuaThongBaoChung(true);
   };
   return (
-    <div>
-      
+    <div style={{margin: '20px'}}>
         <h1
          style={{
-          textTransform: "uppercase",
-          color: "#337ab7",
-          fontSize: "20px",
+          fontSize: "24px",
         }}
         >
           Danh sách thông báo
         </h1>
         {thongbaochung !== null && <SuaThongBao />}
-        <Table borderless bordered hover style={{ cursor: "pointer" }}>
+        <Table borderless bordered hover style={{ cursor: "pointer",   marginTop: "70px",}}>
           <thead>
             <tr>
               <th style={{ textAlign: "center", color: "#495057" }}>Tiêu đề</th>

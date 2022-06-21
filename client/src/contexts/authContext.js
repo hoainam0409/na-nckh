@@ -1,4 +1,4 @@
-import { createContext, useReducer, useEffect } from "react";
+import { createContext, useReducer, useEffect} from "react";
 import { authReducer } from "../reducers/authReducer";
 import { apiUrl, LOCAL_STORAGE_TOKEN_NAME } from "./constant";
 import axios from "axios";
@@ -27,6 +27,8 @@ const AuthContextProvider = ({ children }) => {
           payload: { isAuthenticated: true, user: response.data.user },
         });
       }
+      // set Admin nếu role = 1
+      // response.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false) 
     } catch (error) {
       localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME);
       setAuthToken(null);
@@ -68,7 +70,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   // Context data
-  const authContextData = { loginUser, logoutUser, authState };
+  const authContextData = { loginUser, logoutUser, authState};
 
   // Return provider
   return (

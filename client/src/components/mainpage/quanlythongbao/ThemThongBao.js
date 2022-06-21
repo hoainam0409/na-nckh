@@ -24,7 +24,8 @@ const ThemThongBao = () => {
     setNewThongBaoChung({
       ...newThongBaoChung,
       [event.target.name]: event.target.value,
-    });
+    })
+    // console.log(newThongBaoChung);
 
   const resetAddThongBaoChung = () => {
     setNewThongBaoChung({
@@ -54,7 +55,7 @@ const ThemThongBao = () => {
       </Modal.Header>
       <Form onSubmit = {onSubmit}>
         <Modal.Body>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Tiêu đề</Form.Label>
             <Form.Control
               type="text"
@@ -65,7 +66,7 @@ const ThemThongBao = () => {
               onChange={onChangeInput}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Người thông báo</Form.Label>
             <Form.Control
               type="text"
@@ -76,7 +77,7 @@ const ThemThongBao = () => {
               onChange={onChangeInput}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Ngày thông báo</Form.Label>
             <Form.Control
               type="date"
@@ -85,7 +86,7 @@ const ThemThongBao = () => {
               onChange={onChangeInput}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Nội dung</Form.Label>
             <Form.Control
               as="textarea"
@@ -95,7 +96,7 @@ const ThemThongBao = () => {
               onChange={onChangeInput}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>File đính kèm</Form.Label>
             <Form.Control
               type="file"

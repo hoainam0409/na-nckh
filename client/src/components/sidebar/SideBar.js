@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SidebarData";
+// import SidebarData from "./SidebarData";
 import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
 import {
@@ -15,8 +16,7 @@ import {
 } from "react-icons/bs";
 import TopLogo from "../../assets/images/logo/logo.png";
 import Dropdown from "react-bootstrap/Dropdown";
-import { AuthContext } from '../../contexts/AuthContext'
-
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Nav = styled.div`
   background: #337ab7;
@@ -111,12 +111,18 @@ const SidebarWrap = styled.div`
 `;
 
 const Sidebar = () => {
+
   const [sidebar, setSidebar] = useState(true);
 
   const hiddenSidebar = () => setSidebar(!sidebar);
-  const {authState: {user: {hovaten}}, logoutUser} = useContext(AuthContext)
+  const {
+    authState: {
+      user: { hovaten },
+    },
+    logoutUser,
+  } = useContext(AuthContext);
 
-	const logout = () => logoutUser()
+  const logout = () => logoutUser();
 
   return (
     <>
@@ -151,12 +157,6 @@ const Sidebar = () => {
               style={{ width: "24px", height: "24px", margin: "15px" }}
             />
             <NavProfile>
-              {/* <NavName>admin</NavName>
-              <NavAvatar>
-                <BsPersonCircle
-                  style={{ width: "24px", height: "24px", marginLeft: "15px" }}
-                />
-              </NavAvatar> */}
               <Dropdown>
                 <Dropdown.Toggle
                   style={{
@@ -179,7 +179,7 @@ const Sidebar = () => {
 
                 <Dropdown.Menu>
                   <Dropdown.Item href="#">Thông tin cá nhân</Dropdown.Item>
-                  <Dropdown.Item href="#" onClick={logout}>
+                  <Dropdown.Item href="/login" onClick={logout}>
                     Đăng xuất
                   </Dropdown.Item>
                 </Dropdown.Menu>
@@ -193,7 +193,7 @@ const Sidebar = () => {
               <BsFillGridFill
                 style={{ color: "#337ab7 ", marginLeft: "10px" }}
               />
-              <span style={{ marginLeft: "10px"}}>Quản lý đề tài NCKH</span>
+              <span style={{ marginLeft: "10px" }}>Quản lý đề tài NCKH</span>
               <AiIcons.AiOutlineClose onClick={hiddenSidebar} />
             </NavIcon>
             {SidebarData.map((item, index) => {

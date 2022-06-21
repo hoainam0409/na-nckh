@@ -50,7 +50,7 @@ const SuaThongBao = () => {
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Tiêu đề</Form.Label>
             <Form.Control
               type="text"
@@ -61,7 +61,7 @@ const SuaThongBao = () => {
               onChange={onChangeUpdated}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Người thông báo</Form.Label>
             <Form.Control
               type="text"
@@ -72,7 +72,7 @@ const SuaThongBao = () => {
               onChange={onChangeUpdated}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Ngày thông báo</Form.Label>
             <Form.Control
               type="date"
@@ -81,7 +81,7 @@ const SuaThongBao = () => {
               onChange={onChangeUpdated}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>Nội dung</Form.Label>
             <Form.Control
               as="textarea"
@@ -91,7 +91,7 @@ const SuaThongBao = () => {
               onChange={onChangeUpdated}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3">
             <Form.Label>File đính kèm</Form.Label>
             <Form.Control
               type="file"

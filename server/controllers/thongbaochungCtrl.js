@@ -1,11 +1,12 @@
 const Thongbaochung = require("../models/thongbaochungModel");
 
+
 const thongbaochungCtrl = {
   //GET
   getThongbaochung: async (req, res) => {
     try {
       const thongbaochungs = await Thongbaochung.find().populate("user", [
-        "username",
+        "username"
       ]);
       res.json({ success: true, thongbaochungs });
     } catch (err) {
@@ -27,7 +28,7 @@ const thongbaochungCtrl = {
         ngaythongbao,
         noidung,
         dinhkem,
-        // user: req.user
+        // user: req.userId => lấy id của người tạo ra thông báo
       });
       await newThongbaochung.save();
       res.json({
@@ -46,7 +47,7 @@ const thongbaochungCtrl = {
     if (!tieude || !nguoithongbao)
       return res.status(400).json({
         success: false,
-        message: "Vui lòng nhập thông tin trường bắt buộc",
+        message: "Vui lòng nhập thông tin trường bắt buộc!",
       });
     try {
       let updatedThongbaochung = {
@@ -56,8 +57,12 @@ const thongbaochungCtrl = {
         noidung: noidung || "",
         dinhkem: dinhkem || "",
       };
+
+      //Điều kiện để chỉnh sửa thông báo
+		// const UpdateCondition = { _id: req.params.id, user: req.userId }
+
       updatedThongbaochung = await Thongbaochung.findOneAndUpdate(
-        { _id: req.params.id },
+        req.params.id,
         updatedThongbaochung,
         { new: true }
       );
@@ -65,7 +70,7 @@ const thongbaochungCtrl = {
       if (!updatedThongbaochung)
         return res.status(401).json({
           success: false,
-          message: "Post not found or user not authorised",
+          message: "Có lỗi xảy ra vui lòng liên hệ quản trị viên!",
         });
 
       res.json({
