@@ -33,7 +33,7 @@ const thongbaochungCtrl = {
       await newThongbaochung.save();
       res.json({
         success: true,
-        message: "Thêm mới thông báo thành công!",
+        message: "Thêm mới thành công!",
         thongbaochung: newThongbaochung,
       });
     } catch (err) {
@@ -75,7 +75,7 @@ const thongbaochungCtrl = {
 
       res.json({
         success: true,
-        message: "Chỉnh sửa thông báo thành công!",
+        message: "Chỉnh sửa thành công!",
         thongbaochung: updatedThongbaochung,
       });
     } catch (err) {
@@ -86,7 +86,7 @@ const thongbaochungCtrl = {
   deleteThongbaochung: async (req, res) => {
     try {
       await Thongbaochung.findByIdAndDelete(req.params.id);
-      res.json({ success: true, message: "Xóa thông báo thành công" });
+      res.json({ success: true, message: "Xóa  thành công" });
     } catch (err) {
       return res.status(500).json({ success: false, message: err.message });
     }

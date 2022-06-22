@@ -4,14 +4,17 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Mainpages from "./components/mainpage/Pages";
 import AuthContextProvider from "./contexts/AuthContext";
 import ThongbaochungContextProvider from "./contexts/ThongbaochungContext";
+import CapDeTaiContextProvider from "./contexts/CapDeTaiContext";
 
 function App() {
   return (
     <AuthContextProvider>
       <ThongbaochungContextProvider>
-        <Router>
-          <Mainpages />
-        </Router>
+        <CapDeTaiContextProvider>
+          <Router>
+            <Mainpages />
+          </Router>
+        </CapDeTaiContextProvider>
       </ThongbaochungContextProvider>
     </AuthContextProvider>
   );

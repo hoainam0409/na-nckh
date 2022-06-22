@@ -2,7 +2,7 @@ const router = require('express').Router()
 const DotDangKyCtrl = require('../controllers/dotdangkyCtrl.js')
 
 router.route('/dotdangky')
-    .get(DotDangKyCtrl.getDotDangKy)
+    .get(DotDangKyCtrl.getDotDangKys)
     .post(DotDangKyCtrl.addDotDangKy)
 
 

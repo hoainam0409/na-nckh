@@ -62,7 +62,7 @@ import {FaCube} from 'react-icons/fa'
           icon: <FaCube style ={{color: 'black'}}/>
         },
         {
-          title: 'Đề tài chờ xác nhận',
+          title: 'Phân công GV hướng dẫn',
           path: '/nckh/sinhvien-nckh/detai-xacnhan',
           icon: <FaCube style ={{color: 'black'}}/>
         },
@@ -92,28 +92,23 @@ import {FaCube} from 'react-icons/fa'
   
       subNav: [
         {
-          title: 'Danh mục năm học',
-          path: '/nckh/sinhvien-nckh/dangky',
-          icon: <FaCube style ={{color: 'black'}}/>
-        },
-        {
           title: 'Loại đề tài',
-          path: '/nckh/dm-loaidetai',
+          path: '/danhmuc/loaidetai',
           icon: <FaCube style ={{color: 'black'}}/>
         },
         {
           title: 'Cấp đề tài',
-          path: '/nckh/dm-capdetai',
+          path: '/danhmuc/capdetai',
           icon: <FaCube style ={{color: 'black'}}/>
         },
         {
           title: 'Lĩnh vực nghiên cứu',
-          path: 'nckh/dm-linhvucnghiencuu',
+          path: '/danhmuc/linhvuc-nghiencuu',
           icon: <FaCube style ={{color: 'black'}}/>
         },
         {
           title: 'Vai trò tham gia',
-          path: '/nckh/dm-detai-vaitrothamgia',
+          path: '/danhmuc/vaitro-thamgia',
           icon: <FaCube style ={{color: 'black'}}/>
         }
       ]
