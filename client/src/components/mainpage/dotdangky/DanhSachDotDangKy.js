@@ -2,13 +2,13 @@ import React, { useContext, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
-import { CapDeTaiContext } from "../../../contexts/CapDeTaiContext";
+import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import { AuthContext } from "../../../contexts/AuthContext";
 import SideBar from "../../sidebar/SideBar";
-import ThemCapDeTai from "./ThemCapDeTai";
-import SuaCapDeTai from "./SuaCapDeTai";
+import ThemDotDangKy from "./ThemDotDangKy";
+import SuaDotDangKy from "./SuaDotDangKy";
 
-const CapDeTais = () => {
+const DotDangKys = () => {
   // Contexts
   // const {
   // 	authState: {
@@ -17,22 +17,22 @@ const CapDeTais = () => {
   // } = useContext(AuthContext)
 
   const {
-    capdetaiState: { capdetai, capdetais, capdetaisLoading },
-    getCapDeTais,
-    setShowThemCapDeTai,
+    dotdangkyState: { dotdangky, dotdangkys, dotdangkysLoading },
+    getDotDangKys,
+    setShowThemDotDangKy,
     showToast: { show, message, type },
     setShowToast,
-    deleteCapDeTai,
-    findCapDeTai,
-    setShowSuaCapDeTai,
-  } = useContext(CapDeTaiContext);
+    deleteDotDangKy,
+    findDotDangKy,
+    setShowSuaDotDangKy,
+  } = useContext(DotDangKyContext);
 
   // Start: Get all
-  useEffect(() => getCapDeTais(), []);
+  useEffect(() => getDotDangKys(), []);
 
-  const chooseCapDeTai = (capdetaiId) => {
-    findCapDeTai(capdetaiId);
-    setShowSuaCapDeTai(true);
+  const chooseDotDangKy = (dotdangkyId) => {
+    findDotDangKy(dotdangkyId);
+    setShowSuaDotDangKy(true);
   };
   return (
     <div>
@@ -43,7 +43,7 @@ const CapDeTais = () => {
             fontSize: "24px",
           }}
         >
-          Danh sách cấp đề tài
+          Danh sách đợt đăng ký đề tài
         </h1>
         <Toast
           show={show}
@@ -68,35 +68,43 @@ const CapDeTais = () => {
             backgroundColor: "#337AB7",
             borderColor: "#2d6da3",
           }}
-          onClick={setShowThemCapDeTai.bind(this, true)}
+          onClick={setShowThemDotDangKy.bind(this, true)}
         >
           Thêm mới
         </Button>
-        <ThemCapDeTai />
-        {capdetai !== null && <SuaCapDeTai/>}
+        <ThemDotDangKy/>
+        {dotdangky !== null && <SuaDotDangKy/>}
 
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr>
-              <th style={{ textAlign: "center", color: "#495057" }}>Mã</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Tên</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Mã đợt</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Tên đợt</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Năm</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Cấp đề tài</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Ngày mở đăng ký</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Ngày khóa đăng ký</th>
               <th style={{ textAlign: "center", color: "#495057" }}>
                 Chức năng
               </th>
             </tr>
           </thead>
           <tbody>
-            {capdetais.map((capdetai) => (
-              <tr key={capdetai._id}>
-                <td>{capdetai.ma}</td>
-                <td>{capdetai.ten} </td>
+            {dotdangkys.map((dotdangky) => (
+              <tr key={dotdangky._id}>
+                <td>{dotdangky.madot}</td>
+                <td>{dotdangky.tedot} </td>
+                <td>{dotdangky.nam} </td>
+                <td>{dotdangky.capdetai} </td>
+                <td>{new Date(dotdangky.ngaymodangky).toLocaleDateString()} </td>
+                <td>{new Date(dotdangky.ngaykhoadangky).toLocaleDateString()} </td>
                 <td style={{ textAlign: "center" }}>
                   <Button
                     style={{
                       backgroundColor: "#337AB7",
                       borderColor: "#2d6da3",
                     }}
-                    onClick={chooseCapDeTai.bind(this, capdetai._id)}
+                    onClick={chooseDotDangKy.bind(this, dotdangky._id)}
                   >
                     Xem
                   </Button>
@@ -105,7 +113,7 @@ const CapDeTais = () => {
                       backgroundColor: "#5bc0de",
                       borderColor: "#269abc",
                     }}
-                    onClick={chooseCapDeTai.bind(this, capdetai._id)}
+                    onClick={chooseDotDangKy.bind(this, dotdangky._id)}
                   >
                     Sửa
                   </Button>
@@ -114,7 +122,7 @@ const CapDeTais = () => {
                       backgroundColor: "#c9302c",
                       borderColor: "#ac2925",
                     }}
-                    onClick={() => deleteCapDeTai(capdetai._id)}
+                    onClick={() => deleteDotDangKy(dotdangky._id)}
                   >
                     Xóa
                   </Button>
@@ -128,4 +136,4 @@ const CapDeTais = () => {
   );
 };
 
-export default CapDeTais;
+export default DotDangKys;

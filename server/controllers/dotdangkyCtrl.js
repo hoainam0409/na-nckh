@@ -103,9 +103,9 @@ const dotdangkyCtrl = {
   deleteDotDangKy: async (req, res) => {
     try {
       await DotDangKy.findByIdAndDelete(req.params.id);
-      res.json({ message: "Xóa thành công" });
+      res.json({success: true, message: "Xóa thành công" });
     } catch (err) {
-      return res.status(500).json({ message: err.message });
+      return res.status(500).json({success: false, message: err.message });
     }
   },
 };

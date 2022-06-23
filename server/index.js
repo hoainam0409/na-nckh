@@ -16,7 +16,7 @@ app.use(cors())
 
 //Router
 app.use('/user', require('./routers/userRouter'))
-app.use('/detai', require('./routers/dotdangkyRouter'))
+app.use('/nckh', require('./routers/dotdangkyRouter'))
 app.use('/danhmuc', require('./routers/danhmuc/dm-phongbanRouter'))
 app.use('/danhmuc', require('./routers/danhmuc/dm-hochamRouter'))
 app.use('/danhmuc', require('./routers/danhmuc/dm-hocviRouter'))

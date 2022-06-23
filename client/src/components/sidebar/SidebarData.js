@@ -107,7 +107,7 @@ import {FaCube} from 'react-icons/fa'
           icon: <FaCube style ={{color: 'black'}}/>
         },
         {
-          title: 'Vai trò tham gia',
+          title: 'Vai trò hội đồng',
           path: '/danhmuc/vaitro-thamgia',
           icon: <FaCube style ={{color: 'black'}}/>
         }
