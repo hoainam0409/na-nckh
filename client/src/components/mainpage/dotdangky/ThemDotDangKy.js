@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
-import { CapDeTaiConText } from "../../../contexts/CapDeTaiContext";
+import { CapDeTaiContext } from "../../../contexts/CapDeTaiContext";
 const ThemDotDangKy = () => {
   //context
   const {
@@ -15,9 +15,8 @@ const ThemDotDangKy = () => {
     setShowToast,
   } = useContext(DotDangKyContext);
   const {
-    capdetaiState: { capdetais,  capdetaisLoading},
-    getCapDeTais,
-  } = useContext(CapDeTaiConText);
+    capdetaiState: { capdetais},
+  } = useContext( CapDeTaiContext);
   //State
   const [newDotDangKy, setNewDotDangKy] = useState({
     madot: "",
@@ -130,12 +129,14 @@ const ThemDotDangKy = () => {
                   value={capdetai}
                   onChange={onChangeInput}
                 >
-                  <option value="">Chọn cấp đề tài</option>
-                  {capdetais.map((capdetai) => (
-                    <option value={capdetai._id} key={capdetai._id}>
-                      {capdetai.ten}
-                    </option>
-                  ))}
+                  {/* <option >Chọn cấp đề tài</option> */}
+                        {
+                            capdetais.map(capdetai => (
+                                <option value={capdetai._id} >
+                                    {capdetai.ten}
+                                </option>
+                            ))
+                        }
                 </Form.Select>
               </Form.Group>
             </Col>

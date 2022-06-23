@@ -39,8 +39,13 @@ const dotdangkyCtrl = {
         trangthai,
         dinhkem,
       });
+      if (!madot || !tendot||!capdetai|| !nam)
+      return res.status(400).json({
+        success: false,
+        message: "Vui lòng nhập thông tin trường bắt buộc!",
+      });
       await newDotDangKy.save();
-      res.json({ success: true, message: "Thêm mới thành công!" });
+      res.json({ success: true, message: "Thêm mới thành công!" , dotdangky: newDotDangKy});
     } catch (err) {
       return res.status(500).json({ success: false, message: err.message });
     }

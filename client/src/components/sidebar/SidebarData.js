@@ -58,22 +58,22 @@ import {FaCube} from 'react-icons/fa'
       subNav: [
         {
           title: 'Đăng ký',
-          path: '/nckh/sinhvien-nckh/dangky',
+          path: '/nckh/detai-sinhvien/dangky',
           icon: <FaCube style ={{color: 'black'}}/>
         },
         {
           title: 'Phân công GV hướng dẫn',
-          path: '/nckh/sinhvien-nckh/detai-xacnhan',
+          path: '/nckh/detai-sinhvien/xacnhan',
           icon: <FaCube style ={{color: 'black'}}/>
         },
         {
           title: 'Đề tài chờ duyệt',
-          path: '/nckh/sinhvien-nckh/detai-choduyet',
+          path: '/nckh/detai-sinhvien/choduyet',
           icon: <FaCube style ={{color: 'black'}}/>
         }, 
         {
           title: 'Tiểu ban nghiệm thu',
-          path: '/nckh/sinhvien-nckh/detai-tieuban-nghiemthu',
+          path: '/nckh/detai-sinhvien/tieuban-nghiemthu',
           icon: <FaCube style ={{color: 'black'}}/>
         }
       ]

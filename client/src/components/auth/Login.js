@@ -30,12 +30,6 @@ const Login = () => {
       if (!loginData.success) {
         setAlert({ type: "danger", message: loginData.message });
         setTimeout(() => setAlert(null), 5000);
-        // if (loginData.success) {
-        //   window.location.href = "/nckh/dashboard";
-        // }
-        // else{
-        // 	setAlert({ type: 'danger', message: loginData.message })
-        // 	setTimeout(() => setAlert(null), 5000)
       }
     } catch (error) {
       console.log(error);

@@ -92,10 +92,10 @@ const DotDangKys = () => {
           <tbody>
             {dotdangkys.map((dotdangky) => (
               <tr key={dotdangky._id}>
-                <td>{dotdangky.madot}</td>
-                <td>{dotdangky.tedot} </td>
+                <td onClick={chooseDotDangKy.bind(this, dotdangky._id)}>{dotdangky.madot} </td>
+                <td>{dotdangky.tendot}</td>
                 <td>{dotdangky.nam} </td>
-                <td>{dotdangky.capdetai} </td>
+                <td>{dotdangky.capdetai}</td>
                 <td>{new Date(dotdangky.ngaymodangky).toLocaleDateString()} </td>
                 <td>{new Date(dotdangky.ngaykhoadangky).toLocaleDateString()} </td>
                 <td style={{ textAlign: "center" }}>
