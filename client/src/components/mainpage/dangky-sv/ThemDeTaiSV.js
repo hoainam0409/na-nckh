@@ -121,7 +121,7 @@ const ThemDeTaiSV = () => {
               onChange={onChangeInput}
               aria-label="Default select example"
             >
-              <option>Chọn đợt đăng ký đề tài</option>
+              {/* <option>Chọn đợt đăng ký đề tài</option> */}
               {dotdangkys.map((dotdangky) => (
                 <option value={dotdangky._id}>{dotdangky.tendot}</option>
               ))}

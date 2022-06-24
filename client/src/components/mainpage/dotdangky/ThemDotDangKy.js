@@ -122,7 +122,7 @@ const ThemDotDangKy = () => {
               <Form.Group className="mb-3">
                 <Form.Label>Cấp đề tài</Form.Label>
                 <Form.Select
-                  aria-label="Default select example"
+                  // aria-label="Default select example"
                   name="capdetai"
                   required
                   aria-describedby="title-help"
@@ -131,7 +131,7 @@ const ThemDotDangKy = () => {
                 >
                   {/* <option >Chọn cấp đề tài</option> */}
                   {capdetais.map((capdetai) => (
-                    <option value={capdetai._id}>{capdetai.ten}</option>
+                    <option value={capdetai.ten} key={capdetai._id}>{capdetai.ten}</option>
                   ))}
                 </Form.Select>
               </Form.Group>
