@@ -4,7 +4,6 @@ const Schema = mongoose.Schema
 const detaisvSchema = new Schema({
     madetai:{
         type: String,
-        // required: true
     },
     tendetai:{
         type: String,
@@ -41,6 +40,10 @@ const detaisvSchema = new Schema({
     sinhvienthuchien:{
         type: String,
         required: true
+    },
+    trangthai:{
+        type: String,
+        
     },
     dinhkem:{
         type: Object,

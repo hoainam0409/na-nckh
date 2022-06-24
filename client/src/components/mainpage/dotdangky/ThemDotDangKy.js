@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import { CapDeTaiContext } from "../../../contexts/CapDeTaiContext";
+
 const ThemDotDangKy = () => {
   //context
   const {
@@ -15,8 +16,8 @@ const ThemDotDangKy = () => {
     setShowToast,
   } = useContext(DotDangKyContext);
   const {
-    capdetaiState: { capdetais},
-  } = useContext( CapDeTaiContext);
+    capdetaiState: { capdetais },
+  } = useContext(CapDeTaiContext);
   //State
   const [newDotDangKy, setNewDotDangKy] = useState({
     madot: "",
@@ -122,7 +123,6 @@ const ThemDotDangKy = () => {
                 <Form.Label>Cấp đề tài</Form.Label>
                 <Form.Select
                   aria-label="Default select example"
-                  // type="text"
                   name="capdetai"
                   required
                   aria-describedby="title-help"
@@ -130,13 +130,9 @@ const ThemDotDangKy = () => {
                   onChange={onChangeInput}
                 >
                   {/* <option >Chọn cấp đề tài</option> */}
-                        {
-                            capdetais.map(capdetai => (
-                                <option value={capdetai._id} >
-                                    {capdetai.ten}
-                                </option>
-                            ))
-                        }
+                  {capdetais.map((capdetai) => (
+                    <option value={capdetai._id}>{capdetai.ten}</option>
+                  ))}
                 </Form.Select>
               </Form.Group>
             </Col>
@@ -171,15 +167,15 @@ const ThemDotDangKy = () => {
           </Row>
           <Form.Group className="mb-3">
             <Form.Label>Trạng thái</Form.Label>
-            <Form.Control
-              as="select"
+            <Form.Select
+              // as="select"
               value={trangthai}
               name="trangthai"
               onChange={onChangeInput}
             >
               <option value="Mở đăng ký">Mở đăng ký</option>
               <option value="Khóa đăng ký">Khóa đăng ký</option>
-            </Form.Control>
+            </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Ghi chú</Form.Label>

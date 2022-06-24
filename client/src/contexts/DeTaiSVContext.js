@@ -1,5 +1,5 @@
 import { createContext, useReducer, useState } from "react";
-import { detaisvReducer } from "../reducers/dotdangkyReducer";
+import { detaisvReducer } from "../reducers/detaisvReducer";
 import axios from "axios";
 import {
   apiUrl,
@@ -23,6 +23,11 @@ const DeTaiSVContextProvider = ({ children }) => {
 
   const [showThemDeTaiSV, setShowThemDeTaiSV] = useState(false);
   const [showSuaDeTaiSV, setShowSuaDeTaiSV] = useState(false);
+  const [fullscreen, setFullscreen] = useState(true);
+  function ShowFullScreen(breakpoint) {
+    setFullscreen(breakpoint);
+    setShowThemDeTaiSV(true);
+  }
 
   const [showToast, setShowToast] = useState({
     show: false,
@@ -35,7 +40,7 @@ const DeTaiSVContextProvider = ({ children }) => {
   // Lấy tất cả
   const getDeTaiSVs = async () => {
     try {
-      const response = await axios.get(`${apiUrl}/nckh/dotdangky-detai`);
+      const response = await axios.get(`${apiUrl}/nckh/detai-sinhvien/dangky`);
       if (response.data.success) {
         dispatch({
           type: DETAISV_LOADED_SUCCESS,
@@ -43,19 +48,19 @@ const DeTaiSVContextProvider = ({ children }) => {
         });
       }
     } catch (error) {
-      dispatch({ type: DOTDANGKY_LOADED_FAIL });
+      dispatch({ type: DETAISV_LOADED_FAIL });
     }
   };
 
   //Thêm mới 
-  const addDotDangKy = async (newDotDangKy) => {
+  const addDeTaiSV = async (newDeTaiSV) => {
     try {
       const response = await axios.post(
-        `${apiUrl}/nckh/dotdangky-detai`,
-        newDotDangKy
+        `${apiUrl}/nckh/detai-sinhvien/dangky`,
+        newDeTaiSV
       );
       if (response.data.success) {
-        dispatch({ type: DOTDANGKY_ADD, payload: response.data.dotdangky});
+        dispatch({ type: DETAISV_ADD, payload: response.data.detaisv});
         return response.data;
       }
     } catch (error) {
@@ -66,12 +71,12 @@ const DeTaiSVContextProvider = ({ children }) => {
   };
 
   //Xóa 
-  const deleteDotDangKy = async (id) => {
+  const deleteDeTaiSV = async (id) => {
     try {
       const response = await axios.delete(
-        `${apiUrl}/nckh/dotdangky-detai/${id}`
+        `${apiUrl}/nckh/detai-sinhvien/dangky/${id}`
       );
-      if (response.data.success) dispatch({ type: DELETE_DOTDANGKY, payload: id });
+      if (response.data.success) dispatch({ type: DELETE_DETAISV, payload: id });
       return response.data;
     } catch (error) {
       console.log(error);
@@ -82,22 +87,22 @@ const DeTaiSVContextProvider = ({ children }) => {
   };
 
   // Tìm khi thực hiện chỉnh sửa
-  const findDotDangKy = (dotdangkyId) => {
-    const dotdangky = dotdangkyState.dotdangkys.find(
-      (dotdangky) => dotdangky._id === dotdangkyId
+  const findDeTaiSV = (detaisvId) => {
+    const detaisv = detaisvState.detaisvs.find(
+      (detaisv) => detaisv._id === detaisvId
     );
-    dispatch({ type: FIND_DOTDANGKY, payload: dotdangky });
+    dispatch({ type: FIND_DETAISV, payload: detaisv });
   };
 
   // Chỉnh sửa
-  const updateDotDangKy = async (updatedDotDangKy) => {
+  const updateDeTaiSV = async (updatedDeTaiSV) => {
     try {
       const response = await axios.put(
-        `${apiUrl}/nckh/dotdangky-detai/${updatedDotDangKy._id}`,
-        updatedDotDangKy
+        `${apiUrl}/nckh/detai-sinhvien/dangky/${updatedDeTaiSV._id}`,
+        updatedDeTaiSV
       );
       if (response.data.success) {
-        dispatch({ type: UPDATE_DOTDANGKY, payload: response.data.dotdangky });
+        dispatch({ type: UPDATE_DETAISV, payload: response.data.detaisv });
         return response.data;
       }
     } catch (error) {
@@ -108,28 +113,31 @@ const DeTaiSVContextProvider = ({ children }) => {
   };
 
   // context data
-  const DotDangKyContextData = {
-    dotdangkyState,
-    getDotDangKys,
-    showThemDotDangKy,
-    setShowThemDotDangKy,
-    addDotDangKy,
+  const DeTaiSVContextData = {
+    detaisvState,
+    getDeTaiSVs,
+    showThemDeTaiSV,
+    setShowThemDeTaiSV,
+    addDeTaiSV,
     showToast,
     setShowToast,
-    deleteDotDangKy,
-    dotdangky,
-    setDotDangKy,
-    updateDotDangKy,
-    showSuaDotDangKy,
-    setShowSuaDotDangKy,
-    findDotDangKy,
+    deleteDeTaiSV,
+    detaisv,
+    setDeTaiSV,
+    updateDeTaiSV,
+    showSuaDeTaiSV,
+    setShowSuaDeTaiSV,
+    findDeTaiSV,
+    ShowFullScreen,
+    fullscreen,
+    setFullscreen
   };
 
   return (
-    <DotDangKyContext.Provider value={DotDangKyContextData}>
+    <DeTaiSVContext.Provider value={DeTaiSVContextData}>
       {children}
-    </DotDangKyContext.Provider>
+    </DeTaiSVContext.Provider>
   );
 };
 
-export default DotDangKyContextProvider;
+export default DeTaiSVContextProvider;

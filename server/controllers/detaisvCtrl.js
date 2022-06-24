@@ -3,14 +3,45 @@ const DeTaiSV = require("../models/detaisvModel");
 const detaisvCtrl = {
   getDeTaiSV: async (req, res) => {
     try {
-      const detaisvs = await DeTaiSV.find(req.userId);
+      const detaisvs = await DeTaiSV.find({ user: req.userId }).populate(
+        "user",
+        ["username"]
+      );
       res.json({ success: true, detaisvs });
     } catch (err) {
-      return res.status(500).json({success: false,  message: err.message });
+      return res.status(500).json({ success: false, message: err.message });
     }
   },
 
   addDeTaiSV: async (req, res) => {
+    const {
+      madetai,
+      tendetai,
+      dotdangky,
+      GVHD,
+      khoaxetduyet,
+      linhvucnc,
+      noidungnc,
+      muctieunc,
+      ketquadukien,
+      sinhvienthuchien,
+      trangthai,
+      dinhkem,
+    } = req.body;
+    if (
+      !tendetai ||
+      !dotdangky ||
+      !khoaxetduyet ||
+      !linhvucnc ||
+      !noidungnc ||
+      !muctieunc ||
+      !ketquadukien ||
+      !sinhvienthuchien
+    )
+      return res.status(400).json({
+        success: false,
+        message: "Vui lòng nhập các trường bắt buộc!",
+      });
     try {
       const newDeTaiSV = new DeTaiSV({
         madetai,
@@ -23,35 +54,46 @@ const detaisvCtrl = {
         muctieunc,
         ketquadukien,
         sinhvienthuchien,
+        trangthai,
         dinhkem,
-      });
-      if (!tendot|| !dotdangky||!khoaxetduyet|| !linhvucnc || !noidungnc ||! muctieunc || !ketquadukien ||!sinhvienthuchien)
-      return res.status(400).json({
-        success: false,
-        message: "Vui lòng nhập thông tin trường bắt buộc!",
+        user: req.userId // lấy id của người tạo ra thông báo
       });
       await newDeTaiSV.save();
-      res.json({ success: true, message: "Thêm mới thành công!" , detaisv: newDeTaiSV});
+      res.json({
+        success: true,
+        message: "Thêm mới thành công!",
+        detaisv: newDeTaiSV,
+      });
     } catch (err) {
       return res.status(500).json({ success: false, message: err.message });
     }
   },
   updateDeTaiSV: async (req, res) => {
     const {
-        madetai,
-        tendetai,
-        dotdangky,
-        GVHD,
-        khoaxetduyet,
-        linhvucnc,
-        noidungnc,
-        muctieunc,
-        ketquadukien,
-        sinhvienthuchien,
-        dinhkem,
+      madetai,
+      tendetai,
+      dotdangky,
+      GVHD,
+      khoaxetduyet,
+      linhvucnc,
+      noidungnc,
+      muctieunc,
+      ketquadukien,
+      sinhvienthuchien,
+      trangthai,
+      dinhkem,
     } = req.body;
     // Simple validation
-    if (!tendot|| !dotdangky||!khoaxetduyet|| !linhvucnc || !noidungnc ||! muctieunc || !ketquadukien ||!sinhvienthuchien)
+    if (
+      !tendetai ||
+      !dotdangky ||
+      !khoaxetduyet ||
+      !linhvucnc ||
+      !noidungnc ||
+      !muctieunc ||
+      !ketquadukien ||
+      !sinhvienthuchien
+    )
       return res.status(400).json({
         success: false,
         message: "Vui lòng nhập thông tin trường bắt buộc!",
@@ -68,13 +110,14 @@ const detaisvCtrl = {
         muctieunc,
         ketquadukien,
         sinhvienthuchien,
+        trangthai,
         dinhkem,
       };
 
       //Điều kiện để chỉnh sửa thông báo
-      const UpdateCondition = { _id: req.params.id, user: req.userId }
+      const UpdateCondition = { _id: req.params.id, user: req.userId };
 
-      updatedDeTaiSV= await DeTaiSV.findOneAndUpdate(
+      updatedDeTaiSV = await DeTaiSV.findOneAndUpdate(
         UpdateCondition,
         updatedDeTaiSV,
         { new: true }
@@ -98,9 +141,9 @@ const detaisvCtrl = {
   deleteDeTaiSV: async (req, res) => {
     try {
       await DeTaiSV.findByIdAndDelete(req.params.id);
-      res.json({success: true, message: "Xóa thành công" });
+      res.json({ success: true, message: "Xóa thành công" });
     } catch (err) {
-      return res.status(500).json({success: false, message: err.message });
+      return res.status(500).json({ success: false, message: err.message });
     }
   },
 };

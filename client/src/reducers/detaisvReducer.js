@@ -7,7 +7,7 @@ import {
     UPDATE_DETAISV,
   } from "../contexts/constant";
   
-  export const capdetaiReducer = (state, action) => {
+  export const detaisvReducer = (state, action) => {
     const { type, payload } = action;
     switch (type) {
       case DETAISV_LOADED_SUCCESS:
@@ -38,7 +38,7 @@ import {
         return { ...state, detaisv: payload };
   
       case UPDATE_DETAISV:
-        const newdetaisvs = state.capdetais.map((detaisv) =>
+        const newdetaisvs = state.detaisvs.map((detaisv) =>
         detaisv._id === payload._id ? payload : detaisv
         );
         return {
