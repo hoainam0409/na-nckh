@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { DeTaiSVContext } from "../../../contexts/DeTaiSVContext";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
-
+import {KhoaXetDuyetContext} from '../../../contexts/KhoaXetDuyetContext'
 const ThemDeTaiSV = () => {
   //context
   const {
@@ -19,6 +19,9 @@ const ThemDeTaiSV = () => {
   const {
     dotdangkyState: { dotdangkys },
   } = useContext(DotDangKyContext);
+  const {
+    khoaxetduyetState: {khoaxetduyets}
+  } = useContext(KhoaXetDuyetContext)  
   //State
   const [newDeTaiSV, setNewDeTaiSV] = useState({
     madetai: "",
@@ -96,7 +99,6 @@ const ThemDeTaiSV = () => {
             <Form.Control
               type="text"
               name="madetai"
-              required
               aria-describedby="title-help"
               value={madetai}
               onChange={onChangeInput}
@@ -121,9 +123,9 @@ const ThemDeTaiSV = () => {
               onChange={onChangeInput}
               aria-label="Default select example"
             >
-              {/* <option>Chọn đợt đăng ký đề tài</option> */}
+              <option>Chọn đợt đăng ký đề tài</option>
               {dotdangkys.map((dotdangky) => (
-                <option value={dotdangky._id}>{dotdangky.tendot}</option>
+                <option value={dotdangky.tendot}>{dotdangky.tendot}</option>
               ))}
             </Form.Select>
           </Form.Group>
@@ -167,8 +169,10 @@ const ThemDeTaiSV = () => {
                   value={khoaxetduyet}
                   onChange={onChangeInput}
                 >
-                  <option value="Mở đăng ký">Mở đăng ký</option>
-                  <option value="Khóa đăng ký">Khóa đăng ký</option>
+                   <option>Chọn khoa xét duyệt</option>
+              {khoaxetduyets.map((khoaxetduyet) => (
+                <option value={khoaxetduyet.ten}>{khoaxetduyet.ten}</option>
+              ))}
                 </Form.Select>
               </Form.Group>
             </Col>

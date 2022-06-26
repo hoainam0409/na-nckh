@@ -25,10 +25,15 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now,
     },
-    // phongban:{
-    //     type: String,
-    //     required: true,
-    // },
+    phongban:{
+        type: String,
+    },
+    hocham: {
+        type: String,
+    },
+    hocvi: {
+        type: String
+    },
     detai:{
         type: Array,
         default: [],

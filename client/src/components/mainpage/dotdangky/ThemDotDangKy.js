@@ -129,7 +129,7 @@ const ThemDotDangKy = () => {
                   value={capdetai}
                   onChange={onChangeInput}
                 >
-                  {/* <option >Chọn cấp đề tài</option> */}
+                  <option >Chọn cấp đề tài</option>
                   {capdetais.map((capdetai) => (
                     <option value={capdetai.ten} key={capdetai._id}>{capdetai.ten}</option>
                   ))}
