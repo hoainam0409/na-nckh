@@ -103,7 +103,7 @@ import {FaCube} from 'react-icons/fa'
         },
         {
           title: 'Lĩnh vực nghiên cứu',
-          path: '/danhmuc/linhvuc-nghiencuu',
+          path: '/danhmuc/linhvuc',
           icon: <FaCube style ={{color: 'black'}}/>
         },
         {

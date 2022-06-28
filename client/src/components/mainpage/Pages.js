@@ -8,6 +8,7 @@ import Thongtincanhan from './thongtincanhan/Thongtincanhan'
 import DanhSachCapDeTai from './dm-capdetai/DanhSachCapDeTai'
 import DanhSachDotDangKy from './dotdangky/DanhSachDotDangKy'
 import DanhSachDeTaiSV from './dangky-sv/DanhSachDeTaiSV'
+import DanhSachLinhVuc from './dm- linhvuc/DanhSachLinhVuc'
 // import ProtectedRoute from '../routing/ProtectedRoute'
 
 
@@ -20,6 +21,7 @@ function Pages() {
         <Route exact path="/nckh/quanly-thongbao" element={<DanhSachThongBao/>}></Route>
         <Route exact path="/nckh/thongtin-canhan" element={<Thongtincanhan/>}></Route>
         <Route exact path="/danhmuc/capdetai" element={<DanhSachCapDeTai/>}></Route>
+        <Route exact path="/danhmuc/linhvuc" element={<DanhSachLinhVuc/>}></Route>
         <Route exact path="/nckh/dotdangky-detai" element={<DanhSachDotDangKy/>}></Route>
         <Route exact path="/nckh/detai-sinhvien/dangky" element={<DanhSachDeTaiSV/>}></Route>
 

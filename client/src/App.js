@@ -6,8 +6,9 @@ import AuthContextProvider from "./contexts/AuthContext";
 import ThongbaochungContextProvider from "./contexts/ThongbaochungContext";
 import CapDeTaiContextProvider from "./contexts/CapDeTaiContext";
 import DotDangKyContextProvider from "./contexts/DotDangKyContext";
-import DeTaiSVContextProvider from './contexts/DeTaiSVContext'
-import KhoaXetDuyetContextProvider from './contexts/KhoaXetDuyetContext'
+import DeTaiSVContextProvider from "./contexts/DeTaiSVContext";
+import KhoaContextProvider from "./contexts/KhoaContext";
+import LinhVucContextProvider from "./contexts/LinhVucContext";
 
 function App() {
   return (
@@ -16,10 +17,13 @@ function App() {
         <CapDeTaiContextProvider>
           <DotDangKyContextProvider>
             <DeTaiSVContextProvider>
-            < KhoaXetDuyetContextProvider>
-            <Router>
-            <Mainpages />
-          </Router></KhoaXetDuyetContextProvider>
+              <KhoaContextProvider>
+                <LinhVucContextProvider>
+                  <Router>
+                    <Mainpages />
+                  </Router>
+                </LinhVucContextProvider>
+              </KhoaContextProvider>
             </DeTaiSVContextProvider>
           </DotDangKyContextProvider>
         </CapDeTaiContextProvider>

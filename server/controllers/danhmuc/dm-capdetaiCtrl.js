@@ -8,7 +8,7 @@ const capdetaiCtrl = {
       const capdetais = await CapDeTai.find();
       res.json({ success: true, capdetais });
     } catch (err) {
-      return res.status(500).json({ message: err.message });
+      return res.status(500).json({success: false,  message: err.message });
     }
   },
 
@@ -16,10 +16,9 @@ const capdetaiCtrl = {
     try {
       const { ma, ten } = req.body;
       const capdetai = await CapDeTai.findOne({ ma })
-      if (capdetai) return res.status(400).json({ message: "Mã cấp đề tài đã tồn tại." })
+      if (capdetai) return res.status(400).json({success: false,  message: "Mã cấp đề tài đã tồn tại." })
 
       const newCapDeTai = new CapDeTai({
-        // _id: new mongoose.Types.ObjectId(),
         ma,
         ten,
       });
@@ -30,7 +29,7 @@ const capdetaiCtrl = {
         capdetai: newCapDeTai,
       });
     } catch (err) {
-      return res.status(500).json({ message: err.message });
+      return res.status(500).json({ success: false, message: err.message });
     }
   },
   updateCapDeTai: async (req, res) => {

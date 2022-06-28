@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -6,7 +6,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { DeTaiSVContext } from "../../../contexts/DeTaiSVContext";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
-import {KhoaXetDuyetContext} from '../../../contexts/KhoaXetDuyetContext'
+import {KhoaContext} from '../../../contexts/KhoaContext'
+import {LinhVucContext} from '../../../contexts/LinhVucContext'
 const ThemDeTaiSV = () => {
   //context
   const {
@@ -18,10 +19,24 @@ const ThemDeTaiSV = () => {
   } = useContext(DeTaiSVContext);
   const {
     dotdangkyState: { dotdangkys },
+    getDotDangKys
   } = useContext(DotDangKyContext);
+
+  useEffect(() => getDotDangKys(), []);
+
   const {
-    khoaxetduyetState: {khoaxetduyets}
-  } = useContext(KhoaXetDuyetContext)  
+    khoaState: {khoas},
+    getKhoas
+  } = useContext(KhoaContext)  
+
+  useEffect(() => getKhoas(), [] )
+
+  const {
+    linhvucState: {linhvucs},
+    getLinhVucs
+  } = useContext(LinhVucContext)  
+
+  useEffect(() => getLinhVucs(), [] )
   //State
   const [newDeTaiSV, setNewDeTaiSV] = useState({
     madetai: "",
@@ -29,7 +44,7 @@ const ThemDeTaiSV = () => {
     dotdangky: "",
     GVHD: "",
     khoaxetduyet: "",
-    linhvucnc: "",
+    linhvuc: "",
     noidungnc: "",
     muctieunc: "",
     ketquadukien: "",
@@ -44,7 +59,7 @@ const ThemDeTaiSV = () => {
     dotdangky,
     GVHD,
     khoaxetduyet,
-    linhvucnc,
+    linhvuc,
     noidungnc,
     muctieunc,
     ketquadukien,
@@ -66,7 +81,7 @@ const ThemDeTaiSV = () => {
       dotdangky: "",
       GVHD: "",
       khoaxetduyet: "",
-      linhvucnc: "",
+      linhvuc: "",
       noidungnc: "",
       muctieunc: "",
       ketquadukien: "",
@@ -146,34 +161,32 @@ const ThemDeTaiSV = () => {
               <Form.Group className="mb-3">
                 <Form.Label>Lĩnh vực nghiên cứu</Form.Label>
                 <Form.Select
-                  type="select"
-                  name="linhvucnc"
-                  required
-                  aria-describedby="title-help"
-                  value={linhvucnc}
-                  onChange={onChangeInput}
-                >
-                  <option value="Mở đăng ký">Mở đăng ký</option>
-                  <option value="Khóa đăng ký">Khóa đăng ký</option>
-                </Form.Select>
+              value={linhvuc}
+              name="linhvuc"
+              onChange={onChangeInput}
+              aria-label="Default select example"
+            >
+              <option>Chọn lĩnh vực nghiên cứu</option>
+              {linhvucs.map((linhvuc) => (
+                <option value={linhvuc.ten}>{linhvuc.ten}</option>
+              ))}
+            </Form.Select>
               </Form.Group>
             </Col>
             <Col>
               <Form.Group className="mb-3">
-                <Form.Label>Khoa xét duyệt đề tài</Form.Label>
-                <Form.Select
-                  type="text"
-                  name="khoaxetduyet"
-                  required
-                  aria-describedby="title-help"
-                  value={khoaxetduyet}
-                  onChange={onChangeInput}
-                >
-                   <option>Chọn khoa xét duyệt</option>
-              {khoaxetduyets.map((khoaxetduyet) => (
-                <option value={khoaxetduyet.ten}>{khoaxetduyet.ten}</option>
+            <Form.Label>Khoa xét duyệt đề tài</Form.Label>
+              <Form.Select
+              value={khoaxetduyet}
+              name="khoaxetduyet"
+              onChange={onChangeInput}
+              aria-label="Default select example"
+            >
+              <option>Chọn khoa xét duyệt đề tài</option>
+              {khoas.map((khoa) => (
+                <option value={khoa.ten}>{khoa.ten}</option>
               ))}
-                </Form.Select>
+            </Form.Select>
               </Form.Group>
             </Col>
           </Row>

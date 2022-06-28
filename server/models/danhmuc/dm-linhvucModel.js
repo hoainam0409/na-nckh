@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const LoaiDeTaiSchema = new Schema({
-    maloaidetai:{
+const LinhVucSchema = new Schema({
+    ma:{
         type: String,
         required: true,
         unique: true,
@@ -14,4 +14,4 @@ const LoaiDeTaiSchema = new Schema({
     },
    
 })
-module.exports = mongoose.model('loaidetai', LoaiDeTaiSchema)
+module.exports = mongoose.model('linhvuc', LinhVucSchema)

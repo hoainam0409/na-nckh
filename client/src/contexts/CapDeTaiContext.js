@@ -80,7 +80,7 @@ const CapDeTaiContextProvider = ({ children }) => {
     }
   };
 
-  // Tìm thông báo khi thực hiện chỉnh sửa
+  // Tìm khi thực hiện chỉnh sửa
   const findCapDeTai = (capdetaiId) => {
     const capdetai = capdetaiState.capdetais.find(
       (capdetai) => capdetai._id === capdetaiId
@@ -88,7 +88,7 @@ const CapDeTaiContextProvider = ({ children }) => {
     dispatch({ type: FIND_CAPDETAI, payload: capdetai });
   };
 
-  // Chỉnh sửa thông báo
+  // Chỉnh sửa 
   const updateCapDeTai = async (updatedCapDeTai) => {
     try {
       const response = await axios.put(

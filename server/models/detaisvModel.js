@@ -21,7 +21,7 @@ const detaisvSchema = new Schema({
         type: String,
         required: true
     },
-    linhvucnc:{
+    linhvuc:{
         type: String,
         required: true
     },

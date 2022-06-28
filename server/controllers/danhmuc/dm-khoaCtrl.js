@@ -5,8 +5,8 @@ const khoaCtrl = {
 
     getKhoa: async(req, res) =>{
         try {
-            const khoa = await Khoa.find()
-            res.json(khoa)
+            const khoas = await Khoa.find()
+            res.json({ success: true, khoas });
         } catch (err) {
             return res.status(500).json({success: false, message: err.message})
         }
@@ -14,27 +14,61 @@ const khoaCtrl = {
 
     addKhoa: async (req, res) => {
         try {
-            const { makhoa, ten} = req.body
+            const { makhoa, ten } = req.body;
             const khoa = await Khoa.findOne({ makhoa })
-            if (khoa) return res.status(400).json({ success: false, message: "Mã khoa đã tồn tại." })
-
-            const newKhoa = new Khoa({ makhoa, ten })
-            await newKhoa.save()
-            res.json({ success: true, message: "Thêm mới thành công!" })
-        } catch (err) {
-            return res.status(500).json({success: false, message: err.message })
-        }
-
+            if (khoa) return res.status(400).json({success: false,  message: "Mã đã tồn tại." })
+      
+            const newKhoa = new Khoa({
+              makhoa,
+              ten,
+            });
+            await newKhoa.save();
+            res.json({
+              success: true,
+              message: "Thêm mới thành công!",
+              khoa: newKhoa,
+            });
+          } catch (err) {
+            return res.status(500).json({ success: false, message: err.message });
+          }
     },
     updateKhoa: async(req, res) =>{
-        try {
-            const {makhoa, ten} = req.body;
-            await Khoa.findOneAndUpdate({_id: req.params.id}, {makhoa, ten})
+        const { makhoa, ten } = req.body;
+    // Simple validation
+    if (!makhoa || !ten)
+      return res.status(400).json({
+        success: false,
+        message: "Vui lòng nhập thông tin trường bắt buộc!",
+      });
+    try {
+      let updatedKhoa = {
+        ma,
+        ten,
+      };
 
-            res.json({success: true, message: "Chỉnh sửa thành công!"})
-        } catch (err) {
-            return res.status(500).json({success: false, message: err.message})
-        }
+      //Điều kiện để chỉnh sửa thông báo
+      // const UpdateCondition = { _id: req.params.id, user: req.userId }
+
+      updatedKhoa = await Khoa.findOneAndUpdate(
+        req.params.id,
+        updatedKhoa,
+        { new: true }
+      );
+      // User not authorised to update post or post not found
+      if (!updatedKhoa)
+        return res.status(401).json({
+          success: false,
+          message: "Có lỗi xảy ra vui lòng liên hệ quản trị viên!",
+        });
+
+      res.json({
+        success: true,
+        message: "Chỉnh sửa thành công!",
+        khoa: updatedKhoa,
+      });
+    } catch (err) {
+      return res.status(500).json({ success: false, message: err.message });
+    }
     },
     deleteKhoa: async(req, res) =>{
         try {

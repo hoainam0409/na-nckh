@@ -20,7 +20,7 @@ const detaisvCtrl = {
       dotdangky,
       GVHD,
       khoaxetduyet,
-      linhvucnc,
+      linhvuc,
       noidungnc,
       muctieunc,
       ketquadukien,
@@ -32,7 +32,7 @@ const detaisvCtrl = {
       !tendetai ||
       !dotdangky ||
       !khoaxetduyet ||
-      !linhvucnc ||
+      !linhvuc ||
       !noidungnc ||
       !muctieunc ||
       !ketquadukien ||
@@ -49,14 +49,14 @@ const detaisvCtrl = {
         dotdangky,
         GVHD,
         khoaxetduyet,
-        linhvucnc,
+        linhvuc,
         noidungnc,
         muctieunc,
         ketquadukien,
         sinhvienthuchien,
         trangthai,
         dinhkem,
-        user: req.userId // lấy id của người tạo ra thông báo
+        user: req.userId 
       });
       await newDeTaiSV.save();
       res.json({
@@ -75,7 +75,7 @@ const detaisvCtrl = {
       dotdangky,
       GVHD,
       khoaxetduyet,
-      linhvucnc,
+      linhvuc,
       noidungnc,
       muctieunc,
       ketquadukien,
@@ -88,7 +88,7 @@ const detaisvCtrl = {
       !tendetai ||
       !dotdangky ||
       !khoaxetduyet ||
-      !linhvucnc ||
+      !linhvuc ||
       !noidungnc ||
       !muctieunc ||
       !ketquadukien ||
@@ -105,7 +105,7 @@ const detaisvCtrl = {
         dotdangky,
         GVHD,
         khoaxetduyet,
-        linhvucnc,
+        linhvuc,
         noidungnc,
         muctieunc,
         ketquadukien,
