@@ -110,7 +110,7 @@ const ThemDeTaiSV = () => {
   };
 
   return (
-    <Modal show={showThemDeTaiSV} onHide={closeDialog} fullscreen={fullscreen}>
+    <Modal show={showThemDeTaiSV} onHide={closeDialog}>
       <Modal.Header closeButton>
         <Modal.Title>Thêm mới đề tài sinh viên</Modal.Title>
       </Modal.Header>

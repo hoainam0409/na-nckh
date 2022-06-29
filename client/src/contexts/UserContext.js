@@ -46,7 +46,7 @@ const UserContextProvider = ({ children }) => {
     }
   };
 
-  //Thêm mới cấp đề tài
+  //Thêm mới 
   const addUser = async (newUser) => {
     try {
       const response = await axios.post(
@@ -64,7 +64,7 @@ const UserContextProvider = ({ children }) => {
     }
   };
 
-  //Xóa cấp đề tài
+  //Xóa 
   const deleteUser = async (id) => {
     try {
       const response = await axios.delete(

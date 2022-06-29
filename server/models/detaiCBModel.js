@@ -54,6 +54,7 @@ const detaiCBSchema = new Schema({
     },
     trangthai:{
         type: String,
+        enum: ['Đăng ký', 'Chờ duyệt cấp khoa', 'Chờ nhập kết quả đánh giá', 'Chờ duyệt cấp trường']
         
     },
     ghichu:{

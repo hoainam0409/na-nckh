@@ -6,12 +6,13 @@ import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import SideBar from "../../sidebar/SideBar";
 import ThemDeTaiCB from "./ThemDeTaiCB";
 import SuaDeTaiCB from "./SuaDeTaiCB";
+import { BsFillEyeFill, BsCursorFill, BsFillFileEarmarkWordFill, BsPencilSquare, BsTrashFill} from "react-icons/bs";
 
 const DeTaiCBs = () => {
   const {
     detaicbState: { detaicb, detaicbs, detaicbsLoading },
     getDeTaiCBs,
-    // setShowThemDeTaiCB,
+    setShowThemDeTaiCB,
     showToast: { show, message, type },
     setShowToast,
     deleteDeTaiCB,
@@ -63,11 +64,13 @@ const DeTaiCBs = () => {
             backgroundColor: "#337AB7",
             borderColor: "#2d6da3",
           }}
-          onClick={ShowFullScreen.bind(this, true)}
+          onClick={setShowThemDeTaiCB.bind(this, true)}
+          // onClick={ShowFullScreen.bind(this, true)}
+
         >
           Thêm mới
         </Button>
-<Table borderless bordered hover style={{ cursor: "pointer" }}>
+        <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr>
               <th style={{ textAlign: "center", color: "#495057" }}>
@@ -82,7 +85,9 @@ const DeTaiCBs = () => {
               <th style={{ textAlign: "center", color: "#495057" }}>
                 Khoa xét duyệt
               </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Thành viên tham gia</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>
+                Thành viên tham gia
+              </th>
               <th style={{ textAlign: "center", color: "#495057" }}>
                 Trạng thái
               </th>
@@ -105,19 +110,32 @@ const DeTaiCBs = () => {
                     style={{
                       backgroundColor: "#337AB7",
                       borderColor: "#2d6da3",
+                      margin: '3px',
                     }}
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                   >
-                    Xem
+                    <BsFillEyeFill/>
                   </Button>
                   <Button
                     style={{
                       backgroundColor: "#5bc0de",
                       borderColor: "#269abc",
+                      margin: '3px',
+
                     }}
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                   >
-                    Sửa
+                    <BsPencilSquare/>
+                  </Button>
+                  <Button
+                    style={{
+                      backgroundColor: "#337AB7",
+                      borderColor: "#2d6da3",
+                      margin: '3px',
+
+                    }}
+                  >
+                    <BsCursorFill/>
                   </Button>
                   <Button
                     style={{
@@ -126,7 +144,16 @@ const DeTaiCBs = () => {
                     }}
                     onClick={() => deleteDeTaiCB(detaicb._id)}
                   >
-                    Xóa
+                    <BsTrashFill/>
+                  </Button>
+                  <Button
+                    style={{
+                      backgroundColor: "#337AB7",
+                      borderColor: "#2d6da3",
+                      margin: '3px',
+                    }}
+                  >
+                    <BsFillFileEarmarkWordFill/>
                   </Button>
                 </td>
               </tr>

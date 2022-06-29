@@ -1,14 +1,13 @@
 const ChucVu = require('../../models/danhmuc/dm-chucvuModel')
-const Users = require('../../models/UserModel')
 
 const chucvuCtrl = {
 
     getChucVu: async(req, res) =>{
         try {
-            const chucvu = await ChucVu.find()
-            res.json(chucvu)
+            const chucvus = await ChucVu.find()
+            res.json({success: true, chucvus})
         } catch (err) {
-            return res.status(500).json({msg: err.message})
+            return res.status(500).json({message: err.message})
         }
     },
 
@@ -16,13 +15,13 @@ const chucvuCtrl = {
         try {
             const { machucvu, ten } = req.body
             const chucvu = await ChucVu.findOne({ machucvu })
-            if (chucvu) return res.status(400).json({ msg: "Mã chức vụ đã tồn tại." })
+            if (chucvu) return res.status(400).json({ message: "Mã chức vụ đã tồn tại." })
 
             const newChucVu = new ChucVu({ machucvu, ten })
             await newChucVu.save()
-            res.json({ msg: "Thêm mới chức vụ thành công!" })
+            res.json({ message: "Thêm mới chức vụ thành công!" })
         } catch (err) {
-            return res.status(500).json({ msg: err.message })
+            return res.status(500).json({ message: err.message })
         }
 
     },
@@ -31,17 +30,17 @@ const chucvuCtrl = {
             const {machucvu, ten} = req.body;
             await ChucVu.findOneAndUpdate({_id: req.params.id}, {machucvu, ten})
 
-            res.json({msg: "Chỉnh sửa chức vụ thành công!"})
+            res.json({message: "Chỉnh sửa chức vụ thành công!"})
         } catch (err) {
-            return res.status(500).json({msg: err.message})
+            return res.status(500).json({message: err.message})
         }
     },
     deleteChucVu: async(req, res) =>{
         try {
             await ChucVu.findByIdAndDelete(req.params.id)
-            res.json({msg: "Xóa chức vụ thành công"})
+            res.json({message: "Xóa chức vụ thành công"})
         } catch (err) {
-            return res.status(500).json({msg: err.message})
+            return res.status(500).json({message: err.message})
         }
     },
 }

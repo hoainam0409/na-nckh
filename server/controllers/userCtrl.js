@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 
 const userCtrl = {
     addUser: async (req, res) =>{
-        const { username, password, hovaten} = req.body
+        const { username, password, hovaten, phongban, chucvu, hocham, hocvi} = req.body
 
 	// Simple validation
 	if (!username || !password)
@@ -25,7 +25,7 @@ const userCtrl = {
 
 		// All good
 		const hashedPassword = await argon2.hash(password)
-		const newUser = new Users({ username, password: hashedPassword, hovaten})
+		const newUser = new Users({ username, password: hashedPassword, hovaten, phongban, chucvu, hocham, hocvi})
 		await newUser.save()
 
 		// Return token
@@ -37,7 +37,8 @@ const userCtrl = {
 		res.json({
 			success: true,
 			message: 'Thêm mới thành công',
-			accessToken
+			accessToken,
+            user: newUser
 		})
 	} catch (error) {
 		console.log(error)
@@ -52,7 +53,48 @@ const userCtrl = {
           return res.status(500).json({success: false,  message: err.message });
         }
       },
+      deleteUser: async (req, res) => {
+        try {
+          await Users.findByIdAndDelete(req.params.id);
+          res.json({ success: true, message: "Xóa thành công!" });
+        } catch (err) {
+          return res.status(500).json({ message: err.message });
+        }
+      },
+      updateUser: async (req, res) => {
+        const { username, password, hovaten, phongban, chucvu, hocham, hocvi } = req.body;
+        // Simple validation
+        if (!username || !hovaten||!password)
+          return res.status(400).json({
+            success: false,
+            message: "Vui lòng nhập thông tin trường bắt buộc!",
+          });
+        try {
+          let updatedUser = {
+            username, password, hovaten, phongban, chucvu, hocham, hocvi
+          };
     
+          updatedUser = await Users.findOneAndUpdate(
+            req.params.id,
+            updatedUser,
+            { new: true }
+          );
+          // User not authorised to update post or post not found
+          if (!updatedUser)
+            return res.status(401).json({
+              success: false,
+              message: "Có lỗi xảy ra vui lòng liên hệ quản trị viên!",
+            });
+    
+          res.json({
+            success: true,
+            message: "Chỉnh sửa thành công!",
+            user: updatedUser,
+          });
+        } catch (err) {
+          return res.status(500).json({ success: false, message: err.message });
+        }
+      },
     login: async (req, res) => {
         const { username, password } = req.body
 
@@ -114,7 +156,5 @@ const userCtrl = {
         }
     },
 }
-// const createAccessToken = (user) => {
-//     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '11m' })
-// }
+
 module.exports = userCtrl

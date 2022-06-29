@@ -28,6 +28,9 @@ const UserSchema = new Schema({
     phongban:{
         type: String,
     },
+    chucvu:{
+        type: String,
+    },
     hocham: {
         type: String,
     },

@@ -1,45 +1,42 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
-// import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
-import { DeTaiSVContext } from "../../../contexts/DeTaiSVContext";
+import { UserContext } from "../../../contexts/UserContext";
 import SideBar from "../../sidebar/SideBar";
-import ThemDeTaiSV from "./ThemDeTaiSV";
-import SuaDeTaiSV from "./SuaDeTaiSV";
+import ThemUser from "./ThemUser";
+import SuaUser from "./SuaUser";
 
-const DeTaiSVs = () => {
+const Users = () => {
+
   const {
-    detaisvState: { detaisv, detaisvs, detaisvsLoading },
-    getDeTaiSVs,
-    setShowThemDeTaiSV,
+    userState: { user, users, usersLoading },
+    getUsers,
+    setShowThemUser,
     showToast: { show, message, type },
     setShowToast,
-    deleteDeTaiSV,
-    findDeTaiSV,
-    setShowSuaDeTaiSV,
-    ShowFullScreen,
-  } = useContext(DeTaiSVContext);
+    deleteUser,
+    findUser,
+    setShowSuaUser,
+  } = useContext(UserContext);
 
   // Start: Get all
-  useEffect(() => getDeTaiSVs(), []);
+  useEffect(() => getUsers(), []);
 
-  const chooseDeTaiSV = (detaisvId) => {
-    findDeTaiSV(detaisvId);
-    setShowSuaDeTaiSV(true);
+  const chooseUser = (userId) => {
+    findUser(userId);
+    setShowSuaUser(true);
   };
   return (
     <div>
       <SideBar />
-      <ThemDeTaiSV />
-      {detaisv !== null && <SuaDeTaiSV />}
       <div style={{ margin: "10px 20px 20px 330px" }}>
         <h1
           style={{
             fontSize: "24px",
           }}
         >
-          Danh sách đăng ký đề tài sinh viên
+          Danh sách cán bộ
         </h1>
         <Toast
           show={show}
@@ -64,52 +61,45 @@ const DeTaiSVs = () => {
             backgroundColor: "#337AB7",
             borderColor: "#2d6da3",
           }}
-          onClick={setShowThemDeTaiSV.bind(this, true)}
-          // onClick={ShowFullScreen.bind(this, true)}
-
+          onClick={setShowThemUser.bind(this, true)}
         >
           Thêm mới
         </Button>
+        <ThemUser />
+        {user !== null && <SuaUser/>}
+
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Mã đề tài
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Tên đề tài
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Đợt đăng ký
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Khoa xét duyệt
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>GVHD</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Trạng thái
-              </th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Tài khoản</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Họ và tên</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Phòng ban</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Chức vụ</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Học Hàm</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Học vị</th>
+
               <th style={{ textAlign: "center", color: "#495057" }}>
                 Chức năng
               </th>
             </tr>
           </thead>
           <tbody>
-            {detaisvs.map((detaisv) => (
-              <tr key={detaisv._id}>
-                <td>{detaisv.madetai} </td>
-                <td>{detaisv.tendetai}</td>
-                <td>{detaisv.dotdangky} </td>
-                <td>{detaisv.khoaxetduyet}</td>
-                <td>{detaisv.GVHD}</td>
-                <td>{detaisv.trangthai}</td>
+            {users.map((user) => (
+              <tr key={user._id}>
+                <td>{user.username}</td>
+                <td>{user.hovaten} </td>
+                <td>{user.phongban} </td>
+                <td>{user.chucvu} </td>
+                <td>{user.hocham} </td>
+                <td>{user.hocvi} </td>
+
                 <td style={{ textAlign: "center" }}>
                   <Button
                     style={{
                       backgroundColor: "#337AB7",
                       borderColor: "#2d6da3",
                     }}
-                    onClick={chooseDeTaiSV.bind(this, detaisv._id)}
+                    onClick={chooseUser.bind(this, user._id)}
                   >
                     Xem
                   </Button>
@@ -118,7 +108,7 @@ const DeTaiSVs = () => {
                       backgroundColor: "#5bc0de",
                       borderColor: "#269abc",
                     }}
-                    onClick={chooseDeTaiSV.bind(this, detaisv._id)}
+                    onClick={chooseUser.bind(this, user._id)}
                   >
                     Sửa
                   </Button>
@@ -127,7 +117,7 @@ const DeTaiSVs = () => {
                       backgroundColor: "#c9302c",
                       borderColor: "#ac2925",
                     }}
-                    onClick={() => deleteDeTaiSV(detaisv._id)}
+                    onClick={() => deleteUser(user._id)}
                   >
                     Xóa
                   </Button>
@@ -141,4 +131,4 @@ const DeTaiSVs = () => {
   );
 };
 
-export default DeTaiSVs;
+export default Users;

@@ -132,7 +132,7 @@ import {FaCube} from 'react-icons/fa'
       subNav: [
         {
           title: 'Quản lý người dùng',
-          path: '/nckh/admin/quanly-nguoidung',
+          path: '/user',
           icon: <FaCube style ={{color: 'black'}}/>
         },
       ]

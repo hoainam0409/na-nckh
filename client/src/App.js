@@ -10,7 +10,8 @@ import DeTaiSVContextProvider from "./contexts/DeTaiSVContext";
 import DeTaiCBContextProvider from "./contexts/DeTaiCBContext";
 import KhoaContextProvider from "./contexts/KhoaContext";
 import LinhVucContextProvider from "./contexts/LinhVucContext";
-import UserContextProvider from './contexts/UserContext'
+import UserContextProvider from "./contexts/UserContext";
+import ChucVuContextProvider from "./contexts/ChucVuContext";
 
 function App() {
   return (
@@ -20,15 +21,17 @@ function App() {
           <DotDangKyContextProvider>
             <DeTaiSVContextProvider>
               <DeTaiCBContextProvider>
-              <UserContextProvider>
-              <KhoaContextProvider>
-                <LinhVucContextProvider>
-                  <Router>
-                    <Mainpages />
-                  </Router>
-                </LinhVucContextProvider>
-              </KhoaContextProvider>
-              </UserContextProvider>
+                <UserContextProvider>
+                  <KhoaContextProvider>
+                    <LinhVucContextProvider>
+                      <ChucVuContextProvider>
+                        <Router>
+                          <Mainpages />
+                        </Router>
+                      </ChucVuContextProvider>
+                    </LinhVucContextProvider>
+                  </KhoaContextProvider>
+                </UserContextProvider>
               </DeTaiCBContextProvider>
             </DeTaiSVContextProvider>
           </DotDangKyContextProvider>

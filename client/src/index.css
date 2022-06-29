@@ -32,5 +32,8 @@ button{
   background: transparent;
   cursor: pointer;
 }
+body .modal-dialog{
+  max-width: 1400px;
+}
 
 

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, Component } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -9,6 +9,9 @@ import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import { KhoaContext } from "../../../contexts/KhoaContext";
 import { LinhVucContext } from "../../../contexts/LinhVucContext";
 import { UserContext } from "../../../contexts/UserContext";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
+
 const ThemDeTaiCB = () => {
   //context
   const {
@@ -16,7 +19,7 @@ const ThemDeTaiCB = () => {
     setShowThemDeTaiCB,
     addDeTaiCB,
     setShowToast,
-    fullscreen,
+    // fullscreen,
   } = useContext(DeTaiCBContext);
   const {
     dotdangkyState: { dotdangkys },
@@ -63,7 +66,7 @@ const ThemDeTaiCB = () => {
     sanpham: "",
     ghichu: "",
     thanhvienthamgia: "",
-    trangthai: "",
+    trangthai: "Đăng ký",
     dinhkem: "",
   });
 
@@ -110,7 +113,7 @@ const ThemDeTaiCB = () => {
       sanpham: "",
       thanhvienthamgia: "",
       ghichu: "",
-      trangthai: "",
+      trangthai: "Đăng ký",
       dinhkem: "",
     });
     setShowThemDeTaiCB(false);
@@ -125,9 +128,11 @@ const ThemDeTaiCB = () => {
     resetAddDeTaiCB();
     setShowToast({ show: true, message, type: success ? "success" : "danger" });
   };
+  const animatedComponents = makeAnimated();
 
   return (
-    <Modal show={showThemDeTaiCB} onHide={closeDialog} fullscreen={fullscreen}>
+    <Modal show={showThemDeTaiCB} onHide={closeDialog} >
+      {/* fullscreen={fullscreen} */}
       <Modal.Header closeButton>
         <Modal.Title>Thêm mới đề tài cán bộ</Modal.Title>
       </Modal.Header>
@@ -201,15 +206,15 @@ const ThemDeTaiCB = () => {
             </Col>
           </Row>
           <Form.Group className="mb-3">
-                <Form.Label>Kinh phí thực hiện</Form.Label>
-                <Form.Control
-                  value={kinhphi}
-                  name="kinhphi"
-                  type="number"
-                  onChange={onChangeInput}
-                  aria-label="Default select example"
-                ></Form.Control>
-              </Form.Group>
+            <Form.Label>Kinh phí thực hiện</Form.Label>
+            <Form.Control
+              value={kinhphi}
+              name="kinhphi"
+              type="number"
+              onChange={onChangeInput}
+              aria-label="Default select example"
+            ></Form.Control>
+          </Form.Group>
           <Row>
             <Col>
               <Form.Group className="mb-3">
@@ -299,6 +304,14 @@ const ThemDeTaiCB = () => {
               <option value="Mở đăng ký">Mở đăng ký</option>
               <option value="Khóa đăng ký">Khóa đăng ký</option>
             </Form.Select>
+            {/* <Select options={users}/> */}
+            {/* <Select
+              closeMenuOnSelect={false}
+              components={animatedComponents}
+              defaultValue={[]}
+              isMulti
+              options={users}
+            /> */}
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Sản phẩm</Form.Label>
@@ -307,9 +320,20 @@ const ThemDeTaiCB = () => {
               rows={5}
               value={sanpham}
               name="sanpham"
-              onChange={onChangeInput}>
-            </Form.Control>
+              onChange={onChangeInput}
+            ></Form.Control>
           </Form.Group>
+          {/* <Form.Group className="mb-3">
+            <Form.Label>Trạng thái</Form.Label>
+            <Form.Select
+              type="text"
+              value={trangthai}
+              name="trangthai"
+              onChange={onChangeInput}
+            >
+               <option value="Đăng ký">Đăng ký</option>
+            </Form.Select>
+          </Form.Group> */}
           <Form.Group className="mb-3">
             <Form.Label>Đính kèm</Form.Label>
             <Form.Control

@@ -62,12 +62,10 @@ export const FIND_LINHVUC = 'FIND_LINHVUC'
 //Danh mục khoa
 export const KHOA_LOADED_SUCCESS = 'KHOA_LOADED_SUCCESS'
 export const KHOA_LOADED_FAIL = 'KHOA_LOADED_FAIL'
-// export const KHOA_ADD = 'KHOA_ADD'
-// export const DELETE_KHOA = 'DELETE_KHOA'
-// export const UPDATE_KHOA = 'UPDATE_KHOA'
-// export const FIND_KHOA = 'FIND_KHOA'
 
-
+//Danh mục chức vụ
+export const CHUCVU_LOADED_SUCCESS = 'CHUCVU_LOADED_SUCCESS'
+export const CHUCVU_LOADED_FAIL = 'CHUCVU_LOADED_FAIL'
 
 
 //Quản trị/ quản lý người dùng
