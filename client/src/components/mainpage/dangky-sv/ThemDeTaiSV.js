@@ -22,7 +22,7 @@ const ThemDeTaiSV = () => {
     getDotDangKys
   } = useContext(DotDangKyContext);
 
-  useEffect(() => getDotDangKys(), []);
+  useEffect(() => {getDotDangKys()}, []);
 
   const {
     khoaState: {khoas},
@@ -37,6 +37,8 @@ const ThemDeTaiSV = () => {
   } = useContext(LinhVucContext)  
 
   useEffect(() => getLinhVucs(), [] )
+
+
   //State
   const [newDeTaiSV, setNewDeTaiSV] = useState({
     madetai: "",

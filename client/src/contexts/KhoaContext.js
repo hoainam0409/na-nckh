@@ -1,14 +1,10 @@
-import { createContext, useReducer, useState } from "react";
+import { createContext, useReducer} from "react";
 import { khoaReducer } from "../reducers/khoaReducer";
 import axios from "axios";
 import {
   apiUrl,
   KHOA_LOADED_FAIL,
   KHOA_LOADED_SUCCESS,
-  KHOA_ADD, 
-  DELETE_KHOA, 
-  UPDATE_KHOA, 
-  FIND_KHOA 
 } from "./constant";
 
 export const KhoaContext = createContext();
