@@ -30,19 +30,29 @@ import {FaCube} from 'react-icons/fa'
       subNav: [
         {
           title: 'Đăng ký',
-          path: '/nckh/canbo-nckh/dangky',
+          path: '/detai-canbo/dangky',
           icon: <FaCube style ={{color: 'black'}}/>,
           cName: 'sub-nav'
         },
         {
-          title: 'Reports 2',
-          path: '/reports/reports2',
+          title: 'Đề tài chờ duyệt cấp khoa',
+          path: '/detai-canbo/cho-duyet-cap-khoa',
           icon: <FaCube style ={{color: 'black'}}/>,
           cName: 'sub-nav'
         },
         {
-          title: 'Reports 3',
-          path: '/reports/reports3',
+          title: 'Nhập kết quả đánh giá đề tài',
+          path: '/detai-canbo/nhap-ket-qua-danh-gia',
+          icon: <FaCube style ={{color: 'black'}}/>
+        },
+        {
+          title: 'Đề tài chờ duyệt cấp trường',
+          path: '/detai-canbo/cho-duyet-cap-truong',
+          icon: <FaCube style ={{color: 'black'}}/>
+        },
+        {
+          title: 'Nhập kết quả nghiệm thu',
+          path: '/detai-canbo/nhap-ket-qua-nghiem-thu',
           icon: <FaCube style ={{color: 'black'}}/>
         }
       ]

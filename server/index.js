@@ -27,6 +27,8 @@ app.use('/danhmuc', require('./routers/danhmuc/dm-khoaRouter'))
 app.use('/thongbao', require('./routers/thongbaochungRouter'))
 app.use('/', require('./routers/taikhoanSVRouter'))
 app.use('/nckh/detai-sinhvien', require('./routers/detaisvRouter'))
+app.use('/detai-canbo', require('./routers/detaiCBRouter'))
+
 
 
 

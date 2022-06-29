@@ -2,44 +2,43 @@ import React, { useContext, useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
-// import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
-import { DeTaiSVContext } from "../../../contexts/DeTaiSVContext";
+import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import SideBar from "../../sidebar/SideBar";
-import ThemDeTaiSV from "./ThemDeTaiSV";
-import SuaDeTaiSV from "./SuaDeTaiSV";
+import ThemDeTaiCB from "./ThemDeTaiCB";
+import SuaDeTaiCB from "./SuaDeTaiCB";
 
-const DeTaiSVs = () => {
+const DeTaiCBs = () => {
   const {
-    detaisvState: { detaisv, detaisvs, detaisvsLoading },
-    getDeTaiSVs,
-    // setShowThemDeTaiSV,
+    detaicbState: { detaicb, detaicbs, detaicbsLoading },
+    getDeTaiCBs,
+    // setShowThemDeTaiCB,
     showToast: { show, message, type },
     setShowToast,
-    deleteDeTaiSV,
-    findDeTaiSV,
-    setShowSuaDeTaiSV,
+    deleteDeTaiCB,
+    findDeTaiCB,
+    setShowSuaDeTaiCB,
     ShowFullScreen,
-  } = useContext(DeTaiSVContext);
+  } = useContext(DeTaiCBContext);
 
   // Start: Get all
-  useEffect(() => getDeTaiSVs(), []);
+  useEffect(() => getDeTaiCBs(), []);
 
-  const chooseDeTaiSV = (detaisvId) => {
-    findDeTaiSV(detaisvId);
-    setShowSuaDeTaiSV(true);
+  const chooseDeTaiCB = (detaicbId) => {
+    findDeTaiCB(detaicbId);
+    setShowSuaDeTaiCB(true);
   };
   return (
     <div>
       <SideBar />
-      <ThemDeTaiSV />
-      {detaisv !== null && <SuaDeTaiSV />}
+      <ThemDeTaiCB />
+      {detaicb !== null && <SuaDeTaiCB />}
       <div style={{ margin: "10px 20px 20px 330px" }}>
         <h1
           style={{
             fontSize: "24px",
           }}
         >
-          Danh sách đăng ký đề tài sinh viên
+          Danh sách đăng ký đề tài cán bộ
         </h1>
         <Toast
           show={show}
@@ -68,7 +67,7 @@ const DeTaiSVs = () => {
         >
           Thêm mới
         </Button>
-        <Table borderless bordered hover style={{ cursor: "pointer" }}>
+<Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr>
               <th style={{ textAlign: "center", color: "#495057" }}>
@@ -83,7 +82,7 @@ const DeTaiSVs = () => {
               <th style={{ textAlign: "center", color: "#495057" }}>
                 Khoa xét duyệt
               </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>GVHD</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Thành viên tham gia</th>
               <th style={{ textAlign: "center", color: "#495057" }}>
                 Trạng thái
               </th>
@@ -93,21 +92,21 @@ const DeTaiSVs = () => {
             </tr>
           </thead>
           <tbody>
-            {detaisvs.map((detaisv) => (
-              <tr key={detaisv._id}>
-                <td>{detaisv.madetai} </td>
-                <td>{detaisv.tendetai}</td>
-                <td>{detaisv.dotdangky} </td>
-                <td>{detaisv.khoaxetduyet}</td>
-                <td>{detaisv.GVHD}</td>
-                <td>{detaisv.trangthai}</td>
+            {detaicbs.map((detaicb) => (
+              <tr key={detaicb._id}>
+                <td>{detaicb.madetai} </td>
+                <td>{detaicb.tendetai}</td>
+                <td>{detaicb.dotdangky} </td>
+                <td>{detaicb.khoaxetduyet}</td>
+                <td>{detaicb.thanhvienthamgia}</td>
+                <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
                     style={{
                       backgroundColor: "#337AB7",
                       borderColor: "#2d6da3",
                     }}
-                    onClick={chooseDeTaiSV.bind(this, detaisv._id)}
+                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                   >
                     Xem
                   </Button>
@@ -116,7 +115,7 @@ const DeTaiSVs = () => {
                       backgroundColor: "#5bc0de",
                       borderColor: "#269abc",
                     }}
-                    onClick={chooseDeTaiSV.bind(this, detaisv._id)}
+                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                   >
                     Sửa
                   </Button>
@@ -125,7 +124,7 @@ const DeTaiSVs = () => {
                       backgroundColor: "#c9302c",
                       borderColor: "#ac2925",
                     }}
-                    onClick={() => deleteDeTaiSV(detaisv._id)}
+                    onClick={() => deleteDeTaiCB(detaicb._id)}
                   >
                     Xóa
                   </Button>
@@ -139,4 +138,4 @@ const DeTaiSVs = () => {
   );
 };
 
-export default DeTaiSVs;
+export default DeTaiCBs;

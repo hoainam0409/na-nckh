@@ -18,6 +18,14 @@ export const DELETE_DOTDANGKY = 'DELETE_DOTDANGKY'
 export const UPDATE_DOTDANGKY = 'UPDATE_DOTDANGKY'
 export const FIND_DOTDANGKY = 'FIND_DOTDANGKY'
 
+//Đăng ký đề tài cán bộ
+export const DETAICB_LOADED_SUCCESS = 'DETAICB_LOADED_SUCCESS'
+export const DETAICB_LOADED_FAIL = 'DETAICB_LOADED_FAIL'
+export const DETAICB_ADD = 'DETAICB_ADD'
+export const DELETE_DETAICB = 'DELETE_DETAICB'
+export const UPDATE_DETAICB = 'UPDATE_DETAICB'
+export const FIND_DETAICB = 'FIND_DETAICB'
+
 //Đăng ký đề tài sinh viên
 export const DETAISV_LOADED_SUCCESS = 'DETAISV_LOADED_SUCCESS'
 export const DETAISV_LOADED_FAIL = 'DETAISV_LOADED_FAIL'
@@ -58,3 +66,14 @@ export const KHOA_LOADED_FAIL = 'KHOA_LOADED_FAIL'
 // export const DELETE_KHOA = 'DELETE_KHOA'
 // export const UPDATE_KHOA = 'UPDATE_KHOA'
 // export const FIND_KHOA = 'FIND_KHOA'
+
+
+
+
+//Quản trị/ quản lý người dùng
+export const USER_LOADED_SUCCESS = 'USER_LOADED_SUCCESS'
+export const USER_LOADED_FAIL = 'USER_LOADED_FAIL'
+export const USER_ADD = 'USER_ADD'
+export const DELETE_USER = 'DELETE_USER'
+export const UPDATE_USER = 'UPDATE_USER'
+export const FIND_USER = 'FIND_USER'

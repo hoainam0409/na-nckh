@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import { CapDeTaiContext } from "../../../contexts/CapDeTaiContext";
+
 
 const ThemDotDangKy = () => {
   //context
@@ -17,7 +18,9 @@ const ThemDotDangKy = () => {
   } = useContext(DotDangKyContext);
   const {
     capdetaiState: { capdetais },
+    getCapDeTais
   } = useContext(CapDeTaiContext);
+  useEffect(() => getCapDeTais(), [] )
   //State
   const [newDotDangKy, setNewDotDangKy] = useState({
     madot: "",
@@ -131,7 +134,7 @@ const ThemDotDangKy = () => {
                 >
                   <option >Chọn cấp đề tài</option>
                   {capdetais.map((capdetai) => (
-                    <option value={capdetai.ten} key={capdetai._id}>{capdetai.ten}</option>
+                    <option value={capdetai.ten}>{capdetai.ten}</option>
                   ))}
                 </Form.Select>
               </Form.Group>

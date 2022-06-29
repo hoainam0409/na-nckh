@@ -8,6 +8,7 @@ import { DeTaiSVContext } from "../../../contexts/DeTaiSVContext";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import {KhoaContext} from '../../../contexts/KhoaContext'
 import {LinhVucContext} from '../../../contexts/LinhVucContext'
+import {UserContext} from "../../../contexts/UserContext";
 const ThemDeTaiSV = () => {
   //context
   const {
@@ -37,8 +38,12 @@ const ThemDeTaiSV = () => {
   } = useContext(LinhVucContext)  
 
   useEffect(() => getLinhVucs(), [] )
+  const {
+    userState: {users},
+    getUsers
+  } = useContext(UserContext)  
 
-
+  useEffect(() => getUsers(), [] )
   //State
   const [newDeTaiSV, setNewDeTaiSV] = useState({
     madetai: "",
@@ -148,15 +153,17 @@ const ThemDeTaiSV = () => {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Giảng viên hướng dẫn</Form.Label>
-            <Form.Control
-              as="select"
+            <Form.Select
               value={GVHD}
               name="GVHD"
               onChange={onChangeInput}
+              aria-label="Default select example"
             >
-              <option value="Mở đăng ký">Mở đăng ký</option>
-              <option value="Khóa đăng ký">Khóa đăng ký</option>
-            </Form.Control>
+              <option>Chọn GVHD</option>
+              {users.map((user) => (
+                <option value={user.hovaten}>{user.hovaten}</option>
+              ))}
+            </Form.Select>
           </Form.Group>
           <Row>
             <Col>

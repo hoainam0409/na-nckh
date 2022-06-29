@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import { useContext, useState, useEffect } from "react";
 import { DeTaiSVContext } from "../../../contexts/DeTaiSVContext";
 
-const SuaCapDeTai = () => {
+const SuaDeTaiSV = () => {
   // Contexts
   const {
     detaisvState: { detaisv },
@@ -222,4 +222,4 @@ const SuaCapDeTai = () => {
   );
 };
 
-export default SuaCapDeTai;
+export default SuaDeTaiSV;

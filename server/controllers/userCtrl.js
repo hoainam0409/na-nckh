@@ -5,14 +5,14 @@ const argon2 = require('argon2')
 const jwt = require('jsonwebtoken')
 
 const userCtrl = {
-    register: async (req, res) =>{
+    addUser: async (req, res) =>{
         const { username, password, hovaten} = req.body
 
 	// Simple validation
 	if (!username || !password)
 		return res
 			.status(400)
-			.json({ success: false, message: 'Missing username and/or password' })
+			.json({ success: false, message: 'Vui lòng nhập các trường bắt buộc' })
 
 	try {
 		// Check for existing user
@@ -21,7 +21,7 @@ const userCtrl = {
 		if (user)
 			return res
 				.status(400)
-				.json({ success: false, message: 'Username already taken' })
+				.json({ success: false, message: 'Taì khoản đã tồn tại' })
 
 		// All good
 		const hashedPassword = await argon2.hash(password)
@@ -36,14 +36,23 @@ const userCtrl = {
 
 		res.json({
 			success: true,
-			message: 'User created successfully',
+			message: 'Thêm mới thành công',
 			accessToken
 		})
 	} catch (error) {
 		console.log(error)
-		res.status(500).json({ success: false, message: 'Internal server error' })
+		res.status(500).json({ success: false, message: 'Có lỗi xảy ra vui lòng liên hệ quản trị viên' })
 	}
     },
+    getUsers: async (req, res) => {
+        try {
+          const users  = await Users.find();
+          res.json({ success: true, users });
+        } catch (err) {
+          return res.status(500).json({success: false,  message: err.message });
+        }
+      },
+    
     login: async (req, res) => {
         const { username, password } = req.body
 

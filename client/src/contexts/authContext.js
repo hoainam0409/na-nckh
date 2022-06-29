@@ -27,8 +27,6 @@ const AuthContextProvider = ({ children }) => {
           payload: { isAuthenticated: true, user: response.data.user },
         });
       }
-      // set Admin nếu role = 1
-      // response.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false) 
     } catch (error) {
       localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME);
       setAuthToken(null);
