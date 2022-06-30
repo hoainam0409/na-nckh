@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import { HoiDongContext } from "../../../contexts/HoiDongContext";
-import { AuthContext } from "../../../contexts/AuthContext";
+import { LoaiHĐContext} from "../../../contexts/LoaiHĐContext";
 
 const ThemHoiDong = () => {
   //context
@@ -22,10 +22,11 @@ const ThemHoiDong = () => {
   } = useContext(DotDangKyContext);
   useEffect(() => getDotDangKys(), []);
 
-  const authContextData = useContext(AuthContext)
-  const LoaiHĐs = authContextData.LoaiHĐsAPI.LoaiHĐs
-  console.log(LoaiHĐs)
-
+  const {
+    loaiHĐState: { loaiHĐs },
+    getLoaiHĐs,
+  } = useContext(LoaiHĐContext);
+  useEffect(() => getLoaiHĐs(), []);
   //State
   const [newHoiDong, setNewHoiDong] = useState({
     tenhoidong: "",
@@ -36,7 +37,7 @@ const ThemHoiDong = () => {
     ngayraquyetdinh: "",
     nam: "",
     ghichu: "",
-    danhsachthanhvien: "",
+    danhsachthanhvien: [],
     dinhkem: "",
   });
 
@@ -69,7 +70,7 @@ const ThemHoiDong = () => {
       ngayraquyetdinh: "",
       nam: "",
       ghichu: "",
-      danhsachthanhvien: "",
+      danhsachthanhvien: [],
       dinhkem: "",
     });
     setShowThemHoiDong(false);
@@ -116,9 +117,9 @@ const ThemHoiDong = () => {
                 >
                   <option value="">Chọn loại hội đồng</option>
                         {
-                            LoaiHĐs.map((LoaiHĐ) => (
-                                <option value={LoaiHĐ.ten}>
-                                    {LoaiHĐ.ten}
+                            loaiHĐs.map((loaiHĐ) => (
+                                <option key={loaiHĐ._id}>
+                                    {loaiHĐ.ten}
                                 </option>
                             ))
                         }
@@ -138,7 +139,7 @@ const ThemHoiDong = () => {
                 >
                   <option>Chọn đợt đăng ký đề tài</option>
                   {dotdangkys.map((dotdangky) => (
-                <option value={dotdangky.tendot}>{dotdangky.tendot}</option>
+                <option key={dotdangky._id} value={dotdangky._id}>{dotdangky.tendot}</option>
               ))}
                 </Form.Select>
               </Form.Group>
@@ -219,6 +220,34 @@ const ThemHoiDong = () => {
               onChange={onChangeInput}
             />
           </Form.Group>
+          <div>
+          <h1>DANH SÁCH THÀNH VIÊN THAM GIA HỘI ĐỒNG</h1>
+          <Row>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Họ và tên</Form.Label>
+                <Form.Select
+                  name="danhsachthanhvien"
+                  required
+                  aria-describedby="title-help"
+                  value={danhsachthanhvien.hovaten}
+                  onChange={onChangeInput}
+                ></Form.Select>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Vai trò</Form.Label>
+                <Form.Select
+                  name="danhsachthanhvien"
+                  aria-describedby="title-help"
+                  value={danhsachthanhvien.vaitro}
+                  onChange={onChangeInput}
+                ></Form.Select>
+              </Form.Group>
+            </Col>
+          </Row>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" type="submit">

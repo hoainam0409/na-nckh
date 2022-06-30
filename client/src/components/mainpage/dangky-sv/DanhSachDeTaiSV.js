@@ -65,8 +65,6 @@ const DeTaiSVs = () => {
             borderColor: "#2d6da3",
           }}
           onClick={setShowThemDeTaiSV.bind(this, true)}
-          // onClick={ShowFullScreen.bind(this, true)}
-
         >
           Thêm mới
         </Button>

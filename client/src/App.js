@@ -13,6 +13,7 @@ import LinhVucContextProvider from "./contexts/LinhVucContext";
 import UserContextProvider from "./contexts/UserContext";
 import ChucVuContextProvider from "./contexts/ChucVuContext";
 import HoiDongContextProvider from "./contexts/HoiDongContext";
+import LoaiHĐContextProvider from "./contexts/LoaiHĐContext";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <DeTaiCBContextProvider>
                 <HoiDongContextProvider>
                 <UserContextProvider>
+                  <LoaiHĐContextProvider>
                   <KhoaContextProvider>
                     <LinhVucContextProvider>
                       <ChucVuContextProvider>
@@ -33,6 +35,7 @@ function App() {
                       </ChucVuContextProvider>
                     </LinhVucContextProvider>
                   </KhoaContextProvider>
+                  </LoaiHĐContextProvider>
                 </UserContextProvider>
                 </HoiDongContextProvider>
               </DeTaiCBContextProvider>

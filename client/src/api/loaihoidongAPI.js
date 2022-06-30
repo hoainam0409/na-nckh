@@ -2,22 +2,22 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import {apiUrl} from "../contexts/constant";
 
-function LoaiHĐsAPI() {
-    const [LoaiHĐs, setLoaiHĐs] = useState([])
+function LoaiHoiDongsAPI() {
+    const [loaiHoiDongs, setLoaiHoiDongs] = useState([])
     const [callback, setCallback] = useState(false)
 
     useEffect(() =>{
-        const getLoaiHĐs = async () =>{
+        const getLoaiHoiDongs = async () =>{
             const response = await axios.get(`${apiUrl}/danhmuc/loai-hoi-dong`)
-            setLoaiHĐs(response.data)
+            setLoaiHoiDongs(response.data)
         }
 
-        getLoaiHĐs()
+        getLoaiHoiDongs()
     },[callback])
     return {
-        LoaiHĐs: [LoaiHĐs, setLoaiHĐs],
+        loaiHoiDongs: [loaiHoiDongs, setLoaiHoiDongs],
         callback: [callback, setCallback]
     }
 }
 
-export default LoaiHĐsAPI
+export default LoaiHoiDongsAPI
