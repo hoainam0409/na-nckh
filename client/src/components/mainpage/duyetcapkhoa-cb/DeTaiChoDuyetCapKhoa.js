@@ -4,23 +4,20 @@ import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import SideBar from "../../sidebar/SideBar";
-import ThemDeTaiCB from "./ThemDeTaiCB";
-import SuaDeTaiCB from "./SuaDeTaiCB";
+import ThemDeTaiCB from "../dangky-cb/ThemDeTaiCB";
+import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
 import ReactTooltip from "react-tooltip"
-import { BsFillEyeFill, BsCursorFill, BsFillFileEarmarkWordFill, BsPencilSquare, BsTrashFill} from "react-icons/bs";
+import { BsFillEyeFill, BsXLg, BsCheckLg, BsFillFileEarmarkWordFill, BsPencilSquare, BsTrashFill} from "react-icons/bs";
 
 
-const DeTaiCBs = () => {
+const DeTaiDuyetCapKhoas = () => {
   const {
     detaicbState: { detaicb, detaicbs, detaicbsLoading },
     getDeTaiCBs,
-    setShowThemDeTaiCB,
     showToast: { show, message, type },
     setShowToast,
-    deleteDeTaiCB,
     findDeTaiCB,
     setShowSuaDeTaiCB,
-    ShowFullScreen,
   } = useContext(DeTaiCBContext);
 
   // Start: Get all
@@ -41,7 +38,7 @@ const DeTaiCBs = () => {
             fontSize: "24px",
           }}
         >
-          Danh sách đăng ký đề tài cán bộ
+          Danh sách đề tài cán bộ chờ duyệt cấp khoa
         </h1>
         <Toast
           show={show}
@@ -59,20 +56,7 @@ const DeTaiCBs = () => {
             <strong>{message}</strong>
           </Toast.Body>
         </Toast>
-        <Button
-          style={{
-            marginTop: "70px",
-            marginBottom: "20px",
-            backgroundColor: "#337AB7",
-            borderColor: "#2d6da3",
-          }}
-          onClick={setShowThemDeTaiCB.bind(this, true)}
-          // onClick={ShowFullScreen.bind(this, true)}
-
-        >
-          Thêm mới
-        </Button>
-        <Table borderless bordered hover style={{ cursor: "pointer" }}>
+        <Table borderless bordered hover style={{ cursor: "pointer", marginTop: '100px'}}>
           <thead>
             <tr>
               <th style={{ textAlign: "center", color: "#495057" }}>
@@ -109,54 +93,49 @@ const DeTaiCBs = () => {
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
-                    style={{
-                      backgroundColor: "#337AB7",
-                      borderColor: "#2d6da3",
-                      margin: '3px',
-                    }}
-                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                  >
-                    <BsFillEyeFill/>
-                  </Button>
-                  <Button
-                    style={{
-                      backgroundColor: "#5bc0de",
-                      borderColor: "#269abc",
-                      margin: '3px',
-
-                    }}
+                    style={{backgroundColor: "#337AB7",borderColor: "#2d6da3",margin: '3px',}}
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     data-tip data-for="Xem"
                   >
                     <ReactTooltip id="Xem" place="top" effect="solid">Xem</ReactTooltip>
+                    <BsFillEyeFill/>
+                  </Button>
+                  <Button
+                    style={{backgroundColor: "#5bc0de", borderColor: "#269abc",margin: '3px',}}
+                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
+                    data-tip data-for="Sửa"
+                  >
+                    <ReactTooltip id="Sửa" place="top" effect="solid">Sửa</ReactTooltip>
                     <BsPencilSquare/>
                   </Button>
                   <Button
-                    style={{
-                      backgroundColor: "#337AB7",
-                      borderColor: "#2d6da3",
-                      margin: '3px',
-
-                    }}
+                    variant="success"
+                    style={{borderColor: "#2d6da3", margin: '3px', }}
+                    data-tip data-for="Duyệt"
                   >
-                    <BsCursorFill/>
+                    <ReactTooltip id="Duyệt" place="top" effect="solid">Duyệt</ReactTooltip>
+                    <BsCheckLg/>
                   </Button>
                   <Button
-                    style={{
-                      backgroundColor: "#c9302c",
-                      borderColor: "#ac2925",
-                    }}
+                    variant="danger"
+                    style={{borderColor: "#2d6da3", margin: '3px', }}
+                    data-tip data-for="Không duyệt"
+                  >
+                    <ReactTooltip id="Không duyệt" place="top" effect="solid">Không duyệt</ReactTooltip>
+                    <BsXLg/>
+                  </Button>
+                  {/* <Button
+                    style={{ backgroundColor: "#c9302c",borderColor: "#ac2925", margin: '3px' }}
                     onClick={() => deleteDeTaiCB(detaicb._id)}
                   >
                     <BsTrashFill/>
-                  </Button>
+                  </Button> */}
+                  
                   <Button
-                    style={{
-                      backgroundColor: "#337AB7",
-                      borderColor: "#2d6da3",
-                      margin: '3px',
-                    }}
+                    style={{backgroundColor: "#337AB7",borderColor: "#2d6da3",margin: '3px', }}
+                    data-tip data-for="In thuyết minh"
                   >
+                    <ReactTooltip id="In thuyết minh" place="top" effect="solid">In thuyết minh</ReactTooltip>
                     <BsFillFileEarmarkWordFill/>
                   </Button>
                 </td>
@@ -168,5 +147,4 @@ const DeTaiCBs = () => {
     </div>
   );
 };
-
-export default DeTaiCBs;
+export default DeTaiDuyetCapKhoas;

@@ -9,6 +9,7 @@ import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import {KhoaContext} from '../../../contexts/KhoaContext'
 import {LinhVucContext} from '../../../contexts/LinhVucContext'
 import {UserContext} from "../../../contexts/UserContext";
+
 const ThemDeTaiSV = () => {
   //context
   const {
@@ -16,7 +17,6 @@ const ThemDeTaiSV = () => {
     setShowThemDeTaiSV,
     addDeTaiSV,
     setShowToast,
-    fullscreen,
   } = useContext(DeTaiSVContext);
   const {
     dotdangkyState: { dotdangkys },

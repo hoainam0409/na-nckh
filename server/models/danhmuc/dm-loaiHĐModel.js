@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const CapDeTaiSchema = new Schema({
+const LoaiHĐSchema = new Schema({
   ma: {
     type: String,
     required: true,
@@ -13,4 +13,4 @@ const CapDeTaiSchema = new Schema({
     required: true,
   },
 });
-module.exports = mongoose.model("capdetai", CapDeTaiSchema);
+module.exports = mongoose.model("loaiHĐ", LoaiHĐSchema);

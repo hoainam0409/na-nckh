@@ -9,8 +9,6 @@ import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import { KhoaContext } from "../../../contexts/KhoaContext";
 import { LinhVucContext } from "../../../contexts/LinhVucContext";
 import { UserContext } from "../../../contexts/UserContext";
-import Select from "react-select";
-import makeAnimated from "react-select/animated";
 
 const ThemDeTaiCB = () => {
   //context
@@ -128,7 +126,7 @@ const ThemDeTaiCB = () => {
     resetAddDeTaiCB();
     setShowToast({ show: true, message, type: success ? "success" : "danger" });
   };
-  const animatedComponents = makeAnimated();
+  // const animatedComponents = makeAnimated();
 
   return (
     <Modal show={showThemDeTaiCB} onHide={closeDialog} >
@@ -304,14 +302,6 @@ const ThemDeTaiCB = () => {
               <option value="Mở đăng ký">Mở đăng ký</option>
               <option value="Khóa đăng ký">Khóa đăng ký</option>
             </Form.Select>
-            {/* <Select options={users}/> */}
-            {/* <Select
-              closeMenuOnSelect={false}
-              components={animatedComponents}
-              defaultValue={[]}
-              isMulti
-              options={users}
-            /> */}
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Sản phẩm</Form.Label>
@@ -323,17 +313,6 @@ const ThemDeTaiCB = () => {
               onChange={onChangeInput}
             ></Form.Control>
           </Form.Group>
-          {/* <Form.Group className="mb-3">
-            <Form.Label>Trạng thái</Form.Label>
-            <Form.Select
-              type="text"
-              value={trangthai}
-              name="trangthai"
-              onChange={onChangeInput}
-            >
-               <option value="Đăng ký">Đăng ký</option>
-            </Form.Select>
-          </Form.Group> */}
           <Form.Group className="mb-3">
             <Form.Label>Đính kèm</Form.Label>
             <Form.Control

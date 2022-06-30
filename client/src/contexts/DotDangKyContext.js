@@ -34,7 +34,7 @@ const DotDangKyContextProvider = ({ children }) => {
   // Lấy tất cả
   const getDotDangKys = async () => {
     try {
-      const response = await axios.get(`${apiUrl}/nckh/dotdangky-detai`);
+      const response = await axios.get(`${apiUrl}/detai/dotdangky`);
       if (response.data.success) {
         dispatch({
           type: DOTDANGKY_LOADED_SUCCESS,
@@ -50,7 +50,7 @@ const DotDangKyContextProvider = ({ children }) => {
   const addDotDangKy = async (newDotDangKy) => {
     try {
       const response = await axios.post(
-        `${apiUrl}/nckh/dotdangky-detai`,
+        `${apiUrl}/detai/dotdangky`,
         newDotDangKy
       );
       if (response.data.success) {
@@ -68,7 +68,7 @@ const DotDangKyContextProvider = ({ children }) => {
   const deleteDotDangKy = async (id) => {
     try {
       const response = await axios.delete(
-        `${apiUrl}/nckh/dotdangky-detai/${id}`
+        `${apiUrl}/detai/dotdangky/${id}`
       );
       if (response.data.success) dispatch({ type: DELETE_DOTDANGKY, payload: id });
       return response.data;
@@ -92,7 +92,7 @@ const DotDangKyContextProvider = ({ children }) => {
   const updateDotDangKy = async (updatedDotDangKy) => {
     try {
       const response = await axios.put(
-        `${apiUrl}/nckh/dotdangky-detai/${updatedDotDangKy._id}`,
+        `${apiUrl}/detai/dotdangky/${updatedDotDangKy._id}`,
         updatedDotDangKy
       );
       if (response.data.success) {

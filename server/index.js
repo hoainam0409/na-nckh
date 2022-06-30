@@ -16,7 +16,7 @@ app.use(cors())
 
 //Router
 app.use('/user', require('./routers/userRouter'))
-app.use('/nckh', require('./routers/dotdangkyRouter'))
+app.use('/detai', require('./routers/dotdangkyRouter'))
 app.use('/danhmuc', require('./routers/danhmuc/dm-phongbanRouter'))
 app.use('/danhmuc', require('./routers/danhmuc/dm-hochamRouter'))
 app.use('/danhmuc', require('./routers/danhmuc/dm-hocviRouter'))
@@ -24,10 +24,14 @@ app.use('/danhmuc', require('./routers/danhmuc/dm-chucvuRouter'))
 app.use('/danhmuc', require('./routers/danhmuc/dm-capdetaiRouter'))
 app.use('/danhmuc', require('./routers/danhmuc/dm-linhvucRouter'))
 app.use('/danhmuc', require('./routers/danhmuc/dm-khoaRouter'))
+app.use('/danhmuc', require('./routers/danhmuc/dm-vaitroHĐRouter'))
+app.use('/danhmuc', require('./routers/danhmuc/dm-loaiHĐRouter'))
 app.use('/thongbao', require('./routers/thongbaochungRouter'))
 app.use('/', require('./routers/taikhoanSVRouter'))
 app.use('/nckh/detai-sinhvien', require('./routers/detaisvRouter'))
 app.use('/detai-canbo', require('./routers/detaiCBRouter'))
+app.use('/quanly', require('./routers/hoidongRouter'))
+
 
 
 

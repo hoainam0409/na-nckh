@@ -17,7 +17,7 @@ import {FaCube} from 'react-icons/fa'
     },
     {
       title: 'Đợt đăng ký đề tài NCKH',
-      path: '/nckh/dotdangky-detai',
+      path: '/detai/dotdangky',
       icon: <FaCube style ={{color: 'black'}}/>
     },
     {
@@ -86,6 +86,25 @@ import {FaCube} from 'react-icons/fa'
           path: '/nckh/detai-sinhvien/tieuban-nghiemthu',
           icon: <FaCube style ={{color: 'black'}}/>
         }
+      ]
+    },
+    {
+      title: 'Quản lý hội đồng khoa học',
+      path: '',
+      icon: <FaCube style ={{color: 'black'}}/>,
+      iconClosed: <RiIcons.RiArrowDownSFill style ={{color: 'black'}}/>,
+      iconOpened: <RiIcons.RiArrowUpSFill style ={{color: 'black'}}/>,
+      subNav: [
+        {
+          title: 'Cấu hình hội đồng',
+          path: '/quanly/cau-hinh-hoi-dong',
+          icon: <FaCube style ={{color: 'black'}}/>
+        },
+        {
+          title: 'Danh sách hội đồng khoa học',
+          path: '/quanly/hoidong',
+          icon: <FaCube style ={{color: 'black'}}/>
+        },
       ]
     },
     {

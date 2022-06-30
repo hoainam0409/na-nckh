@@ -2,32 +2,32 @@ import React, { useContext, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
-import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
+import { HoiDongContext } from "../../../contexts/HoiDongContext";
 import SideBar from "../../sidebar/SideBar";
-import ThemDotDangKy from "./ThemDotDangKy";
-import SuaDotDangKy from "./SuaDotDangKy";
+import ThemHoiDong from "./ThemHoiDong";
+import SuaHoiDong from "./SuaHoiDong";
 import ReactTooltip from "react-tooltip"
 import { BsFillEyeFill, BsPencilSquare, BsTrashFill} from "react-icons/bs";
 
-const DotDangKys = () => {
+const HoiDongs = () => {
 
   const {
-    dotdangkyState: { dotdangky, dotdangkys, dotdangkysLoading },
-    getDotDangKys,
-    setShowThemDotDangKy,
+    hoidongState: { hoidong, hoidongs, hoidongsLoading },
+    getHoiDongs,
+    setShowThemHoiDong,
     showToast: { show, message, type },
     setShowToast,
-    deleteDotDangKy,
-    findDotDangKy,
-    setShowSuaDotDangKy,
-  } = useContext(DotDangKyContext);
+    deleteHoiDong,
+    findHoiDong,
+    setShowSuaHoiDong,
+  } = useContext(HoiDongContext);
 
   // Start: Get all
-  useEffect(() => getDotDangKys(), []);
+  useEffect(() => getHoiDongs(), []);
 
-  const chooseDotDangKy = (dotdangkyId) => {
-    findDotDangKy(dotdangkyId);
-    setShowSuaDotDangKy(true);
+  const chooseHoiDong = (hoidongId) => {
+    findHoiDong(hoidongId);
+    setShowSuaHoiDong(true);
   };
   return (
     <div>
@@ -38,7 +38,7 @@ const DotDangKys = () => {
             fontSize: "24px",
           }}
         >
-          Danh sách đợt đăng ký đề tài
+          Danh sách hội đồng khoa học
         </h1>
         <Toast
           show={show}
@@ -63,36 +63,32 @@ const DotDangKys = () => {
             backgroundColor: "#337AB7",
             borderColor: "#2d6da3",
           }}
-          onClick={setShowThemDotDangKy.bind(this, true)}
+          onClick={setShowThemHoiDong.bind(this, true)}
         >
           Thêm mới
         </Button>
-        <ThemDotDangKy/>
-        {dotdangky !== null && <SuaDotDangKy/>}
+        <ThemHoiDong/>
+        {hoidong !== null && <SuaHoiDong/>}
 
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr>
-              <th style={{ textAlign: "center", color: "#495057" }}>Mã đợt</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Tên đợt</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Tên hội đồng</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Loại hội đồng</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Ngày đề nghị</th>
               <th style={{ textAlign: "center", color: "#495057" }}>Năm</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Cấp đề tài</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Ngày mở đăng ký</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Ngày khóa đăng ký</th>
               <th style={{ textAlign: "center", color: "#495057" }}>
                 Chức năng
               </th>
             </tr>
           </thead>
           <tbody>
-            {dotdangkys.map((dotdangky) => (
-              <tr key={dotdangky._id}>
-                <td onClick={chooseDotDangKy.bind(this, dotdangky._id)}>{dotdangky.madot} </td>
-                <td>{dotdangky.tendot}</td>
-                <td>{dotdangky.nam} </td>
-                <td>{dotdangky.capdetai}</td>
-                <td>{new Date(dotdangky.ngaymodangky).toLocaleDateString()} </td>
-                <td>{new Date(dotdangky.ngaykhoadangky).toLocaleDateString()} </td>
+            {hoidongs.map((hoidong) => (
+              <tr key={hoidong._id}>
+                <td onClick={chooseHoiDong.bind(this, hoidong._id)}>{hoidong.tenhoidong} </td>
+                <td>{hoidong.loaihoidong}</td>
+                <td>{new Date(hoidong.ngaydenghi).toLocaleDateString()} </td>
+                <td>{hoidong.nam}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
                     style={{
@@ -100,10 +96,10 @@ const DotDangKys = () => {
                       borderColor: "#2d6da3",
                       margin: '3px'
                     }}
-                    onClick={chooseDotDangKy.bind(this, dotdangky._id)}
+                    onClick={chooseHoiDong.bind(this, hoidong._id)}
                     data-tip data-for="Xem"
                   >
-                  <ReactTooltip id="Xem" place="top" effect="solid">Xem</ReactTooltip>
+                   <ReactTooltip id="Xem" place="top" effect="solid">Xem</ReactTooltip>
                     <BsFillEyeFill/>
                   </Button>
                   <Button
@@ -112,10 +108,10 @@ const DotDangKys = () => {
                       borderColor: "#269abc",
                       margin: '3px'
                     }}
-                    onClick={chooseDotDangKy.bind(this, dotdangky._id)}
+                    onClick={chooseHoiDong.bind(this, hoidong._id)}
                     data-tip data-for="Sửa"
                   >
-                   <ReactTooltip id="Sửa" place="top" effect="solid">Sửa</ReactTooltip>
+                  <ReactTooltip id="Sửa" place="top" effect="solid">Sửa</ReactTooltip>
                     <BsPencilSquare/>
                   </Button>
                   <Button
@@ -124,10 +120,10 @@ const DotDangKys = () => {
                       borderColor: "#ac2925",
                       margin: '3px'
                     }}
-                    onClick={() => deleteDotDangKy(dotdangky._id)}
+                    onClick={() => deleteHoiDong(hoidong._id)}
                     data-tip data-for="Xóa"
                   >
-                  <ReactTooltip id="Xóa" place="top" effect="solid">Xóa</ReactTooltip> 
+                   <ReactTooltip id="Xóa" place="top" effect="solid">Xóa</ReactTooltip> 
                   <BsTrashFill/>
                   </Button>
                 </td>
@@ -140,4 +136,4 @@ const DotDangKys = () => {
   );
 };
 
-export default DotDangKys;
+export default HoiDongs;

@@ -12,6 +12,7 @@ import KhoaContextProvider from "./contexts/KhoaContext";
 import LinhVucContextProvider from "./contexts/LinhVucContext";
 import UserContextProvider from "./contexts/UserContext";
 import ChucVuContextProvider from "./contexts/ChucVuContext";
+import HoiDongContextProvider from "./contexts/HoiDongContext";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <DotDangKyContextProvider>
             <DeTaiSVContextProvider>
               <DeTaiCBContextProvider>
+                <HoiDongContextProvider>
                 <UserContextProvider>
                   <KhoaContextProvider>
                     <LinhVucContextProvider>
@@ -32,6 +34,7 @@ function App() {
                     </LinhVucContextProvider>
                   </KhoaContextProvider>
                 </UserContextProvider>
+                </HoiDongContextProvider>
               </DeTaiCBContextProvider>
             </DeTaiSVContextProvider>
           </DotDangKyContextProvider>

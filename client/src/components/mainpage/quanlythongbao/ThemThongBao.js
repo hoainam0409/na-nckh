@@ -1,13 +1,21 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect} from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { ThongbaochungContext } from "../../../contexts/ThongbaochungContext";
+import {UserContext} from "../../../contexts/UserContext";
 
 const ThemThongBao = () => {
   //context
   const { showThemThongBao, setShowThemThongBao, addThongBaoChung, setShowToast } =
     useContext(ThongbaochungContext);
+
+  const {
+    userState: {users},
+    getUsers
+  } = useContext(UserContext)  
+
+  useEffect(() => getUsers(), [] )
 
   //State
   const [newThongBaoChung, setNewThongBaoChung] = useState({
@@ -68,14 +76,19 @@ const ThemThongBao = () => {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Người thông báo</Form.Label>
-            <Form.Control
+            <Form.Select
               type="text"
               name="nguoithongbao"
               required
               aria-describedby="title-help"
               value={nguoithongbao}
               onChange={onChangeInput}
-            />
+            >
+              <option>Chọn người thông báo</option>
+              {users.map((user) => (
+                <option value={user.hovaten}>{user.hovaten}</option>
+              ))}
+            </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Ngày thông báo</Form.Label>

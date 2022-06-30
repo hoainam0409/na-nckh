@@ -23,11 +23,8 @@ const DeTaiCBContextProvider = ({ children }) => {
 
   const [showThemDeTaiCB, setShowThemDeTaiCB] = useState(false);
   const [showSuaDeTaiCB, setShowSuaDeTaiCB] = useState(false);
-  const [fullscreen, setFullscreen] = useState(true);
-  function ShowFullScreen(breakpoint) {
-    setFullscreen(breakpoint);
-    setShowThemDeTaiCB(true);
-  }
+  const [showNhapKQĐG, setShowNhapKQĐG] = useState(false);
+
 
   const [showToast, setShowToast] = useState({
     show: false,
@@ -112,6 +109,23 @@ const DeTaiCBContextProvider = ({ children }) => {
     }
   };
 
+  //Duyệt cấp khoa
+
+
+  //Nhập kết quả đánh giá
+
+
+
+  //Duyệt cấp trường
+
+
+  
+
+  //Nhập kết quả nghiệm thu
+
+
+
+
   // context data
   const DeTaiCBContextData = {
     detaicbState,
@@ -128,9 +142,8 @@ const DeTaiCBContextProvider = ({ children }) => {
     showSuaDeTaiCB,
     setShowSuaDeTaiCB,
     findDeTaiCB,
-    ShowFullScreen,
-    fullscreen,
-    setFullscreen
+    showNhapKQĐG,
+    setShowNhapKQĐG,
   };
 
   return (

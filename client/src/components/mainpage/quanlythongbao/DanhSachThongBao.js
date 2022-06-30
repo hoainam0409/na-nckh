@@ -8,6 +8,8 @@ import SideBar from "../../sidebar/SideBar";
 import ThemThongBao from "./ThemThongBao";
 import SuaThongBao from "./SuaThongBao";
 import Spinner from "react-bootstrap/Spinner";
+import ReactTooltip from "react-tooltip";
+import { BsFillEyeFill, BsPencilSquare, BsTrashFill } from "react-icons/bs";
 
 const Thongbaochungs = () => {
   // Contexts
@@ -100,37 +102,53 @@ const Thongbaochungs = () => {
                   <td>{thongbaochung.nguoithongbao}</td>
                   <td style={{ textAlign: "center" }}>
                     <Button
+                      variant="primary"
                       style={{
-                        backgroundColor: "#337AB7",
-                        borderColor: "#2d6da3",
+                        margin: "3px",
                       }}
                       onClick={chooseThongBaoChung.bind(
                         this,
                         thongbaochung._id
                       )}
+                      data-tip
+                      data-for="Xem"
                     >
-                      Xem
+                      <ReactTooltip id="Xem" place="top" effect="solid">
+                        Xem
+                      </ReactTooltip>
+                      <BsFillEyeFill />
                     </Button>
                     <Button
                       style={{
                         backgroundColor: "#5bc0de",
                         borderColor: "#269abc",
+                        margin: "3px",
                       }}
                       onClick={chooseThongBaoChung.bind(
                         this,
                         thongbaochung._id
                       )}
+                      data-tip
+                      data-for="Sửa"
                     >
-                      Sửa
+                      <ReactTooltip id="Sửa" place="top" effect="solid">
+                        Sửa
+                      </ReactTooltip>
+                      <BsPencilSquare />
                     </Button>
                     <Button
+                      variant="danger"
                       style={{
-                        backgroundColor: "#c9302c",
-                        borderColor: "#ac2925",
+                        margin: "3px",
                       }}
                       onClick={() => deleteThongBaoChung(thongbaochung._id)}
+                      data-tip
+                      data-for="Xóa"
                     >
-                      Xóa
+                      <ReactTooltip id="Xóa" place="top" effect="solid">
+                        Xóa
+                      </ReactTooltip>
+                      <BsTrashFill />
                     </Button>
                   </td>
                 </tr>

@@ -3,6 +3,7 @@ import { authReducer } from "../reducers/authReducer";
 import { apiUrl, LOCAL_STORAGE_TOKEN_NAME } from "./constant";
 import axios from "axios";
 import setAuthToken from "../until/setAuthToken";
+import LoaiHĐsAPI from '../api/loaihoidongAPI'
 
 export const AuthContext = createContext();
 
@@ -68,7 +69,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   // Context data
-  const authContextData = { loginUser, logoutUser, authState};
+  const authContextData = { loginUser, logoutUser, authState, LoaiHĐsAPI: LoaiHĐsAPI()  };
 
   // Return provider
   return (
