@@ -2,14 +2,14 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const detaiCBSchema = new Schema({
-    madetai:{
+    madetai: {
         type: String,
     },
-    tendetai:{
+    tendetai: {
         type: String,
         required: true
     },
-    dotdangky:{
+    dotdangky: {
         type: String,
         required: true
     },
@@ -25,56 +25,53 @@ const detaiCBSchema = new Schema({
     kinhphi: {
         type: Number
     },
-    khoaxetduyet:{
+    khoaxetduyet: {
         type: String,
         required: true
     },
-    linhvuc:{
+    linhvuc: {
         type: String,
         required: true
     },
-    noidung:{
+    noidung: {
         type: String,
         required: true
     },
-    muctieu:{
+    muctieu: {
         type: String,
         required: true
     },
-    ketquadukien:{
+    ketquadukien: {
         type: String,
         required: true
     },
-    sanpham:{
+    sanpham: {
         type: String,
     },
-    thanhvienthamgia:[
+    thanhvienthamgia: [
         {
-            hovaten:{
-                type: String
-            },
-            vaitrothamgia:{
-                type: String
-            }
+            idThanhVien: String,
+            hovaten: String,
+            vaitrothamgia: String
         }
 
     ],
-    trangthai:{
+    trangthai: {
         type: String,
         enum: ['Đăng ký', 'Chờ duyệt cấp khoa', 'Chờ nhập kết quả đánh giá', 'Chờ duyệt cấp trường', 'Trường duyệt']
-        
+
     },
-    ghichu:{
+    ghichu: {
         type: String,
     },
-    
-    dinhkem:{
+
+    dinhkem: {
         type: Object,
     },
     user: {
-		type: Schema.Types.ObjectId,
-		ref: 'users'
-	}
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    }
 }, {
     timestamps: true //important
 })

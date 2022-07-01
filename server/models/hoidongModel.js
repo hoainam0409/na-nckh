@@ -31,12 +31,9 @@ const hoidongSchema = new mongoose.Schema({
     },
     danhsachthanhvien:[
         {
-            hovaten:{
-                type: String
-            },
-            vaitro:{
-                type: String
-            }
+            idThanhVienHĐ: String,
+            hovaten:String,
+            vaitro:String
         }
     ],
     dinhkem:{

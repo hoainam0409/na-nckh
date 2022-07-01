@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Figure from 'react-bootstrap/Figure'
+import noImage from '../../../assets/images/layout/no-image.jpg'
 
 const Thongtincanhan = () => {
   return (
@@ -26,7 +27,7 @@ const Thongtincanhan = () => {
               width={171}
               height={180}
               alt="171x180"
-              src=""
+              src={noImage}
             />
             <Figure.Caption>
              Chọn ảnh

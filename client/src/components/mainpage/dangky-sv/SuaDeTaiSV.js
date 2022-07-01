@@ -125,7 +125,7 @@ const SuaDeTaiSV = () => {
             >
                <option>Chọn đợt đăng ký đề tài</option>
               {dotdangkys.map((dotdangky) => (
-                <option key={dotdangky._id}>{dotdangky.tendot}</option>
+                <option key={dotdangky._id} value={dotdangky._id}>{dotdangky.tendot}</option>
               ))}
             </Form.Select>
           </Form.Group>
@@ -155,7 +155,7 @@ const SuaDeTaiSV = () => {
                 >
                  <option>Chọn lĩnh vực nghiên cứu</option>
               {linhvucs.map((linhvuc) => (
-                <option key={linhvuc._id}>{linhvuc.ten}</option>
+                <option key={linhvuc._id} value={linhvuc._id}>{linhvuc.ten}</option>
               ))}
                 </Form.Select>
               </Form.Group>
@@ -173,7 +173,7 @@ const SuaDeTaiSV = () => {
                 >
                   <option>Chọn khoa xét duyệt đề tài</option>
               {khoas.map((khoa) => (
-                <option key={khoa._id}>{khoa.ten}</option>
+                <option key={khoa._id} value={khoa._id}>{khoa.ten}</option>
               ))}
                 </Form.Select>
               </Form.Group>

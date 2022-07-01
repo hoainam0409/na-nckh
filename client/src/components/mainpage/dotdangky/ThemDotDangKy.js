@@ -51,7 +51,6 @@ const ThemDotDangKy = () => {
       ...newDotDangKy,
       [event.target.name]: event.target.value,
     });
-  // console.log(newThongBaoChung);
 
   const resetAddDotDangKy = () => {
     setNewDotDangKy({
@@ -125,7 +124,7 @@ const ThemDotDangKy = () => {
               <Form.Group className="mb-3">
                 <Form.Label>Cấp đề tài</Form.Label>
                 <Form.Select
-                  // aria-label="Default select example"
+                  aria-label="Default select example"
                   name="capdetai"
                   required
                   aria-describedby="title-help"
@@ -134,7 +133,7 @@ const ThemDotDangKy = () => {
                 >
                   <option >Chọn cấp đề tài</option>
                   {capdetais.map((capdetai) => (
-                    <option key={capdetai._id}>{capdetai.ten}</option>
+                    <option key={capdetai._id} value={capdetai._id}>{capdetai.ten}</option>
                   ))}
                 </Form.Select>
               </Form.Group>
@@ -171,7 +170,6 @@ const ThemDotDangKy = () => {
           <Form.Group className="mb-3">
             <Form.Label>Trạng thái</Form.Label>
             <Form.Select
-              // as="select"
               value={trangthai}
               name="trangthai"
               onChange={onChangeInput}

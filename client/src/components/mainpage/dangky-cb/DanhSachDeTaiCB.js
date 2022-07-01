@@ -89,12 +89,15 @@ const DeTaiCBs = () => {
                 <td>{detaicb.tendetai}</td>
                 <td>{detaicb.dotdangky} </td>
                 <td>{detaicb.khoaxetduyet}</td>
-                {/* <td>{detaicb.thanhvienthamgia}</td> */}
-                <td></td>
+                <td>{detaicb.thanhvienthamgia.map(q => (
+                  <div>
+                    { q.hovaten }
+                  </div>
+                ))}</td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
-                    style={{backgroundColor: "#337AB7",borderColor: "#2d6da3",margin: '3px',}}
+                    style={{ backgroundColor: "#337AB7", borderColor: "#2d6da3", margin: '3px', }}
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     data-tip data-for="Xem"
                   >
@@ -102,7 +105,7 @@ const DeTaiCBs = () => {
                     <BsFillEyeFill />
                   </Button>
                   <Button
-                    style={{backgroundColor: "#5bc0de", borderColor: "#269abc", margin: '3px', }}
+                    style={{ backgroundColor: "#5bc0de", borderColor: "#269abc", margin: '3px', }}
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     data-tip data-for="Sửa"
                   >
@@ -110,18 +113,18 @@ const DeTaiCBs = () => {
                     <BsPencilSquare />
                   </Button>
                   <Button
-                    style={{backgroundColor: "#337AB7", borderColor: "#2d6da3",margin: '3px',}}
+                    style={{ backgroundColor: "#337AB7", borderColor: "#2d6da3", margin: '3px', }}
                   >
                     <BsCursorFill />
                   </Button>
                   <Button
-                    style={{backgroundColor: "#c9302c",borderColor: "#ac2925",margin: '3px',}}
+                    style={{ backgroundColor: "#c9302c", borderColor: "#ac2925", margin: '3px', }}
                     onClick={() => deleteDeTaiCB(detaicb._id)}
                   >
                     <BsTrashFill />
                   </Button>
                   <Button
-                    style={{backgroundColor: "#337AB7",borderColor: "#2d6da3", margin: '3px',}}
+                    style={{ backgroundColor: "#337AB7", borderColor: "#2d6da3", margin: '3px', }}
                     data-tip data-for="In thuyết minh"
                   >
                     <ReactTooltip id="In thuyết minh" place="top" effect="solid">In thuyết minh</ReactTooltip>

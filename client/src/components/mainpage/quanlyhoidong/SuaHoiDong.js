@@ -5,75 +5,139 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useContext, useState, useEffect } from "react";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
+import { HoiDongContext } from "../../../contexts/HoiDongContext";
+import { LoaiHĐContext} from "../../../contexts/LoaiHĐContext";
+import {UserContext} from '../../../contexts/UserContext'
 
-const SuaCapDeTai = () => {
+const SuaHoiDong = () => {
   // Contexts
   const {
-    dotdangkyState: { dotdangky },
-    showSuaDotDangKy,
-    setShowSuaDotDangKy,
-    updateDotDangKy,
+    hoidongState: { hoidong },
+    showSuaHoiDong,
+    setShowSuaHoiDong,
+    updateHoiDong,
     setShowToast,
+  } = useContext(HoiDongContext);
+  const {
+    dotdangkyState: { dotdangkys },
+    getDotDangKys,
   } = useContext(DotDangKyContext);
+  useEffect(() => getDotDangKys(), []);
+
+  const {
+    loaiHĐState: { loaiHĐs },
+    getLoaiHĐs,
+  } = useContext(LoaiHĐContext);
+  useEffect(() => getLoaiHĐs(), []);
+
+  const {
+    userState: { users },
+    getUsers,
+  } = useContext(UserContext);
+  useEffect(() => getUsers(), []);
+
 
   // State
-  const [updatedDotDangKy, setUpdatedDotDangKy] =
-    useState(dotdangky);
+  const [updatedHoiDong, setUpdatedHoiDong] = useState(hoidong);
 
-  useEffect(() => setUpdatedDotDangKy(dotdangky), [dotdangky]);
+  useEffect(() => setUpdatedHoiDong(hoidong), [hoidong]);
 
-  const { madot, tendot, nam, capdetai, ngaymodangky, ngaykhoadangky,trangthai, ghichu, dinhkem } =
-    updatedDotDangKy;
+  const {
+    tenhoidong,
+    loaihoidong,
+    dotdangky,
+    ngaydenghi,
+    soquyetdinh,
+    ngayraquyetdinh,
+    nam,
+    ghichu,
+    danhsachthanhvien,
+    dinhkem,
+  } = updatedHoiDong;
 
   const onChangeUpdated = (event) =>
-    setUpdatedDotDangKy({
-      ...updatedDotDangKy,
+    setUpdatedHoiDong({
+      ...updatedHoiDong,
       [event.target.name]: event.target.value,
     });
-
+  const onChangeUser = (event) => {
+    const userSelected = users.find((q) => q._id == event.target.value);
+    setUpdatedHoiDong({
+      ...updatedHoiDong,
+      [event.target.name]: userSelected,
+    });
+  };
   const closeDialog = () => {
-    setUpdatedDotDangKy(dotdangky);
-    setShowSuaDotDangKy(false);
+    setUpdatedHoiDong(hoidong);
+    setShowSuaHoiDong(false);
   };
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    const { success, message } = await updateDotDangKy(
-      updatedDotDangKy
-    );
-    setShowSuaDotDangKy(false);
+    const { success, message } = await updateHoiDong(updatedHoiDong);
+    setShowSuaHoiDong(false);
     setShowToast({ show: true, message, type: success ? "success" : "danger" });
   };
 
   return (
-    <Modal show={showSuaDotDangKy} onHide={closeDialog}>
+    <Modal show={showSuaHoiDong} onHide={closeDialog}>
       <Modal.Header closeButton>
         <Modal.Title>Chỉnh sửa cấp đề tài</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
-        <Modal.Body>
+      <Modal.Body>
           <Form.Group className="mb-3">
-            <Form.Label>Mã đợt</Form.Label>
+            <Form.Label>Tên hội đồng</Form.Label>
             <Form.Control
               type="text"
-              name="madot"
+              name="tenhoidong"
               required
               aria-describedby="title-help"
-              value={madot}
+              value={tenhoidong}
               onChange={onChangeUpdated}
             />
           </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Tên đợt</Form.Label>
-            <Form.Control
-              type="text"
-              name="tendot"
-              required
-              aria-describedby="title-help"
-              value={tendot}
-              onChange={onChangeUpdated}
-            />
-          </Form.Group>
+          <Row>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Loại hội đồng</Form.Label>
+                <Form.Select
+                  name="loaihoidong"
+                  required
+                  aria-describedby="title-help"
+                  value={loaihoidong}
+                  onChange={onChangeUpdated}
+                >
+                  <option value="">Chọn loại hội đồng</option>
+                        {
+                            loaiHĐs.map((loaiHĐ) => (
+                                <option key={loaiHĐ._id}>
+                                    {loaiHĐ.ten}
+                                </option>
+                            ))
+                        }
+                </Form.Select>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Đợt đăng ký</Form.Label>
+                <Form.Select
+                  type="text"
+                  name="dotdangky"
+                  required
+                  aria-describedby="title-help"
+                  value={dotdangky}
+                  onChange={onChangeUpdated}
+                >
+                  <option>Chọn đợt đăng ký đề tài</option>
+                  {dotdangkys.map((dotdangky) => (
+                <option key={dotdangky._id} value={dotdangky._id}>{dotdangky.tendot}</option>
+              ))}
+                </Form.Select>
+              </Form.Group>
+            </Col>
+          </Row>
           <Row>
             <Col>
               <Form.Group className="mb-3">
@@ -90,58 +154,44 @@ const SuaCapDeTai = () => {
             </Col>
             <Col>
               <Form.Group className="mb-3">
-                <Form.Label>Cấp đề tài</Form.Label>
+                <Form.Label>Ngày đề nghị</Form.Label>
                 <Form.Control
-                  type="text"
-                  name="capdetai"
-                  required
+                  type="date"
+                  name="ngaydenghi"
                   aria-describedby="title-help"
-                  value={capdetai}
+                  value={ngaydenghi}
                   onChange={onChangeUpdated}
-                />
+                >
+                </Form.Control>
               </Form.Group>
             </Col>
           </Row>
           <Row>
             <Col>
               <Form.Group className="mb-3">
-                <Form.Label>Ngày mở đăng ký </Form.Label>
+                <Form.Label>Số quyết định</Form.Label>
                 <Form.Control
-                  type="date"
-                  name="ngaymodangky"
-                  required
+                  type="text"
+                  name="soquyetdinh"
                   aria-describedby="title-help"
-                  value={ngaymodangky}
+                  value={soquyetdinh}
                   onChange={onChangeUpdated}
                 />
               </Form.Group>
             </Col>
             <Col>
               <Form.Group className="mb-3">
-                <Form.Label>Ngày khóa đăng ký</Form.Label>
+                <Form.Label>Ngày ra quyết định</Form.Label>
                 <Form.Control
                   type="date"
-                  name="ngaykhoadangky"
-                  required
+                  name="ngayraquyetdinh"
                   aria-describedby="title-help"
-                  value={ngaykhoadangky}
+                  value={ngayraquyetdinh}
                   onChange={onChangeUpdated}
                 />
               </Form.Group>
             </Col>
           </Row>
-          <Form.Group className="mb-3">
-            <Form.Label>Trạng thái</Form.Label>
-            <Form.Control
-							as='select'
-							value={trangthai}
-							name='trangthai'
-							onChange={onChangeUpdated}
-						>
-							<option value='Mở đăng ký'>Mở đăng ký</option>
-							<option value='Khóa đăng ký'>Khóa đăng ký</option>
-						</Form.Control>
-          </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Ghi chú</Form.Label>
             <Form.Control
@@ -163,6 +213,199 @@ const SuaCapDeTai = () => {
               onChange={onChangeUpdated}
             />
           </Form.Group>
+          <div>
+          <h1>DANH SÁCH THÀNH VIÊN THAM GIA HỘI ĐỒNG</h1>
+          <Row>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Họ và tên</Form.Label>
+                <Form.Select
+                  name="user1"
+                  required
+                  aria-describedby="title-help"
+                  value={danhsachthanhvien.hovaten}
+                  onChange={onChangeUser}
+                >
+                   <option value="">Chọn thành viên</option>
+                        {
+                            users.map((user) => (
+                              <option
+                              key={user._id}
+                              value={user._id}
+                              name={user.hovaten}
+                            >
+                              {user.hovaten}
+                            </option>
+                            ))
+                        }
+                </Form.Select>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Vai trò hội đồng</Form.Label>
+                <Form.Control
+                  name="vaitro1"
+                  aria-describedby="title-help"
+                  value={danhsachthanhvien.vaitro}
+                  onChange={onChangeUpdated}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Họ và tên</Form.Label>
+                <Form.Select
+                  name="user2"
+                  required
+                  aria-describedby="title-help"
+                  value={danhsachthanhvien.hovaten}
+                  onChange={onChangeUser}
+                >
+                   <option value="">Chọn thành viên</option>
+                        {
+                            users.map((user) => (
+                              <option
+                              key={user._id}
+                              value={user._id}
+                              name={user.hovaten}
+                            >
+                              {user.hovaten}
+                            </option>
+                            ))
+                        }
+                </Form.Select>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Vai trò hội đồng</Form.Label>
+                <Form.Control
+                  name="vaitro2"
+                  aria-describedby="title-help"
+                  value={danhsachthanhvien.vaitro}
+                  onChange={onChangeUpdated}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Họ và tên</Form.Label>
+                <Form.Select
+                  name="user3"
+                  required
+                  aria-describedby="title-help"
+                  value={danhsachthanhvien.hovaten}
+                  onChange={onChangeUser}
+                >
+                   <option value="">Chọn thành viên</option>
+                        {
+                            users.map((user) => (
+                              <option
+                              key={user._id}
+                              value={user._id}
+                              name={user.hovaten}
+                            >
+                              {user.hovaten}
+                            </option>
+                            ))
+                        }
+                </Form.Select>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Vai trò hội đồng</Form.Label>
+                <Form.Control
+                  name="vaitro3"
+                  aria-describedby="title-help"
+                  value={danhsachthanhvien.vaitro}
+                  onChange={onChangeUpdated}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Họ và tên</Form.Label>
+                <Form.Select
+                  name="user4"
+                  required
+                  aria-describedby="title-help"
+                  value={danhsachthanhvien.hovaten}
+                  onChange={onChangeUser}
+                >
+                   <option value="">Chọn thành viên</option>
+                        {
+                            users.map((user) => (
+                              <option
+                              key={user._id}
+                              value={user._id}
+                              name={user.hovaten}
+                            >
+                              {user.hovaten}
+                            </option>
+                            ))
+                        }
+                </Form.Select>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Vai trò hội đồng</Form.Label>
+                <Form.Control
+                  name="vaitro4"
+                  aria-describedby="title-help"
+                  value={danhsachthanhvien.vaitro}
+                  onChange={onChangeUpdated}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Họ và tên</Form.Label>
+                <Form.Select
+                  name="user5"
+                  required
+                  aria-describedby="title-help"
+                  value={danhsachthanhvien.hovaten}
+                  onChange={onChangeUser}
+                >
+                   <option value="">Chọn thành viên</option>
+                        {
+                            users.map((user) => (
+                              <option
+                              key={user._id}
+                              value={user._id}
+                              name={user.hovaten}
+                            >
+                              {user.hovaten}
+                            </option>
+                            ))
+                        }
+                </Form.Select>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Vai trò hội đồng</Form.Label>
+                <Form.Control
+                  name="vaitro5"
+                  aria-describedby="title-help"
+                  value={danhsachthanhvien.vaitro}
+                  onChange={onChangeUpdated}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" type="submit">
@@ -177,4 +420,4 @@ const SuaCapDeTai = () => {
   );
 };
 
-export default SuaCapDeTai;
+export default SuaHoiDong;

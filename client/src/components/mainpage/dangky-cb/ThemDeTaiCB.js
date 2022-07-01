@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, Component } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -12,13 +12,9 @@ import { UserContext } from "../../../contexts/UserContext";
 
 const ThemDeTaiCB = () => {
   //context
-  const {
-    showThemDeTaiCB,
-    setShowThemDeTaiCB,
-    addDeTaiCB,
-    setShowToast,
-    // fullscreen,
-  } = useContext(DeTaiCBContext);
+  const { showThemDeTaiCB, setShowThemDeTaiCB, addDeTaiCB, setShowToast } =
+    useContext(DeTaiCBContext);
+
   const {
     dotdangkyState: { dotdangkys },
     getDotDangKys,
@@ -63,7 +59,7 @@ const ThemDeTaiCB = () => {
     ketquadukien: "",
     sanpham: "",
     ghichu: "",
-    thanhvienthamgia:[],
+    thanhvienthamgia: [],
     trangthai: "Đăng ký",
     dinhkem: "",
   });
@@ -93,6 +89,14 @@ const ThemDeTaiCB = () => {
       ...newDeTaiCB,
       [event.target.name]: event.target.value,
     });
+
+  const onChangeUser = (event) => {
+    const userSelected = users.find((q) => q._id == event.target.value);
+    setNewDeTaiCB({
+      ...newDeTaiCB,
+      [event.target.name]: userSelected,
+    });
+  };
 
   const resetAddDeTaiCB = () => {
     setNewDeTaiCB({
@@ -128,7 +132,7 @@ const ThemDeTaiCB = () => {
   };
 
   return (
-    <Modal show={showThemDeTaiCB} onHide={closeDialog} >
+    <Modal show={showThemDeTaiCB} onHide={closeDialog}>
       <Modal.Header closeButton>
         <Modal.Title>Thêm mới đề tài cán bộ</Modal.Title>
       </Modal.Header>
@@ -146,7 +150,9 @@ const ThemDeTaiCB = () => {
                 >
                   <option>Chọn đợt đăng ký đề tài</option>
                   {dotdangkys.map((dotdangky) => (
-                    <option key={dotdangky._id}>{dotdangky.tendot}</option>
+                    <option key={dotdangky._id} value={dotdangky._id}>
+                      {dotdangky.tendot}
+                    </option>
                   ))}
                 </Form.Select>
               </Form.Group>
@@ -223,7 +229,9 @@ const ThemDeTaiCB = () => {
                 >
                   <option>Chọn lĩnh vực nghiên cứu</option>
                   {linhvucs.map((linhvuc) => (
-                    <option key={linhvuc._id}>{linhvuc.ten}</option>
+                    <option key={linhvuc._id} value={linhvuc._id}>
+                      {linhvuc.ten}
+                    </option>
                   ))}
                 </Form.Select>
               </Form.Group>
@@ -239,7 +247,9 @@ const ThemDeTaiCB = () => {
                 >
                   <option>Chọn khoa xét duyệt đề tài</option>
                   {khoas.map((khoa) => (
-                    <option key={khoa._id}>{khoa.ten}</option>
+                    <option key={khoa._id} value={khoa._id}>
+                      {khoa.ten}
+                    </option>
                   ))}
                 </Form.Select>
               </Form.Group>
@@ -290,41 +300,79 @@ const ThemDeTaiCB = () => {
             />
           </Form.Group>
           <div>
-          <h1>DANH SÁCH THÀNH VIÊN THAM GIA </h1>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Họ và tên</Form.Label>
-                <Form.Select
-                  name="hovaten"
-                  aria-describedby="title-help"
-                  value={thanhvienthamgia.hovaten}
-                  onChange={onChangeInput}
-                >
-                   <option value="">Chọn thành viên</option>
-                        {
-                            users.map((user) => (
-                                <option key={user._id}>
-                                    {user.hovaten}
-                                </option>
-                            ))
-                        }
-                </Form.Select>
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Vai trò</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="vaitrothamgia"
-                  aria-describedby="title-help"
-                  value={thanhvienthamgia.vaitrothamgia}
-                  onChange={onChangeInput}
-                ></Form.Control>
-              </Form.Group>
-            </Col>
-          </Row>
+            <h1>DANH SÁCH THÀNH VIÊN THAM GIA </h1>
+            <Row>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Họ và tên</Form.Label>
+                  <Form.Select
+                    name="user1"
+                    aria-describedby="title-help"
+                    value={thanhvienthamgia.hovaten}
+                    onChange={onChangeUser}
+                  >
+                    <option value="">Chọn thành viên</option>
+                    {users.map((user) => (
+                      <option
+                        key={user._id}
+                        value={user._id}
+                        name={user.hovaten}
+                      >
+                        {user.hovaten}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Vai trò</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="vaitrothamgia1"
+                    aria-describedby="title-help"
+                    value={thanhvienthamgia.vaitrothamgia}
+                    onChange={onChangeInput}
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Họ và tên</Form.Label>
+                  <Form.Select
+                    name="user2"
+                    aria-describedby="title-help"
+                    value={thanhvienthamgia.hovaten}
+                    onChange={onChangeUser}
+                  >
+                    <option value="">Chọn thành viên</option>
+                    {users.map((user) => (
+                      <option
+                        key={user._id}
+                        value={user._id}
+                        name={user.hovaten}
+                      >
+                        {user.hovaten}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Vai trò</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="vaitrothamgia2"
+                    aria-describedby="title-help"
+                    value={thanhvienthamgia.vaitrothamgia}
+                    onChange={onChangeInput}
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
+            </Row>
           </div>
           <Form.Group className="mb-3">
             <Form.Label>Sản phẩm</Form.Label>

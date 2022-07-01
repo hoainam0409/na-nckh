@@ -3,18 +3,11 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
 import { CapDeTaiContext } from "../../../contexts/CapDeTaiContext";
-import { AuthContext } from "../../../contexts/AuthContext";
 import SideBar from "../../sidebar/SideBar";
 import ThemCapDeTai from "./ThemCapDeTai";
 import SuaCapDeTai from "./SuaCapDeTai";
 
 const CapDeTais = () => {
-  // Contexts
-  // const {
-  // 	authState: {
-  // 		user: {username}
-  // 	}
-  // } = useContext(AuthContext)
 
   const {
     capdetaiState: { capdetai, capdetais, capdetaisLoading },

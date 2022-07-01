@@ -52,12 +52,24 @@ const DeTaiCBContextProvider = ({ children }) => {
   //Thêm mới 
   const addDeTaiCB = async (newDeTaiCB) => {
     try {
+      newDeTaiCB.thanhvienthamgia.push(
+        {
+          id: newDeTaiCB.user1._id,
+          hovaten: newDeTaiCB.user1.hovaten,
+          vaitrothamgia: newDeTaiCB.vaitrothamgia1
+        },
+        {
+          id: newDeTaiCB.user2._id,
+          hovaten: newDeTaiCB.user2.hovaten,
+          vaitrothamgia: newDeTaiCB.vaitrothamgia2
+        }
+      );
       const response = await axios.post(
         `${apiUrl}/detai-canbo/dangky`,
         newDeTaiCB
       );
       if (response.data.success) {
-        dispatch({ type: DETAICB_ADD, payload: response.data.detaicb});
+        dispatch({ type: DETAICB_ADD, payload: response.data.detaicb });
         return response.data;
       }
     } catch (error) {
@@ -119,7 +131,7 @@ const DeTaiCBContextProvider = ({ children }) => {
   //Duyệt cấp trường
 
 
-  
+
 
   //Nhập kết quả nghiệm thu
 

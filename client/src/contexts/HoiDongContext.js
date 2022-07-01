@@ -50,6 +50,33 @@ const HoiDongContextProvider = ({ children }) => {
   //Thêm mới 
   const addHoiDong = async (newHoiDong) => {
     try {
+      newHoiDong.danhsachthanhvien.push(
+        {
+          id: newHoiDong.user1._id,
+          hovaten: newHoiDong.user1.hovaten,
+          vaitro: newHoiDong.vaitro1
+        },
+        {
+          id: newHoiDong.user2._id,
+          hovaten: newHoiDong.user2.hovaten,
+          vaitro: newHoiDong.vaitro2
+        },
+        {
+          id: newHoiDong.user3._id,
+          hovaten: newHoiDong.user3.hovaten,
+          vaitro: newHoiDong.vaitro3
+        },
+        {
+          id: newHoiDong.user4._id,
+          hovaten: newHoiDong.user4.hovaten,
+          vaitro: newHoiDong.vaitro4
+        },
+        {
+          id: newHoiDong.user5._id,
+          hovaten: newHoiDong.user5.hovaten,
+          vaitro: newHoiDong.vaitro5
+        },
+      )
       const response = await axios.post(
         `${apiUrl}/quanly/hoidong`,
         newHoiDong
