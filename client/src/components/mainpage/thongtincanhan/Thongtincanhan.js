@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Figure from 'react-bootstrap/Figure'
 
 const Thongtincanhan = () => {
   return (
@@ -15,10 +16,24 @@ const Thongtincanhan = () => {
             fontSize: "24px",
           }}
         >
-          Thông tin cá nhân
+          Thông tin tài khoản
         </h1>
         <div style={{ display: "flex" }}>
-          <div style={{ width: "400px" }}></div>
+          <div style={{ width: "400px" }}>
+          <div>
+          <Figure>
+            <Figure.Image
+              width={171}
+              height={180}
+              alt="171x180"
+              src=""
+            />
+            <Figure.Caption>
+             Chọn ảnh
+            </Figure.Caption>
+          </Figure>
+        </div>
+          </div>
           <Form style={{ width: "100%" }}>
             <Row>
               <Col>
@@ -29,7 +44,7 @@ const Thongtincanhan = () => {
                     name="hovaten"
                     required
                     aria-describedby="title-help"
-                    //   value={tieude}
+                  //   value={tieude}
                   />
                 </Form.Group>
               </Col>
@@ -41,7 +56,7 @@ const Thongtincanhan = () => {
                     name="gioitinh"
                     required
                     aria-describedby="title-help"
-                    //   value={tieude}
+                  //   value={tieude}
                   />
                 </Form.Group>
               </Col>
@@ -56,7 +71,7 @@ const Thongtincanhan = () => {
                     name="sdt"
                     required
                     aria-describedby="title-help"
-                    //   value={tieude}
+                  //   value={tieude}
                   />
                 </Form.Group>
               </Col>
@@ -68,8 +83,8 @@ const Thongtincanhan = () => {
                     name="email"
                     required
                     aria-describedby="title-help"
-                    //   value={nguoithongbao}
-                    //   onChange={onChangeInput}
+                  //   value={nguoithongbao}
+                  //   onChange={onChangeInput}
                   />
                 </Form.Group>
               </Col>
@@ -81,8 +96,8 @@ const Thongtincanhan = () => {
                   <Form.Control
                     type="date"
                     name="ngaysinh"
-                    //   value={ngaythongbao}
-                    //   onChange={onChangeInput}
+                  //   value={ngaythongbao}
+                  //   onChange={onChangeInput}
                   />
                 </Form.Group>
               </Col>
@@ -94,8 +109,8 @@ const Thongtincanhan = () => {
                     name="khoa"
                     required
                     aria-describedby="title-help"
-                    //   value={nguoithongbao}
-                    //   onChange={onChangeInput}
+                  //   value={nguoithongbao}
+                  //   onChange={onChangeInput}
                   />
                 </Form.Group>
               </Col>
@@ -107,8 +122,8 @@ const Thongtincanhan = () => {
                   <Form.Control
                     type="text"
                     name="khoavien"
-                    //   value={ngaythongbao}
-                    //   onChange={onChangeInput}
+                  //   value={ngaythongbao}
+                  //   onChange={onChangeInput}
                   />
                 </Form.Group>
               </Col>
@@ -120,8 +135,8 @@ const Thongtincanhan = () => {
                     name="lophanhchinh"
                     required
                     aria-describedby="title-help"
-                    //   value={nguoithongbao}
-                    //   onChange={onChangeInput}
+                  //   value={nguoithongbao}
+                  //   onChange={onChangeInput}
                   />
                 </Form.Group>
               </Col>
@@ -132,8 +147,8 @@ const Thongtincanhan = () => {
                 as="textarea"
                 rows={3}
                 name="noidung"
-                //   value={noidung}
-                //   onChange={onChangeInput}
+              //   value={noidung}
+              //   onChange={onChangeInput}
               />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -142,8 +157,8 @@ const Thongtincanhan = () => {
                 as="textarea"
                 rows={3}
                 name="noidung"
-                //   value={noidung}
-                //   onChange={onChangeInput}
+              //   value={noidung}
+              //   onChange={onChangeInput}
               />
             </Form.Group>
             <Button variant="primary" type="submit">
