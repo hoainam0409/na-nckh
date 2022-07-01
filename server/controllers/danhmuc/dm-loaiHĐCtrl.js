@@ -3,8 +3,8 @@ const LoaiHĐ = require("../../models/danhmuc/dm-loaiHĐModel");
 const loaiHĐCtrl = {
   getLoaiHĐ: async (req, res) => {
     try {
-      const LoaiHĐs = await LoaiHĐ.find();
-      res.json({ success: true, LoaiHĐs });
+      const loaiHĐs = await LoaiHĐ.find();
+      res.json({ success: true, loaiHĐs });
     } catch (err) {
       return res.status(500).json({success: false,  message: err.message });
     }

@@ -148,7 +148,7 @@ const ThemDeTaiCB = () => {
                 >
                   <option>Chọn đợt đăng ký đề tài</option>
                   {dotdangkys.map((dotdangky) => (
-                    <option value={dotdangky.tendot}>{dotdangky.tendot}</option>
+                    <option key={dotdangky._id} value={dotdangky._id}>{dotdangky.tendot}</option>
                   ))}
                 </Form.Select>
               </Form.Group>

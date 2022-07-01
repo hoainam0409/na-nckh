@@ -35,5 +35,8 @@ button{
 body .modal-dialog{
   max-width: 1400px;
 }
+ 
+.modal-dialog h1 {
+  font-size: 18px
 
-
+}
