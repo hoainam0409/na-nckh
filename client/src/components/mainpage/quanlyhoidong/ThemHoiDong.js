@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import { HoiDongContext } from "../../../contexts/HoiDongContext";
 import { LoaiHĐContext} from "../../../contexts/LoaiHĐContext";
+import {UserContext} from '../../../contexts/UserContext'
 
 const ThemHoiDong = () => {
   //context
@@ -27,6 +28,13 @@ const ThemHoiDong = () => {
     getLoaiHĐs,
   } = useContext(LoaiHĐContext);
   useEffect(() => getLoaiHĐs(), []);
+
+  const {
+    userState: { users },
+    getUsers,
+  } = useContext(UserContext);
+  useEffect(() => getUsers(), []);
+
   //State
   const [newHoiDong, setNewHoiDong] = useState({
     tenhoidong: "",
@@ -232,7 +240,16 @@ const ThemHoiDong = () => {
                   aria-describedby="title-help"
                   value={danhsachthanhvien.hovaten}
                   onChange={onChangeInput}
-                ></Form.Select>
+                >
+                   <option value="">Chọn thành viên</option>
+                        {
+                            users.map((user) => (
+                                <option key={user._id}>
+                                    {user.hovaten}
+                                </option>
+                            ))
+                        }
+                </Form.Select>
               </Form.Group>
             </Col>
             <Col>
