@@ -48,13 +48,20 @@ const detaiCBSchema = new Schema({
     sanpham:{
         type: String,
     },
-    thanhvienthamgia:{
-        type: String,
-        
-    },
+    thanhvienthamgia:[
+        {
+            hovaten:{
+                type: String
+            },
+            vaitrothamgia:{
+                type: String
+            }
+        }
+
+    ],
     trangthai:{
         type: String,
-        enum: ['Đăng ký', 'Chờ duyệt cấp khoa', 'Chờ nhập kết quả đánh giá', 'Chờ duyệt cấp trường']
+        enum: ['Đăng ký', 'Chờ duyệt cấp khoa', 'Chờ nhập kết quả đánh giá', 'Chờ duyệt cấp trường', 'Trường duyệt']
         
     },
     ghichu:{

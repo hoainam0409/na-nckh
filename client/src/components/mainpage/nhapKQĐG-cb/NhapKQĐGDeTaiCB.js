@@ -10,7 +10,7 @@ import { KhoaContext } from "../../../contexts/KhoaContext";
 import { LinhVucContext } from "../../../contexts/LinhVucContext";
 import { UserContext } from "../../../contexts/UserContext";
 
-const SuaDeTaiCB = () => {
+const NhapKQĐGTaiCB = () => {
   // Contexts
   const {
     detaicbState: { detaicb },
@@ -92,7 +92,7 @@ const SuaDeTaiCB = () => {
   return (
     <Modal show={showSuaDeTaiCB} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Chỉnh sửa đề tài</Modal.Title>
+        <Modal.Title>Nhập kết quả đánh giá đề tài</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>
@@ -322,4 +322,4 @@ const SuaDeTaiCB = () => {
   );
 };
 
-export default SuaDeTaiCB;
+export default NhapKQĐGTaiCB;

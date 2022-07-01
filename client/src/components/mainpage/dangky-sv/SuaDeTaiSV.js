@@ -5,6 +5,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useContext, useState, useEffect } from "react";
 import { DeTaiSVContext } from "../../../contexts/DeTaiSVContext";
+import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
+import {KhoaContext} from '../../../contexts/KhoaContext'
+import {LinhVucContext} from '../../../contexts/LinhVucContext'
+import {UserContext} from "../../../contexts/UserContext";
+
 
 const SuaDeTaiSV = () => {
   // Contexts
@@ -15,6 +20,33 @@ const SuaDeTaiSV = () => {
     updateDeTaiSV,
     setShowToast,
   } = useContext(DeTaiSVContext);
+
+  const {
+    dotdangkyState: { dotdangkys },
+    getDotDangKys
+  } = useContext(DotDangKyContext);
+
+  useEffect(() => {getDotDangKys()}, []);
+
+  const {
+    khoaState: {khoas},
+    getKhoas
+  } = useContext(KhoaContext)  
+
+  useEffect(() => getKhoas(), [] )
+
+  const {
+    linhvucState: {linhvucs},
+    getLinhVucs
+  } = useContext(LinhVucContext)  
+
+  useEffect(() => getLinhVucs(), [] )
+  const {
+    userState: {users},
+    getUsers
+  } = useContext(UserContext)  
+
+  useEffect(() => getUsers(), [] )
 
   // State
   const [updatedDeTaiSV, setUpdatedDeTaiSV] = useState(detaisv);
@@ -91,8 +123,10 @@ const SuaDeTaiSV = () => {
               name="dotdangky"
               onChange={onChangeUpdated}
             >
-              <option value="Mở đăng ký">Mở đăng ký</option>
-              <option value="Khóa đăng ký">Khóa đăng ký</option>
+               <option>Chọn đợt đăng ký đề tài</option>
+              {dotdangkys.map((dotdangky) => (
+                <option key={dotdangky._id}>{dotdangky.tendot}</option>
+              ))}
             </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">
@@ -119,8 +153,10 @@ const SuaDeTaiSV = () => {
                   value={linhvucnc}
                   onChange={onChangeUpdated}
                 >
-                  <option value="Mở đăng ký">Mở đăng ký</option>
-                  <option value="Khóa đăng ký">Khóa đăng ký</option>
+                 <option>Chọn lĩnh vực nghiên cứu</option>
+              {linhvucs.map((linhvuc) => (
+                <option key={linhvuc._id}>{linhvuc.ten}</option>
+              ))}
                 </Form.Select>
               </Form.Group>
             </Col>
@@ -135,8 +171,10 @@ const SuaDeTaiSV = () => {
                   value={khoaxetduyet}
                   onChange={onChangeUpdated}
                 >
-                  <option value="Mở đăng ký">Mở đăng ký</option>
-                  <option value="Khóa đăng ký">Khóa đăng ký</option>
+                  <option>Chọn khoa xét duyệt đề tài</option>
+              {khoas.map((khoa) => (
+                <option key={khoa._id}>{khoa.ten}</option>
+              ))}
                 </Form.Select>
               </Form.Group>
             </Col>

@@ -86,7 +86,7 @@ const ThemThongBao = () => {
             >
               <option>Chọn người thông báo</option>
               {users.map((user) => (
-                <option value={user.hovaten}>{user.hovaten}</option>
+                <option key={user._id}>{user.hovaten}</option>
               ))}
             </Form.Select>
           </Form.Group>

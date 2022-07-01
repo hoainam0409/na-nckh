@@ -6,9 +6,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { DeTaiSVContext } from "../../../contexts/DeTaiSVContext";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
-import {KhoaContext} from '../../../contexts/KhoaContext'
-import {LinhVucContext} from '../../../contexts/LinhVucContext'
-import {UserContext} from "../../../contexts/UserContext";
+import { KhoaContext } from '../../../contexts/KhoaContext'
+import { LinhVucContext } from '../../../contexts/LinhVucContext'
+import { UserContext } from "../../../contexts/UserContext";
 
 const ThemDeTaiSV = () => {
   //context
@@ -23,27 +23,27 @@ const ThemDeTaiSV = () => {
     getDotDangKys
   } = useContext(DotDangKyContext);
 
-  useEffect(() => {getDotDangKys()}, []);
+  useEffect(() => { getDotDangKys() }, []);
 
   const {
-    khoaState: {khoas},
+    khoaState: { khoas },
     getKhoas
-  } = useContext(KhoaContext)  
+  } = useContext(KhoaContext)
 
-  useEffect(() => getKhoas(), [] )
+  useEffect(() => getKhoas(), [])
 
   const {
-    linhvucState: {linhvucs},
+    linhvucState: { linhvucs },
     getLinhVucs
-  } = useContext(LinhVucContext)  
+  } = useContext(LinhVucContext)
 
-  useEffect(() => getLinhVucs(), [] )
+  useEffect(() => getLinhVucs(), [])
   const {
-    userState: {users},
+    userState: { users },
     getUsers
-  } = useContext(UserContext)  
+  } = useContext(UserContext)
 
-  useEffect(() => getUsers(), [] )
+  useEffect(() => getUsers(), [])
   //State
   const [newDeTaiSV, setNewDeTaiSV] = useState({
     madetai: "",
@@ -147,7 +147,7 @@ const ThemDeTaiSV = () => {
             >
               <option>Chọn đợt đăng ký đề tài</option>
               {dotdangkys.map((dotdangky) => (
-                <option value={dotdangky.tendot}>{dotdangky.tendot}</option>
+                <option key={dotdangky._id}>{dotdangky.tendot}</option>
               ))}
             </Form.Select>
           </Form.Group>
@@ -161,7 +161,7 @@ const ThemDeTaiSV = () => {
             >
               <option>Chọn GVHD</option>
               {users.map((user) => (
-                <option value={user.hovaten}>{user.hovaten}</option>
+                <option key={user._id}>{user.hovaten}</option>
               ))}
             </Form.Select>
           </Form.Group>
@@ -170,32 +170,32 @@ const ThemDeTaiSV = () => {
               <Form.Group className="mb-3">
                 <Form.Label>Lĩnh vực nghiên cứu</Form.Label>
                 <Form.Select
-              value={linhvuc}
-              name="linhvuc"
-              onChange={onChangeInput}
-              aria-label="Default select example"
-            >
-              <option>Chọn lĩnh vực nghiên cứu</option>
-              {linhvucs.map((linhvuc) => (
-                <option value={linhvuc.ten}>{linhvuc.ten}</option>
-              ))}
-            </Form.Select>
+                  value={linhvuc}
+                  name="linhvuc"
+                  onChange={onChangeInput}
+                  aria-label="Default select example"
+                >
+                  <option>Chọn lĩnh vực nghiên cứu</option>
+                  {linhvucs.map((linhvuc) => (
+                    <option key={linhvuc._id}>{linhvuc.ten}</option>
+                  ))}
+                </Form.Select>
               </Form.Group>
             </Col>
             <Col>
               <Form.Group className="mb-3">
-            <Form.Label>Khoa xét duyệt đề tài</Form.Label>
-              <Form.Select
-              value={khoaxetduyet}
-              name="khoaxetduyet"
-              onChange={onChangeInput}
-              aria-label="Default select example"
-            >
-              <option>Chọn khoa xét duyệt đề tài</option>
-              {khoas.map((khoa) => (
-                <option value={khoa.ten}>{khoa.ten}</option>
-              ))}
-            </Form.Select>
+                <Form.Label>Khoa xét duyệt đề tài</Form.Label>
+                <Form.Select
+                  value={khoaxetduyet}
+                  name="khoaxetduyet"
+                  onChange={onChangeInput}
+                  aria-label="Default select example"
+                >
+                  <option>Chọn khoa xét duyệt đề tài</option>
+                  {khoas.map((khoa) => (
+                    <option key={khoa._id}>{khoa.ten}</option>
+                  ))}
+                </Form.Select>
               </Form.Group>
             </Col>
           </Row>

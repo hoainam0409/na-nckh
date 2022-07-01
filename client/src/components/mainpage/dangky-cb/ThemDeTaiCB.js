@@ -63,7 +63,7 @@ const ThemDeTaiCB = () => {
     ketquadukien: "",
     sanpham: "",
     ghichu: "",
-    thanhvienthamgia: "",
+    thanhvienthamgia:[],
     trangthai: "Đăng ký",
     dinhkem: "",
   });
@@ -109,7 +109,7 @@ const ThemDeTaiCB = () => {
       muctieu: "",
       ketquadukien: "",
       sanpham: "",
-      thanhvienthamgia: "",
+      thanhvienthamgia: [],
       ghichu: "",
       trangthai: "Đăng ký",
       dinhkem: "",
@@ -126,11 +126,9 @@ const ThemDeTaiCB = () => {
     resetAddDeTaiCB();
     setShowToast({ show: true, message, type: success ? "success" : "danger" });
   };
-  // const animatedComponents = makeAnimated();
 
   return (
     <Modal show={showThemDeTaiCB} onHide={closeDialog} >
-      {/* fullscreen={fullscreen} */}
       <Modal.Header closeButton>
         <Modal.Title>Thêm mới đề tài cán bộ</Modal.Title>
       </Modal.Header>
@@ -148,7 +146,7 @@ const ThemDeTaiCB = () => {
                 >
                   <option>Chọn đợt đăng ký đề tài</option>
                   {dotdangkys.map((dotdangky) => (
-                    <option key={dotdangky._id} value={dotdangky._id}>{dotdangky.tendot}</option>
+                    <option key={dotdangky._id}>{dotdangky.tendot}</option>
                   ))}
                 </Form.Select>
               </Form.Group>
@@ -225,7 +223,7 @@ const ThemDeTaiCB = () => {
                 >
                   <option>Chọn lĩnh vực nghiên cứu</option>
                   {linhvucs.map((linhvuc) => (
-                    <option value={linhvuc.ten}>{linhvuc.ten}</option>
+                    <option key={linhvuc._id}>{linhvuc.ten}</option>
                   ))}
                 </Form.Select>
               </Form.Group>
@@ -241,7 +239,7 @@ const ThemDeTaiCB = () => {
                 >
                   <option>Chọn khoa xét duyệt đề tài</option>
                   {khoas.map((khoa) => (
-                    <option value={khoa.ten}>{khoa.ten}</option>
+                    <option key={khoa._id}>{khoa.ten}</option>
                   ))}
                 </Form.Select>
               </Form.Group>
@@ -291,18 +289,43 @@ const ThemDeTaiCB = () => {
               onChange={onChangeInput}
             />
           </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Danh sách thành viên tham gia</Form.Label>
-            <Form.Select
-              as="select"
-              value={thanhvienthamgia}
-              name="thanhvienthamgia"
-              onChange={onChangeInput}
-            >
-              <option value="Mở đăng ký">Mở đăng ký</option>
-              <option value="Khóa đăng ký">Khóa đăng ký</option>
-            </Form.Select>
-          </Form.Group>
+          <div>
+          <h1>DANH SÁCH THÀNH VIÊN THAM GIA </h1>
+          <Row>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Họ và tên</Form.Label>
+                <Form.Select
+                  name="hovaten"
+                  aria-describedby="title-help"
+                  value={thanhvienthamgia.hovaten}
+                  onChange={onChangeInput}
+                >
+                   <option value="">Chọn thành viên</option>
+                        {
+                            users.map((user) => (
+                                <option key={user._id}>
+                                    {user.hovaten}
+                                </option>
+                            ))
+                        }
+                </Form.Select>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Vai trò</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="vaitrothamgia"
+                  aria-describedby="title-help"
+                  value={thanhvienthamgia.vaitrothamgia}
+                  onChange={onChangeInput}
+                ></Form.Control>
+              </Form.Group>
+            </Col>
+          </Row>
+          </div>
           <Form.Group className="mb-3">
             <Form.Label>Sản phẩm</Form.Label>
             <Form.Control

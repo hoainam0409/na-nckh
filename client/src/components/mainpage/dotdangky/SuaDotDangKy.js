@@ -5,6 +5,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useContext, useState, useEffect } from "react";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
+import { CapDeTaiContext } from "../../../contexts/CapDeTaiContext";
+
 
 const SuaCapDeTai = () => {
   // Contexts
@@ -15,6 +17,11 @@ const SuaCapDeTai = () => {
     updateDotDangKy,
     setShowToast,
   } = useContext(DotDangKyContext);
+  const {
+    capdetaiState: { capdetais },
+    getCapDeTais
+  } = useContext(CapDeTaiContext);
+  useEffect(() => getCapDeTais(), [] )
 
   // State
   const [updatedDotDangKy, setUpdatedDotDangKy] =
@@ -91,14 +98,19 @@ const SuaCapDeTai = () => {
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Cấp đề tài</Form.Label>
-                <Form.Control
+                <Form.Select
                   type="text"
                   name="capdetai"
                   required
                   aria-describedby="title-help"
                   value={capdetai}
                   onChange={onChangeUpdated}
-                />
+                >
+                   <option >Chọn cấp đề tài</option>
+                  {capdetais.map((capdetai) => (
+                    <option key={capdetai._id}>{capdetai.ten}</option>
+                  ))}
+                </Form.Select>
               </Form.Group>
             </Col>
           </Row>

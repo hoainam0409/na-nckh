@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useContext, useState, useEffect } from "react";
 import { ThongbaochungContext } from "../../../contexts/ThongbaochungContext";
+import {UserContext} from "../../../contexts/UserContext";
 
 const SuaThongBao = () => {
   // Contexts
@@ -13,6 +14,13 @@ const SuaThongBao = () => {
     updateThongBaoChung,
     setShowToast,
   } = useContext(ThongbaochungContext);
+  const {
+    userState: {users},
+    getUsers
+  } = useContext(UserContext)  
+
+  useEffect(() => getUsers(), [] )
+
 
   // State
   const [updatedThongBaoChung, setUpdatedThongBaoChung] =
@@ -63,14 +71,19 @@ const SuaThongBao = () => {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Người thông báo</Form.Label>
-            <Form.Control
+            <Form.Select
               type="text"
               name="nguoithongbao"
               required
               aria-describedby="title-help"
               value={nguoithongbao}
               onChange={onChangeUpdated}
-            />
+            >
+              <option>Chọn người thông báo</option>
+              {users.map((user) => (
+                <option key={user._id}>{user.hovaten}</option>
+              ))}
+            </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Ngày thông báo</Form.Label>
