@@ -133,7 +133,7 @@ const ThemDotDangKy = () => {
                 >
                   <option >Chọn cấp đề tài</option>
                   {capdetais.map((capdetai) => (
-                    <option key={capdetai._id} value={capdetai._id}>{capdetai.ten}</option>
+                    <option key={capdetai._id}>{capdetai.ten}</option>
                   ))}
                 </Form.Select>
               </Form.Group>

@@ -87,7 +87,11 @@ const DeTaiNhapKQDGs = () => {
                 <td>{detaicb.tendetai}</td>
                 <td>{detaicb.dotdangky} </td>
                 <td>{detaicb.khoaxetduyet}</td>
-                <td>{detaicb.thanhvienthamgia}</td>
+                <td>{detaicb.thanhvienthamgia.map(q => (
+                  <div>
+                    { q.hovaten }
+                  </div>
+                ))}</td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button

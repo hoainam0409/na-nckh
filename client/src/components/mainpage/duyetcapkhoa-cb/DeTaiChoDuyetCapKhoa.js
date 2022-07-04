@@ -89,7 +89,11 @@ const DeTaiDuyetCapKhoas = () => {
                 <td>{detaicb.tendetai}</td>
                 <td>{detaicb.dotdangky} </td>
                 <td>{detaicb.khoaxetduyet}</td>
-                <td>{detaicb.thanhvienthamgia}</td>
+                <td>{detaicb.thanhvienthamgia.map(q => (
+                  <div>
+                    { q.hovaten }
+                  </div>
+                ))}</td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
@@ -123,14 +127,7 @@ const DeTaiDuyetCapKhoas = () => {
                   >
                     <ReactTooltip id="Không duyệt" place="top" effect="solid">Không duyệt</ReactTooltip>
                     <BsXLg/>
-                  </Button>
-                  {/* <Button
-                    style={{ backgroundColor: "#c9302c",borderColor: "#ac2925", margin: '3px' }}
-                    onClick={() => deleteDeTaiCB(detaicb._id)}
-                  >
-                    <BsTrashFill/>
-                  </Button> */}
-                  
+                  </Button>   
                   <Button
                     style={{backgroundColor: "#337AB7",borderColor: "#2d6da3",margin: '3px', }}
                     data-tip data-for="In thuyết minh"

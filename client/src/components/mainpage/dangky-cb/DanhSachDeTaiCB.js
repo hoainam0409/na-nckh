@@ -20,7 +20,6 @@ const DeTaiCBs = () => {
     deleteDeTaiCB,
     findDeTaiCB,
     setShowSuaDeTaiCB,
-    ShowFullScreen,
   } = useContext(DeTaiCBContext);
 
   // Start: Get all
