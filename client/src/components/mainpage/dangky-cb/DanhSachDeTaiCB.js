@@ -20,6 +20,7 @@ const DeTaiCBs = () => {
     deleteDeTaiCB,
     findDeTaiCB,
     setShowSuaDeTaiCB,
+    trangThai, updateTrangThai
   } = useContext(DeTaiCBContext);
 
   // Start: Get all
@@ -113,13 +114,18 @@ const DeTaiCBs = () => {
                   </Button>
                   <Button
                     style={{ backgroundColor: "#337AB7", borderColor: "#2d6da3", margin: '3px', }}
-                  >
+                    data-tip data-for="Gửi duyệt"
+                    onClick={() => updateTrangThai("Chờ duyệt cấp khoa")}
+                  > 
+                    <ReactTooltip id="Gửi duyệt" place="top" effect="solid">Gửi duyệt</ReactTooltip>
                     <BsCursorFill />
                   </Button>
                   <Button
                     style={{ backgroundColor: "#c9302c", borderColor: "#ac2925", margin: '3px', }}
                     onClick={() => deleteDeTaiCB(detaicb._id)}
-                  >
+                    data-tip data-for="Xóa"
+                  > 
+                    <ReactTooltip id="Xóa" place="top" effect="solid">Xóa</ReactTooltip>
                     <BsTrashFill />
                   </Button>
                   <Button

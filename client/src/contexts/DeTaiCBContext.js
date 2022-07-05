@@ -34,6 +34,12 @@ const DeTaiCBContextProvider = ({ children }) => {
 
   const [detaicb, setDeTaiCB] = useState("");
 
+  const [trangThai, setTrangThai] = useState("Đăng ký")
+
+  const updateTrangThai = (newTrangThai) => {
+    setTrangThai(newTrangThai);
+  };  
+
   // Lấy tất cả
   const getDeTaiCBs = async () => {
     try {
@@ -156,6 +162,8 @@ const DeTaiCBContextProvider = ({ children }) => {
     findDeTaiCB,
     showNhapKQĐG,
     setShowNhapKQĐG,
+    trangThai, 
+    updateTrangThai
   };
 
   return (
