@@ -5,6 +5,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../../contexts/UserContext";
+import { ChucVuContext } from "../../../contexts/ChucVuContext";
+import { KhoaContext } from "../../../contexts/KhoaContext";
+
 
 const SuaUser = () => {
   // Contexts
@@ -15,6 +18,19 @@ const SuaUser = () => {
     updateUser,
     setShowToast,
   } = useContext(UserContext);
+
+  const {
+    khoaState: { khoas },
+    getKhoas,
+  } = useContext(KhoaContext);
+
+  useEffect(() => getKhoas(), []);
+
+  const {
+    chucvuState: { chucvus },
+    getChucVus,
+  } = useContext(ChucVuContext);
+  useEffect(() => getChucVus(), []);
 
   // State
   const [updatedUser, setUpdatedUser] =
@@ -95,27 +111,36 @@ const SuaUser = () => {
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Đơn vị</Form.Label>
-                <Form.Control
+                <Form.Select
                   type="text"
                   name="phongban"
-                  // required
                   aria-describedby="title-help"
                   value={phongban}
                   onChange={onChangeUpdated}
-                />
+                >
+                  <option>Chọn đơn vị</option>
+                  {khoas.map((khoa) => (
+                    <option key={khoa._id}>{khoa.ten}</option>
+                  ))}
+                  
+                </Form.Select>
               </Form.Group>
             </Col>
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Chức vụ</Form.Label>
-                <Form.Control
+                <Form.Select
                   type="text"
                   name="chucvu"
-                  // required
                   aria-describedby="title-help"
                   value={chucvu}
                   onChange={onChangeUpdated}
-                />
+                >
+                  <option>Chọn chức vụ</option>
+                  {chucvus.map((chucvu) => (
+                    <option key={chucvu._id}>{chucvu.ten}</option>
+                  ))}
+                </Form.Select>
               </Form.Group>
             </Col>
           </Row>
@@ -126,7 +151,6 @@ const SuaUser = () => {
                 <Form.Control
                   type="text"
                   name="hocham"
-                  // required
                   aria-describedby="title-help"
                   value={hocham}
                   onChange={onChangeUpdated}
@@ -139,7 +163,6 @@ const SuaUser = () => {
                 <Form.Control
                   type="text"
                   name="hocvi"
-                  // required
                   aria-describedby="title-help"
                   value={hocvi}
                   onChange={onChangeUpdated}

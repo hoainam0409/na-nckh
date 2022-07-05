@@ -31,6 +31,8 @@ app.use('/', require('./routers/taikhoanSVRouter'))
 app.use('/nckh/detai-sinhvien', require('./routers/detaisvRouter'))
 app.use('/detai-canbo', require('./routers/detaiCBRouter'))
 app.use('/quanly', require('./routers/hoidongRouter'))
+// app.use('/api', require('./routers/upload'))
+
 
 
 

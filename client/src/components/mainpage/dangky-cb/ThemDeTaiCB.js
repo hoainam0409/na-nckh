@@ -311,7 +311,7 @@ const ThemDeTaiCB = () => {
                     value={thanhvienthamgia.hovaten}
                     onChange={onChangeUser}
                   >
-                    <option value="">Chọn thành viên</option>
+                    <option >Chọn thành viên</option>
                     {users.map((user) => (
                       <option
                         key={user._id}
@@ -347,7 +347,7 @@ const ThemDeTaiCB = () => {
                     value={thanhvienthamgia.hovaten}
                     onChange={onChangeUser}
                   >
-                    <option value="">Chọn thành viên</option>
+                    <option>Chọn thành viên</option>
                     {users.map((user) => (
                       <option
                         key={user._id}
@@ -375,7 +375,7 @@ const ThemDeTaiCB = () => {
             </Row>
           </div>
           <Form.Group className="mb-3">
-            <Form.Label>Sản phẩm</Form.Label>
+            <Form.Label>Mô tả sản phẩm</Form.Label>
             <Form.Control
               as="textarea"
               rows={5}

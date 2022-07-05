@@ -45,20 +45,20 @@ const Thongtincanhan = () => {
                     name="hovaten"
                     required
                     aria-describedby="title-help"
-                  //   value={tieude}
                   />
                 </Form.Group>
               </Col>
               <Col>
                 <Form.Group className="mb-3">
                   <Form.Label> Giới tính</Form.Label>
-                  <Form.Control
-                    type="text"
+                  <Form.Select
                     name="gioitinh"
                     required
                     aria-describedby="title-help"
-                  //   value={tieude}
-                  />
+                  >
+                  <option value='Nam'>Nam</option>
+                  <option value='Nữ'>Nữ</option>
+                  </Form.Select>
                 </Form.Group>
               </Col>
             </Row>
@@ -72,7 +72,6 @@ const Thongtincanhan = () => {
                     name="sdt"
                     required
                     aria-describedby="title-help"
-                  //   value={tieude}
                   />
                 </Form.Group>
               </Col>
@@ -84,8 +83,6 @@ const Thongtincanhan = () => {
                     name="email"
                     required
                     aria-describedby="title-help"
-                  //   value={nguoithongbao}
-                  //   onChange={onChangeInput}
                   />
                 </Form.Group>
               </Col>
@@ -97,8 +94,6 @@ const Thongtincanhan = () => {
                   <Form.Control
                     type="date"
                     name="ngaysinh"
-                  //   value={ngaythongbao}
-                  //   onChange={onChangeInput}
                   />
                 </Form.Group>
               </Col>
@@ -110,34 +105,6 @@ const Thongtincanhan = () => {
                     name="khoa"
                     required
                     aria-describedby="title-help"
-                  //   value={nguoithongbao}
-                  //   onChange={onChangeInput}
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label>Khoa/Viện</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="khoavien"
-                  //   value={ngaythongbao}
-                  //   onChange={onChangeInput}
-                  />
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label>Lớp hành chính</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="lophanhchinh"
-                    required
-                    aria-describedby="title-help"
-                  //   value={nguoithongbao}
-                  //   onChange={onChangeInput}
                   />
                 </Form.Group>
               </Col>
@@ -148,8 +115,6 @@ const Thongtincanhan = () => {
                 as="textarea"
                 rows={3}
                 name="noidung"
-              //   value={noidung}
-              //   onChange={onChangeInput}
               />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -158,8 +123,6 @@ const Thongtincanhan = () => {
                 as="textarea"
                 rows={3}
                 name="noidung"
-              //   value={noidung}
-              //   onChange={onChangeInput}
               />
             </Form.Group>
             <Button variant="primary" type="submit">

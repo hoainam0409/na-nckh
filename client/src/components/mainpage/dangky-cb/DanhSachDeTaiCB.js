@@ -30,6 +30,11 @@ const DeTaiCBs = () => {
     findDeTaiCB(detaicbId);
     setShowSuaDeTaiCB(true);
   };
+  const selectDeTaiCB = (detaicbId) => {
+    findDeTaiCB(detaicbId);
+    updateTrangThai("Chờ duyệt cấp khoa");
+  }
+
   return (
     <div>
       <SideBar />
@@ -115,7 +120,7 @@ const DeTaiCBs = () => {
                   <Button
                     style={{ backgroundColor: "#337AB7", borderColor: "#2d6da3", margin: '3px', }}
                     data-tip data-for="Gửi duyệt"
-                    onClick={() => updateTrangThai("Chờ duyệt cấp khoa")}
+                    onClick={() => selectDeTaiCB(this, detaicb._id)}
                   > 
                     <ReactTooltip id="Gửi duyệt" place="top" effect="solid">Gửi duyệt</ReactTooltip>
                     <BsCursorFill />

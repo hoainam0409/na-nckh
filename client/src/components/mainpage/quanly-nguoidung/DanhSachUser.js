@@ -73,7 +73,7 @@ const Users = () => {
             <tr>
               <th style={{ textAlign: "center", color: "#495057" }}>Tài khoản</th>
               <th style={{ textAlign: "center", color: "#495057" }}>Họ và tên</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Phòng ban</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Khoa/Phòng ban</th>
               <th style={{ textAlign: "center", color: "#495057" }}>Chức vụ</th>
               <th style={{ textAlign: "center", color: "#495057" }}>Học Hàm</th>
               <th style={{ textAlign: "center", color: "#495057" }}>Học vị</th>

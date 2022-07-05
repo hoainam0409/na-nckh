@@ -19,11 +19,13 @@ const ThemUser = () => {
   } = useContext(KhoaContext);
 
   useEffect(() => getKhoas(), []);
+
   const {
     chucvuState: { chucvus },
     getChucVus,
   } = useContext(ChucVuContext);
   useEffect(() => getChucVus(), []);
+  // console.log(chucvus)
 
   //State
   const [newUser, setNewUser] = useState({
@@ -43,7 +45,7 @@ const ThemUser = () => {
       ...newUser,
       [event.target.name]: event.target.value,
     });
-  // console.log(newThongBaoChung);
+
 
   const resetAddUser = () => {
     setNewUser({
@@ -121,14 +123,13 @@ const ThemUser = () => {
                 <Form.Select
                   type="text"
                   name="phongban"
-                  // required
                   aria-describedby="title-help"
                   value={phongban}
                   onChange={onChangeInput}
                 >
-                  <option>Chọn khoa xét duyệt đề tài</option>
+                  <option>Chọn đơn vị</option>
                   {khoas.map((khoa) => (
-                    <option value={khoa.ten}>{khoa.ten}</option>
+                    <option key={khoa._id}>{khoa.ten}</option>
                   ))}
                   
                 </Form.Select>
@@ -140,14 +141,13 @@ const ThemUser = () => {
                 <Form.Select
                   type="text"
                   name="chucvu"
-                  // required
                   aria-describedby="title-help"
                   value={chucvu}
                   onChange={onChangeInput}
                 >
                   <option>Chọn chức vụ</option>
                   {chucvus.map((chucvu) => (
-                    <option value={chucvu.ten}>{chucvu.ten}</option>
+                    <option key={chucvu._id}>{chucvu.ten}</option>
                   ))}
                 </Form.Select>
               </Form.Group>
@@ -160,7 +160,6 @@ const ThemUser = () => {
                 <Form.Control
                   type="text"
                   name="hocham"
-                  // required
                   aria-describedby="title-help"
                   value={hocham}
                   onChange={onChangeInput}
@@ -173,7 +172,6 @@ const ThemUser = () => {
                 <Form.Control
                   type="text"
                   name="hocvi"
-                  // required
                   aria-describedby="title-help"
                   value={hocvi}
                   onChange={onChangeInput}

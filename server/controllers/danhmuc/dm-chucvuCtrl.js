@@ -7,7 +7,7 @@ const chucvuCtrl = {
             const chucvus = await ChucVu.find()
             res.json({success: true, chucvus})
         } catch (err) {
-            return res.status(500).json({message: err.message})
+            return res.status(500).json({sucess: true, message: err.message})
         }
     },
 
@@ -19,9 +19,9 @@ const chucvuCtrl = {
 
             const newChucVu = new ChucVu({ machucvu, ten })
             await newChucVu.save()
-            res.json({ message: "Thêm mới chức vụ thành công!" })
+            res.json({success: true, message: "Thêm mới chức vụ thành công!", chucvu: newChucVu})
         } catch (err) {
-            return res.status(500).json({ message: err.message })
+            return res.status(500).json({success: false,  message: err.message })
         }
 
     },

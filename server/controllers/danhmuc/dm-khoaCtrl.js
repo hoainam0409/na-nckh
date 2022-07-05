@@ -45,10 +45,6 @@ const khoaCtrl = {
         ma,
         ten,
       };
-
-      //Điều kiện để chỉnh sửa thông báo
-      // const UpdateCondition = { _id: req.params.id, user: req.userId }
-
       updatedKhoa = await Khoa.findOneAndUpdate(
         req.params.id,
         updatedKhoa,

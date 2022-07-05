@@ -134,7 +134,7 @@ const detaiCBCtrl = {
         dinhkem,
       };
 
-      //Điều kiện để chỉnh sửa thông báo
+      //Điều kiện để chỉnh sửa
       const UpdateCondition = { _id: req.params.id, user: req.userId };
 
       updatedDeTaiCB = await DeTaiCB.findOneAndUpdate(
