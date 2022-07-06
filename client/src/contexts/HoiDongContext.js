@@ -54,28 +54,50 @@ const HoiDongContextProvider = ({ children }) => {
         {
           id: newHoiDong.user1._id,
           hovaten: newHoiDong.user1.hovaten,
-          vaitro: newHoiDong.vaitro1
+          // vaitro: newHoiDong.vaitro1
         },
         {
           id: newHoiDong.user2._id,
           hovaten: newHoiDong.user2.hovaten,
-          vaitro: newHoiDong.vaitro2
+          // vaitro: newHoiDong.vaitro2
         },
         {
           id: newHoiDong.user3._id,
           hovaten: newHoiDong.user3.hovaten,
-          vaitro: newHoiDong.vaitro3
+          // vaitro: newHoiDong.vaitro3
         },
         {
           id: newHoiDong.user4._id,
           hovaten: newHoiDong.user4.hovaten,
-          vaitro: newHoiDong.vaitro4
+          // vaitro: newHoiDong.vaitro4
         },
         {
           id: newHoiDong.user5._id,
           hovaten: newHoiDong.user5.hovaten,
-          vaitro: newHoiDong.vaitro5
+          // vaitro: newHoiDong.vaitro5
         },
+      )
+      newHoiDong.danhsachthanhvien.push(
+        {
+          id: newHoiDong.vaitro1._id,
+          ten: newHoiDong.vaitro1.ten,
+        },
+        {
+          id: newHoiDong.vaitro2._id,
+          ten: newHoiDong.vaitro2.ten,
+        },
+        {
+          id: newHoiDong.vaitro3._id,
+          ten: newHoiDong.vaitro3.ten,
+        },
+        {
+          id: newHoiDong.vaitro4._id,
+          ten: newHoiDong.vaitro4.ten,
+        },
+        {
+          id: newHoiDong.vaitro5._id,
+          ten: newHoiDong.vaitro5.ten,
+        }
       )
       const response = await axios.post(
         `${apiUrl}/quanly/hoidong`,

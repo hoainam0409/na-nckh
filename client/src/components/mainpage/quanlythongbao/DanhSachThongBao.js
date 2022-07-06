@@ -3,7 +3,6 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
 import { ThongbaochungContext } from "../../../contexts/ThongbaochungContext";
-import { AuthContext } from "../../../contexts/AuthContext";
 import SideBar from "../../sidebar/SideBar";
 import ThemThongBao from "./ThemThongBao";
 import SuaThongBao from "./SuaThongBao";
@@ -12,12 +11,6 @@ import ReactTooltip from "react-tooltip";
 import { BsFillEyeFill, BsPencilSquare, BsTrashFill } from "react-icons/bs";
 
 const Thongbaochungs = () => {
-  // Contexts
-  // const {
-  // 	authState: {
-  // 		user: {username}
-  // 	}
-  // } = useContext(AuthContext)
 
   const {
     thongbaochungState: {

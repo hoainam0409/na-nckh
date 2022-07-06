@@ -53,10 +53,6 @@ export const FIND_CAPDETAI = 'FIND_CAPDETAI'
 //Danh mục/Vai trò hội đồng
 export const VAITROHĐ_LOADED_SUCCESS = 'VAITROHĐ_LOADED_SUCCESS'
 export const VAITROHĐ_LOADED_FAIL = 'VAITROHĐ_LOADED_FAIL'
-export const VAITROHĐ_ADD = 'VAITROHĐ_ADD'
-export const DELETE_VAITROHĐ = 'DELETE_VAITROHĐ'
-export const UPDATE_VAITROHĐ = 'UPDATE_VAITROHĐ'
-export const FIND_VAITROHĐ= 'FIND_VAITROHĐ'
 
 //Danh mục/ lĩnh vực
 export const LINHVUC_LOADED_SUCCESS = 'LINHVUC_LOADED_SUCCESS'

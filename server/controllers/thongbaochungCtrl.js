@@ -16,7 +16,7 @@ const thongbaochungCtrl = {
   //CREATE
   addThongbaochung: async (req, res) => {
     const { tieude, nguoithongbao, ngaythongbao, noidung, dinhkem } = req.body;
-    if (!tieude || !nguoithongbao)
+    if (!tieude)
       return res.status(400).json({
         success: false,
         message: "Vui lòng nhập các trường bắt buộc!",
@@ -28,7 +28,7 @@ const thongbaochungCtrl = {
         ngaythongbao,
         noidung,
         dinhkem,
-        // user: req.userId => lấy id của người tạo ra thông báo
+        user: req.userId
       });
       await newThongbaochung.save();
       res.json({
@@ -44,7 +44,7 @@ const thongbaochungCtrl = {
   updateThongbaochung: async (req, res) => {
     const { tieude, nguoithongbao, ngaythongbao, noidung, dinhkem } = req.body;
     // Simple validation
-    if (!tieude || !nguoithongbao)
+    if (!tieude)
       return res.status(400).json({
         success: false,
         message: "Vui lòng nhập thông tin trường bắt buộc!",
@@ -57,10 +57,6 @@ const thongbaochungCtrl = {
         noidung: noidung || "",
         dinhkem: dinhkem || "",
       };
-
-      //Điều kiện để chỉnh sửa thông báo
-		// const UpdateCondition = { _id: req.params.id, user: req.userId }
-
       updatedThongbaochung = await Thongbaochung.findOneAndUpdate(
         req.params.id,
         updatedThongbaochung,

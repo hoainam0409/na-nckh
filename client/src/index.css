@@ -40,4 +40,9 @@ body .modal-dialog{
   font-size: 18px
 
 }
-
+body .filter{
+  float: right;
+}
+.controls{
+  width: 800px;
+}

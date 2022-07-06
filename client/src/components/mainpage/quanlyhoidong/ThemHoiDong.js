@@ -8,6 +8,7 @@ import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import { HoiDongContext } from "../../../contexts/HoiDongContext";
 import { LoaiHĐContext} from "../../../contexts/LoaiHĐContext";
 import {UserContext} from '../../../contexts/UserContext'
+import { VaiTroHĐContext } from "../../../contexts/VaiTroHĐContext";
 
 const ThemHoiDong = () => {
   //context
@@ -34,6 +35,12 @@ const ThemHoiDong = () => {
     getUsers,
   } = useContext(UserContext);
   useEffect(() => getUsers(), []);
+
+  const {
+    vaitroHĐState: { vaitroHĐs },
+    getVaiTroHĐs,
+  } = useContext(VaiTroHĐContext);
+  useEffect(() => getVaiTroHĐs(), []);
 
   //State
   const [newHoiDong, setNewHoiDong] = useState({
@@ -75,6 +82,13 @@ const ThemHoiDong = () => {
         [event.target.name]: userSelected,
       });
     }; 
+  const onChangeVaiTro = (event) => {
+    const vaitroSelected = vaitroHĐs.find((q) => q._id == event.target.value);
+    setNewHoiDong({
+        ...newHoiDong,
+        [event.target.name]: vaitroSelected,
+    });
+  };
   const resetAddHoiDong = () => {
     setNewHoiDong({
       tenhoidong: "",
@@ -266,12 +280,25 @@ const ThemHoiDong = () => {
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Vai trò hội đồng</Form.Label>
-                <Form.Control
+                <Form.Select
                   name="vaitro1"
                   aria-describedby="title-help"
                   value={danhsachthanhvien.vaitro}
-                  onChange={onChangeInput}
-                />
+                  onChange={onChangeVaiTro}
+                >
+                   <option value="">Chọn vai trò</option>
+                        {
+                            vaitroHĐs.map((vaitroHĐ) => (
+                              <option
+                              key={vaitroHĐ._id}
+                              value={vaitroHĐ._id}
+                              name={vaitroHĐ.ten}
+                            >
+                              {vaitroHĐ.ten}
+                            </option>
+                            ))
+                        }
+                </Form.Select>
               </Form.Group>
             </Col>
           </Row>
@@ -304,12 +331,25 @@ const ThemHoiDong = () => {
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Vai trò hội đồng</Form.Label>
-                <Form.Control
+                <Form.Select
                   name="vaitro2"
                   aria-describedby="title-help"
                   value={danhsachthanhvien.vaitro}
-                  onChange={onChangeInput}
-                />
+                  onChange={onChangeVaiTro}
+                >
+                   <option value="">Chọn vai trò</option>
+                        {
+                            vaitroHĐs.map((vaitroHĐ) => (
+                              <option
+                              key={vaitroHĐ._id}
+                              value={vaitroHĐ._id}
+                              name={vaitroHĐ.ten}
+                            >
+                              {vaitroHĐ.ten}
+                            </option>
+                            ))
+                        }
+                </Form.Select>
               </Form.Group>
             </Col>
           </Row>
@@ -342,12 +382,25 @@ const ThemHoiDong = () => {
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Vai trò hội đồng</Form.Label>
-                <Form.Control
+                <Form.Select
                   name="vaitro3"
                   aria-describedby="title-help"
                   value={danhsachthanhvien.vaitro}
-                  onChange={onChangeInput}
-                />
+                  onChange={onChangeVaiTro}
+                >
+                   <option value="">Chọn vai trò</option>
+                        {
+                            vaitroHĐs.map((vaitroHĐ) => (
+                              <option
+                              key={vaitroHĐ._id}
+                              value={vaitroHĐ._id}
+                              name={vaitroHĐ.ten}
+                            >
+                              {vaitroHĐ.ten}
+                            </option>
+                            ))
+                        }
+                </Form.Select>
               </Form.Group>
             </Col>
           </Row>
@@ -380,12 +433,25 @@ const ThemHoiDong = () => {
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Vai trò hội đồng</Form.Label>
-                <Form.Control
+                <Form.Select
                   name="vaitro4"
                   aria-describedby="title-help"
                   value={danhsachthanhvien.vaitro}
-                  onChange={onChangeInput}
-                />
+                  onChange={onChangeVaiTro}
+                >
+                   <option value="">Chọn vai trò</option>
+                        {
+                            vaitroHĐs.map((vaitroHĐ) => (
+                              <option
+                              key={vaitroHĐ._id}
+                              value={vaitroHĐ._id}
+                              name={vaitroHĐ.ten}
+                            >
+                              {vaitroHĐ.ten}
+                            </option>
+                            ))
+                        }
+                </Form.Select>
               </Form.Group>
             </Col>
           </Row>
@@ -418,12 +484,25 @@ const ThemHoiDong = () => {
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Vai trò hội đồng</Form.Label>
-                <Form.Control
+                <Form.Select
                   name="vaitro5"
                   aria-describedby="title-help"
                   value={danhsachthanhvien.vaitro}
-                  onChange={onChangeInput}
-                />
+                  onChange={onChangeVaiTro}
+                >
+                   <option value="">Chọn vai trò</option>
+                        {
+                            vaitroHĐs.map((vaitroHĐ) => (
+                              <option
+                              key={vaitroHĐ._id}
+                              value={vaitroHĐ._id}
+                              name={vaitroHĐ.ten}
+                            >
+                              {vaitroHĐ.ten}
+                            </option>
+                            ))
+                        }
+                </Form.Select>
               </Form.Group>
             </Col>
           </Row>

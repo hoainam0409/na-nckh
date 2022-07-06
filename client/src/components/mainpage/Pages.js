@@ -13,6 +13,8 @@ import DanhSachLinhVuc from './dm- linhvuc/DanhSachLinhVuc'
 import DanhSachUser from './quanly-nguoidung/DanhSachUser'
 import DeTaiChoDuyetKhoa from './duyetcapkhoa-cb/DeTaiChoDuyetCapKhoa'
 import DeTaiNhapKQĐG from './nhapKQĐG-cb/DeTaiNhapKQĐG'
+import DeTaiChoDuyetTruong from './duyetcaptruong-cb/DeTaiChoDuyetCapTruong'
+import DeTaiNhapKQNT from './nhapKQNT-cb/DeTaiNhapKQNT'
 import DanhSachHoiDong from './quanlyhoidong/DanhSachHoiDong'
 
 function Pages() {
@@ -31,6 +33,8 @@ function Pages() {
         <Route exact path="/user" element={<DanhSachUser/>}></Route>
         <Route exact path="/detai-canbo/cho-duyet-cap-khoa" element={<DeTaiChoDuyetKhoa/>}></Route>
         <Route exact path="/detai-canbo/nhap-ket-qua-danh-gia" element={<DeTaiNhapKQĐG/>}></Route>
+        <Route exact path="/detai-canbo/cho-duyet-cap-truong" element={<DeTaiChoDuyetTruong/>}></Route>
+        <Route exact path="/detai-canbo/nhap-ket-qua-nghiem-thu" element={<DeTaiNhapKQNT/>}></Route>
         <Route exact path="/quanly/hoidong" element={<DanhSachHoiDong/>}></Route>
 
     </Routes>

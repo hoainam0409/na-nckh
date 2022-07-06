@@ -56,6 +56,7 @@ const detaiCBSchema = new Schema({
         }
 
     ],
+    hoidong:{type: String},
     trangthai: {
         type: String,
         enum: ['Đăng ký', 'Chờ duyệt cấp khoa', 'Chờ nhập kết quả đánh giá', 'Chờ duyệt cấp trường', 'Trường duyệt']

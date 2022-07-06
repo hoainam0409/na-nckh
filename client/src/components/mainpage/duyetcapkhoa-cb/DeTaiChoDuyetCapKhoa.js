@@ -8,7 +8,9 @@ import ThemDeTaiCB from "../dangky-cb/ThemDeTaiCB";
 import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
 import ReactTooltip from "react-tooltip"
 import { BsFillEyeFill, BsXLg, BsCheckLg, BsFillFileEarmarkWordFill, BsPencilSquare, BsTrashFill} from "react-icons/bs";
-
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const DeTaiDuyetCapKhoas = () => {
   const {
@@ -33,13 +35,34 @@ const DeTaiDuyetCapKhoas = () => {
       <ThemDeTaiCB />
       {detaicb !== null && <SuaDeTaiCB />}
       <div style={{ margin: "10px 20px 20px 330px" }}>
-        <h1
-          style={{
-            fontSize: "24px",
-          }}
-        >
-          Danh sách đề tài cán bộ chờ duyệt cấp khoa
-        </h1>
+        <div>
+        <h1 style={{fontSize: "24px"}} >Danh sách đề tài chờ duyệt cấp khoa</h1>
+        <div className="filter">
+            <Row className="controls">
+              <Col>
+                <Form.Select>
+                  <option value="">Chọn cấp đề tài</option>
+                  <option value="Cấp trường">Cấp trường</option>
+                  <option value="Cấp Bộ">Cấp Bộ</option>
+                </Form.Select>
+              </Col>
+              <Col>
+                <Form.Select>
+                  <option value="">Chọn Khoa/Phòng ban</option>
+                  <option value="Khoa 1">Khoa 1</option>
+                  <option value="Khoa 2">Khoa 2</option>
+                </Form.Select>
+              </Col>
+              <Col>
+                <Form.Select>
+                  <option value="">Chọn năm</option>
+                  <option value="2022">2022</option>
+                  <option value="2021">2021</option>
+                </Form.Select>
+              </Col>
+            </Row>
+          </div>
+        </div>
         <Toast
           show={show}
           style={{ position: "fixed", right: "10px" }}

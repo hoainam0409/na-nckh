@@ -36,7 +36,6 @@ const NavTitle = styled.div`
   text-transform: uppercase;
 `;
 const NavIcon = styled(Link)`
-  // margin-left: 2rem;
   font-weight: 700;
   align-items: center;
   color: #337ab7;
@@ -72,7 +71,6 @@ const NavSearch = styled.li`
 `;
 const InputSearch = styled.input`
   height: 35px;
-  // border-radius: 1px ;
   font-size: 15px;
   width: 300px;
 `;

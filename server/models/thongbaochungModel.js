@@ -8,7 +8,7 @@ const thongbaochungSchema = new Schema({
     },
     nguoithongbao:{
         type: String,
-        required: true
+        // required: true
     },
     ngaythongbao:{
         type: Date,
