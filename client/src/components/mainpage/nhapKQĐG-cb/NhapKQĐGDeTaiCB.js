@@ -6,18 +6,16 @@ import Col from "react-bootstrap/Col";
 import { useContext, useState, useEffect } from "react";
 import { HoiDongContext } from "../../../contexts/HoiDongContext";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
-import { KhoaContext } from "../../../contexts/KhoaContext";
-import { LinhVucContext } from "../../../contexts/LinhVucContext";
 import { UserContext } from "../../../contexts/UserContext";
 
 const NhapKQĐGTaiCB = () => {
   // Contexts
   const {
     detaicbState: { detaicb },
-    showSuaDeTaiCB,
-    setShowSuaDeTaiCB,
     updateDeTaiCB,
     setShowToast,
+    showNhapKQĐG,
+    setShowNhapKQĐG,
   } = useContext(DeTaiCBContext);
 
   const {
@@ -26,19 +24,7 @@ const NhapKQĐGTaiCB = () => {
   } = useContext(HoiDongContext);
 
   useEffect(() => getHoiDongs(), []);
-  const {
-    khoaState: { khoas },
-    getKhoas,
-  } = useContext(KhoaContext);
 
-  useEffect(() => getKhoas(), []);
-
-  const {
-    linhvucState: { linhvucs },
-    getLinhVucs,
-  } = useContext(LinhVucContext);
-
-  useEffect(() => getLinhVucs(), []);
   const {
     userState: { users },
     getUsers,
@@ -80,18 +66,18 @@ const NhapKQĐGTaiCB = () => {
 
   const closeDialog = () => {
     setUpdatedDeTaiCB(detaicb);
-    setShowSuaDeTaiCB(false);
+    setShowNhapKQĐG(false);
   };
 
   const onSubmit = async (event) => {
     event.preventDefault();
     const { success, message } = await updateDeTaiCB(updatedDeTaiCB);
-    setShowSuaDeTaiCB(false);
+    setShowNhapKQĐG(false);
     setShowToast({ show: true, message, type: success ? "success" : "danger" });
   };
 
   return (
-    <Modal show={showSuaDeTaiCB} onHide={closeDialog}>
+    <Modal show={showNhapKQĐG} onHide={closeDialog}>
       <Modal.Header closeButton>
         <Modal.Title>Nhập kết quả đánh giá đề tài</Modal.Title>
       </Modal.Header>

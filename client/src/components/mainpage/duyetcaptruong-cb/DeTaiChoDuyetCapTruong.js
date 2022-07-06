@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import SideBar from "../../sidebar/SideBar";
-import ThemDeTaiCB from "../dangky-cb/ThemDeTaiCB";
 import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
 import ReactTooltip from "react-tooltip"
 import { BsFillEyeFill, BsXLg, BsCheckLg, BsFillFileEarmarkWordFill, BsPencilSquare, BsTrashFill} from "react-icons/bs";
@@ -32,7 +31,6 @@ const DeTaiDuyetCapKhoas = () => {
   return (
     <div>
       <SideBar />
-      <ThemDeTaiCB />
       {detaicb !== null && <SuaDeTaiCB />}
       <div style={{ margin: "10px 20px 20px 330px" }}>
         <div>

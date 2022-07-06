@@ -5,6 +5,7 @@ import Toast from "react-bootstrap/Toast";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import SideBar from "../../sidebar/SideBar";
 import NhapKQĐGDeTai from "./NhapKQĐGDeTaiCB";
+import SuaDeTaiCB from '../dangky-cb/SuaDeTaiCB'
 import ReactTooltip from "react-tooltip"
 import { BsFillEyeFill, BsFillFileEarmarkWordFill, BsPencilSquare } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
@@ -19,6 +20,8 @@ const DeTaiNhapKQDGs = () => {
     setShowToast,
     findDeTaiCB,
     setShowSuaDeTaiCB,
+    setShowNhapKQĐG,
+    
   } = useContext(DeTaiCBContext);
 
   // Start: Get all
@@ -28,9 +31,14 @@ const DeTaiNhapKQDGs = () => {
     findDeTaiCB(detaicbId);
     setShowSuaDeTaiCB(true);
   };
+  const SelectDeTaiCB = (detaicbId) => {
+    findDeTaiCB(detaicbId);
+    setShowNhapKQĐG(true);
+  };
   return (
     <div>
       <SideBar />
+      {detaicb !== null && <SuaDeTaiCB />}
       {detaicb !== null && <NhapKQĐGDeTai />}
       <div style={{ margin: "10px 20px 20px 330px" }}>
         <div>
@@ -127,7 +135,7 @@ const DeTaiNhapKQDGs = () => {
                   </Button>
                   <Button
                     style={{ backgroundColor: "#5bc0de", borderColor: "#269abc", margin: '3px', }}
-                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
+                    onClick={SelectDeTaiCB.bind(this, detaicb._id)}
                     data-tip data-for="Nhập kết quả đánh giá"
                   >
                     <ReactTooltip id="Nhập kết quả đánh giá" place="top" effect="solid">Nhập kết quả đánh giá</ReactTooltip>
