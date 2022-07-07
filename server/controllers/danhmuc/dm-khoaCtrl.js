@@ -42,7 +42,7 @@ const khoaCtrl = {
       });
     try {
       let updatedKhoa = {
-        ma,
+        makhoa,
         ten,
       };
       updatedKhoa = await Khoa.findOneAndUpdate(

@@ -51,6 +51,21 @@ import {FaCube} from 'react-icons/fa'
           icon: <FaCube style ={{color: 'black'}}/>
         },
         {
+          title: 'Đợt kiểm tra tiến độ thực hiện  ',
+          path: '/detai-canbo/dot-kiem-tra-tien-do',
+          icon: <FaCube style ={{color: 'black'}}/>
+        },
+        {
+          title: 'Báo cáo tiến độ thực hiện ',
+          path: '/detai-canbo/bao-cao-tien-do',
+          icon: <FaCube style ={{color: 'black'}}/>
+        },
+        {
+          title: 'Duyệt báo cáo tiến độ',
+          path: '/detai-canbo/duyet-bao-cao-tien-do',
+          icon: <FaCube style ={{color: 'black'}}/>
+        },
+        {
           title: 'Nhập kết quả nghiệm thu',
           path: '/detai-canbo/nhap-ket-qua-nghiem-thu',
           icon: <FaCube style ={{color: 'black'}}/>

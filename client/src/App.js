@@ -16,6 +16,8 @@ import HoiDongContextProvider from "./contexts/HoiDongContext";
 import LoaiHĐContextProvider from "./contexts/LoaiHĐContext";
 import VaiTroHĐContextProvider from './contexts/VaiTroHĐContext'
 import VaiTroTGContextProvider from './contexts/VaiTroTGContext'
+import DotKiemTraTĐContextProvider from "./contexts/DotKiemTraTĐContext";
+
 
 function App() {
   return (
@@ -33,9 +35,11 @@ function App() {
                   <KhoaContextProvider>
                     <LinhVucContextProvider>
                       <ChucVuContextProvider>
+                        <DotKiemTraTĐContextProvider>
                         <Router>
                           <Mainpages />
                         </Router>
+                        </DotKiemTraTĐContextProvider>
                       </ChucVuContextProvider>
                     </LinhVucContextProvider>
                   </KhoaContextProvider>
