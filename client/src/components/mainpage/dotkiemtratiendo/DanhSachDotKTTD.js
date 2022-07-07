@@ -1,45 +1,64 @@
 import React, { useContext, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
 import Toast from "react-bootstrap/Toast";
 import { DotKiemTraTĐContext } from "../../../contexts/DotKiemTraTĐContext";
 import SideBar from "../../sidebar/SideBar";
-import ThemDotKTTD from "./ThemDotKTTD";
-import SuaDotKTTD from "./SuaDotKTTD";
+import ThemDotKiemTraTĐ from "./ThemDotKTTD";
+import SuaDotKiemTraTĐ from "./SuaDotKTTD";
 import ReactTooltip from "react-tooltip"
 import { BsFillEyeFill, BsPencilSquare, BsTrashFill} from "react-icons/bs";
 
 const DotKiemTraTĐs = () => {
 
   const {
-    dotdangkyState: { dotdangky, dotdangkys, dotdangkysLoading },
-    getDotDangKys,
-    setShowThemDotDangKy,
+    dotkiemtraTĐState: { dotkiemtraTĐ, dotkiemtraTĐs, dotkiemtraTĐsLoading },
+    getDotKiemTraTĐs,
+    setShowThemDotKiemTraTĐ,
     showToast: { show, message, type },
     setShowToast,
-    deleteDotDangKy,
-    findDotDangKy,
-    setShowSuaDotDangKy,
-  } = useContext(DotDangKyContext);
+    deleteDotKiemTraTĐ,
+    findDotKiemTraTĐ,
+    setShowSuaDotKiemTraTĐ,
+  } = useContext(DotKiemTraTĐContext);
 
   // Start: Get all
-  useEffect(() => getDotDangKys(), []);
+  useEffect(() => getDotKiemTraTĐs(), []);
 
-  const chooseDotDangKy = (dotdangkyId) => {
-    findDotDangKy(dotdangkyId);
-    setShowSuaDotDangKy(true);
+  const chooseDotKiemTraTĐ = (dotkiemtraTĐId) => {
+    findDotKiemTraTĐ(dotkiemtraTĐId);
+    setShowSuaDotKiemTraTĐ(true);
   };
   return (
     <div>
       <SideBar />
       <div style={{ margin: "10px 20px 20px 330px" }}>
-        <h1
-          style={{
-            fontSize: "24px",
-          }}
-        >
-          Danh sách đợt đăng ký đề tài
-        </h1>
+        <div>
+        <h1 style={{fontSize: "24px"}}>Danh sách đợt đăng ký đề tài</h1>
+        <div className="filter">
+            <Row className="controls">
+              <Col>
+                <Form.Select>
+                  <option value="">Chọn năm</option>
+                  <option value="2022">2022</option>
+                  <option value="2021">2021</option>
+                </Form.Select>
+              </Col>
+              <Col>
+                <Form.Select>
+                  <option value="">Chọn trạng thái</option>
+                  <option value="Cấp trường">Chưa công khai</option>
+                  <option value="Cấp Bộ">Công khai</option>
+                  <option value="Cấp Bộ">Hết hạn</option>
+                </Form.Select>
+              </Col>
+            </Row>
+          </div>
+        </div>
+        
         <Toast
           show={show}
           style={{ position: "fixed", right: "10px" }}
@@ -63,36 +82,34 @@ const DotKiemTraTĐs = () => {
             backgroundColor: "#337AB7",
             borderColor: "#2d6da3",
           }}
-          onClick={setShowThemDotDangKy.bind(this, true)}
+          onClick={setShowThemDotKiemTraTĐ.bind(this, true)}
         >
           Thêm mới
         </Button>
-        <ThemDotDangKy/>
-        {dotdangky !== null && <SuaDotDangKy/>}
+        <ThemDotKiemTraTĐ/>
+        {dotkiemtraTĐ !== null && <SuaDotKiemTraTĐ/>}
 
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr>
-              <th style={{ textAlign: "center", color: "#495057" }}>Mã đợt</th>
               <th style={{ textAlign: "center", color: "#495057" }}>Tên đợt</th>
               <th style={{ textAlign: "center", color: "#495057" }}>Năm</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Cấp đề tài</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Ngày mở đăng ký</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Ngày khóa đăng ký</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Ngày bắt đầu</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Ngày kết thúc</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Trạng Thái</th>
               <th style={{ textAlign: "center", color: "#495057" }}>
                 Chức năng
               </th>
             </tr>
           </thead>
           <tbody>
-            {dotdangkys.map((dotdangky) => (
-              <tr key={dotdangky._id}>
-                <td onClick={chooseDotDangKy.bind(this, dotdangky._id)}>{dotdangky.madot} </td>
-                <td>{dotdangky.tendot}</td>
-                <td>{dotdangky.nam} </td>
-                <td>{dotdangky.capdetai}</td>
-                <td>{new Date(dotdangky.ngaymodangky).toLocaleDateString()} </td>
-                <td>{new Date(dotdangky.ngaykhoadangky).toLocaleDateString()} </td>
+            {dotkiemtraTĐs.map((dotkiemtraTĐ) => (
+              <tr key={dotkiemtraTĐ._id}>
+                <td>{dotkiemtraTĐ.tendot}</td>
+                <td>{dotkiemtraTĐ.nam} </td>
+                <td>{new Date(dotkiemtraTĐ.ngaybd).toLocaleDateString()} </td>
+                <td>{new Date(dotkiemtraTĐ.ngaykt).toLocaleDateString()} </td>
+                <td>{dotkiemtraTĐ.trangthai} </td>
                 <td style={{ textAlign: "center" }}>
                   <Button
                     style={{
@@ -100,7 +117,7 @@ const DotKiemTraTĐs = () => {
                       borderColor: "#2d6da3",
                       margin: '3px'
                     }}
-                    onClick={chooseDotDangKy.bind(this, dotdangky._id)}
+                    onClick={chooseDotKiemTraTĐ.bind(this, dotkiemtraTĐ._id)}
                     data-tip data-for="Xem"
                   >
                   <ReactTooltip id="Xem" place="top" effect="solid">Xem</ReactTooltip>
@@ -112,7 +129,7 @@ const DotKiemTraTĐs = () => {
                       borderColor: "#269abc",
                       margin: '3px'
                     }}
-                    onClick={chooseDotDangKy.bind(this, dotdangky._id)}
+                    onClick={chooseDotKiemTraTĐ.bind(this, dotkiemtraTĐ._id)}
                     data-tip data-for="Sửa"
                   >
                    <ReactTooltip id="Sửa" place="top" effect="solid">Sửa</ReactTooltip>
@@ -124,7 +141,7 @@ const DotKiemTraTĐs = () => {
                       borderColor: "#ac2925",
                       margin: '3px'
                     }}
-                    onClick={() => deleteDotDangKy(dotdangky._id)}
+                    onClick={() => deleteDotKiemTraTĐ(dotkiemtraTĐ._id)}
                     data-tip data-for="Xóa"
                   >
                   <ReactTooltip id="Xóa" place="top" effect="solid">Xóa</ReactTooltip> 

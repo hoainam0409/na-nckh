@@ -1,100 +1,70 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext} from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
-import { CapDeTaiContext } from "../../../contexts/CapDeTaiContext";
+import { DotKiemTraTĐContext } from "../../../contexts/DotKiemTraTĐContext";
 
-
-const ThemDotDangKy = () => {
+const ThemDotKiemTraTĐ = () => {
   //context
   const {
-    showThemDotDangKy,
-    setShowThemDotDangKy,
-    addDotDangKy,
+    showThemDotKiemTraTĐ,
+    setShowThemDotKiemTraTĐ,
+    addDotKiemTraTĐ,
     setShowToast,
-  } = useContext(DotDangKyContext);
-  const {
-    capdetaiState: { capdetais },
-    getCapDeTais
-  } = useContext(CapDeTaiContext);
-  useEffect(() => getCapDeTais(), [] )
+  } = useContext(DotKiemTraTĐContext);
+
   //State
-  const [newDotDangKy, setNewDotDangKy] = useState({
-    madot: "",
+  const [newDotKiemTraTĐ, setNewDotKiemTraTĐ] = useState({
     tendot: "",
     nam: "",
-    capdetai: "",
-    ngaymodangky: "",
-    ngaykhoadangky: "",
+    ngaybd: "",
+    ngaykt: "",
     trangthai: "",
     ghichu: "",
     dinhkem: "",
   });
 
-  const {
-    madot,
-    tendot,
-    nam,
-    ngaymodangky,
-    ngaykhoadangky,
-    capdetai,
-    trangthai,
-    ghichu,
-    dinhkem,
-  } = newDotDangKy;
+  const { tendot, nam, ngaybd, ngaykt, trangthai, ghichu, dinhkem } =
+    newDotKiemTraTĐ;
 
   const onChangeInput = (event) =>
-    setNewDotDangKy({
-      ...newDotDangKy,
+    setNewDotKiemTraTĐ({
+      ...newDotKiemTraTĐ,
       [event.target.name]: event.target.value,
     });
 
-  const resetAddDotDangKy = () => {
-    setNewDotDangKy({
-      madot: "",
+  const resetAddDotKiemTraTĐ = () => {
+    setNewDotKiemTraTĐ({
       tendot: "",
       nam: "",
-      capdetai: "",
-      ngaymodangky: "",
-      ngaykhoadangky: "",
+      ngaybd: "",
+      ngaykt: "",
       trangthai: "",
       ghichu: "",
       dinhkem: "",
     });
-    setShowThemDotDangKy(false);
+    setShowThemDotKiemTraTĐ(false);
   };
   const closeDialog = () => {
-    resetAddDotDangKy();
+    resetAddDotKiemTraTĐ();
   };
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    const { success, message } = await addDotDangKy(newDotDangKy);
-    resetAddDotDangKy();
+    const { success, message } = await addDotKiemTraTĐ(newDotKiemTraTĐ);
+    resetAddDotKiemTraTĐ();
     setShowToast({ show: true, message, type: success ? "success" : "danger" });
   };
 
   return (
-    <Modal show={showThemDotDangKy} onHide={closeDialog}>
+    <Modal show={showThemDotKiemTraTĐ} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Thêm mới đợt đăng ký đề tài</Modal.Title>
+        <Modal.Title>Thêm mới đợt kiểm tra tiến độ</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>
-          <Form.Group className="mb-3">
-            <Form.Label>Mã đợt</Form.Label>
-            <Form.Control
-              type="text"
-              name="madot"
-              required
-              aria-describedby="title-help"
-              value={madot}
-              onChange={onChangeInput}
-            />
-          </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Tên đợt</Form.Label>
             <Form.Control
@@ -106,62 +76,42 @@ const ThemDotDangKy = () => {
               onChange={onChangeInput}
             />
           </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Năm </Form.Label>
+            <Form.Control
+              type="text"
+              name="nam"
+              required
+              aria-describedby="title-help"
+              value={nam}
+              onChange={onChangeInput}
+            />
+          </Form.Group>
+
           <Row>
             <Col>
               <Form.Group className="mb-3">
-                <Form.Label>Năm </Form.Label>
+                <Form.Label>Ngày bắt đầu </Form.Label>
                 <Form.Control
-                  type="text"
-                  name="nam"
+                  type="date"
+                  name="ngaybd"
                   required
                   aria-describedby="title-help"
-                  value={nam}
+                  value={ngaybd}
                   onChange={onChangeInput}
                 />
               </Form.Group>
             </Col>
             <Col>
               <Form.Group className="mb-3">
-                <Form.Label>Cấp đề tài</Form.Label>
-                <Form.Select
-                  aria-label="Default select example"
-                  name="capdetai"
-                  required
-                  aria-describedby="title-help"
-                  value={capdetai}
-                  onChange={onChangeInput}
-                >
-                  <option >Chọn cấp đề tài</option>
-                  {capdetais.map((capdetai) => (
-                    <option key={capdetai._id}>{capdetai.ten}</option>
-                  ))}
-                </Form.Select>
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Ngày mở đăng ký </Form.Label>
+                <Form.Label>Ngày kết thúc</Form.Label>
                 <Form.Control
                   type="date"
-                  name="ngaymodangky"
+                  name="ngaykt"
                   required
                   aria-describedby="title-help"
-                  value={ngaymodangky}
-                  onChange={onChangeInput}
-                />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Ngày khóa đăng ký</Form.Label>
-                <Form.Control
-                  type="date"
-                  name="ngaykhoadangky"
-                  required
-                  aria-describedby="title-help"
-                  value={ngaykhoadangky}
+                  value={ngaykt}
                   onChange={onChangeInput}
                 />
               </Form.Group>
@@ -174,8 +124,9 @@ const ThemDotDangKy = () => {
               name="trangthai"
               onChange={onChangeInput}
             >
-              <option value="Mở đăng ký">Mở đăng ký</option>
-              <option value="Khóa đăng ký">Khóa đăng ký</option>
+              <option value="Chưa công khai">Chưa công khai</option>
+              <option value="Công khai">Công khai</option>
+              <option value="Hết hạn">Hết hạn</option>
             </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">
@@ -212,4 +163,4 @@ const ThemDotDangKy = () => {
     </Modal>
   );
 };
-export default ThemDotDangKy;
+export default ThemDotKiemTraTĐ;

@@ -4,72 +4,54 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useContext, useState, useEffect } from "react";
-import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
-import { CapDeTaiContext } from "../../../contexts/CapDeTaiContext";
+import { DotKiemTraTĐContext } from "../../../contexts/DotKiemTraTĐContext";
 
-
-const SuaCapDeTai = () => {
+const SuaDotKiemTraTĐ = () => {
   // Contexts
   const {
-    dotdangkyState: { dotdangky },
-    showSuaDotDangKy,
-    setShowSuaDotDangKy,
-    updateDotDangKy,
+    dotkiemtraTĐState: { dotkiemtraTĐ},
+    showSuaDotKiemTraTĐ,
+    setShowSuaDotKiemTraTĐ,
+    updateDotKiemTraTĐ,
     setShowToast,
-  } = useContext(DotDangKyContext);
-  const {
-    capdetaiState: { capdetais },
-    getCapDeTais
-  } = useContext(CapDeTaiContext);
-  useEffect(() => getCapDeTais(), [] )
+  } = useContext(DotKiemTraTĐContext);
 
   // State
-  const [updatedDotDangKy, setUpdatedDotDangKy] =
-    useState(dotdangky);
+  const [updatedDotKiemTraTĐ, setUpdatedDotKiemTraTĐ] =
+    useState(dotkiemtraTĐ);
 
-  useEffect(() => setUpdatedDotDangKy(dotdangky), [dotdangky]);
+  useEffect(() => setUpdatedDotKiemTraTĐ(dotkiemtraTĐ), [dotkiemtraTĐ]);
 
-  const { madot, tendot, nam, capdetai, ngaymodangky, ngaykhoadangky,trangthai, ghichu, dinhkem } =
-    updatedDotDangKy;
+  const { tendot, nam, ngaybd, ngaykt, trangthai, ghichu, dinhkem } =
+    updatedDotKiemTraTĐ;
 
   const onChangeUpdated = (event) =>
-    setUpdatedDotDangKy({
-      ...updatedDotDangKy,
+    setUpdatedDotKiemTraTĐ({
+      ...updatedDotKiemTraTĐ,
       [event.target.name]: event.target.value,
     });
 
   const closeDialog = () => {
-    setUpdatedDotDangKy(dotdangky);
-    setShowSuaDotDangKy(false);
+    setUpdatedDotKiemTraTĐ(dotkiemtraTĐ);
+    setShowSuaDotKiemTraTĐ(false);
   };
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    const { success, message } = await updateDotDangKy(
-      updatedDotDangKy
+    const { success, message } = await updateDotKiemTraTĐ(
+      updatedDotKiemTraTĐ
     );
-    setShowSuaDotDangKy(false);
+    setShowSuaDotKiemTraTĐ(false);
     setShowToast({ show: true, message, type: success ? "success" : "danger" });
   };
 
   return (
-    <Modal show={showSuaDotDangKy} onHide={closeDialog}>
+    <Modal show={showSuaDotKiemTraTĐ} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Chỉnh sửa cấp đề tài</Modal.Title>
+        <Modal.Title>Chỉnh sửa đợt kiểm tra tiến độ</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>
-          <Form.Group className="mb-3">
-            <Form.Label>Mã đợt</Form.Label>
-            <Form.Control
-              type="text"
-              name="madot"
-              required
-              aria-describedby="title-help"
-              value={madot}
-              onChange={onChangeUpdated}
-            />
-          </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Tên đợt</Form.Label>
             <Form.Control
@@ -81,62 +63,42 @@ const SuaCapDeTai = () => {
               onChange={onChangeUpdated}
             />
           </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Năm </Form.Label>
+            <Form.Control
+              type="text"
+              name="nam"
+              required
+              aria-describedby="title-help"
+              value={nam}
+              onChange={onChangeUpdated}
+            />
+          </Form.Group>
+
           <Row>
             <Col>
               <Form.Group className="mb-3">
-                <Form.Label>Năm </Form.Label>
+                <Form.Label>Ngày bắt đầu </Form.Label>
                 <Form.Control
-                  type="text"
-                  name="nam"
+                  type="date"
+                  name="ngaybd"
                   required
                   aria-describedby="title-help"
-                  value={nam}
+                  value={ngaybd}
                   onChange={onChangeUpdated}
                 />
               </Form.Group>
             </Col>
             <Col>
               <Form.Group className="mb-3">
-                <Form.Label>Cấp đề tài</Form.Label>
-                <Form.Select
-                  type="text"
-                  name="capdetai"
-                  required
-                  aria-describedby="title-help"
-                  value={capdetai}
-                  onChange={onChangeUpdated}
-                >
-                   <option >Chọn cấp đề tài</option>
-                  {capdetais.map((capdetai) => (
-                    <option key={capdetai._id} value={capdetai._id}>{capdetai.ten}</option>
-                  ))}
-                </Form.Select>
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Ngày mở đăng ký </Form.Label>
+                <Form.Label>Ngày kết thúc</Form.Label>
                 <Form.Control
                   type="date"
-                  name="ngaymodangky"
+                  name="ngaykt"
                   required
                   aria-describedby="title-help"
-                  value={ngaymodangky}
-                  onChange={onChangeUpdated}
-                />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Ngày khóa đăng ký</Form.Label>
-                <Form.Control
-                  type="date"
-                  name="ngaykhoadangky"
-                  required
-                  aria-describedby="title-help"
-                  value={ngaykhoadangky}
+                  value={ngaykt}
                   onChange={onChangeUpdated}
                 />
               </Form.Group>
@@ -144,15 +106,15 @@ const SuaCapDeTai = () => {
           </Row>
           <Form.Group className="mb-3">
             <Form.Label>Trạng thái</Form.Label>
-            <Form.Control
-							as='select'
-							value={trangthai}
-							name='trangthai'
-							onChange={onChangeUpdated}
-						>
-							<option value='Mở đăng ký'>Mở đăng ký</option>
-							<option value='Khóa đăng ký'>Khóa đăng ký</option>
-						</Form.Control>
+            <Form.Select
+              value={trangthai}
+              name="trangthai"
+              onChange={onChangeUpdated}
+            >
+              <option value="Chưa công khai">Chưa công khai</option>
+              <option value="Công khai">Công khai</option>
+              <option value="Hết hạn">Hết hạn</option>
+            </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Ghi chú</Form.Label>
@@ -189,4 +151,4 @@ const SuaCapDeTai = () => {
   );
 };
 
-export default SuaCapDeTai;
+export default SuaDotKiemTraTĐ;

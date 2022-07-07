@@ -21,10 +21,7 @@ const dotkiemtraTĐCtrl = {
         trangthai,
         dinhkem,
       } = req.body;
-      const dotkiemtraTĐ = await DotKiemTraTĐ.findOne({ madot });
-      if (dotkiemtraTĐ)
-        return res.status(400).json({ message: "Mã đợt đăng ký đã tồn tại." });
-
+    
       const newDotKiemTraTĐ = new DotKiemTraTĐ({
         tendot,
         nam,
