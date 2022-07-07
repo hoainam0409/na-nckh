@@ -52,7 +52,12 @@ const detaiCBSchema = new Schema({
         {
             idThanhVien: String,
             hovaten: String,
-            vaitrothamgia: String
+            // idVaiTro: String,
+            vaitrothamgia: String,
+            chucdanhKH: String,
+            donvi: String,
+            email: String,
+
         }
 
     ],

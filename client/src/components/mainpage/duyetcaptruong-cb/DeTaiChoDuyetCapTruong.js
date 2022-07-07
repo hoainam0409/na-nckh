@@ -6,7 +6,7 @@ import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import SideBar from "../../sidebar/SideBar";
 import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
 import ReactTooltip from "react-tooltip"
-import { BsFillEyeFill, BsXLg, BsCheckLg, BsFillFileEarmarkWordFill, BsPencilSquare, BsTrashFill} from "react-icons/bs";
+import { BsFillEyeFill, BsXLg, BsCheckLg, BsFillFileEarmarkWordFill, BsPencilSquare} from "react-icons/bs";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -22,7 +22,7 @@ const DeTaiDuyetCapKhoas = () => {
   } = useContext(DeTaiCBContext);
 
   // Start: Get all
-  useEffect(() => getDeTaiCBs(), []);
+  useEffect(() => getDeTaiCBs(), [getDeTaiCBs]);
 
   const chooseDeTaiCB = (detaicbId) => {
     findDeTaiCB(detaicbId);
@@ -111,7 +111,7 @@ const DeTaiDuyetCapKhoas = () => {
                 <td>{detaicb.dotdangky} </td>
                 <td>{detaicb.khoaxetduyet}</td>
                 <td>{detaicb.thanhvienthamgia.map(q => (
-                  <div>
+                  <div key= {q._id}>
                     { q.hovaten }
                   </div>
                 ))}</td>

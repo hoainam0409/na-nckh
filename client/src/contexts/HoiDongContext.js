@@ -55,50 +55,56 @@ const HoiDongContextProvider = ({ children }) => {
           id: newHoiDong.user1._id,
           hovaten: newHoiDong.user1.hovaten,
           // vaitro: newHoiDong.vaitro1
+          idVaiTro: newHoiDong.vaitro1._id,
+          ten: newHoiDong.vaitro1.ten,
         },
         {
           id: newHoiDong.user2._id,
           hovaten: newHoiDong.user2.hovaten,
-          // vaitro: newHoiDong.vaitro2
+          idVaiTro: newHoiDong.vaitro2._id,
+          ten: newHoiDong.vaitro2.ten,
         },
         {
           id: newHoiDong.user3._id,
           hovaten: newHoiDong.user3.hovaten,
-          // vaitro: newHoiDong.vaitro3
+          idVaiTro: newHoiDong.vaitro3._id,
+          ten: newHoiDong.vaitro3.ten,
         },
         {
           id: newHoiDong.user4._id,
           hovaten: newHoiDong.user4.hovaten,
-          // vaitro: newHoiDong.vaitro4
+          idVaiTro: newHoiDong.vaitro4._id,
+          ten: newHoiDong.vaitro4.ten,
         },
         {
           id: newHoiDong.user5._id,
           hovaten: newHoiDong.user5.hovaten,
-          // vaitro: newHoiDong.vaitro5
-        },
-      )
-      newHoiDong.danhsachthanhvien.push(
-        {
-          id: newHoiDong.vaitro1._id,
-          ten: newHoiDong.vaitro1.ten,
-        },
-        {
-          id: newHoiDong.vaitro2._id,
-          ten: newHoiDong.vaitro2.ten,
-        },
-        {
-          id: newHoiDong.vaitro3._id,
-          ten: newHoiDong.vaitro3.ten,
-        },
-        {
-          id: newHoiDong.vaitro4._id,
-          ten: newHoiDong.vaitro4.ten,
-        },
-        {
-          id: newHoiDong.vaitro5._id,
+          idVaiTro: newHoiDong.vaitro5._id,
           ten: newHoiDong.vaitro5.ten,
-        }
+        },
       )
+      // newHoiDong.danhsachthanhvien.push(
+      //   {
+      //     id: newHoiDong.vaitro1._id,
+      //     ten: newHoiDong.vaitro1.ten,
+      //   },
+      //   {
+      //     id: newHoiDong.vaitro2._id,
+      //     ten: newHoiDong.vaitro2.ten,
+      //   },
+      //   {
+      //     id: newHoiDong.vaitro3._id,
+      //     ten: newHoiDong.vaitro3.ten,
+      //   },
+      //   {
+      //     id: newHoiDong.vaitro4._id,
+      //     ten: newHoiDong.vaitro4.ten,
+      //   },
+      //   {
+      //     id: newHoiDong.vaitro5._id,
+      //     ten: newHoiDong.vaitro5.ten,
+      //   }
+      // )
       const response = await axios.post(
         `${apiUrl}/quanly/hoidong`,
         newHoiDong

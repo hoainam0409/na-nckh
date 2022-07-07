@@ -22,19 +22,19 @@ const SuaHoiDong = () => {
     dotdangkyState: { dotdangkys },
     getDotDangKys,
   } = useContext(DotDangKyContext);
-  useEffect(() => getDotDangKys(), []);
+  useEffect(() => getDotDangKys(), [getDotDangKys]);
 
   const {
     loaiHĐState: { loaiHĐs },
     getLoaiHĐs,
   } = useContext(LoaiHĐContext);
-  useEffect(() => getLoaiHĐs(), []);
+  useEffect(() => getLoaiHĐs(), [getLoaiHĐs]);
 
   const {
     userState: { users },
     getUsers,
   } = useContext(UserContext);
-  useEffect(() => getUsers(), []);
+  useEffect(() => getUsers(), [getUsers]);
 
 
   // State
@@ -61,7 +61,7 @@ const SuaHoiDong = () => {
       [event.target.name]: event.target.value,
     });
   const onChangeUser = (event) => {
-    const userSelected = users.find((q) => q._id == event.target.value);
+    const userSelected = users.find((q) => q._id === event.target.value);
     setUpdatedHoiDong({
       ...updatedHoiDong,
       [event.target.name]: userSelected,

@@ -8,7 +8,7 @@ import { HoiDongContext } from "../../../contexts/HoiDongContext";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import { UserContext } from "../../../contexts/UserContext";
 
-const NhapKQĐGTaiCB = () => {
+const NhapKQĐGDeTaiCB = () => {
   // Contexts
   const {
     detaicbState: { detaicb },
@@ -23,14 +23,14 @@ const NhapKQĐGTaiCB = () => {
     getHoiDongs,
   } = useContext(HoiDongContext);
 
-  useEffect(() => getHoiDongs(), []);
+  useEffect(() => getHoiDongs(), [getHoiDongs]);
 
   const {
     userState: { users },
     getUsers,
   } = useContext(UserContext);
 
-  useEffect(() => getUsers(), []);
+  useEffect(() => getUsers(), [getUsers]);
 
   // State
   const [updatedDeTaiCB, setUpdatedDeTaiCB] = useState(detaicb);
@@ -41,16 +41,6 @@ const NhapKQĐGTaiCB = () => {
     madetai,
     tendetai,
     dotdangky,
-    capdetai,
-    ngaybd,
-    ngaykt,
-    kinhphi,
-    khoaxetduyet,
-    linhvuc,
-    noidung,
-    muctieu,
-    ketquadukien,
-    sanpham,
     thanhvienthamgia,
     ghichu,
     trangthai,
@@ -265,4 +255,4 @@ const NhapKQĐGTaiCB = () => {
   );
 };
 
-export default NhapKQĐGTaiCB;
+export default NhapKQĐGDeTaiCB;

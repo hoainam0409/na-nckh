@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect} from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
@@ -25,7 +25,7 @@ const DeTaiNhapKQDGs = () => {
   } = useContext(DeTaiCBContext);
 
   // Start: Get all
-  useEffect(() => getDeTaiCBs(), []);
+  useEffect(() => getDeTaiCBs(), [getDeTaiCBs]);
 
   const chooseDeTaiCB = (detaicbId) => {
     findDeTaiCB(detaicbId);
@@ -119,7 +119,7 @@ const DeTaiNhapKQDGs = () => {
                 <td>{detaicb.dotdangky} </td>
                 <td>{detaicb.khoaxetduyet}</td>
                 <td>{detaicb.thanhvienthamgia.map(q => (
-                  <div>
+                  <div key= {q._id}>
                     {q.hovaten}
                   </div>
                 ))}</td>

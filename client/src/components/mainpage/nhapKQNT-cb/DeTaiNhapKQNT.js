@@ -4,14 +4,14 @@ import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import SideBar from "../../sidebar/SideBar";
-import NhapKQĐGDeTai from "./NhapKQNTDeTaiCB";
+import NhapKQNTDeTai from "./NhapKQNTDeTaiCB";
 import ReactTooltip from "react-tooltip"
 import { BsFillEyeFill, BsFillFileEarmarkWordFill, BsPencilSquare } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-const DeTaiNhapKQDGs = () => {
+const DeTaiNhapKQNTs = () => {
   const {
     detaicbState: { detaicb, detaicbs, detaicbsLoading },
     getDeTaiCBs,
@@ -19,22 +19,28 @@ const DeTaiNhapKQDGs = () => {
     setShowToast,
     findDeTaiCB,
     setShowSuaDeTaiCB,
+    setShowNhapKQNT
   } = useContext(DeTaiCBContext);
 
   // Start: Get all
-  useEffect(() => getDeTaiCBs(), []);
+  useEffect(() => getDeTaiCBs(), [getDeTaiCBs]);
 
   const chooseDeTaiCB = (detaicbId) => {
     findDeTaiCB(detaicbId);
     setShowSuaDeTaiCB(true);
   };
+
+  const SelectDeTaiCB = (detaicbId) => {
+    findDeTaiCB(detaicbId);
+    setShowNhapKQNT(true);
+  };
   return (
     <div>
       <SideBar />
-      {detaicb !== null && <NhapKQĐGDeTai />}
+      {detaicb !== null && <NhapKQNTDeTai />}
       <div style={{ margin: "10px 20px 20px 330px" }}>
         <div>
-          <h1 style={{ fontSize: "24px" }}> Danh sách đánh giá đề tài</h1>
+          <h1 style={{ fontSize: "24px" }}>Danh sách nghiệm thu đề tài</h1>
           <div className="filter">
             <Row className="controls">
               <Col>
@@ -105,13 +111,13 @@ const DeTaiNhapKQDGs = () => {
           </thead>
           <tbody>
             {detaicbs.map((detaicb) => (
-              <tr key={detaicb._id}>
+              <tr key={detaicb._id} value={detaicb._id}>
                 <td>{detaicb.madetai} </td>
                 <td>{detaicb.tendetai}</td>
                 <td>{detaicb.dotdangky} </td>
                 <td>{detaicb.khoaxetduyet}</td>
                 <td>{detaicb.thanhvienthamgia.map(q => (
-                  <div>
+                  <div key= {q._id}>
                     {q.hovaten}
                   </div>
                 ))}</td>
@@ -127,10 +133,10 @@ const DeTaiNhapKQDGs = () => {
                   </Button>
                   <Button
                     style={{ backgroundColor: "#5bc0de", borderColor: "#269abc", margin: '3px', }}
-                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                    data-tip data-for="Nhập kết quả đánh giá"
+                    onClick={SelectDeTaiCB.bind(this, detaicb._id)}
+                    data-tip data-for="Nhập kết quả nghiệm thu"
                   >
-                    <ReactTooltip id="Nhập kết quả đánh giá" place="top" effect="solid">Nhập kết quả đánh giá</ReactTooltip>
+                    <ReactTooltip id="Nhập kết quả nghiệm thu" place="top" effect="solid">Nhập kết quả nghiệm thu</ReactTooltip>
                     <BsPencilSquare />
                   </Button>
                   <Button
@@ -149,4 +155,4 @@ const DeTaiNhapKQDGs = () => {
     </div>
   );
 };
-export default DeTaiNhapKQDGs;
+export default DeTaiNhapKQNTs;

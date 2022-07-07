@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
+import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -9,6 +10,8 @@ import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import { KhoaContext } from "../../../contexts/KhoaContext";
 import { LinhVucContext } from "../../../contexts/LinhVucContext";
 import { UserContext } from "../../../contexts/UserContext";
+import { VaiTroTGContext } from "../../../contexts/VaiTroTGContext";
+import SanPham from "./SanPham";
 
 const ThemDeTaiCB = () => {
   //context
@@ -20,29 +23,33 @@ const ThemDeTaiCB = () => {
     getDotDangKys,
   } = useContext(DotDangKyContext);
 
-  useEffect(() => {
-    getDotDangKys();
-  }, []);
+  useEffect(() => {getDotDangKys()}, [getDotDangKys]);
 
   const {
     khoaState: { khoas },
     getKhoas,
   } = useContext(KhoaContext);
 
-  useEffect(() => getKhoas(), []);
+  useEffect(() => getKhoas(), [getKhoas]);
 
   const {
     linhvucState: { linhvucs },
     getLinhVucs,
   } = useContext(LinhVucContext);
 
-  useEffect(() => getLinhVucs(), []);
+  useEffect(() => getLinhVucs(), [getLinhVucs]);
   const {
     userState: { users },
     getUsers,
   } = useContext(UserContext);
+  useEffect(() => getUsers(), [getUsers]);
 
-  useEffect(() => getUsers(), []);
+  const {
+    vaitroTGState: { vaitroTGs },
+    getVaiTroTGs,
+  } = useContext(VaiTroTGContext);
+  useEffect(() => getVaiTroTGs(), [ getVaiTroTGs]);
+
   //State
   const [newDeTaiCB, setNewDeTaiCB] = useState({
     madetai: "",
@@ -91,13 +98,20 @@ const ThemDeTaiCB = () => {
     });
 
   const onChangeUser = (event) => {
-    const userSelected = users.find((q) => q._id == event.target.value);
+    const userSelected = users.find((q) => q._id === event.target.value);
     setNewDeTaiCB({
       ...newDeTaiCB,
       [event.target.name]: userSelected,
     });
   };
 
+  const onChangeVaiTroThamGia = (event) => {
+    const vaitroSelected = vaitroTGs.find((q) => q._id === event.target.value);
+    setNewDeTaiCB({
+      ...newDeTaiCB,
+      [event.target.name]: vaitroSelected,
+    });
+  };
 
   const resetAddDeTaiCB = () => {
     setNewDeTaiCB({
@@ -135,7 +149,7 @@ const ThemDeTaiCB = () => {
   return (
     <Modal show={showThemDeTaiCB} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Thêm mới đề tài cán bộ</Modal.Title>
+        <Modal.Title>Thêm mới đề tài</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>
@@ -327,13 +341,49 @@ const ThemDeTaiCB = () => {
               </Col>
               <Col>
                 <Form.Group className="mb-3">
-                  <Form.Label>Vai trò</Form.Label>
+                  <Form.Label>CDKH-HV</Form.Label>
                   <Form.Control
                     type="text"
+                    name="chucdanhKH1"
+                    aria-describedby="title-help"
+                    value={thanhvienthamgia.chucdanhKH}
+                    disabled
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Vai trò</Form.Label>
+                  <Form.Select
                     name="vaitrothamgia1"
                     aria-describedby="title-help"
                     value={thanhvienthamgia.vaitrothamgia}
-                    onChange={onChangeInput}
+                    onChange={onChangeVaiTroThamGia}
+                  >
+                    <option value="">Chọn vai trò</option>
+                    {
+                      vaitroTGs.map((vaitroTG) => (
+                        <option
+                          key={vaitroTG._id}
+                          value={vaitroTG._id}
+                          name={vaitroTG.ten}
+                        >
+                          {vaitroTG.ten}
+                        </option>
+                      ))
+                    }
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Đơn vị</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="donvi1"
+                    aria-describedby="title-help"
+                    value={thanhvienthamgia.donvi}
+                    disabled
                   ></Form.Control>
                 </Form.Group>
               </Col>
@@ -363,28 +413,86 @@ const ThemDeTaiCB = () => {
               </Col>
               <Col>
                 <Form.Group className="mb-3">
-                  <Form.Label>Vai trò</Form.Label>
+                  <Form.Label>CDKH-HV</Form.Label>
                   <Form.Control
                     type="text"
+                    name="chucdanhKH2"
+                    aria-describedby="title-help"
+                    value={thanhvienthamgia.chucdanhKH}
+                    disabled
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Vai trò</Form.Label>
+                  <Form.Select
                     name="vaitrothamgia2"
                     aria-describedby="title-help"
                     value={thanhvienthamgia.vaitrothamgia}
-                    onChange={onChangeInput}
+                    onChange={onChangeVaiTroThamGia}
+                  >
+                    <option value="">Chọn vai trò</option>
+                    {
+                      vaitroTGs.map((vaitroTG) => (
+                        <option
+                          key={vaitroTG._id}
+                          value={vaitroTG._id}
+                          name={vaitroTG.ten}
+                        >
+                          {vaitroTG.ten}
+                        </option>
+                      ))
+                    }
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Đơn vị</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="donvi2"
+                    aria-describedby="title-help"
+                    value={thanhvienthamgia.donvi}
+                    disabled
                   ></Form.Control>
                 </Form.Group>
               </Col>
             </Row>
+            <Button style={{ backgroundColor: '#337AB7', borderColor: '#2d6da3', marginBottom: '20px' }}>Thêm mới</Button>
           </div>
-          <Form.Group className="mb-3">
-            <Form.Label>Mô tả sản phẩm</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={5}
-              value={sanpham}
-              name="sanpham"
-              onChange={onChangeInput}
-            ></Form.Control>
-          </Form.Group>
+          <SanPham />
+          <div>
+            <h1>ĐỐI TÁC NCKH</h1>
+            <Button style={{ backgroundColor: '#337AB7', borderColor: '#2d6da3', marginBottom: '20px' }}>Thêm mới</Button>
+            <Table borderless bordered hover style={{ cursor: "pointer" }}>
+              <thead>
+                <tr>
+                  <th style={{ textAlign: "center", color: "#495057" }}>
+                    STT
+                  </th>
+                  <th style={{ textAlign: "center", color: "#495057" }}>
+                    Tên đơn vị
+                  </th>
+                  <th style={{ textAlign: "center", color: "#495057" }}>
+                    Họ và tên đại diện
+                  </th>
+                  <th style={{ textAlign: "center", color: "#495057" }}>
+                    Nội dung phối hợp
+                  </th>
+                  <th style={{ textAlign: "center", color: "#495057" }}>
+                    Kinh phí hỗ trợ
+                  </th>
+                  <th style={{ textAlign: "center", color: "#495057" }}>
+                    Chức năng
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </Table>
+          </div>
           <Form.Group className="mb-3">
             <Form.Label>Đính kèm</Form.Label>
             <Form.Control

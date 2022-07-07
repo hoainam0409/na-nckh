@@ -33,8 +33,6 @@ const hoidongSchema = new mongoose.Schema({
         {
             idThanhVienHĐ: String,
             hovaten:String,
-            // idVaiTroHĐ: String,
-            // vaitro:String
         },
         {
             idVaiTroHĐ: String,

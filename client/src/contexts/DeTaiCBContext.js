@@ -24,7 +24,7 @@ const DeTaiCBContextProvider = ({ children }) => {
   const [showThemDeTaiCB, setShowThemDeTaiCB] = useState(false);
   const [showSuaDeTaiCB, setShowSuaDeTaiCB] = useState(false);
   const [showNhapKQĐG, setShowNhapKQĐG] = useState(false);
-
+  const [showNhapKQNT, setShowNhapKQNT] = useState(false);
 
   const [showToast, setShowToast] = useState({
     show: false,
@@ -62,12 +62,20 @@ const DeTaiCBContextProvider = ({ children }) => {
         {
           id: newDeTaiCB.user1._id,
           hovaten: newDeTaiCB.user1.hovaten,
-          vaitrothamgia: newDeTaiCB.vaitrothamgia1
+          vaitrothamgia: newDeTaiCB.vaitrothamgia1,
+          // idVaiTro: newDeTaiCB.vaitrothamgia1._id, 
+          // vaitrothamgia: newDeTaiCB.vaitrothamgia1.ten,
+          chucdanhKH: newDeTaiCB.chucdanhKH1,
+          donvi: newDeTaiCB.donvi1
         },
         {
           id: newDeTaiCB.user2._id,
           hovaten: newDeTaiCB.user2.hovaten,
-          vaitrothamgia: newDeTaiCB.vaitrothamgia2
+          vaitrothamgia: newDeTaiCB.vaitrothamgia2,
+          // idVaiTro: newDeTaiCB.vaitrothamgia2._id, 
+          // vaitrothamgia: newDeTaiCB.vaitrothamgia2.ten,
+          chucdanhKH: newDeTaiCB.chucdanhKH2,
+          donvi: newDeTaiCB.donvi2
         }
       );
       const response = await axios.post(
@@ -112,6 +120,7 @@ const DeTaiCBContextProvider = ({ children }) => {
   // Chỉnh sửa
   const updateDeTaiCB = async (updatedDeTaiCB) => {
     try {
+
       const response = await axios.put(
         `${apiUrl}/detai-canbo/dangky/${updatedDeTaiCB._id}`,
         updatedDeTaiCB
@@ -163,7 +172,9 @@ const DeTaiCBContextProvider = ({ children }) => {
     showNhapKQĐG,
     setShowNhapKQĐG,
     trangThai, 
-    updateTrangThai
+    updateTrangThai,
+    showNhapKQNT,
+    setShowNhapKQNT
   };
 
   return (

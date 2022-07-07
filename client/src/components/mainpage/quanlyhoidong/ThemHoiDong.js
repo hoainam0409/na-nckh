@@ -22,25 +22,25 @@ const ThemHoiDong = () => {
     dotdangkyState: { dotdangkys },
     getDotDangKys,
   } = useContext(DotDangKyContext);
-  useEffect(() => getDotDangKys(), []);
+  useEffect(() => getDotDangKys(), [getDotDangKys]);
 
   const {
     loaiHĐState: { loaiHĐs },
     getLoaiHĐs,
   } = useContext(LoaiHĐContext);
-  useEffect(() => getLoaiHĐs(), []);
+  useEffect(() => getLoaiHĐs(), [getLoaiHĐs]);
 
   const {
     userState: { users },
     getUsers,
   } = useContext(UserContext);
-  useEffect(() => getUsers(), []);
+  useEffect(() => getUsers(), [getUsers]);
 
   const {
     vaitroHĐState: { vaitroHĐs },
     getVaiTroHĐs,
   } = useContext(VaiTroHĐContext);
-  useEffect(() => getVaiTroHĐs(), []);
+  useEffect(() => getVaiTroHĐs(), [getVaiTroHĐs]);
 
   //State
   const [newHoiDong, setNewHoiDong] = useState({
@@ -76,14 +76,14 @@ const ThemHoiDong = () => {
     });
  
     const onChangeUser = (event) => {
-      const userSelected = users.find((q) => q._id == event.target.value);
+      const userSelected = users.find((q) => q._id === event.target.value);
       setNewHoiDong({
         ...newHoiDong,
         [event.target.name]: userSelected,
       });
     }; 
   const onChangeVaiTro = (event) => {
-    const vaitroSelected = vaitroHĐs.find((q) => q._id == event.target.value);
+    const vaitroSelected = vaitroHĐs.find((q) => q._id === event.target.value);
     setNewHoiDong({
         ...newHoiDong,
         [event.target.name]: vaitroSelected,

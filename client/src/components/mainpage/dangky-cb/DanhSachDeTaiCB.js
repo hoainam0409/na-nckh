@@ -33,7 +33,7 @@ const DeTaiCBs = () => {
   } = useContext(DeTaiCBContext);
 
   // Start: Get all
-  useEffect(() => getDeTaiCBs(), []);
+  useEffect(() => getDeTaiCBs(), [getDeTaiCBs]);
 
   const chooseDeTaiCB = (detaicbId) => {
     findDeTaiCB(detaicbId);
@@ -115,16 +115,16 @@ const DeTaiCBs = () => {
                 Tên đề tài
               </th>
               <th style={{ textAlign: "center", color: "#495057" }}>
-                Đợt đăng ký{" "}
+                Đợt đăng ký
               </th>
               <th style={{ textAlign: "center", color: "#495057" }}>
-                Khoa xét duyệt{" "}
+                Khoa xét duyệt
               </th>
               <th style={{ textAlign: "center", color: "#495057" }}>
                 Thành viên tham gia
               </th>
               <th style={{ textAlign: "center", color: "#495057" }}>
-                {" "}
+               
                 Trạng thái
               </th>
               <th style={{ textAlign: "center", color: "#495057" }}>
@@ -141,7 +141,7 @@ const DeTaiCBs = () => {
                 <td>{detaicb.khoaxetduyet}</td>
                 <td>
                   {detaicb.thanhvienthamgia.map((q) => (
-                    <div>{q.hovaten}</div>
+                    <div key= {q._id} >{q.hovaten}</div>
                   ))}
                 </td>
                 <td>{detaicb.trangthai}</td>

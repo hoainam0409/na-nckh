@@ -6,18 +6,16 @@ import Col from "react-bootstrap/Col";
 import { useContext, useState, useEffect } from "react";
 import { HoiDongContext } from "../../../contexts/HoiDongContext";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
-import { KhoaContext } from "../../../contexts/KhoaContext";
-import { LinhVucContext } from "../../../contexts/LinhVucContext";
 import { UserContext } from "../../../contexts/UserContext";
 
-const NhapKQĐGTaiCB = () => {
+const NhapKQNTDeTaiCB = () => {
   // Contexts
   const {
     detaicbState: { detaicb },
-    showSuaDeTaiCB,
-    setShowSuaDeTaiCB,
     updateDeTaiCB,
     setShowToast,
+    showNhapKQNT,
+    setShowNhapKQNT
   } = useContext(DeTaiCBContext);
 
   const {
@@ -25,26 +23,13 @@ const NhapKQĐGTaiCB = () => {
     getHoiDongs,
   } = useContext(HoiDongContext);
 
-  useEffect(() => getHoiDongs(), []);
-  const {
-    khoaState: { khoas },
-    getKhoas,
-  } = useContext(KhoaContext);
-
-  useEffect(() => getKhoas(), []);
-
-  const {
-    linhvucState: { linhvucs },
-    getLinhVucs,
-  } = useContext(LinhVucContext);
-
-  useEffect(() => getLinhVucs(), []);
+  useEffect(() => getHoiDongs(), [getHoiDongs]);
   const {
     userState: { users },
     getUsers,
   } = useContext(UserContext);
 
-  useEffect(() => getUsers(), []);
+  useEffect(() => getUsers(), [getUsers]);
 
   // State
   const [updatedDeTaiCB, setUpdatedDeTaiCB] = useState(detaicb);
@@ -55,16 +40,6 @@ const NhapKQĐGTaiCB = () => {
     madetai,
     tendetai,
     dotdangky,
-    capdetai,
-    ngaybd,
-    ngaykt,
-    kinhphi,
-    khoaxetduyet,
-    linhvuc,
-    noidung,
-    muctieu,
-    ketquadukien,
-    sanpham,
     thanhvienthamgia,
     ghichu,
     trangthai,
@@ -80,20 +55,20 @@ const NhapKQĐGTaiCB = () => {
 
   const closeDialog = () => {
     setUpdatedDeTaiCB(detaicb);
-    setShowSuaDeTaiCB(false);
+    setShowNhapKQNT(false);
   };
 
   const onSubmit = async (event) => {
     event.preventDefault();
     const { success, message } = await updateDeTaiCB(updatedDeTaiCB);
-    setShowSuaDeTaiCB(false);
+    setShowNhapKQNT(false);
     setShowToast({ show: true, message, type: success ? "success" : "danger" });
   };
 
   return (
-    <Modal show={showSuaDeTaiCB} onHide={closeDialog}>
+    <Modal show={showNhapKQNT} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Nhập kết quả đánh giá đề tài</Modal.Title>
+        <Modal.Title>Cập nhật thông tin nghiệm thu</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>
@@ -174,43 +149,6 @@ const NhapKQĐGTaiCB = () => {
               </Form.Group>
             </Col>
           </Row>
-          {/* <div>
-            <h1>DANH SÁCH THÀNH VIÊN THAM GIA </h1>
-            <Row>
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label>Họ và tên</Form.Label>
-                  <Form.Select
-                    name="hovaten"
-                    aria-describedby="title-help"
-                    value={thanhvienthamgia.hovaten}
-                    onChange={onChangeUpdated}
-                  >
-                    <option value="">Chọn thành viên</option>
-                    {
-                      users.map((user) => (
-                        <option key={user._id}>
-                          {user.hovaten}
-                        </option>
-                      ))
-                    }
-                  </Form.Select>
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label>Vai trò</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="vaitrothamgia"
-                    aria-describedby="title-help"
-                    value={thanhvienthamgia.vaitrothamgia}
-                    onChange={onChangeUpdated}
-                  ></Form.Control>
-                </Form.Group>
-              </Col>
-            </Row>
-          </div> */}
           <div>
             <h1>KẾT QUẢ ĐÁNH GIÁ </h1>
             <Row>
@@ -279,4 +217,4 @@ const NhapKQĐGTaiCB = () => {
   );
 };
 
-export default NhapKQĐGTaiCB;
+export default NhapKQNTDeTaiCB ;
