@@ -25,6 +25,7 @@ const DeTaiCBContextProvider = ({ children }) => {
   const [showSuaDeTaiCB, setShowSuaDeTaiCB] = useState(false);
   const [showNhapKQĐG, setShowNhapKQĐG] = useState(false);
   const [showNhapKQNT, setShowNhapKQNT] = useState(false);
+  const [showBaoCaoTienDo, setShowBaoCaoTienDo] = useState(false);
 
   const [showToast, setShowToast] = useState({
     show: false,
@@ -136,22 +137,6 @@ const DeTaiCBContextProvider = ({ children }) => {
     }
   };
 
-  //Duyệt cấp khoa
-
-
-  //Nhập kết quả đánh giá
-
-
-
-  //Duyệt cấp trường
-
-
-
-
-  //Nhập kết quả nghiệm thu
-
-
-
 
   // context data
   const DeTaiCBContextData = {
@@ -174,7 +159,9 @@ const DeTaiCBContextProvider = ({ children }) => {
     trangThai, 
     updateTrangThai,
     showNhapKQNT,
-    setShowNhapKQNT
+    setShowNhapKQNT,
+    showBaoCaoTienDo, 
+    setShowBaoCaoTienDo
   };
 
   return (

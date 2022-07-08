@@ -117,7 +117,7 @@ const SuaDeTaiCB = () => {
   return (
     <Modal show={showSuaDeTaiCB} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Chỉnh sửa đề tài</Modal.Title>
+        <Modal.Title>Chi tiết đề tài</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
       <Modal.Body>

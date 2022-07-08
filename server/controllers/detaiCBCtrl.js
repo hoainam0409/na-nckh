@@ -32,6 +32,7 @@ const detaiCBCtrl = {
       ghichu,
       trangthai,
       dinhkem,
+      dotkiemtraTĐ
     } = req.body;
     if (
       !tendetai ||
@@ -66,7 +67,8 @@ const detaiCBCtrl = {
         ghichu,
         trangthai,
         dinhkem,
-        user: req.userId 
+        user: req.userId,
+        dotkiemtraTĐ
       });
       await newDeTaiCB.save();
       res.json({
@@ -97,6 +99,7 @@ const detaiCBCtrl = {
       ghichu,
       trangthai,
       dinhkem,
+      dotkiemtraTĐ
     } = req.body;
     // Simple validation
     if (
@@ -132,6 +135,7 @@ const detaiCBCtrl = {
         trangthai,
         ghichu,
         dinhkem,
+        dotkiemtraTĐ,
       };
 
       //Điều kiện để chỉnh sửa

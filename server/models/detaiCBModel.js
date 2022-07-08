@@ -74,6 +74,9 @@ const detaiCBSchema = new Schema({
     dinhkem: {
         type: Object,
     },
+    dotkiemtraTĐ:{
+        type: String
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'users'

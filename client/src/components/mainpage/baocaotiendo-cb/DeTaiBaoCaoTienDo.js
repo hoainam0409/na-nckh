@@ -4,13 +4,13 @@ import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import SideBar from "../../sidebar/SideBar";
-import ThemDeTaiCB from "../dangky-cb/ThemDeTaiCB";
 import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
 import ReactTooltip from "react-tooltip"
-import { BsFillEyeFill, BsXLg, BsCheckLg, BsFillFileEarmarkWordFill, BsPencilSquare, BsTrashFill} from "react-icons/bs";
+import { BsFillEyeFill, BsFillFileEarmarkWordFill, BsPencilSquare, BsFileTextFill} from "react-icons/bs";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import BaoCaoTienDo from "./BaoCaoTienDo";
 
 const DeTaiBaoCaoTienDo = () => {
   const {
@@ -20,6 +20,7 @@ const DeTaiBaoCaoTienDo = () => {
     setShowToast,
     findDeTaiCB,
     setShowSuaDeTaiCB,
+    setShowBaoCaoTienDo,
   } = useContext(DeTaiCBContext);
 
   // Start: Get all
@@ -29,10 +30,14 @@ const DeTaiBaoCaoTienDo = () => {
     findDeTaiCB(detaicbId);
     setShowSuaDeTaiCB(true);
   };
+  const SelectDeTaiCB = (detaicbId) => {
+    findDeTaiCB(detaicbId);
+    setShowBaoCaoTienDo(true);
+  };
   return (
     <div>
       <SideBar />
-      <ThemDeTaiCB />
+      {detaicb !== null && <BaoCaoTienDo/>}
       {detaicb !== null && <SuaDeTaiCB />}
       <div style={{ margin: "10px 20px 20px 330px" }}>
         <div>
@@ -124,33 +129,26 @@ const DeTaiBaoCaoTienDo = () => {
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     data-tip data-for="Xem"
                   >
-                    <ReactTooltip id="Xem" place="top" effect="solid">Xem</ReactTooltip>
+                    <ReactTooltip id="Xem" place="top" effect="solid">Xem chi tiết</ReactTooltip>
                     <BsFillEyeFill/>
                   </Button>
                   <Button
                     style={{backgroundColor: "#5bc0de", borderColor: "#269abc",margin: '3px',}}
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                    data-tip data-for="Sửa"
+                    data-tip data-for="Sửa báo cáo tiến độ"
                   >
-                    <ReactTooltip id="Sửa" place="top" effect="solid">Sửa</ReactTooltip>
+                    <ReactTooltip id="Sửa báo cáo tiến độ" place="top" effect="solid">Sửa báo cáo tiến độ</ReactTooltip>
                     <BsPencilSquare/>
                   </Button>
                   <Button
                     variant="success"
                     style={{borderColor: "#2d6da3", margin: '3px', }}
-                    data-tip data-for="Duyệt"
+                    data-tip data-for="Báo cáo tiến độ"
+                    onClick={SelectDeTaiCB.bind(this, detaicb._id)}
                   >
-                    <ReactTooltip id="Duyệt" place="top" effect="solid">Duyệt</ReactTooltip>
-                    <BsCheckLg/>
-                  </Button>
-                  <Button
-                    variant="danger"
-                    style={{borderColor: "#2d6da3", margin: '3px', }}
-                    data-tip data-for="Không duyệt"
-                  >
-                    <ReactTooltip id="Không duyệt" place="top" effect="solid">Không duyệt</ReactTooltip>
-                    <BsXLg/>
-                  </Button>   
+                    <ReactTooltip id="Báo cáo tiến độ" place="top" effect="solid">Báo cáo tiến độ</ReactTooltip>
+                    <BsFileTextFill/>
+                  </Button> 
                   <Button
                     style={{backgroundColor: "#337AB7",borderColor: "#2d6da3",margin: '3px', }}
                     data-tip data-for="In thuyết minh"
