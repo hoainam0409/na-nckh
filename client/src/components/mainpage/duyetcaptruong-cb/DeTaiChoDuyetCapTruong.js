@@ -118,24 +118,23 @@ const DeTaiDuyetCapKhoas = () => {
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
-                    style={{backgroundColor: "#337AB7",borderColor: "#2d6da3",margin: '3px',}}
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     data-tip data-for="Xem"
+                    variant="primary"
                   >
                     <ReactTooltip id="Xem" place="top" effect="solid">Xem</ReactTooltip>
                     <BsFillEyeFill/>
                   </Button>
                   <Button
-                    style={{backgroundColor: "#5bc0de", borderColor: "#269abc",margin: '3px',}}
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     data-tip data-for="Sửa"
+                    variant="info"
                   >
                     <ReactTooltip id="Sửa" place="top" effect="solid">Sửa</ReactTooltip>
-                    <BsPencilSquare/>
+                    <BsPencilSquare style={{color: 'white'}}/>
                   </Button>
                   <Button
                     variant="success"
-                    style={{borderColor: "#2d6da3", margin: '3px', }}
                     data-tip data-for="Duyệt"
                   >
                     <ReactTooltip id="Duyệt" place="top" effect="solid">Duyệt</ReactTooltip>
@@ -143,7 +142,6 @@ const DeTaiDuyetCapKhoas = () => {
                   </Button>
                   <Button
                     variant="danger"
-                    style={{borderColor: "#2d6da3", margin: '3px', }}
                     data-tip data-for="Không duyệt"
                   >
                     <ReactTooltip id="Không duyệt" place="top" effect="solid">Không duyệt</ReactTooltip>

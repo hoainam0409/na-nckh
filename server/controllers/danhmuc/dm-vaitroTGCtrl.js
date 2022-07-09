@@ -12,13 +12,14 @@ const vaitroTGCtrl = {
 
   addVaiTroTG: async (req, res) => {
     try {
-      const { ma, ten } = req.body;
+      const { ma, ten, capdetai} = req.body;
       const vaitroTG = await VaiTroTG.findOne({ ma })
       if (vaitroTG) return res.status(400).json({success: false,  message: "Mã vai trò đã tồn tại." })
 
       const newVaiTroTG = new VaiTroTG({
         ma,
         ten,
+        capdetai
       });
       await newVaiTroTG.save();
       res.json({
@@ -31,7 +32,7 @@ const vaitroTGCtrl = {
     }
   },
   updateVaiTroTG: async (req, res) => {
-    const { ma, ten } = req.body;
+    const { ma, ten, capdetai} = req.body;
     // Simple validation
     if (!ma || !ten)
       return res.status(400).json({
@@ -42,6 +43,7 @@ const vaitroTGCtrl = {
       let updatedVaiTroTG = {
         ma,
         ten,
+        capdetai
       };
 
       updatedVaiTroTG = await VaiTroTG.findOneAndUpdate(
@@ -49,13 +51,6 @@ const vaitroTGCtrl = {
         updatedVaiTroTG,
         { new: true }
       );
-      // User not authorised to update post or post not found
-      // if (!updatedVaiTroTG)
-      //   return res.status(401).json({
-      //     success: false,
-      //     message: "Có lỗi xảy ra vui lòng liên hệ quản trị viên!",
-      //   });
-
       res.json({
         success: true,
         message: "Chỉnh sửa thành công!",

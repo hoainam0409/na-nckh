@@ -10,6 +10,7 @@ import DanhSachDotDangKy from './dotdangky/DanhSachDotDangKy'
 import DanhSachDeTaiSV from './dangky-sv/DanhSachDeTaiSV'
 import DanhSachDeTaiCB from './dangky-cb/DanhSachDeTaiCB'
 import DanhSachLinhVuc from './dm- linhvuc/DanhSachLinhVuc'
+import DanhSachVaiTroTG from './dm- vaitroTG/DanhSachVaiTroTG'
 import DanhSachUser from './quanly-nguoidung/DanhSachUser'
 import DeTaiChoDuyetKhoa from './duyetcapkhoa-cb/DeTaiChoDuyetCapKhoa'
 import DeTaiNhapKQĐG from './nhapKQĐG-cb/DeTaiNhapKQĐG'
@@ -18,6 +19,7 @@ import DeTaiNhapKQNT from './nhapKQNT-cb/DeTaiNhapKQNT'
 import DanhSachHoiDong from './quanlyhoidong/DanhSachHoiDong'
 import DanhSachDotKiemTraTĐ from './dotkiemtratiendo/DanhSachDotKTTD'
 import DeTaiBaoCaoTienDo from './baocaotiendo-cb/DeTaiBaoCaoTienDo'
+import DuyetBaoCaoTienDo from './duyetbaocaotiendo-cb/DuyetBaoCaoTienDo'
 
 
 function Pages() {
@@ -30,6 +32,7 @@ function Pages() {
         <Route exact path="/nckh/thongtin-canhan" element={<Thongtincanhan/>}></Route>
         <Route exact path="/danhmuc/capdetai" element={<DanhSachCapDeTai/>}></Route>
         <Route exact path="/danhmuc/linhvuc" element={<DanhSachLinhVuc/>}></Route>
+        <Route exact path="/danhmuc/vaitro-thamgia" element={<DanhSachVaiTroTG/>}></Route>
         <Route exact path="/detai/dotdangky" element={<DanhSachDotDangKy/>}></Route>
         <Route exact path="/nckh/detai-sinhvien/dangky" element={<DanhSachDeTaiSV/>}></Route>
         <Route exact path="/detai-canbo/dangky" element={<DanhSachDeTaiCB/>}></Route>
@@ -39,6 +42,7 @@ function Pages() {
         <Route exact path="/detai-canbo/cho-duyet-cap-truong" element={<DeTaiChoDuyetTruong/>}></Route>
         <Route exact path="/detai-canbo/dot-kiem-tra-tien-do" element={<DanhSachDotKiemTraTĐ/>}></Route>
         <Route exact path="/detai-canbo/bao-cao-tien-do" element={<DeTaiBaoCaoTienDo />}></Route>
+        <Route exact path="/detai-canbo/duyet-bao-cao-tien-do" element={<DuyetBaoCaoTienDo />}></Route>
         <Route exact path="/detai-canbo/nhap-ket-qua-nghiem-thu" element={<DeTaiNhapKQNT/>}></Route>
         <Route exact path="/quanly/hoidong" element={<DanhSachHoiDong/>}></Route>
 

@@ -2,10 +2,10 @@ import React, { useContext, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
-import { LinhVucContext } from "../../../contexts/LinhVucContext";
+import { VaiTroTGContext } from "../../../contexts/VaiTroTGContext";
 import SideBar from "../../sidebar/SideBar";
-import ThemLinhVuc from "./ThemLinhVuc";
-import SuaLinhVuc from "./SuaLinhVuc";
+import ThemVaiTroTG from "./ThemVaiTroTG";
+import SuaVaiTroTG from "./SuaVaiTroTG";
 import ReactTooltip from "react-tooltip";
 import {
   BsFillEyeFill,
@@ -13,26 +13,27 @@ import {
   BsTrashFill,
 } from "react-icons/bs";
 
-const LinhVucs = () => {
+const VaiTroTGs = () => {
 
   const {
-    linhvucState: { linhvuc, linhvucs, linhvucsLoading },
-    getLinhVucs,
-    setShowThemLinhVuc,
+    vaitroTGState: { vaitroTG, vaitroTGs, vaitroTGsLoading },
+    getVaiTroTGs,
+    setShowThemVaiTroTG,
     showToast: { show, message, type },
     setShowToast,
-    deleteLinhVuc,
-    findLinhVuc,
-    setShowSuaLinhVuc,
-  } = useContext(LinhVucContext);
+    deleteVaiTroTG,
+    findVaiTroTG,
+    setShowSuaVaiTroTG,
+  } = useContext(VaiTroTGContext);
 
   // Start: Get all
-  useEffect(() => getLinhVucs(), []);
+  useEffect(() => getVaiTroTGs(), []);
 
-  const chooseLinhVuc = (linhvucId) => {
-    findLinhVuc(linhvucId);
-    setShowSuaLinhVuc(true);
+  const chooseVaiTroTG = (vaitroTGId) => {
+    findVaiTroTG(vaitroTGId);
+    setShowSuaVaiTroTG(true);
   };
+  
   return (
     <div>
       <SideBar />
@@ -42,7 +43,7 @@ const LinhVucs = () => {
             fontSize: "24px",
           }}
         >
-          Danh sách lĩnh vực nghiên cứu
+          Danh sách vai trò tham gia
         </h1>
         <Toast
           show={show}
@@ -66,34 +67,36 @@ const LinhVucs = () => {
             marginBottom: "20px",
             backgroundColor: "#337AB7"
           }}
-          onClick={setShowThemLinhVuc.bind(this, true)}
+          onClick={setShowThemVaiTroTG.bind(this, true)}
         >
           Thêm mới
         </Button>
-        <ThemLinhVuc />
-        {linhvuc !== null && <SuaLinhVuc />}
+        <ThemVaiTroTG />
+        {vaitroTG !== null && <SuaVaiTroTG />}
 
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr>
               <th style={{ textAlign: "center", color: "#495057" }}>Mã</th>
               <th style={{ textAlign: "center", color: "#495057" }}>Tên</th>
+              <th style={{ textAlign: "center", color: "#495057" }}>Cấp đề tài</th>
               <th style={{ textAlign: "center", color: "#495057" }}>
                 Chức năng
               </th>
             </tr>
           </thead>
           <tbody>
-            {linhvucs.map((linhvuc) => (
-              <tr key={linhvuc._id}>
-                <td>{linhvuc.ma}</td>
-                <td>{linhvuc.ten} </td>
+            {vaitroTGs.map((vaitroTG) => (
+              <tr key={vaitroTG._id}>
+                <td>{vaitroTG.ma}</td>
+                <td>{vaitroTG.ten} </td>
+                <td>{vaitroTG.capdetai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
                     data-tip
                     data-for="Xem"
                     variant="primary"
-                    onClick={chooseLinhVuc.bind(this, linhvuc._id)}
+                    onClick={chooseVaiTroTG.bind(this, vaitroTG._id)}
                   >
                     <ReactTooltip id="Xem" place="top" effect="solid">
                       Xem
@@ -104,7 +107,7 @@ const LinhVucs = () => {
                     variant="info"
                     data-tip
                     data-for="Sửa"
-                    onClick={chooseLinhVuc.bind(this, linhvuc._id)}
+                    onClick={chooseVaiTroTG.bind(this, vaitroTG._id)}
                   >
                     <ReactTooltip id="Sửa" place="top" effect="solid">
                       Sửa
@@ -115,7 +118,7 @@ const LinhVucs = () => {
                     variant="danger"
                     data-tip
                     data-for="Xóa"
-                    onClick={() => deleteLinhVuc(linhvuc._id)}
+                    onClick={() => deleteVaiTroTG(vaitroTG._id)}
                   >
                     <ReactTooltip id="Xóa" place="top" effect="solid">
                       Xóa
@@ -132,4 +135,4 @@ const LinhVucs = () => {
   );
 };
 
-export default LinhVucs;
+export default VaiTroTGs;

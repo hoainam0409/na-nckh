@@ -95,37 +95,25 @@ const DotDangKys = () => {
                 <td>{new Date(dotdangky.ngaykhoadangky).toLocaleDateString()} </td>
                 <td style={{ textAlign: "center" }}>
                   <Button
-                    style={{
-                      backgroundColor: "#337AB7",
-                      borderColor: "#2d6da3",
-                      margin: '3px'
-                    }}
-                    onClick={chooseDotDangKy.bind(this, dotdangky._id)}
                     data-tip data-for="Xem"
+                    variant="primary"
+                    onClick={chooseDotDangKy.bind(this, dotdangky._id)}
                   >
                   <ReactTooltip id="Xem" place="top" effect="solid">Xem</ReactTooltip>
                     <BsFillEyeFill/>
                   </Button>
                   <Button
-                    style={{
-                      backgroundColor: "#5bc0de",
-                      borderColor: "#269abc",
-                      margin: '3px'
-                    }}
-                    onClick={chooseDotDangKy.bind(this, dotdangky._id)}
+                    variant="info"
                     data-tip data-for="Sửa"
+                    onClick={chooseDotDangKy.bind(this, dotdangky._id)}
                   >
                    <ReactTooltip id="Sửa" place="top" effect="solid">Sửa</ReactTooltip>
-                    <BsPencilSquare/>
+                    <BsPencilSquare style={{color: 'white'}}/>
                   </Button>
                   <Button
-                    style={{
-                      backgroundColor: "#c9302c",
-                      borderColor: "#ac2925",
-                      margin: '3px'
-                    }}
-                    onClick={() => deleteDotDangKy(dotdangky._id)}
+                    variant="danger"
                     data-tip data-for="Xóa"
+                    onClick={() => deleteDotDangKy(dotdangky._id)}
                   >
                   <ReactTooltip id="Xóa" place="top" effect="solid">Xóa</ReactTooltip> 
                   <BsTrashFill/>

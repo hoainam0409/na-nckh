@@ -6,6 +6,13 @@ import { UserContext } from "../../../contexts/UserContext";
 import SideBar from "../../sidebar/SideBar";
 import ThemUser from "./ThemUser";
 import SuaUser from "./SuaUser";
+import ReactTooltip from "react-tooltip";
+import {
+  BsFillEyeFill,
+  BsPencilSquare,
+  BsTrashFill,
+} from "react-icons/bs";
+
 
 const Users = () => {
 
@@ -66,7 +73,7 @@ const Users = () => {
           Thêm mới
         </Button>
         <ThemUser />
-        {user !== null && <SuaUser/>}
+        {user !== null && <SuaUser />}
 
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
@@ -95,31 +102,37 @@ const Users = () => {
 
                 <td style={{ textAlign: "center" }}>
                   <Button
-                    style={{
-                      backgroundColor: "#337AB7",
-                      borderColor: "#2d6da3",
-                    }}
+                    variant="primary"
+                    data-tip
+                    data-for="Xem"
                     onClick={chooseUser.bind(this, user._id)}
                   >
-                    Xem
+                    <ReactTooltip id="Xem" place="top" effect="solid">
+                      Xem
+                    </ReactTooltip>
+                    <BsFillEyeFill />
                   </Button>
                   <Button
-                    style={{
-                      backgroundColor: "#5bc0de",
-                      borderColor: "#269abc",
-                    }}
+                    variant="info"
+                    data-tip
+                    data-for="Sửa"
                     onClick={chooseUser.bind(this, user._id)}
                   >
-                    Sửa
+                    <ReactTooltip id="Sửa" place="top" effect="solid">
+                      Sửa
+                    </ReactTooltip>
+                    <BsPencilSquare style={{ color: 'white' }} />
                   </Button>
                   <Button
-                    style={{
-                      backgroundColor: "#c9302c",
-                      borderColor: "#ac2925",
-                    }}
+                    variant="danger"
+                    data-tip
+                    data-for="Xóa"
                     onClick={() => deleteUser(user._id)}
                   >
-                    Xóa
+                    <ReactTooltip id="Xóa" place="top" effect="solid">
+                      Xóa
+                    </ReactTooltip>
+                    <BsTrashFill />
                   </Button>
                 </td>
               </tr>

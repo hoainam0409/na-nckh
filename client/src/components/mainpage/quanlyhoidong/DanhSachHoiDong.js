@@ -91,37 +91,25 @@ const HoiDongs = () => {
                 <td>{hoidong.nam}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
-                    style={{
-                      backgroundColor: "#337AB7",
-                      borderColor: "#2d6da3",
-                      margin: '3px'
-                    }}
                     onClick={chooseHoiDong.bind(this, hoidong._id)}
                     data-tip data-for="Xem"
+                    variant="primary"
                   >
                    <ReactTooltip id="Xem" place="top" effect="solid">Xem</ReactTooltip>
                     <BsFillEyeFill/>
                   </Button>
                   <Button
-                    style={{
-                      backgroundColor: "#5bc0de",
-                      borderColor: "#269abc",
-                      margin: '3px'
-                    }}
                     onClick={chooseHoiDong.bind(this, hoidong._id)}
                     data-tip data-for="Sửa"
+                    variant="info"
                   >
                   <ReactTooltip id="Sửa" place="top" effect="solid">Sửa</ReactTooltip>
-                    <BsPencilSquare/>
+                    <BsPencilSquare style={{color: 'white'}}/>
                   </Button>
                   <Button
-                    style={{
-                      backgroundColor: "#c9302c",
-                      borderColor: "#ac2925",
-                      margin: '3px'
-                    }}
                     onClick={() => deleteHoiDong(hoidong._id)}
                     data-tip data-for="Xóa"
+                    variant="danger"
                   >
                    <ReactTooltip id="Xóa" place="top" effect="solid">Xóa</ReactTooltip> 
                   <BsTrashFill/>

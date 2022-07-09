@@ -124,7 +124,7 @@ const DeTaiCBs = () => {
                 Thành viên tham gia
               </th>
               <th style={{ textAlign: "center", color: "#495057" }}>
-               
+
                 Trạng thái
               </th>
               <th style={{ textAlign: "center", color: "#495057" }}>
@@ -141,20 +141,16 @@ const DeTaiCBs = () => {
                 <td>{detaicb.khoaxetduyet}</td>
                 <td>
                   {detaicb.thanhvienthamgia.map((q) => (
-                    <div key= {q._id} >{q.hovaten}</div>
+                    <div key={q._id} >{q.hovaten}</div>
                   ))}
                 </td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
-                    style={{
-                      backgroundColor: "#337AB7",
-                      borderColor: "#2d6da3",
-                      margin: "3px",
-                    }}
-                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
+                    variant="primary"
                     data-tip
                     data-for="Xem"
+                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                   >
                     <ReactTooltip id="Xem" place="top" effect="solid">
                       Xem
@@ -162,26 +158,18 @@ const DeTaiCBs = () => {
                     <BsFillEyeFill />
                   </Button>
                   <Button
-                    style={{
-                      backgroundColor: "#5bc0de",
-                      borderColor: "#269abc",
-                      margin: "3px",
-                    }}
-                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
+                    variant="info"
                     data-tip
                     data-for="Sửa"
+                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                   >
                     <ReactTooltip id="Sửa" place="top" effect="solid">
                       Sửa
                     </ReactTooltip>
-                    <BsPencilSquare />
+                    <BsPencilSquare style={{ color: 'white' }} />
                   </Button>
                   <Button
-                    style={{
-                      backgroundColor: "#337AB7",
-                      borderColor: "#2d6da3",
-                      margin: "3px",
-                    }}
+                    variant="primary"
                     data-tip
                     data-for="Gửi duyệt"
                     onClick={() => selectDeTaiCB(this, detaicb._id)}
@@ -192,14 +180,10 @@ const DeTaiCBs = () => {
                     <BsCursorFill />
                   </Button>
                   <Button
-                    style={{
-                      backgroundColor: "#c9302c",
-                      borderColor: "#ac2925",
-                      margin: "3px",
-                    }}
-                    onClick={() => deleteDeTaiCB(detaicb._id)}
+                    variant="danger"
                     data-tip
                     data-for="Xóa"
+                    onClick={() => deleteDeTaiCB(detaicb._id)}
                   >
                     <ReactTooltip id="Xóa" place="top" effect="solid">
                       Xóa
@@ -208,9 +192,7 @@ const DeTaiCBs = () => {
                   </Button>
                   <Button
                     style={{
-                      backgroundColor: "#337AB7",
-                      borderColor: "#2d6da3",
-                      margin: "3px",
+                      backgroundColor: "#337AB7"
                     }}
                     data-tip
                     data-for="In thuyết minh"

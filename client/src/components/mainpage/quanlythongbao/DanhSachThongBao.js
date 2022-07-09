@@ -96,9 +96,6 @@ const Thongbaochungs = () => {
                   <td style={{ textAlign: "center" }}>
                     <Button
                       variant="primary"
-                      style={{
-                        margin: "3px",
-                      }}
                       onClick={chooseThongBaoChung.bind(
                         this,
                         thongbaochung._id
@@ -113,9 +110,7 @@ const Thongbaochungs = () => {
                     </Button>
                     <Button
                       style={{
-                        backgroundColor: "#5bc0de",
-                        borderColor: "#269abc",
-                        margin: "3px",
+                        backgroundColor: "#5bc0de"
                       }}
                       onClick={chooseThongBaoChung.bind(
                         this,
@@ -131,9 +126,6 @@ const Thongbaochungs = () => {
                     </Button>
                     <Button
                       variant="danger"
-                      style={{
-                        margin: "3px",
-                      }}
                       onClick={() => deleteThongBaoChung(thongbaochung._id)}
                       data-tip
                       data-for="Xóa"

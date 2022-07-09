@@ -37,7 +37,7 @@ const DotKiemTraTĐs = () => {
       <SideBar />
       <div style={{ margin: "10px 20px 20px 330px" }}>
         <div>
-        <h1 style={{fontSize: "24px"}}>Danh sách đợt đăng ký đề tài</h1>
+        <h1 style={{fontSize: "24px"}}>Danh sách đợt kiểm tra tiến độ</h1>
         <div className="filter">
             <Row className="controls">
               <Col>
@@ -79,8 +79,7 @@ const DotKiemTraTĐs = () => {
           style={{
             marginTop: "70px",
             marginBottom: "20px",
-            backgroundColor: "#337AB7",
-            borderColor: "#2d6da3",
+            backgroundColor: "#337AB7"
           }}
           onClick={setShowThemDotKiemTraTĐ.bind(this, true)}
         >
@@ -112,37 +111,25 @@ const DotKiemTraTĐs = () => {
                 <td>{dotkiemtraTĐ.trangthai} </td>
                 <td style={{ textAlign: "center" }}>
                   <Button
-                    style={{
-                      backgroundColor: "#337AB7",
-                      borderColor: "#2d6da3",
-                      margin: '3px'
-                    }}
                     onClick={chooseDotKiemTraTĐ.bind(this, dotkiemtraTĐ._id)}
                     data-tip data-for="Xem"
+                    variant="primary"
                   >
                   <ReactTooltip id="Xem" place="top" effect="solid">Xem</ReactTooltip>
                     <BsFillEyeFill/>
                   </Button>
                   <Button
-                    style={{
-                      backgroundColor: "#5bc0de",
-                      borderColor: "#269abc",
-                      margin: '3px'
-                    }}
                     onClick={chooseDotKiemTraTĐ.bind(this, dotkiemtraTĐ._id)}
                     data-tip data-for="Sửa"
+                    variant="info"
                   >
                    <ReactTooltip id="Sửa" place="top" effect="solid">Sửa</ReactTooltip>
-                    <BsPencilSquare/>
+                    <BsPencilSquare style={{color: 'white'}}/>
                   </Button>
                   <Button
-                    style={{
-                      backgroundColor: "#c9302c",
-                      borderColor: "#ac2925",
-                      margin: '3px'
-                    }}
                     onClick={() => deleteDotKiemTraTĐ(dotkiemtraTĐ._id)}
                     data-tip data-for="Xóa"
+                    variant="danger"
                   >
                   <ReactTooltip id="Xóa" place="top" effect="solid">Xóa</ReactTooltip> 
                   <BsTrashFill/>

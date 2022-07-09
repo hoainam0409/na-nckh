@@ -34,12 +34,6 @@ const BaoCaoTienDo = () => {
   const {
     madetai,
     tendetai,
-    dotdangky,
-    thanhvienthamgia,
-    ghichu,
-    trangthai,
-    dinhkem,
-    hoidong,
     dotkiemtraTĐ
   } = updatedDeTaiCB;
 
@@ -87,11 +81,6 @@ const BaoCaoTienDo = () => {
               aria-describedby="title-help"
               value={tendetai}
               onChange={onChangeUpdated}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Chủ nhiệm đề tài</Form.Label>
-            <Form.Control
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -219,10 +208,10 @@ const BaoCaoTienDo = () => {
                           Loại bài báo, báo cáo
                         </th>
                         <th style={{ textAlign: "center", color: "#495057" }}>
-                          Số lượng
+                          Số lượng đăng ký
                         </th>
                         <th style={{ textAlign: "center", color: "#495057" }}>
-                          Mô tả
+                          Đã thực hiện
                         </th>
                         <th style={{ textAlign: "center", color: "#495057" }}>
                           Chức năng
@@ -246,10 +235,10 @@ const BaoCaoTienDo = () => {
                           Loại sách, giáo trình khoa học
                         </th>
                         <th style={{ textAlign: "center", color: "#495057" }}>
-                          Số lượng
+                          Số lượng đăng ký
                         </th>
                         <th style={{ textAlign: "center", color: "#495057" }}>
-                          Mô tả
+                          Đã thực hiện
                         </th>
                         <th style={{ textAlign: "center", color: "#495057" }}>
                           Chức năng
@@ -272,10 +261,10 @@ const BaoCaoTienDo = () => {
                           Loại sản phẩm khoa học khác
                         </th>
                         <th style={{ textAlign: "center", color: "#495057" }}>
-                          Số lượng
+                          Số lượng đăng ký
                         </th>
                         <th style={{ textAlign: "center", color: "#495057" }}>
-                          Mô tả
+                          Đã thực hiện
                         </th>
                         <th style={{ textAlign: "center", color: "#495057" }}>
                           Chức năng

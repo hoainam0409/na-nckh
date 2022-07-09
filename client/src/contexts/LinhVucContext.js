@@ -46,7 +46,7 @@ const LinhVucContextProvider = ({ children }) => {
     }
   };
 
-  //Thêm mới cấp đề tài
+  //Thêm mới
   const addLinhVuc = async (newLinhVuc) => {
     try {
       const response = await axios.post(
@@ -64,7 +64,7 @@ const LinhVucContextProvider = ({ children }) => {
     }
   };
 
-  //Xóa cấp đề tài
+  //Xóa 
   const deleteLinhVuc = async (id) => {
     try {
       const response = await axios.delete(
@@ -80,7 +80,7 @@ const LinhVucContextProvider = ({ children }) => {
     }
   };
 
-  // Tìm thông báo khi thực hiện chỉnh sửa
+  // Tìm 
   const findLinhVuc = (linhvucId) => {
     const linhvuc = linhvucState.linhvucs.find(
       (linhvuc) => linhvuc._id === linhvucId
@@ -88,7 +88,7 @@ const LinhVucContextProvider = ({ children }) => {
     dispatch({ type: FIND_LINHVUC, payload: linhvuc });
   };
 
-  // Chỉnh sửa thông báo
+  // Chỉnh sửa 
   const updateLinhVuc = async (updatedLinhVuc) => {
     try {
       const response = await axios.put(

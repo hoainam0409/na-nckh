@@ -64,3 +64,6 @@ body .filter{
   font-size: 16px;
   font-weight: 700;
 }
+body button{
+  margin: 3px;
+}

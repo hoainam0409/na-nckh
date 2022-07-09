@@ -1,18 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect} from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import SideBar from "../../sidebar/SideBar";
-import ThemDeTaiCB from "../dangky-cb/ThemDeTaiCB";
 import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
 import ReactTooltip from "react-tooltip"
-import { BsFillEyeFill, BsXLg, BsCheckLg, BsFillFileEarmarkWordFill, BsPencilSquare, BsTrashFill} from "react-icons/bs";
+import { BsFillEyeFill, BsFillFileEarmarkWordFill, BsXLg, BsCheckLg, BsReplyFill} from "react-icons/bs";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-const DeTaiDuyetCapKhoas = () => {
+const DeTaiBaoCaoTienDo = () => {
   const {
     detaicbState: { detaicb, detaicbs, detaicbsLoading },
     getDeTaiCBs,
@@ -29,15 +28,15 @@ const DeTaiDuyetCapKhoas = () => {
     findDeTaiCB(detaicbId);
     setShowSuaDeTaiCB(true);
   };
+
   return (
     <div>
       <SideBar />
-      <ThemDeTaiCB />
       {detaicb !== null && <SuaDeTaiCB />}
       <div style={{ margin: "10px 20px 20px 330px" }}>
         <div>
-        <h1 style={{fontSize: "24px"}} >Danh sách đề tài chờ duyệt cấp khoa</h1>
-        <div className="filter">
+          <h1 style={{ fontSize: "24px" }} >Danh sách đề tài chờ duyệt báo cáo tiến độ</h1>
+          <div className="filter">
             <Row className="controls">
               <Col>
                 <Form.Select>
@@ -79,7 +78,7 @@ const DeTaiDuyetCapKhoas = () => {
             <strong>{message}</strong>
           </Toast.Body>
         </Toast>
-        <Table borderless bordered hover style={{ cursor: "pointer", marginTop: '100px'}}>
+        <Table borderless bordered hover style={{ cursor: "pointer", marginTop: '100px' }}>
           <thead>
             <tr>
               <th style={{ textAlign: "center", color: "#495057" }}>
@@ -113,48 +112,47 @@ const DeTaiDuyetCapKhoas = () => {
                 <td>{detaicb.dotdangky} </td>
                 <td>{detaicb.khoaxetduyet}</td>
                 <td>{detaicb.thanhvienthamgia.map(q => (
-                  <div key= {q._id}>
-                    { q.hovaten }
+                  <div key={q._id}>
+                    {q.hovaten}
                   </div>
                 ))}</td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
+                    style={{ backgroundColor: "#337AB7"}}
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     data-tip data-for="Xem"
-                    variant="primary"
                   >
-                    <ReactTooltip id="Xem" place="top" effect="solid">Xem</ReactTooltip>
-                    <BsFillEyeFill/>
-                  </Button>
-                  <Button
-                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                    data-tip data-for="Sửa"
-                    variant="info"
-                  >
-                    <ReactTooltip id="Sửa" place="top" effect="solid">Sửa</ReactTooltip>
-                    <BsPencilSquare style={{color: 'white'}}/>
+                    <ReactTooltip id="Xem" place="top" effect="solid">Xem chi tiết</ReactTooltip>
+                    <BsFillEyeFill />
                   </Button>
                   <Button
                     variant="success"
                     data-tip data-for="Duyệt"
                   >
                     <ReactTooltip id="Duyệt" place="top" effect="solid">Duyệt</ReactTooltip>
-                    <BsCheckLg/>
+                    <BsCheckLg />
                   </Button>
                   <Button
                     variant="danger"
                     data-tip data-for="Không duyệt"
                   >
                     <ReactTooltip id="Không duyệt" place="top" effect="solid">Không duyệt</ReactTooltip>
-                    <BsXLg/>
-                  </Button>   
+                    <BsXLg />
+                  </Button>
                   <Button
-                    style={{backgroundColor: "#337AB7"}}
+                    variant="warning"
+                    data-tip data-for="Yêu cầu sửa"
+                  >
+                    <ReactTooltip id="Yêu cầu sửa" place="top" effect="solid">Yêu cầu sửa</ReactTooltip>
+                    <BsReplyFill />
+                  </Button>
+                  <Button
+                    style={{ backgroundColor: "#337AB7"}}
                     data-tip data-for="In thuyết minh"
                   >
                     <ReactTooltip id="In thuyết minh" place="top" effect="solid">In thuyết minh</ReactTooltip>
-                    <BsFillFileEarmarkWordFill/>
+                    <BsFillFileEarmarkWordFill />
                   </Button>
                 </td>
               </tr>
@@ -165,4 +163,4 @@ const DeTaiDuyetCapKhoas = () => {
     </div>
   );
 };
-export default DeTaiDuyetCapKhoas;
+export default DeTaiBaoCaoTienDo;

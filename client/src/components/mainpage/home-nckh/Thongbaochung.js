@@ -57,8 +57,7 @@ const Thongbaochungs = () => {
               <td style={{ textAlign: "center" }}>
                 <Button
                   style={{
-                    backgroundColor: "#337AB7",
-                    borderColor: "#2d6da3",
+                    backgroundColor: "#337AB7"
                   }}
                   onClick={chooseThongBaoChung.bind(this, thongbaochung._id)}
                   data-tip

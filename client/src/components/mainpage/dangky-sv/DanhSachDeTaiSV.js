@@ -61,8 +61,7 @@ const DeTaiSVs = () => {
           style={{
             marginTop: "70px",
             marginBottom: "20px",
-            backgroundColor: "#337AB7",
-            borderColor: "#2d6da3",
+            backgroundColor: "#337AB7"
           }}
           onClick={setShowThemDeTaiSV.bind(this, true)}
         >
@@ -104,8 +103,7 @@ const DeTaiSVs = () => {
                 <td style={{ textAlign: "center" }}>
                   <Button
                     style={{
-                      backgroundColor: "#337AB7",
-                      borderColor: "#2d6da3",
+                      backgroundColor: "#337AB7"
                     }}
                     onClick={chooseDeTaiSV.bind(this, detaisv._id)}
                   >
@@ -113,8 +111,7 @@ const DeTaiSVs = () => {
                   </Button>
                   <Button
                     style={{
-                      backgroundColor: "#5bc0de",
-                      borderColor: "#269abc",
+                      backgroundColor: "#5bc0de"
                     }}
                     onClick={chooseDeTaiSV.bind(this, detaisv._id)}
                   >
@@ -122,8 +119,7 @@ const DeTaiSVs = () => {
                   </Button>
                   <Button
                     style={{
-                      backgroundColor: "#c9302c",
-                      borderColor: "#ac2925",
+                      backgroundColor: "#c9302c"
                     }}
                     onClick={() => deleteDeTaiSV(detaisv._id)}
                   >

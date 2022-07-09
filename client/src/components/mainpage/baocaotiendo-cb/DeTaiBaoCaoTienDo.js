@@ -125,7 +125,7 @@ const DeTaiBaoCaoTienDo = () => {
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
-                    style={{backgroundColor: "#337AB7",borderColor: "#2d6da3",margin: '3px',}}
+                    style={{backgroundColor: "#337AB7"}}
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     data-tip data-for="Xem"
                   >
@@ -133,7 +133,7 @@ const DeTaiBaoCaoTienDo = () => {
                     <BsFillEyeFill/>
                   </Button>
                   <Button
-                    style={{backgroundColor: "#5bc0de", borderColor: "#269abc",margin: '3px',}}
+                    style={{backgroundColor: "#5bc0de"}}
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     data-tip data-for="Sửa báo cáo tiến độ"
                   >
@@ -142,7 +142,6 @@ const DeTaiBaoCaoTienDo = () => {
                   </Button>
                   <Button
                     variant="success"
-                    style={{borderColor: "#2d6da3", margin: '3px', }}
                     data-tip data-for="Báo cáo tiến độ"
                     onClick={SelectDeTaiCB.bind(this, detaicb._id)}
                   >
@@ -150,7 +149,7 @@ const DeTaiBaoCaoTienDo = () => {
                     <BsFileTextFill/>
                   </Button> 
                   <Button
-                    style={{backgroundColor: "#337AB7",borderColor: "#2d6da3",margin: '3px', }}
+                    style={{backgroundColor: "#337AB7"}}
                     data-tip data-for="In thuyết minh"
                   >
                     <ReactTooltip id="In thuyết minh" place="top" effect="solid">In thuyết minh</ReactTooltip>

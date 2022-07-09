@@ -6,6 +6,12 @@ import { CapDeTaiContext } from "../../../contexts/CapDeTaiContext";
 import SideBar from "../../sidebar/SideBar";
 import ThemCapDeTai from "./ThemCapDeTai";
 import SuaCapDeTai from "./SuaCapDeTai";
+import ReactTooltip from "react-tooltip";
+import {
+  BsFillEyeFill,
+  BsPencilSquare,
+  BsTrashFill,
+} from "react-icons/bs";
 
 const CapDeTais = () => {
 
@@ -66,7 +72,7 @@ const CapDeTais = () => {
           Thêm mới
         </Button>
         <ThemCapDeTai />
-        {capdetai !== null && <SuaCapDeTai/>}
+        {capdetai !== null && <SuaCapDeTai />}
 
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
@@ -85,31 +91,35 @@ const CapDeTais = () => {
                 <td>{capdetai.ten} </td>
                 <td style={{ textAlign: "center" }}>
                   <Button
-                    style={{
-                      backgroundColor: "#337AB7",
-                      borderColor: "#2d6da3",
-                    }}
+                    variant="primary"
                     onClick={chooseCapDeTai.bind(this, capdetai._id)}
+                    data-tip
+                    data-for="Xem"
                   >
-                    Xem
+                    <ReactTooltip id="Xem" place="top" effect="solid">
+                      Xem
+                    </ReactTooltip>
+                    <BsFillEyeFill />
                   </Button>
                   <Button
-                    style={{
-                      backgroundColor: "#5bc0de",
-                      borderColor: "#269abc",
-                    }}
+                    variant="info"
                     onClick={chooseCapDeTai.bind(this, capdetai._id)}
                   >
-                    Sửa
+                    <ReactTooltip id="Sửa" place="top" effect="solid">
+                      Sửa
+                    </ReactTooltip>
+                    <BsPencilSquare style={{ color: 'white' }} />
                   </Button>
                   <Button
-                    style={{
-                      backgroundColor: "#c9302c",
-                      borderColor: "#ac2925",
-                    }}
+                    data-tip
+                    variant="danger"
+                    data-for="Xóa"
                     onClick={() => deleteCapDeTai(capdetai._id)}
                   >
-                    Xóa
+                    <BsTrashFill />
+                    <ReactTooltip id="Xóa" place="top" effect="solid">
+                      Xóa
+                    </ReactTooltip>
                   </Button>
                 </td>
               </tr>

@@ -10,6 +10,7 @@ import { BsFillEyeFill, BsFillFileEarmarkWordFill, BsPencilSquare } from "react-
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
 
 const DeTaiNhapKQNTs = () => {
   const {
@@ -37,6 +38,7 @@ const DeTaiNhapKQNTs = () => {
   return (
     <div>
       <SideBar />
+      {detaicb !== null && <SuaDeTaiCB />}
       {detaicb !== null && <NhapKQNTDeTai />}
       <div style={{ margin: "10px 20px 20px 330px" }}>
         <div>
@@ -124,23 +126,23 @@ const DeTaiNhapKQNTs = () => {
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
-                    style={{ backgroundColor: "#337AB7", borderColor: "#2d6da3", margin: '3px', }}
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     data-tip data-for="Xem"
+                    variant="primary"
                   >
                     <ReactTooltip id="Xem" place="top" effect="solid">Xem</ReactTooltip>
                     <BsFillEyeFill />
                   </Button>
                   <Button
-                    style={{ backgroundColor: "#5bc0de", borderColor: "#269abc", margin: '3px', }}
                     onClick={SelectDeTaiCB.bind(this, detaicb._id)}
                     data-tip data-for="Nhập kết quả nghiệm thu"
+                    variant = "info"
                   >
                     <ReactTooltip id="Nhập kết quả nghiệm thu" place="top" effect="solid">Nhập kết quả nghiệm thu</ReactTooltip>
-                    <BsPencilSquare />
+                    <BsPencilSquare style={{color: 'white'}}/>
                   </Button>
                   <Button
-                    style={{ backgroundColor: "#337AB7", borderColor: "#2d6da3", margin: '3px', }}
+                    style={{ backgroundColor: "#337AB7" }}
                     data-tip data-for="In thuyết minh"
                   >
                     <ReactTooltip id="In thuyết minh" place="top" effect="solid">In thuyết minh</ReactTooltip>

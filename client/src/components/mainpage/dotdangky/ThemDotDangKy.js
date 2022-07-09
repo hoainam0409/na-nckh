@@ -20,7 +20,7 @@ const ThemDotDangKy = () => {
     capdetaiState: { capdetais },
     getCapDeTais
   } = useContext(CapDeTaiContext);
-  useEffect(() => getCapDeTais(), [] )
+  useEffect(() => getCapDeTais(), [getCapDeTais] )
   //State
   const [newDotDangKy, setNewDotDangKy] = useState({
     madot: "",

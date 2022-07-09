@@ -126,23 +126,23 @@ const DeTaiNhapKQDGs = () => {
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
-                    style={{ backgroundColor: "#337AB7", borderColor: "#2d6da3", margin: '3px', }}
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     data-tip data-for="Xem"
+                    variant="primary"
                   >
                     <ReactTooltip id="Xem" place="top" effect="solid">Xem</ReactTooltip>
                     <BsFillEyeFill />
                   </Button>
                   <Button
-                    style={{ backgroundColor: "#5bc0de", borderColor: "#269abc", margin: '3px', }}
                     onClick={SelectDeTaiCB.bind(this, detaicb._id)}
                     data-tip data-for="Nhập kết quả đánh giá"
+                    variant="info"
                   >
                     <ReactTooltip id="Nhập kết quả đánh giá" place="top" effect="solid">Nhập kết quả đánh giá</ReactTooltip>
-                    <BsPencilSquare />
+                    <BsPencilSquare style={{color: 'white'}}/>
                   </Button>
                   <Button
-                    style={{ backgroundColor: "#337AB7", borderColor: "#2d6da3", margin: '3px', }}
+                    style={{ backgroundColor: "#337AB7"}}
                     data-tip data-for="In thuyết minh"
                   >
                     <ReactTooltip id="In thuyết minh" place="top" effect="solid">In thuyết minh</ReactTooltip>
