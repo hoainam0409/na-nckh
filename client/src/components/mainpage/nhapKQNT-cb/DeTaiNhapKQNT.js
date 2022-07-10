@@ -28,7 +28,7 @@ const DeTaiNhapKQNTs = () => {
   } = useContext(DeTaiCBContext);
 
   // Start: Get all
-  useEffect(() => getDeTaiCBs(), [getDeTaiCBs]);
+  useEffect(() => getDeTaiCBs(), []);
 
   const chooseDeTaiCB = (detaicbId) => {
     findDeTaiCB(detaicbId);

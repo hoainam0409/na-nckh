@@ -18,25 +18,25 @@ const ThemHoiDong = () => {
     dotdangkyState: { dotdangkys },
     getDotDangKys,
   } = useContext(DotDangKyContext);
-  useEffect(() => getDotDangKys(), [getDotDangKys]);
+  useEffect(() => getDotDangKys(), []);
 
   const {
     loaiHĐState: { loaiHĐs },
     getLoaiHĐs,
   } = useContext(LoaiHĐContext);
-  useEffect(() => getLoaiHĐs(), [getLoaiHĐs]);
+  useEffect(() => getLoaiHĐs(), []);
 
   const {
     userState: { users },
     getUsers,
   } = useContext(UserContext);
-  useEffect(() => getUsers(), [getUsers]);
+  useEffect(() => getUsers(), []);
 
   const {
     vaitroHĐState: { vaitroHĐs },
     getVaiTroHĐs,
   } = useContext(VaiTroHĐContext);
-  useEffect(() => getVaiTroHĐs(), [getVaiTroHĐs]);
+  useEffect(() => getVaiTroHĐs(), []);
 
   //State
   const [newHoiDong, setNewHoiDong] = useState({

@@ -23,32 +23,34 @@ const ThemDeTaiCB = () => {
     getDotDangKys,
   } = useContext(DotDangKyContext);
 
-  useEffect(() => {getDotDangKys()}, [getDotDangKys]);
+  useEffect(() => {getDotDangKys()}, []);
+  console.log(dotdangkys)
 
   const {
     khoaState: { khoas },
     getKhoas,
   } = useContext(KhoaContext);
 
-  useEffect(() => getKhoas(), [getKhoas]);
+  useEffect(() => getKhoas(), []);
+  // console.log(khoas)
 
   const {
     linhvucState: { linhvucs },
     getLinhVucs,
   } = useContext(LinhVucContext);
 
-  useEffect(() => getLinhVucs(), [getLinhVucs]);
+  useEffect(() => getLinhVucs(), []);
   const {
     userState: { users },
     getUsers,
   } = useContext(UserContext);
-  useEffect(() => getUsers(), [getUsers]);
+  useEffect(() => getUsers(), []);
 
   const {
     vaitroTGState: { vaitroTGs },
     getVaiTroTGs,
   } = useContext(VaiTroTGContext);
-  useEffect(() => getVaiTroTGs(), [ getVaiTroTGs]);
+  useEffect(() => getVaiTroTGs(), []);
 
   //State
   const [newDeTaiCB, setNewDeTaiCB] = useState({

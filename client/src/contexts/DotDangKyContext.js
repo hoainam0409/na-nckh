@@ -35,6 +35,7 @@ const DotDangKyContextProvider = ({ children }) => {
   const getDotDangKys = async () => {
     try {
       const response = await axios.get(`${apiUrl}/detai/dotdangky`);
+      setDotDangKy(response.data)
       if (response.data.success) {
         dispatch({
           type: DOTDANGKY_LOADED_SUCCESS,

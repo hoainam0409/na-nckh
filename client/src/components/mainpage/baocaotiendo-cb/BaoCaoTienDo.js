@@ -23,7 +23,7 @@ const BaoCaoTienDo = () => {
     getDotKiemTraTĐs
 
   } = useContext(DotKiemTraTĐContext)
-  useEffect(() => getDotKiemTraTĐs(), [getDotKiemTraTĐs]);
+  useEffect(() => getDotKiemTraTĐs(), []);
 
 
   // State

@@ -75,7 +75,7 @@ const Thongbaochungs = () => {
                 <tr key={thongbaochung._id}>
                   <td>{thongbaochung.tieude}</td>
                   <td>
-                    {new Date(thongbaochung.ngaythongbao).toLocaleDateString()}
+                    {new Date(thongbaochung.ngaythongbao).toLocaleDateString(["ban", "id",])}
                   </td>
                   <td>{thongbaochung.nguoithongbao}</td>
                   <td style={{ textAlign: "center" }}>

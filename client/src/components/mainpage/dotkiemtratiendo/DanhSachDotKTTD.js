@@ -103,8 +103,8 @@ const DotKiemTraTĐs = () => {
               <tr key={dotkiemtraTĐ._id}>
                 <td>{dotkiemtraTĐ.tendot}</td>
                 <td>{dotkiemtraTĐ.nam} </td>
-                <td>{new Date(dotkiemtraTĐ.ngaybd).toLocaleDateString()} </td>
-                <td>{new Date(dotkiemtraTĐ.ngaykt).toLocaleDateString()} </td>
+                <td>{new Date(dotkiemtraTĐ.ngaybd).toLocaleDateString(["ban", "id",])} </td>
+                <td>{new Date(dotkiemtraTĐ.ngaykt).toLocaleDateString(["ban", "id",])} </td>
                 <td>{dotkiemtraTĐ.trangthai} </td>
                 <td style={{ textAlign: "center" }}>
                   <Button

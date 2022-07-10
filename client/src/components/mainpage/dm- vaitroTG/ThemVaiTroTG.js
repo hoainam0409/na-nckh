@@ -14,7 +14,7 @@ const ThemVaiTroTG = () => {
     capdetaiState: { capdetais },
     getCapDeTais,
   } = useContext(CapDeTaiContext);
-  useEffect(() => getCapDeTais(), [getCapDeTais]);
+  useEffect(() => getCapDeTais(), []);
 
 
   //State

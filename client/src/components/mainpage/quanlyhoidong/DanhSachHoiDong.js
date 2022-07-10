@@ -105,7 +105,7 @@ const HoiDongs = () => {
                   {hoidong.tenhoidong}{" "}
                 </td>
                 <td>{hoidong.loaihoidong}</td>
-                <td>{new Date(hoidong.ngaydenghi).toLocaleDateString()} </td>
+                <td>{new Date(hoidong.ngaydenghi).toLocaleDateString(["ban", "id",])} </td>
                 <td>{hoidong.nam}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button

@@ -23,13 +23,13 @@ const NhapKQNTDeTaiCB = () => {
     getHoiDongs,
   } = useContext(HoiDongContext);
 
-  useEffect(() => getHoiDongs(), [getHoiDongs]);
+  useEffect(() => getHoiDongs(), []);
   const {
     userState: { users },
     getUsers,
   } = useContext(UserContext);
 
-  useEffect(() => getUsers(), [getUsers]);
+  useEffect(() => getUsers(), []);
 
   // State
   const [updatedDeTaiCB, setUpdatedDeTaiCB] = useState(detaicb);
