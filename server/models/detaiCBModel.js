@@ -56,7 +56,6 @@ const detaiCBSchema = new Schema({
             vaitrothamgia: String,
             chucdanhKH: String,
             donvi: String,
-            email: String,
 
         }
 

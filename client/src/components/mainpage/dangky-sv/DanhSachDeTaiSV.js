@@ -33,14 +33,8 @@ const DeTaiSVs = () => {
       <SideBar />
       <ThemDeTaiSV />
       {detaisv !== null && <SuaDeTaiSV />}
-      <div style={{ margin: "10px 20px 20px 330px" }}>
-        <h1
-          style={{
-            fontSize: "24px",
-          }}
-        >
-          Danh sách đăng ký đề tài sinh viên
-        </h1>
+      <div className="style-mainpage">
+        <h1>Danh sách đăng ký đề tài sinh viên</h1>
         <Toast
           show={show}
           style={{ position: "fixed", right: "10px" }}
@@ -61,7 +55,7 @@ const DeTaiSVs = () => {
           style={{
             marginTop: "70px",
             marginBottom: "20px",
-            backgroundColor: "#337AB7"
+            backgroundColor: "#337AB7",
           }}
           onClick={setShowThemDeTaiSV.bind(this, true)}
         >
@@ -69,26 +63,14 @@ const DeTaiSVs = () => {
         </Button>
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
-            <tr>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Mã đề tài
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Tên đề tài
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Đợt đăng ký
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Khoa xét duyệt
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>GVHD</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Trạng thái
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Chức năng
-              </th>
+            <tr className="table-header">
+              <th>Mã đề tài</th>
+              <th>Tên đề tài</th>
+              <th>Đợt đăng ký</th>
+              <th>Khoa xét duyệt</th>
+              <th>GVHD</th>
+              <th>Trạng thái</th>
+              <th>Chức năng</th>
             </tr>
           </thead>
           <tbody>
@@ -103,7 +85,7 @@ const DeTaiSVs = () => {
                 <td style={{ textAlign: "center" }}>
                   <Button
                     style={{
-                      backgroundColor: "#337AB7"
+                      backgroundColor: "#337AB7",
                     }}
                     onClick={chooseDeTaiSV.bind(this, detaisv._id)}
                   >
@@ -111,7 +93,7 @@ const DeTaiSVs = () => {
                   </Button>
                   <Button
                     style={{
-                      backgroundColor: "#5bc0de"
+                      backgroundColor: "#5bc0de",
                     }}
                     onClick={chooseDeTaiSV.bind(this, detaisv._id)}
                   >
@@ -119,7 +101,7 @@ const DeTaiSVs = () => {
                   </Button>
                   <Button
                     style={{
-                      backgroundColor: "#c9302c"
+                      backgroundColor: "#c9302c",
                     }}
                     onClick={() => deleteDeTaiSV(detaisv._id)}
                   >

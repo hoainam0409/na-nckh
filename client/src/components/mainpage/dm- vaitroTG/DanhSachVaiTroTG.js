@@ -7,14 +7,9 @@ import SideBar from "../../sidebar/SideBar";
 import ThemVaiTroTG from "./ThemVaiTroTG";
 import SuaVaiTroTG from "./SuaVaiTroTG";
 import ReactTooltip from "react-tooltip";
-import {
-  BsFillEyeFill,
-  BsPencilSquare,
-  BsTrashFill,
-} from "react-icons/bs";
+import { BsFillEyeFill, BsPencilSquare, BsTrashFill } from "react-icons/bs";
 
 const VaiTroTGs = () => {
-
   const {
     vaitroTGState: { vaitroTG, vaitroTGs, vaitroTGsLoading },
     getVaiTroTGs,
@@ -33,18 +28,12 @@ const VaiTroTGs = () => {
     findVaiTroTG(vaitroTGId);
     setShowSuaVaiTroTG(true);
   };
-  
+
   return (
     <div>
       <SideBar />
-      <div style={{ margin: "10px 20px 20px 330px" }}>
-        <h1
-          style={{
-            fontSize: "24px",
-          }}
-        >
-          Danh sách vai trò tham gia
-        </h1>
+      <div className="style-mainpage">
+        <h1>Danh sách vai trò tham gia</h1>
         <Toast
           show={show}
           style={{ position: "fixed", right: "10px" }}
@@ -65,7 +54,7 @@ const VaiTroTGs = () => {
           style={{
             marginTop: "70px",
             marginBottom: "20px",
-            backgroundColor: "#337AB7"
+            backgroundColor: "#337AB7",
           }}
           onClick={setShowThemVaiTroTG.bind(this, true)}
         >
@@ -76,13 +65,11 @@ const VaiTroTGs = () => {
 
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
-            <tr>
-              <th style={{ textAlign: "center", color: "#495057" }}>Mã</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Tên</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Cấp đề tài</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Chức năng
-              </th>
+            <tr className="table-header">
+              <th>Mã</th>
+              <th>Tên</th>
+              <th>Cấp đề tài</th>
+              <th>Chức năng</th>
             </tr>
           </thead>
           <tbody>
@@ -112,7 +99,7 @@ const VaiTroTGs = () => {
                     <ReactTooltip id="Sửa" place="top" effect="solid">
                       Sửa
                     </ReactTooltip>
-                    <BsPencilSquare style={{ color: 'white' }} />
+                    <BsPencilSquare style={{ color: "white" }} />
                   </Button>
                   <Button
                     variant="danger"

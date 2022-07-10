@@ -5,8 +5,14 @@ import Toast from "react-bootstrap/Toast";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import SideBar from "../../sidebar/SideBar";
 import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
-import ReactTooltip from "react-tooltip"
-import { BsFillEyeFill, BsXLg, BsCheckLg, BsFillFileEarmarkWordFill, BsPencilSquare} from "react-icons/bs";
+import ReactTooltip from "react-tooltip";
+import {
+  BsFillEyeFill,
+  BsXLg,
+  BsCheckLg,
+  BsFillFileEarmarkWordFill,
+  BsPencilSquare,
+} from "react-icons/bs";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -32,10 +38,10 @@ const DeTaiDuyetCapKhoas = () => {
     <div>
       <SideBar />
       {detaicb !== null && <SuaDeTaiCB />}
-      <div style={{ margin: "10px 20px 20px 330px" }}>
+      <div className="style-mainpage">
         <div>
-        <h1 style={{fontSize: "24px"}} >Danh sách đề tài chờ duyệt cấp trường</h1>
-        <div className="filter">
+          <h1>Danh sách đề tài chờ duyệt cấp trường</h1>
+          <div className="filter">
             <Row className="controls">
               <Col>
                 <Form.Select>
@@ -77,30 +83,21 @@ const DeTaiDuyetCapKhoas = () => {
             <strong>{message}</strong>
           </Toast.Body>
         </Toast>
-        <Table borderless bordered hover style={{ cursor: "pointer", marginTop: '100px'}}>
+        <Table
+          borderless
+          bordered
+          hover
+          style={{ cursor: "pointer", marginTop: "100px" }}
+        >
           <thead>
-            <tr>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Mã đề tài
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Tên đề tài
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Đợt đăng ký
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Khoa xét duyệt
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Thành viên tham gia
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Trạng thái
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Chức năng
-              </th>
+            <tr className="table-header">
+              <th>Mã đề tài</th>
+              <th>Tên đề tài</th>
+              <th>Đợt đăng ký</th>
+              <th>Khoa xét duyệt</th>
+              <th>Thành viên tham gia</th>
+              <th>Trạng thái</th>
+              <th>Chức năng</th>
             </tr>
           </thead>
           <tbody>
@@ -110,49 +107,64 @@ const DeTaiDuyetCapKhoas = () => {
                 <td>{detaicb.tendetai}</td>
                 <td>{detaicb.dotdangky} </td>
                 <td>{detaicb.khoaxetduyet}</td>
-                <td>{detaicb.thanhvienthamgia.map(q => (
-                  <div key= {q._id}>
-                    { q.hovaten }
-                  </div>
-                ))}</td>
+                <td>
+                  {detaicb.thanhvienthamgia.map((q) => (
+                    <div key={q._id}>-{q.hovaten}</div>
+                  ))}
+                </td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                    data-tip data-for="Xem"
+                    data-tip
+                    data-for="Xem"
                     variant="primary"
                   >
-                    <ReactTooltip id="Xem" place="top" effect="solid">Xem</ReactTooltip>
-                    <BsFillEyeFill/>
+                    <ReactTooltip id="Xem" place="top" effect="solid">
+                      Xem
+                    </ReactTooltip>
+                    <BsFillEyeFill />
                   </Button>
                   <Button
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                    data-tip data-for="Sửa"
+                    data-tip
+                    data-for="Sửa"
                     variant="info"
                   >
-                    <ReactTooltip id="Sửa" place="top" effect="solid">Sửa</ReactTooltip>
-                    <BsPencilSquare style={{color: 'white'}}/>
+                    <ReactTooltip id="Sửa" place="top" effect="solid">
+                      Sửa
+                    </ReactTooltip>
+                    <BsPencilSquare style={{ color: "white" }} />
+                  </Button>
+                  <Button variant="success" data-tip data-for="Duyệt">
+                    <ReactTooltip id="Duyệt" place="top" effect="solid">
+                      Duyệt
+                    </ReactTooltip>
+                    <BsCheckLg />
+                  </Button>
+                  <Button variant="danger" data-tip data-for="Không duyệt">
+                    <ReactTooltip id="Không duyệt" place="top" effect="solid">
+                      Không duyệt
+                    </ReactTooltip>
+                    <BsXLg />
                   </Button>
                   <Button
-                    variant="success"
-                    data-tip data-for="Duyệt"
+                    style={{
+                      backgroundColor: "#337AB7",
+                      borderColor: "#2d6da3",
+                      margin: "3px",
+                    }}
+                    data-tip
+                    data-for="In thuyết minh"
                   >
-                    <ReactTooltip id="Duyệt" place="top" effect="solid">Duyệt</ReactTooltip>
-                    <BsCheckLg/>
-                  </Button>
-                  <Button
-                    variant="danger"
-                    data-tip data-for="Không duyệt"
-                  >
-                    <ReactTooltip id="Không duyệt" place="top" effect="solid">Không duyệt</ReactTooltip>
-                    <BsXLg/>
-                  </Button>   
-                  <Button
-                    style={{backgroundColor: "#337AB7",borderColor: "#2d6da3",margin: '3px', }}
-                    data-tip data-for="In thuyết minh"
-                  >
-                    <ReactTooltip id="In thuyết minh" place="top" effect="solid">In thuyết minh</ReactTooltip>
-                    <BsFillFileEarmarkWordFill/>
+                    <ReactTooltip
+                      id="In thuyết minh"
+                      place="top"
+                      effect="solid"
+                    >
+                      In thuyết minh
+                    </ReactTooltip>
+                    <BsFillFileEarmarkWordFill />
                   </Button>
                 </td>
               </tr>

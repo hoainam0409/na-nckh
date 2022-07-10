@@ -7,14 +7,9 @@ import SideBar from "../../sidebar/SideBar";
 import ThemCapDeTai from "./ThemCapDeTai";
 import SuaCapDeTai from "./SuaCapDeTai";
 import ReactTooltip from "react-tooltip";
-import {
-  BsFillEyeFill,
-  BsPencilSquare,
-  BsTrashFill,
-} from "react-icons/bs";
+import { BsFillEyeFill, BsPencilSquare, BsTrashFill } from "react-icons/bs";
 
 const CapDeTais = () => {
-
   const {
     capdetaiState: { capdetai, capdetais, capdetaisLoading },
     getCapDeTais,
@@ -36,14 +31,8 @@ const CapDeTais = () => {
   return (
     <div>
       <SideBar />
-      <div style={{ margin: "10px 20px 20px 330px" }}>
-        <h1
-          style={{
-            fontSize: "24px",
-          }}
-        >
-          Danh sách cấp đề tài
-        </h1>
+      <div className="style-mainpage">
+        <h1>Danh sách cấp đề tài</h1>
         <Toast
           show={show}
           style={{ position: "fixed", right: "10px" }}
@@ -76,12 +65,10 @@ const CapDeTais = () => {
 
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
-            <tr>
-              <th style={{ textAlign: "center", color: "#495057" }}>Mã</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Tên</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Chức năng
-              </th>
+            <tr className="table-header">
+              <th>Mã</th>
+              <th>Tên</th>
+              <th>Chức năng</th>
             </tr>
           </thead>
           <tbody>
@@ -108,7 +95,7 @@ const CapDeTais = () => {
                     <ReactTooltip id="Sửa" place="top" effect="solid">
                       Sửa
                     </ReactTooltip>
-                    <BsPencilSquare style={{ color: 'white' }} />
+                    <BsPencilSquare style={{ color: "white" }} />
                   </Button>
                   <Button
                     data-tip

@@ -49,7 +49,7 @@ const DeTaiCBs = () => {
       <SideBar />
       <ThemDeTaiCB />
       {detaicb !== null && <SuaDeTaiCB />}
-      <div style={{ margin: "10px 20px 20px 330px" }}>
+      <div className="style-mainpage">
         <div>
           <h1 style={{ fontSize: "24px" }}>Danh sách đăng ký đề tài</h1>
           <div className="filter">
@@ -107,29 +107,14 @@ const DeTaiCBs = () => {
         </Button>
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
-            <tr>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Mã đề tài
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Tên đề tài
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Đợt đăng ký
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Khoa xét duyệt
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Thành viên tham gia
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-
-                Trạng thái
-              </th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Chức năng
-              </th>
+            <tr className="table-header">
+              <th>Mã đề tài</th>
+              <th>Tên đề tài</th>
+              <th>Đợt đăng ký</th>
+              <th>Khoa xét duyệt</th>
+              <th>Thành viên tham gia</th>
+              <th>Trạng thái</th>
+              <th>Chức năng</th>
             </tr>
           </thead>
           <tbody>
@@ -141,7 +126,7 @@ const DeTaiCBs = () => {
                 <td>{detaicb.khoaxetduyet}</td>
                 <td>
                   {detaicb.thanhvienthamgia.map((q) => (
-                    <div key={q._id} >{q.hovaten}</div>
+                    <div key={q._id}>-{q.hovaten}</div>
                   ))}
                 </td>
                 <td>{detaicb.trangthai}</td>
@@ -166,7 +151,7 @@ const DeTaiCBs = () => {
                     <ReactTooltip id="Sửa" place="top" effect="solid">
                       Sửa
                     </ReactTooltip>
-                    <BsPencilSquare style={{ color: 'white' }} />
+                    <BsPencilSquare style={{ color: "white" }} />
                   </Button>
                   <Button
                     variant="primary"
@@ -192,7 +177,7 @@ const DeTaiCBs = () => {
                   </Button>
                   <Button
                     style={{
-                      backgroundColor: "#337AB7"
+                      backgroundColor: "#337AB7",
                     }}
                     data-tip
                     data-for="In thuyết minh"

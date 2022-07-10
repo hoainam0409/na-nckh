@@ -11,7 +11,6 @@ import ReactTooltip from "react-tooltip";
 import { BsFillEyeFill, BsPencilSquare, BsTrashFill } from "react-icons/bs";
 
 const Thongbaochungs = () => {
-
   const {
     thongbaochungState: {
       thongbaochung,
@@ -46,14 +45,8 @@ const Thongbaochungs = () => {
   } else {
     body = (
       <>
-        <div style={{ margin: "10px 20px 20px 330px" }}>
-          <h1
-            style={{
-              fontSize: "24px",
-            }}
-          >
-            Danh sách thông báo
-          </h1>
+        <div className="style-mainpage">
+          <h1>Danh sách thông báo</h1>
           <Button
             style={{
               marginTop: "70px",
@@ -70,19 +63,11 @@ const Thongbaochungs = () => {
 
           <Table borderless bordered hover style={{ cursor: "pointer" }}>
             <thead>
-              <tr>
-                <th style={{ textAlign: "center", color: "#495057" }}>
-                  Tiêu đề
-                </th>
-                <th style={{ textAlign: "center", color: "#495057" }}>
-                  Ngày thông báo
-                </th>
-                <th style={{ textAlign: "center", color: "#495057" }}>
-                  Người thông báo
-                </th>
-                <th style={{ textAlign: "center", color: "#495057" }}>
-                  Chức năng
-                </th>
+              <tr className="table-header">
+                <th>Tiêu đề</th>
+                <th>Ngày thông báo</th>
+                <th>Người thông báo</th>
+                <th>Chức năng</th>
               </tr>
             </thead>
             <tbody>
@@ -110,7 +95,7 @@ const Thongbaochungs = () => {
                     </Button>
                     <Button
                       style={{
-                        backgroundColor: "#5bc0de"
+                        backgroundColor: "#5bc0de",
                       }}
                       onClick={chooseThongBaoChung.bind(
                         this,

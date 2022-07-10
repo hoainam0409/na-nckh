@@ -57,30 +57,40 @@ const HoiDongContextProvider = ({ children }) => {
           // vaitro: newHoiDong.vaitro1
           idVaiTro: newHoiDong.vaitro1._id,
           ten: newHoiDong.vaitro1.ten,
+          chucdanhKH: newHoiDong.chucdanhKH1,
+          donvi: newHoiDong.donvi1
         },
         {
           id: newHoiDong.user2._id,
           hovaten: newHoiDong.user2.hovaten,
           idVaiTro: newHoiDong.vaitro2._id,
           ten: newHoiDong.vaitro2.ten,
+          chucdanhKH: newHoiDong.chucdanhKH2,
+          donvi: newHoiDong.donvi2
         },
         {
           id: newHoiDong.user3._id,
           hovaten: newHoiDong.user3.hovaten,
           idVaiTro: newHoiDong.vaitro3._id,
           ten: newHoiDong.vaitro3.ten,
+          chucdanhKH: newHoiDong.chucdanhKH3,
+          donvi: newHoiDong.donvi3
         },
         {
           id: newHoiDong.user4._id,
           hovaten: newHoiDong.user4.hovaten,
           idVaiTro: newHoiDong.vaitro4._id,
           ten: newHoiDong.vaitro4.ten,
+          chucdanhKH: newHoiDong.chucdanhKH4,
+          donvi: newHoiDong.donvi4
         },
         {
           id: newHoiDong.user5._id,
           hovaten: newHoiDong.user5.hovaten,
           idVaiTro: newHoiDong.vaitro5._id,
           ten: newHoiDong.vaitro5.ten,
+          chucdanhKH: newHoiDong.chucdanhKH5,
+          donvi: newHoiDong.donvi5
         },
       )
       // newHoiDong.danhsachthanhvien.push(

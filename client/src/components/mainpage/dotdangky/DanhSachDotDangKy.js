@@ -6,11 +6,13 @@ import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import SideBar from "../../sidebar/SideBar";
 import ThemDotDangKy from "./ThemDotDangKy";
 import SuaDotDangKy from "./SuaDotDangKy";
-import ReactTooltip from "react-tooltip"
-import { BsFillEyeFill, BsPencilSquare, BsTrashFill} from "react-icons/bs";
+import ReactTooltip from "react-tooltip";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import { BsFillEyeFill, BsPencilSquare, BsTrashFill } from "react-icons/bs";
 
 const DotDangKys = () => {
-
   const {
     dotdangkyState: { dotdangky, dotdangkys, dotdangkysLoading },
     getDotDangKys,
@@ -32,14 +34,27 @@ const DotDangKys = () => {
   return (
     <div>
       <SideBar />
-      <div style={{ margin: "10px 20px 20px 330px" }}>
-        <h1
-          style={{
-            fontSize: "24px",
-          }}
-        >
-          Danh sách đợt đăng ký đề tài
-        </h1>
+      <div className="style-mainpage">
+        <div><h1>Danh sách đợt đăng ký đề tài</h1>
+        <div className="filter">
+            <Row className="controls">
+              <Col>
+                <Form.Select>
+                  <option value="">Chọn cấp đề tài</option>
+                  <option value="Cấp trường">Cấp trường</option>
+                  <option value="Cấp Bộ">Cấp Bộ</option>
+                </Form.Select>
+              </Col>
+              <Col>
+                <Form.Select>
+                  <option value="">Chọn năm</option>
+                  <option value="2022">2022</option>
+                  <option value="2021">2021</option>
+                </Form.Select>
+              </Col>
+            </Row>
+          </div>
+        </div>
         <Toast
           show={show}
           style={{ position: "fixed", right: "10px" }}
@@ -67,56 +82,69 @@ const DotDangKys = () => {
         >
           Thêm mới
         </Button>
-        <ThemDotDangKy/>
-        {dotdangky !== null && <SuaDotDangKy/>}
+        <ThemDotDangKy />
+        {dotdangky !== null && <SuaDotDangKy />}
 
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
-            <tr>
-              <th style={{ textAlign: "center", color: "#495057" }}>Mã đợt</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Tên đợt</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Năm</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Cấp đề tài</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Ngày mở đăng ký</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Ngày khóa đăng ký</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Chức năng
-              </th>
+            <tr className="table-header">
+              <th>Mã đợt</th>
+              <th>Tên đợt</th>
+              <th>Năm</th>
+              <th>Cấp đề tài</th>
+              <th>Ngày mở đăng ký</th>
+              <th>Ngày khóa đăng ký</th>
+              <th>Chức năng</th>
             </tr>
           </thead>
           <tbody>
             {dotdangkys.map((dotdangky) => (
               <tr key={dotdangky._id}>
-                <td onClick={chooseDotDangKy.bind(this, dotdangky._id)}>{dotdangky.madot} </td>
+                <td onClick={chooseDotDangKy.bind(this, dotdangky._id)}>
+                  {dotdangky.madot}{" "}
+                </td>
                 <td>{dotdangky.tendot}</td>
                 <td>{dotdangky.nam} </td>
                 <td>{dotdangky.capdetai}</td>
-                <td>{new Date(dotdangky.ngaymodangky).toLocaleDateString()} </td>
-                <td>{new Date(dotdangky.ngaykhoadangky).toLocaleDateString()} </td>
+                <td>
+                  {new Date(dotdangky.ngaymodangky).toLocaleDateString()}{" "}
+                </td>
+                <td>
+                  {new Date(dotdangky.ngaykhoadangky).toLocaleDateString()}{" "}
+                </td>
                 <td style={{ textAlign: "center" }}>
                   <Button
-                    data-tip data-for="Xem"
+                    data-tip
+                    data-for="Xem"
                     variant="primary"
                     onClick={chooseDotDangKy.bind(this, dotdangky._id)}
                   >
-                  <ReactTooltip id="Xem" place="top" effect="solid">Xem</ReactTooltip>
-                    <BsFillEyeFill/>
+                    <ReactTooltip id="Xem" place="top" effect="solid">
+                      Xem
+                    </ReactTooltip>
+                    <BsFillEyeFill />
                   </Button>
                   <Button
                     variant="info"
-                    data-tip data-for="Sửa"
+                    data-tip
+                    data-for="Sửa"
                     onClick={chooseDotDangKy.bind(this, dotdangky._id)}
                   >
-                   <ReactTooltip id="Sửa" place="top" effect="solid">Sửa</ReactTooltip>
-                    <BsPencilSquare style={{color: 'white'}}/>
+                    <ReactTooltip id="Sửa" place="top" effect="solid">
+                      Sửa
+                    </ReactTooltip>
+                    <BsPencilSquare style={{ color: "white" }} />
                   </Button>
                   <Button
                     variant="danger"
-                    data-tip data-for="Xóa"
+                    data-tip
+                    data-for="Xóa"
                     onClick={() => deleteDotDangKy(dotdangky._id)}
                   >
-                  <ReactTooltip id="Xóa" place="top" effect="solid">Xóa</ReactTooltip> 
-                  <BsTrashFill/>
+                    <ReactTooltip id="Xóa" place="top" effect="solid">
+                      Xóa
+                    </ReactTooltip>
+                    <BsTrashFill />
                   </Button>
                 </td>
               </tr>

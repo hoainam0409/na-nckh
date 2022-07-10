@@ -13,7 +13,7 @@ POST http://localhost:5000/user/login
 Content-Type: application/json
 
 {
-    "username": "phuongnth",
+    "username": "namnth",
     "password": "1234567"
 }
 
@@ -56,4 +56,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWM4NWNjN
     "tieude": "Thông báo tạo",
     "noidung": "Thông báo đăng ký.....",
     "nguoithongbao": "Nguyễn Thị Hoaì 2"
+}
+
+###
+POST http://localhost:5000/danhmuc/khoa
+Content-Type: application/json
+{
+    "makhoa": "CNTT",
+    "ten": "Khoa CNTT"                                                                                                                                                                                                                                                                                                                                                                                                                        
 }

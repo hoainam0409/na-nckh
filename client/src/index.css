@@ -32,8 +32,15 @@ button{
   background: transparent;
   cursor: pointer;
 }
+body .style-mainpage{
+  margin: 10px 20px 20px 330px
+}
+body h1 {
+  font-size: 24px
+}
 body .modal-dialog{
   max-width: 1400px;
+  top: 35px
 }
  
 .modal-dialog h1 {
@@ -65,5 +72,10 @@ body .filter{
   font-weight: 700;
 }
 body button{
-  margin: 3px;
+  margin: 2px;
+}
+
+.table-header{
+  text-align: center;
+  color: #495057
 }

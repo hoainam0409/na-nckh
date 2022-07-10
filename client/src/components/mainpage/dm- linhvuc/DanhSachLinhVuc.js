@@ -7,14 +7,9 @@ import SideBar from "../../sidebar/SideBar";
 import ThemLinhVuc from "./ThemLinhVuc";
 import SuaLinhVuc from "./SuaLinhVuc";
 import ReactTooltip from "react-tooltip";
-import {
-  BsFillEyeFill,
-  BsPencilSquare,
-  BsTrashFill,
-} from "react-icons/bs";
+import { BsFillEyeFill, BsPencilSquare, BsTrashFill } from "react-icons/bs";
 
 const LinhVucs = () => {
-
   const {
     linhvucState: { linhvuc, linhvucs, linhvucsLoading },
     getLinhVucs,
@@ -36,14 +31,8 @@ const LinhVucs = () => {
   return (
     <div>
       <SideBar />
-      <div style={{ margin: "10px 20px 20px 330px" }}>
-        <h1
-          style={{
-            fontSize: "24px",
-          }}
-        >
-          Danh sách lĩnh vực nghiên cứu
-        </h1>
+      <div className="style-mainpage">
+        <h1>Danh sách lĩnh vực nghiên cứu</h1>
         <Toast
           show={show}
           style={{ position: "fixed", right: "10px" }}
@@ -64,7 +53,7 @@ const LinhVucs = () => {
           style={{
             marginTop: "70px",
             marginBottom: "20px",
-            backgroundColor: "#337AB7"
+            backgroundColor: "#337AB7",
           }}
           onClick={setShowThemLinhVuc.bind(this, true)}
         >
@@ -75,12 +64,10 @@ const LinhVucs = () => {
 
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
-            <tr>
-              <th style={{ textAlign: "center", color: "#495057" }}>Mã</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Tên</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Chức năng
-              </th>
+            <tr className="table-header">
+              <th>Mã</th>
+              <th>Tên</th>
+              <th>Chức năng</th>
             </tr>
           </thead>
           <tbody>
@@ -109,7 +96,7 @@ const LinhVucs = () => {
                     <ReactTooltip id="Sửa" place="top" effect="solid">
                       Sửa
                     </ReactTooltip>
-                    <BsPencilSquare style={{ color: 'white' }} />
+                    <BsPencilSquare style={{ color: "white" }} />
                   </Button>
                   <Button
                     variant="danger"

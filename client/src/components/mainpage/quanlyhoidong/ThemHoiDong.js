@@ -6,18 +6,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import { HoiDongContext } from "../../../contexts/HoiDongContext";
-import { LoaiHĐContext} from "../../../contexts/LoaiHĐContext";
-import {UserContext} from '../../../contexts/UserContext'
+import { LoaiHĐContext } from "../../../contexts/LoaiHĐContext";
+import { UserContext } from "../../../contexts/UserContext";
 import { VaiTroHĐContext } from "../../../contexts/VaiTroHĐContext";
 
 const ThemHoiDong = () => {
   //context
-  const {
-    showThemHoiDong,
-    setShowThemHoiDong,
-    addHoiDong,
-    setShowToast,
-  } = useContext(HoiDongContext);
+  const { showThemHoiDong, setShowThemHoiDong, addHoiDong, setShowToast } =
+    useContext(HoiDongContext);
   const {
     dotdangkyState: { dotdangkys },
     getDotDangKys,
@@ -74,19 +70,19 @@ const ThemHoiDong = () => {
       ...newHoiDong,
       [event.target.name]: event.target.value,
     });
- 
-    const onChangeUser = (event) => {
-      const userSelected = users.find((q) => q._id === event.target.value);
-      setNewHoiDong({
-        ...newHoiDong,
-        [event.target.name]: userSelected,
-      });
-    }; 
+
+  const onChangeUser = (event) => {
+    const userSelected = users.find((q) => q._id === event.target.value);
+    setNewHoiDong({
+      ...newHoiDong,
+      [event.target.name]: userSelected,
+    });
+  };
   const onChangeVaiTro = (event) => {
     const vaitroSelected = vaitroHĐs.find((q) => q._id === event.target.value);
     setNewHoiDong({
-        ...newHoiDong,
-        [event.target.name]: vaitroSelected,
+      ...newHoiDong,
+      [event.target.name]: vaitroSelected,
     });
   };
   const resetAddHoiDong = () => {
@@ -145,13 +141,9 @@ const ThemHoiDong = () => {
                   onChange={onChangeInput}
                 >
                   <option value="">Chọn loại hội đồng</option>
-                        {
-                            loaiHĐs.map((loaiHĐ) => (
-                                <option key={loaiHĐ._id}>
-                                    {loaiHĐ.ten}
-                                </option>
-                            ))
-                        }
+                  {loaiHĐs.map((loaiHĐ) => (
+                    <option key={loaiHĐ._id}>{loaiHĐ.ten}</option>
+                  ))}
                 </Form.Select>
               </Form.Group>
             </Col>
@@ -168,8 +160,8 @@ const ThemHoiDong = () => {
                 >
                   <option>Chọn đợt đăng ký đề tài</option>
                   {dotdangkys.map((dotdangky) => (
-                <option key={dotdangky._id}>{dotdangky.tendot}</option>
-              ))}
+                    <option key={dotdangky._id}>{dotdangky.tendot}</option>
+                  ))}
                 </Form.Select>
               </Form.Group>
             </Col>
@@ -197,8 +189,7 @@ const ThemHoiDong = () => {
                   aria-describedby="title-help"
                   value={ngaydenghi}
                   onChange={onChangeInput}
-                >
-                </Form.Control>
+                ></Form.Control>
               </Form.Group>
             </Col>
           </Row>
@@ -250,262 +241,362 @@ const ThemHoiDong = () => {
             />
           </Form.Group>
           <div>
-          <h1>DANH SÁCH THÀNH VIÊN THAM GIA HỘI ĐỒNG</h1>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Họ và tên</Form.Label>
-                <Form.Select
-                  name="user1"
-                  required
-                  aria-describedby="title-help"
-                  value={danhsachthanhvien.hovaten}
-                  onChange={onChangeUser}
-                >
-                   <option value="">Chọn thành viên</option>
-                        {
-                            users.map((user) => (
-                              <option
-                              key={user._id}
-                              value={user._id}
-                              name={user.hovaten}
-                            >
-                              {user.hovaten}
-                            </option>
-                            ))
-                        }
-                </Form.Select>
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Vai trò hội đồng</Form.Label>
-                <Form.Select
-                  name="vaitro1"
-                  aria-describedby="title-help"
-                  value={danhsachthanhvien.vaitro}
-                  onChange={onChangeVaiTro}
-                >
-                   <option value="">Chọn vai trò</option>
-                        {
-                            vaitroHĐs.map((vaitroHĐ) => (
-                              <option
-                              key={vaitroHĐ._id}
-                              value={vaitroHĐ._id}
-                              name={vaitroHĐ.ten}
-                            >
-                              {vaitroHĐ.ten}
-                            </option>
-                            ))
-                        }
-                </Form.Select>
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Họ và tên</Form.Label>
-                <Form.Select
-                  name="user2"
-                  required
-                  aria-describedby="title-help"
-                  value={danhsachthanhvien.hovaten}
-                  onChange={onChangeUser}
-                >
-                   <option value="">Chọn thành viên</option>
-                        {
-                            users.map((user) => (
-                              <option
-                              key={user._id}
-                              value={user._id}
-                              name={user.hovaten}
-                            >
-                              {user.hovaten}
-                            </option>
-                            ))
-                        }
-                </Form.Select>
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Vai trò hội đồng</Form.Label>
-                <Form.Select
-                  name="vaitro2"
-                  aria-describedby="title-help"
-                  value={danhsachthanhvien.vaitro}
-                  onChange={onChangeVaiTro}
-                >
-                   <option value="">Chọn vai trò</option>
-                        {
-                            vaitroHĐs.map((vaitroHĐ) => (
-                              <option
-                              key={vaitroHĐ._id}
-                              value={vaitroHĐ._id}
-                              name={vaitroHĐ.ten}
-                            >
-                              {vaitroHĐ.ten}
-                            </option>
-                            ))
-                        }
-                </Form.Select>
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Họ và tên</Form.Label>
-                <Form.Select
-                  name="user3"
-                  required
-                  aria-describedby="title-help"
-                  value={danhsachthanhvien.hovaten}
-                  onChange={onChangeUser}
-                >
-                   <option value="">Chọn thành viên</option>
-                        {
-                            users.map((user) => (
-                              <option
-                              key={user._id}
-                              value={user._id}
-                              name={user.hovaten}
-                            >
-                              {user.hovaten}
-                            </option>
-                            ))
-                        }
-                </Form.Select>
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Vai trò hội đồng</Form.Label>
-                <Form.Select
-                  name="vaitro3"
-                  aria-describedby="title-help"
-                  value={danhsachthanhvien.vaitro}
-                  onChange={onChangeVaiTro}
-                >
-                   <option value="">Chọn vai trò</option>
-                        {
-                            vaitroHĐs.map((vaitroHĐ) => (
-                              <option
-                              key={vaitroHĐ._id}
-                              value={vaitroHĐ._id}
-                              name={vaitroHĐ.ten}
-                            >
-                              {vaitroHĐ.ten}
-                            </option>
-                            ))
-                        }
-                </Form.Select>
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Họ và tên</Form.Label>
-                <Form.Select
-                  name="user4"
-                  required
-                  aria-describedby="title-help"
-                  value={danhsachthanhvien.hovaten}
-                  onChange={onChangeUser}
-                >
-                   <option value="">Chọn thành viên</option>
-                        {
-                            users.map((user) => (
-                              <option
-                              key={user._id}
-                              value={user._id}
-                              name={user.hovaten}
-                            >
-                              {user.hovaten}
-                            </option>
-                            ))
-                        }
-                </Form.Select>
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Vai trò hội đồng</Form.Label>
-                <Form.Select
-                  name="vaitro4"
-                  aria-describedby="title-help"
-                  value={danhsachthanhvien.vaitro}
-                  onChange={onChangeVaiTro}
-                >
-                   <option value="">Chọn vai trò</option>
-                        {
-                            vaitroHĐs.map((vaitroHĐ) => (
-                              <option
-                              key={vaitroHĐ._id}
-                              value={vaitroHĐ._id}
-                              name={vaitroHĐ.ten}
-                            >
-                              {vaitroHĐ.ten}
-                            </option>
-                            ))
-                        }
-                </Form.Select>
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Họ và tên</Form.Label>
-                <Form.Select
-                  name="user5"
-                  required
-                  aria-describedby="title-help"
-                  value={danhsachthanhvien.hovaten}
-                  onChange={onChangeUser}
-                >
-                   <option value="">Chọn thành viên</option>
-                        {
-                            users.map((user) => (
-                              <option
-                              key={user._id}
-                              value={user._id}
-                              name={user.hovaten}
-                            >
-                              {user.hovaten}
-                            </option>
-                            ))
-                        }
-                </Form.Select>
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Vai trò hội đồng</Form.Label>
-                <Form.Select
-                  name="vaitro5"
-                  aria-describedby="title-help"
-                  value={danhsachthanhvien.vaitro}
-                  onChange={onChangeVaiTro}
-                >
-                   <option value="">Chọn vai trò</option>
-                        {
-                            vaitroHĐs.map((vaitroHĐ) => (
-                              <option
-                              key={vaitroHĐ._id}
-                              value={vaitroHĐ._id}
-                              name={vaitroHĐ.ten}
-                            >
-                              {vaitroHĐ.ten}
-                            </option>
-                            ))
-                        }
-                </Form.Select>
-              </Form.Group>
-            </Col>
-          </Row>
+            <h1>DANH SÁCH THÀNH VIÊN THAM GIA HỘI ĐỒNG</h1>
+            <Row>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Họ và tên</Form.Label>
+                  <Form.Select
+                    name="user1"
+                    required
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.hovaten}
+                    onChange={onChangeUser}
+                  >
+                    <option value="">Chọn thành viên</option>
+                    {users.map((user) => (
+                      <option
+                        key={user._id}
+                        value={user._id}
+                        name={user.hovaten}
+                      >
+                        {user.hovaten}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>CDKH-HV</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="chucdanhKH1"
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.chucdanhKH}
+                    disabled
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Vai trò hội đồng</Form.Label>
+                  <Form.Select
+                    name="vaitro1"
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.vaitro}
+                    onChange={onChangeVaiTro}
+                  >
+                    <option value="">Chọn vai trò</option>
+                    {vaitroHĐs.map((vaitroHĐ) => (
+                      <option
+                        key={vaitroHĐ._id}
+                        value={vaitroHĐ._id}
+                        name={vaitroHĐ.ten}
+                      >
+                        {vaitroHĐ.ten}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Đơn vị</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="donvi1"
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.donvi}
+                    disabled
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Họ và tên</Form.Label>
+                  <Form.Select
+                    name="user2"
+                    required
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.hovaten}
+                    onChange={onChangeUser}
+                  >
+                    <option value="">Chọn thành viên</option>
+                    {users.map((user) => (
+                      <option
+                        key={user._id}
+                        value={user._id}
+                        name={user.hovaten}
+                      >
+                        {user.hovaten}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>CDKH-HV</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="chucdanhKH2"
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.chucdanhKH}
+                    disabled
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Vai trò hội đồng</Form.Label>
+                  <Form.Select
+                    name="vaitro2"
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.vaitro}
+                    onChange={onChangeVaiTro}
+                  >
+                    <option value="">Chọn vai trò</option>
+                    {vaitroHĐs.map((vaitroHĐ) => (
+                      <option
+                        key={vaitroHĐ._id}
+                        value={vaitroHĐ._id}
+                        name={vaitroHĐ.ten}
+                      >
+                        {vaitroHĐ.ten}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Đơn vị</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="donvi2"
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.donvi}
+                    disabled
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Họ và tên</Form.Label>
+                  <Form.Select
+                    name="user3"
+                    required
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.hovaten}
+                    onChange={onChangeUser}
+                  >
+                    <option value="">Chọn thành viên</option>
+                    {users.map((user) => (
+                      <option
+                        key={user._id}
+                        value={user._id}
+                        name={user.hovaten}
+                      >
+                        {user.hovaten}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>CDKH-HV</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="chucdanhKH3"
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.chucdanhKH}
+                    disabled
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Vai trò hội đồng</Form.Label>
+                  <Form.Select
+                    name="vaitro3"
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.vaitro}
+                    onChange={onChangeVaiTro}
+                  >
+                    <option value="">Chọn vai trò</option>
+                    {vaitroHĐs.map((vaitroHĐ) => (
+                      <option
+                        key={vaitroHĐ._id}
+                        value={vaitroHĐ._id}
+                        name={vaitroHĐ.ten}
+                      >
+                        {vaitroHĐ.ten}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Đơn vị</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="donvi3"
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.donvi}
+                    disabled
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Họ và tên</Form.Label>
+                  <Form.Select
+                    name="user4"
+                    required
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.hovaten}
+                    onChange={onChangeUser}
+                  >
+                    <option value="">Chọn thành viên</option>
+                    {users.map((user) => (
+                      <option
+                        key={user._id}
+                        value={user._id}
+                        name={user.hovaten}
+                      >
+                        {user.hovaten}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>CDKH-HV</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="chucdanhKH4"
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.chucdanhKH}
+                    disabled
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Vai trò hội đồng</Form.Label>
+                  <Form.Select
+                    name="vaitro4"
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.vaitro}
+                    onChange={onChangeVaiTro}
+                  >
+                    <option value="">Chọn vai trò</option>
+                    {vaitroHĐs.map((vaitroHĐ) => (
+                      <option
+                        key={vaitroHĐ._id}
+                        value={vaitroHĐ._id}
+                        name={vaitroHĐ.ten}
+                      >
+                        {vaitroHĐ.ten}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Đơn vị</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="donvi4"
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.donvi}
+                    disabled
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Họ và tên</Form.Label>
+                  <Form.Select
+                    name="user5"
+                    required
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.hovaten}
+                    onChange={onChangeUser}
+                  >
+                    <option value="">Chọn thành viên</option>
+                    {users.map((user) => (
+                      <option
+                        key={user._id}
+                        value={user._id}
+                        name={user.hovaten}
+                      >
+                        {user.hovaten}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>CDKH-HV</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="chucdanhKH5"
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.chucdanhKH}
+                    disabled
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Vai trò hội đồng</Form.Label>
+                  <Form.Select
+                    name="vaitro5"
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.vaitro}
+                    onChange={onChangeVaiTro}
+                  >
+                    <option value="">Chọn vai trò</option>
+                    {vaitroHĐs.map((vaitroHĐ) => (
+                      <option
+                        key={vaitroHĐ._id}
+                        value={vaitroHĐ._id}
+                        name={vaitroHĐ.ten}
+                      >
+                        {vaitroHĐ.ten}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Đơn vị</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="donvi5"
+                    aria-describedby="title-help"
+                    value={danhsachthanhvien.donvi}
+                    disabled
+                  ></Form.Control>
+                </Form.Group>
+              </Col>
+            </Row>
           </div>
         </Modal.Body>
         <Modal.Footer>

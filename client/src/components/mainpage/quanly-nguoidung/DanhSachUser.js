@@ -7,15 +7,10 @@ import SideBar from "../../sidebar/SideBar";
 import ThemUser from "./ThemUser";
 import SuaUser from "./SuaUser";
 import ReactTooltip from "react-tooltip";
-import {
-  BsFillEyeFill,
-  BsPencilSquare,
-  BsTrashFill,
-} from "react-icons/bs";
-
+import { BsFillEyeFill, BsPencilSquare, BsTrashFill } from "react-icons/bs";
+import { RiH1 } from "react-icons/ri";
 
 const Users = () => {
-
   const {
     userState: { user, users, usersLoading },
     getUsers,
@@ -37,14 +32,8 @@ const Users = () => {
   return (
     <div>
       <SideBar />
-      <div style={{ margin: "10px 20px 20px 330px" }}>
-        <h1
-          style={{
-            fontSize: "24px",
-          }}
-        >
-          Danh sách cán bộ
-        </h1>
+      <div className="style-mainpage">
+        <h1>Danh sách cán bộ</h1>
         <Toast
           show={show}
           style={{ position: "fixed", right: "10px" }}
@@ -77,17 +66,14 @@ const Users = () => {
 
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
-            <tr>
-              <th style={{ textAlign: "center", color: "#495057" }}>Tài khoản</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Họ và tên</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Khoa/Phòng ban</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Chức vụ</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Học Hàm</th>
-              <th style={{ textAlign: "center", color: "#495057" }}>Học vị</th>
-
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                Chức năng
-              </th>
+            <tr className="table-header">
+              <th>Tài khoản</th>
+              <th>Họ và tên</th>
+              <th>Khoa/Phòng ban</th>
+              <th>Chức vụ</th>
+              <th>Học Hàm</th>
+              <th>Học vị</th>
+              <th>Chức năng</th>
             </tr>
           </thead>
           <tbody>
@@ -121,7 +107,7 @@ const Users = () => {
                     <ReactTooltip id="Sửa" place="top" effect="solid">
                       Sửa
                     </ReactTooltip>
-                    <BsPencilSquare style={{ color: 'white' }} />
+                    <BsPencilSquare style={{ color: "white" }} />
                   </Button>
                   <Button
                     variant="danger"
