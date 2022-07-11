@@ -158,6 +158,26 @@ import {FaCube} from 'react-icons/fa'
       ]
     },
     {
+      title: 'Quản lý biểu mẫu',
+      path: '',
+      icon: <FaCube style ={{color: 'black'}}/>,
+      iconClosed: <RiIcons.RiArrowDownSFill style ={{color: 'black'}}/>,
+      iconOpened: <RiIcons.RiArrowUpSFill style ={{color: 'black'}}/>,
+  
+      subNav: [
+        {
+          title: 'Biểu mẫu word',
+          path: '/quanly/bieumau/bookarks',
+          icon: <FaCube style ={{color: 'black'}}/>
+        },
+        {
+          title: 'Biểu mẫu Excel',
+          path: '/quanly/bieumau/excel-template',
+          icon: <FaCube style ={{color: 'black'}}/>
+        }
+      ]
+    },
+    {
       title: 'Quản trị hệ thống',
       path: '',
       icon: <FaCube style ={{color: 'black'}}/>,

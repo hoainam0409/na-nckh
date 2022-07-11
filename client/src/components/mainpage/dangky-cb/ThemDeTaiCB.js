@@ -24,7 +24,6 @@ const ThemDeTaiCB = () => {
   } = useContext(DotDangKyContext);
 
   useEffect(() => {getDotDangKys()}, []);
-  console.log(dotdangkys)
 
   const {
     khoaState: { khoas },
@@ -167,7 +166,7 @@ const ThemDeTaiCB = () => {
                 >
                   <option>Chọn đợt đăng ký đề tài</option>
                   {dotdangkys.map((dotdangky) => (
-                    <option key={dotdangky._id}>
+                    <option key={dotdangky._id} value ={dotdangky._id}>
                       {dotdangky.tendot}
                     </option>
                   ))}
@@ -182,6 +181,7 @@ const ThemDeTaiCB = () => {
                   name="madetai"
                   aria-describedby="title-help"
                   value={madetai}
+                  disabled
                   onChange={onChangeInput}
                 />
               </Form.Group>
