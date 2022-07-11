@@ -14,13 +14,15 @@ const capdetaiCtrl = {
 
   addCapDeTai: async (req, res) => {
     try {
-      const { ma, ten } = req.body;
+      const { ma, ten, quytrinh, doituong } = req.body;
       const capdetai = await CapDeTai.findOne({ ma })
       if (capdetai) return res.status(400).json({success: false,  message: "Mã cấp đề tài đã tồn tại." })
 
       const newCapDeTai = new CapDeTai({
         ma,
         ten,
+        quytrinh,
+        doituong
       });
       await newCapDeTai.save();
       res.json({
@@ -33,7 +35,7 @@ const capdetaiCtrl = {
     }
   },
   updateCapDeTai: async (req, res) => {
-    const { ma, ten } = req.body;
+    const { ma, ten, quytrinh, doituong} = req.body;
     // Simple validation
     if (!ma || !ten)
       return res.status(400).json({
@@ -44,6 +46,8 @@ const capdetaiCtrl = {
       let updatedCapDeTai = {
         ma,
         ten,
+        quytrinh,
+        doituong
       };
 
       //Điều kiện để chỉnh sửa thông báo

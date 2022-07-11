@@ -5,7 +5,6 @@ import Toast from "react-bootstrap/Toast";
 // import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import { DeTaiSVContext } from "../../../contexts/DeTaiSVContext";
 import SideBar from "../../sidebar/SideBar";
-import ThemDeTaiSV from "./ThemDeTaiSV";
 import SuaDeTaiSV from "./SuaDeTaiSV";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -15,7 +14,6 @@ const DeTaiSVs = () => {
   const {
     detaisvState: { detaisv, detaisvs, detaisvsLoading },
     getDeTaiSVs,
-    setShowThemDeTaiSV,
     showToast: { show, message, type },
     setShowToast,
     deleteDeTaiSV,
@@ -33,12 +31,11 @@ const DeTaiSVs = () => {
   return (
     <div>
       <SideBar />
-      <ThemDeTaiSV />
       {detaisv !== null && <SuaDeTaiSV />}
       <div className="style-mainpage">
         <div>
-        <h1>Danh sách đăng ký đề tài</h1>
-        <div className="filter">
+          <h1>Danh sách đăng ký đề tài chờ duyệt</h1>
+          <div className="filter">
             <Row className="controls">
               <Col>
                 <Form.Select>
@@ -80,17 +77,7 @@ const DeTaiSVs = () => {
             <strong>{message}</strong>
           </Toast.Body>
         </Toast>
-        <Button
-          style={{
-            marginTop: "70px",
-            marginBottom: "20px",
-            backgroundColor: "#337AB7",
-          }}
-          onClick={setShowThemDeTaiSV.bind(this, true)}
-        >
-          Thêm mới
-        </Button>
-        <Table borderless bordered hover style={{ cursor: "pointer" }}>
+        <Table borderless bordered hover style={{ cursor: "pointer", marginTop: "100px"}}>
           <thead>
             <tr className="table-header">
               <th>Mã đề tài</th>

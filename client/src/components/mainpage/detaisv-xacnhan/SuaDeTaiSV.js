@@ -1,64 +1,57 @@
-import React, { useState, useContext, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useContext, useState, useEffect } from "react";
 import { DeTaiSVContext } from "../../../contexts/DeTaiSVContext";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
-import { KhoaContext } from '../../../contexts/KhoaContext'
-import { LinhVucContext } from '../../../contexts/LinhVucContext'
-import { UserContext } from "../../../contexts/UserContext";
+import {KhoaContext} from '../../../contexts/KhoaContext'
+import {LinhVucContext} from '../../../contexts/LinhVucContext'
+import {UserContext} from "../../../contexts/UserContext";
 
-const ThemDeTaiSV = () => {
-  //context
+
+const SuaDeTaiSV = () => {
+  // Contexts
   const {
-    showThemDeTaiSV,
-    setShowThemDeTaiSV,
-    addDeTaiSV,
+    detaisvState: { detaisv },
+    showSuaDeTaiSV,
+    setShowSuaDeTaiSV,
+    updateDeTaiSV,
     setShowToast,
   } = useContext(DeTaiSVContext);
+
   const {
     dotdangkyState: { dotdangkys },
     getDotDangKys
   } = useContext(DotDangKyContext);
 
-  useEffect(() => { getDotDangKys() }, []);
+  useEffect(() => {getDotDangKys()}, []);
 
   const {
-    khoaState: { khoas },
+    khoaState: {khoas},
     getKhoas
-  } = useContext(KhoaContext)
+  } = useContext(KhoaContext)  
 
-  useEffect(() => getKhoas(), [])
+  useEffect(() => getKhoas(), [] )
 
   const {
-    linhvucState: { linhvucs },
+    linhvucState: {linhvucs},
     getLinhVucs
-  } = useContext(LinhVucContext)
+  } = useContext(LinhVucContext)  
 
-  useEffect(() => getLinhVucs(), [])
+  useEffect(() => getLinhVucs(), [] )
   const {
-    userState: { users },
+    userState: {users},
     getUsers
-  } = useContext(UserContext)
+  } = useContext(UserContext)  
 
-  useEffect(() => getUsers(), [])
-  //State
-  const [newDeTaiSV, setNewDeTaiSV] = useState({
-    madetai: "",
-    tendetai: "",
-    dotdangky: "",
-    GVHD: "",
-    khoaxetduyet: "",
-    linhvuc: "",
-    noidungnc: "",
-    muctieunc: "",
-    ketquadukien: "",
-    sinhvienthuchien: "",
-    trangthai: "",
-    dinhkem: "",
-  });
+  useEffect(() => getUsers(), [] )
+
+  // State
+  const [updatedDeTaiSV, setUpdatedDeTaiSV] = useState(detaisv);
+
+  useEffect(() => setUpdatedDeTaiSV(detaisv), [detaisv]);
 
   const {
     madetai,
@@ -66,53 +59,37 @@ const ThemDeTaiSV = () => {
     dotdangky,
     GVHD,
     khoaxetduyet,
-    linhvuc,
+    linhvucnc,
     noidungnc,
     muctieunc,
     ketquadukien,
     sinhvienthuchien,
     trangthai,
     dinhkem,
-  } = newDeTaiSV;
+  } = updatedDeTaiSV;
 
-  const onChangeInput = (event) =>
-    setNewDeTaiSV({
-      ...newDeTaiSV,
+  const onChangeUpdated = (event) =>
+    setUpdatedDeTaiSV({
+      ...updatedDeTaiSV,
       [event.target.name]: event.target.value,
     });
 
-  const resetAddDeTaiSV = () => {
-    setNewDeTaiSV({
-      madetai: "",
-      tendetai: "",
-      dotdangky: "",
-      GVHD: "",
-      khoaxetduyet: "",
-      linhvuc: "",
-      noidungnc: "",
-      muctieunc: "",
-      ketquadukien: "",
-      sinhvienthuchien: "",
-      trangthai: "",
-      dinhkem: "",
-    });
-    setShowThemDeTaiSV(false);
-  };
   const closeDialog = () => {
-    resetAddDeTaiSV();
+    setUpdatedDeTaiSV(dotdangky);
+    setShowSuaDeTaiSV(false);
   };
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    const { success, message } = await addDeTaiSV(newDeTaiSV);
-    resetAddDeTaiSV();
+    const { success, message } = await updateDeTaiSV(updatedDeTaiSV);
+    setShowSuaDeTaiSV(false);
     setShowToast({ show: true, message, type: success ? "success" : "danger" });
   };
 
   return (
-    <Modal show={showThemDeTaiSV} onHide={closeDialog}>
+    <Modal show={showSuaDeTaiSV} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Thêm mới đề tài sinh viên</Modal.Title>
+        <Modal.Title>Chỉnh sửa đề tài</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>
@@ -121,9 +98,10 @@ const ThemDeTaiSV = () => {
             <Form.Control
               type="text"
               name="madetai"
+              required
               aria-describedby="title-help"
               value={madetai}
-              onChange={onChangeInput}
+              onChange={onChangeUpdated}
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -134,18 +112,18 @@ const ThemDeTaiSV = () => {
               required
               aria-describedby="title-help"
               value={tendetai}
-              onChange={onChangeInput}
+              onChange={onChangeUpdated}
             />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Đợt đăng ký</Form.Label>
             <Form.Select
+              as="select"
               value={dotdangky}
               name="dotdangky"
-              onChange={onChangeInput}
-              aria-label="Default select example"
+              onChange={onChangeUpdated}
             >
-              <option>Chọn đợt đăng ký đề tài</option>
+               <option>Chọn đợt đăng ký đề tài</option>
               {dotdangkys.map((dotdangky) => (
                 <option key={dotdangky._id} value={dotdangky._id}>{dotdangky.tendot}</option>
               ))}
@@ -153,32 +131,32 @@ const ThemDeTaiSV = () => {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Giảng viên hướng dẫn</Form.Label>
-            <Form.Select
+            <Form.Control
+              as="select"
               value={GVHD}
               name="GVHD"
-              onChange={onChangeInput}
-              aria-label="Default select example"
+              onChange={onChangeUpdated}
             >
-              <option>Chọn GVHD</option>
-              {users.map((user) => (
-                <option key={user._id}>{user.hovaten}</option>
-              ))}
-            </Form.Select>
+              <option value="Mở đăng ký">Mở đăng ký</option>
+              <option value="Khóa đăng ký">Khóa đăng ký</option>
+            </Form.Control>
           </Form.Group>
           <Row>
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Lĩnh vực nghiên cứu</Form.Label>
                 <Form.Select
-                  value={linhvuc}
-                  name="linhvuc"
-                  onChange={onChangeInput}
-                  aria-label="Default select example"
+                  type="select"
+                  name="linhvucnc"
+                  required
+                  aria-describedby="title-help"
+                  value={linhvucnc}
+                  onChange={onChangeUpdated}
                 >
-                  <option>Chọn lĩnh vực nghiên cứu</option>
-                  {linhvucs.map((linhvuc) => (
-                    <option key={linhvuc._id} value={linhvuc._id}>{linhvuc.ten}</option>
-                  ))}
+                 <option>Chọn lĩnh vực nghiên cứu</option>
+              {linhvucs.map((linhvuc) => (
+                <option key={linhvuc._id} value={linhvuc._id}>{linhvuc.ten}</option>
+              ))}
                 </Form.Select>
               </Form.Group>
             </Col>
@@ -186,19 +164,32 @@ const ThemDeTaiSV = () => {
               <Form.Group className="mb-3">
                 <Form.Label>Khoa xét duyệt đề tài</Form.Label>
                 <Form.Select
-                  value={khoaxetduyet}
+                  type="text"
                   name="khoaxetduyet"
-                  onChange={onChangeInput}
-                  aria-label="Default select example"
+                  required
+                  aria-describedby="title-help"
+                  value={khoaxetduyet}
+                  onChange={onChangeUpdated}
                 >
                   <option>Chọn khoa xét duyệt đề tài</option>
-                  {khoas.map((khoa) => (
-                    <option key={khoa._id} value={khoa._id}>{khoa.ten}</option>
-                  ))}
+              {khoas.map((khoa) => (
+                <option key={khoa._id} value={khoa._id}>{khoa.ten}</option>
+              ))}
                 </Form.Select>
               </Form.Group>
             </Col>
           </Row>
+          <Form.Group className="mb-3">
+            <Form.Label>Tóm tắt nội dung nghiên cứu</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={5}
+              name="ghichu"
+              aria-describedby="title-help"
+              value={noidungnc}
+              onChange={onChangeUpdated}
+            />
+          </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Mục tiêu</Form.Label>
             <Form.Control
@@ -207,18 +198,7 @@ const ThemDeTaiSV = () => {
               name="muctieunc"
               aria-describedby="title-help"
               value={muctieunc}
-              onChange={onChangeInput}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Tóm tắt nội dung nghiên cứu</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={5}
-              name="noidungnc"
-              aria-describedby="title-help"
-              value={noidungnc}
-              onChange={onChangeInput}
+              onChange={onChangeUpdated}
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -229,7 +209,7 @@ const ThemDeTaiSV = () => {
               name="ketquadukien"
               aria-describedby="title-help"
               value={ketquadukien}
-              onChange={onChangeInput}
+              onChange={onChangeUpdated}
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -238,7 +218,7 @@ const ThemDeTaiSV = () => {
               as="select"
               value={sinhvienthuchien}
               name="sinhvienthuchien"
-              onChange={onChangeInput}
+              onChange={onChangeUpdated}
             >
               <option value="Mở đăng ký">Mở đăng ký</option>
               <option value="Khóa đăng ký">Khóa đăng ký</option>
@@ -250,7 +230,7 @@ const ThemDeTaiSV = () => {
               as="select"
               value={trangthai}
               name="trangthai"
-              onChange={onChangeInput}
+              onChange={onChangeUpdated}
             >
               <option value="Mở đăng ký">Mở đăng ký</option>
               <option value="Khóa đăng ký">Khóa đăng ký</option>
@@ -263,7 +243,7 @@ const ThemDeTaiSV = () => {
               name="dinhkem"
               aria-describedby="title-help"
               value={dinhkem}
-              onChange={onChangeInput}
+              onChange={onChangeUpdated}
             />
           </Form.Group>
         </Modal.Body>
@@ -279,4 +259,5 @@ const ThemDeTaiSV = () => {
     </Modal>
   );
 };
-export default ThemDeTaiSV;
+
+export default SuaDeTaiSV;

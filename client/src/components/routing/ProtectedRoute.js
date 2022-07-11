@@ -1,6 +1,6 @@
 import { Route, Navigate } from 'react-router-dom'
 import { useContext } from 'react'
-import { AuthContext } from '../../contexts/authContext'
+import { AuthContext } from '../../contexts/AuthContext'
 import Spinner from 'react-bootstrap/Spinner'
 import SideBar from '../sidebar/SideBar'
 
@@ -20,7 +20,7 @@ const ProtectedRoute = ({ element: Element, ...rest }) => {
 		<Route
 			{...rest}
 			render={props =>
-				isAuthenticated === true? (
+				isAuthenticated ? (
 					<>
 						<SideBar/>
 						<Element {...rest} {...props} />

@@ -68,6 +68,8 @@ const CapDeTais = () => {
             <tr className="table-header">
               <th>Mã</th>
               <th>Tên</th>
+              <th>Đối tượng tham gia</th>
+              <th>Quy trình xét duyệt</th>
               <th>Chức năng</th>
             </tr>
           </thead>
@@ -76,6 +78,8 @@ const CapDeTais = () => {
               <tr key={capdetai._id}>
                 <td>{capdetai.ma}</td>
                 <td>{capdetai.ten} </td>
+                <td>{capdetai.doituong} </td>
+                <td>{capdetai.quytrinh} </td>
                 <td style={{ textAlign: "center" }}>
                   <Button
                     variant="primary"

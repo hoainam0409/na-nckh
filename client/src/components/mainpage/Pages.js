@@ -8,8 +8,10 @@ import Thongtincanhan from './thongtincanhan/Thongtincanhan'
 import DanhSachCapDeTai from './dm-capdetai/DanhSachCapDeTai'
 import DanhSachDotDangKy from './dotdangky/DanhSachDotDangKy'
 import DanhSachDeTaiSV from './dangky-sv/DanhSachDeTaiSV'
+import DeTaiSVXacNhan from './detaisv-xacnhan/DeTaiSVXacNhan'
+import DeTaiSVChoDuyet from './detaisv-choduyet/DeTaiSVChoDuyet'
 import DanhSachDeTaiCB from './dangky-cb/DanhSachDeTaiCB'
-import DanhSachLinhVuc from './dm- linhvuc/DanhSachLinhVuc'
+import DanhSachLinhVuc from './dm-linhvuc/DanhSachLinhVuc'
 import DanhSachVaiTroTG from './dm- vaitroTG/DanhSachVaiTroTG'
 import DanhSachUser from './quanly-nguoidung/DanhSachUser'
 import DeTaiChoDuyetKhoa from './duyetcapkhoa-cb/DeTaiChoDuyetCapKhoa'
@@ -20,6 +22,7 @@ import DanhSachHoiDong from './quanlyhoidong/DanhSachHoiDong'
 import DanhSachDotKiemTraTĐ from './dotkiemtratiendo/DanhSachDotKTTD'
 import DeTaiBaoCaoTienDo from './baocaotiendo-cb/DeTaiBaoCaoTienDo'
 import DuyetBaoCaoTienDo from './duyetbaocaotiendo-cb/DuyetBaoCaoTienDo'
+
 
 
 function Pages() {
@@ -34,7 +37,9 @@ function Pages() {
         <Route exact path="/danhmuc/linhvuc" element={<DanhSachLinhVuc/>}></Route>
         <Route exact path="/danhmuc/vaitro-thamgia" element={<DanhSachVaiTroTG/>}></Route>
         <Route exact path="/detai/dotdangky" element={<DanhSachDotDangKy/>}></Route>
-        <Route exact path="/nckh/detai-sinhvien/dangky" element={<DanhSachDeTaiSV/>}></Route>
+        <Route exact path="/detai-sinhvien/dangky" element={<DanhSachDeTaiSV/>}></Route>
+        <Route exact path="/detai-sinhvien/cho-xac-nhan" element={<DeTaiSVXacNhan/>}></Route>
+        <Route exact path="/detai-sinhvien/cho-duyet" element={<DeTaiSVChoDuyet/>}></Route>
         <Route exact path="/detai-canbo/dangky" element={<DanhSachDeTaiCB/>}></Route>
         <Route exact path="/user" element={<DanhSachUser/>}></Route>
         <Route exact path="/detai-canbo/cho-duyet-cap-khoa" element={<DeTaiChoDuyetKhoa/>}></Route>

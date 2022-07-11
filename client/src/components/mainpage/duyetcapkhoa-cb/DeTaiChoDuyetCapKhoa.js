@@ -13,7 +13,7 @@ import {
   BsCheckLg,
   BsFillFileEarmarkWordFill,
   BsPencilSquare,
-  BsTrashFill,
+  BsReplyFill,
 } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -112,7 +112,7 @@ const DeTaiDuyetCapKhoas = () => {
                 <td>{detaicb.khoaxetduyet}</td>
                 <td>
                   {detaicb.thanhvienthamgia.map((q) => (
-                    <div key={q._id}>-{q.hovaten}</div>
+                    <div key={q._id}>- {q.hovaten}</div>
                   ))}
                 </td>
                 <td>{detaicb.trangthai}</td>
@@ -150,6 +150,12 @@ const DeTaiDuyetCapKhoas = () => {
                       Không duyệt
                     </ReactTooltip>
                     <BsXLg />
+                  </Button>
+                  <Button variant="warning" data-tip data-for="Yêu cầu sửa">
+                    <ReactTooltip id="Yêu cầu sửa" place="top" effect="solid">
+                      Yêu cầu sửa
+                    </ReactTooltip>
+                    <BsReplyFill />
                   </Button>
                   <Button
                     style={{ backgroundColor: "#337AB7" }}

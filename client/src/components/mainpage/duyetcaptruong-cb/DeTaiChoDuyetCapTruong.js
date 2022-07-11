@@ -109,7 +109,7 @@ const DeTaiDuyetCapKhoas = () => {
                 <td>{detaicb.khoaxetduyet}</td>
                 <td>
                   {detaicb.thanhvienthamgia.map((q) => (
-                    <div key={q._id}>-{q.hovaten}</div>
+                    <div key={q._id}>- {q.hovaten}</div>
                   ))}
                 </td>
                 <td>{detaicb.trangthai}</td>

@@ -120,7 +120,7 @@ const SuaDeTaiCB = () => {
         <Modal.Title>Chi tiết đề tài</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
-      <Modal.Body>
+        <Modal.Body>
           <Row>
             <Col>
               <Form.Group className="mb-3">
@@ -239,17 +239,6 @@ const SuaDeTaiCB = () => {
             </Col>
           </Row>
           <Form.Group className="mb-3">
-            <Form.Label>Tóm tắt nội dung nghiên cứu</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={5}
-              name="noidung"
-              aria-describedby="title-help"
-              value={noidung}
-              onChange={onChangeUpdated}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
             <Form.Label>Mục tiêu</Form.Label>
             <Form.Control
               as="textarea"
@@ -260,6 +249,18 @@ const SuaDeTaiCB = () => {
               onChange={onChangeUpdated}
             />
           </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Tóm tắt nội dung nghiên cứu</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={5}
+              name="noidung"
+              aria-describedby="title-help"
+              value={noidung}
+              onChange={onChangeUpdated}
+            />
+          </Form.Group>
+
           <Form.Group className="mb-3">
             <Form.Label>Kết quả dự kiến</Form.Label>
             <Form.Control

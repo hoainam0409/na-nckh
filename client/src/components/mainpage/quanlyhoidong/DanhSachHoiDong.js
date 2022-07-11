@@ -89,7 +89,6 @@ const HoiDongs = () => {
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr className="table-header">
-              <th>STT</th>
               <th>Tên hội đồng</th>
               <th>Loại hội đồng</th>
               <th>Ngày đề nghị</th>
@@ -100,7 +99,6 @@ const HoiDongs = () => {
           <tbody>
             {hoidongs.map((hoidong) => (
               <tr key={hoidong._id}>
-                <td>1</td>
                 <td onClick={chooseHoiDong.bind(this, hoidong._id)}>
                   {hoidong.tenhoidong}{" "}
                 </td>
