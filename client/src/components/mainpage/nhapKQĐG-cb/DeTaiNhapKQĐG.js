@@ -15,6 +15,7 @@ import {
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const DeTaiNhapKQDGs = () => {
   const {
@@ -102,7 +103,7 @@ const DeTaiNhapKQDGs = () => {
               <th>Khoa xét duyệt</th>
               <th>Thành viên tham gia</th>
               <th>Trạng thái</th>
-              <th>Chức năng</th>
+              <th className="chucnang">Chức năng</th>
             </tr>
           </thead>
           <tbody>
@@ -145,20 +146,23 @@ const DeTaiNhapKQDGs = () => {
                     </ReactTooltip>
                     <BsPencilSquare style={{ color: "white" }} />
                   </Button>
-                  <Button
-                    style={{ backgroundColor: "#337AB7" }}
-                    data-tip
-                    data-for="In thuyết minh"
-                  >
+                  <Dropdown data-tip data-for="Chức năng khác">
                     <ReactTooltip
-                      id="In thuyết minh"
+                      id="Chức năng khác"
                       place="top"
                       effect="solid"
                     >
-                      In thuyết minh
+                      Chức năng khác
                     </ReactTooltip>
-                    <BsFillFileEarmarkWordFill />
-                  </Button>
+                    <Dropdown.Toggle
+                      variant="light"
+                      id="dropdown-basic"
+                    ></Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item href="#">In thuyết minh</Dropdown.Item>
+                      <Dropdown.Item href="#">In Biên bản họp hội đồng</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
                 </td>
               </tr>
             ))}

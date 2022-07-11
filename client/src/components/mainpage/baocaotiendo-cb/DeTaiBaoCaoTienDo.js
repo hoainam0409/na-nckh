@@ -8,14 +8,13 @@ import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
 import ReactTooltip from "react-tooltip";
 import {
   BsFillEyeFill,
-  BsFillFileEarmarkWordFill,
   BsPencilSquare,
-  BsFileTextFill,
 } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import BaoCaoTienDo from "./BaoCaoTienDo";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const DeTaiBaoCaoTienDo = () => {
   const {
@@ -103,7 +102,7 @@ const DeTaiBaoCaoTienDo = () => {
               <th>Khoa xét duyệt</th>
               <th>Thành viên tham gia</th>
               <th>Trạng thái</th>
-              <th>Chức năng</th>
+              <th className="chucnang">Chức năng</th>
             </tr>
           </thead>
           <tbody>
@@ -131,7 +130,7 @@ const DeTaiBaoCaoTienDo = () => {
                     </ReactTooltip>
                     <BsFillEyeFill />
                   </Button>
-                  <Button
+                  {/* <Button
                     style={{ backgroundColor: "#5bc0de" }}
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     data-tip
@@ -145,36 +144,28 @@ const DeTaiBaoCaoTienDo = () => {
                       Sửa báo cáo tiến độ
                     </ReactTooltip>
                     <BsPencilSquare />
-                  </Button>
-                  <Button
-                    variant="success"
-                    data-tip
-                    data-for="Báo cáo tiến độ"
-                    onClick={SelectDeTaiCB.bind(this, detaicb._id)}
-                  >
+                  </Button> */}
+                  <Dropdown data-tip data-for="Chức năng khác">
                     <ReactTooltip
-                      id="Báo cáo tiến độ"
+                      id="Chức năng khác"
                       place="top"
                       effect="solid"
                     >
-                      Báo cáo tiến độ
+                      Chức năng khác
                     </ReactTooltip>
-                    <BsFileTextFill />
-                  </Button>
-                  <Button
-                    style={{ backgroundColor: "#337AB7" }}
-                    data-tip
-                    data-for="In thuyết minh"
-                  >
-                    <ReactTooltip
-                      id="In thuyết minh"
-                      place="top"
-                      effect="solid"
-                    >
-                      In thuyết minh
-                    </ReactTooltip>
-                    <BsFillFileEarmarkWordFill />
-                  </Button>
+                    <Dropdown.Toggle
+                      variant="light"
+                      id="dropdown-basic"
+                    ></Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item
+                        onClick={SelectDeTaiCB.bind(this, detaicb._id)}
+                      >
+                        Báo cáo tiến độ
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#">In thuyết minh</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
                 </td>
               </tr>
             ))}
