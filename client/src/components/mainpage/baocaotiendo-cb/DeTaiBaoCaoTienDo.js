@@ -9,12 +9,14 @@ import ReactTooltip from "react-tooltip";
 import {
   BsFillEyeFill,
   BsPencilSquare,
+  BsFileEarmarkWordFill,
 } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import BaoCaoTienDo from "./BaoCaoTienDo";
 import Dropdown from "react-bootstrap/Dropdown";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 const DeTaiBaoCaoTienDo = () => {
   const {
@@ -119,51 +121,43 @@ const DeTaiBaoCaoTienDo = () => {
                 </td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
-                  <Button
-                    style={{ backgroundColor: "#337AB7" }}
-                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                    data-tip
-                    data-for="Xem"
-                  >
-                    <ReactTooltip id="Xem" place="top" effect="solid">
-                      Xem chi tiết
-                    </ReactTooltip>
-                    <BsFillEyeFill />
-                  </Button>
-                  {/* <Button
-                    style={{ backgroundColor: "#5bc0de" }}
-                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                    data-tip
-                    data-for="Sửa báo cáo tiến độ"
-                  >
-                    <ReactTooltip
-                      id="Sửa báo cáo tiến độ"
-                      place="top"
-                      effect="solid"
+                  <Dropdown as={ButtonGroup}>
+                    <Button
+                      style={{ backgroundColor: "#337AB7" }}
+                      onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     >
-                      Sửa báo cáo tiến độ
-                    </ReactTooltip>
-                    <BsPencilSquare />
-                  </Button> */}
-                  <Dropdown data-tip data-for="Chức năng khác">
-                    <ReactTooltip
-                      id="Chức năng khác"
-                      place="top"
-                      effect="solid"
-                    >
-                      Chức năng khác
-                    </ReactTooltip>
+                      <span><BsFillEyeFill /></span>
+                      Xem
+                    </Button>
                     <Dropdown.Toggle
-                      variant="light"
-                      id="dropdown-basic"
-                    ></Dropdown.Toggle>
+                      style={{ backgroundColor: "#337AB7" }}
+                      id="dropdown-split-basic"
+                      data-tip
+                      data-for="Chức năng khác"
+                    >
+                      <ReactTooltip
+                        id="Chức năng khác"
+                        place="top"
+                        effect="solid"
+                      >
+                        Chức năng khác
+                      </ReactTooltip>
+                    </Dropdown.Toggle>
                     <Dropdown.Menu>
                       <Dropdown.Item
                         onClick={SelectDeTaiCB.bind(this, detaicb._id)}
                       >
+                        <span>
+                          <BsPencilSquare />
+                        </span>
                         Báo cáo tiến độ
                       </Dropdown.Item>
-                      <Dropdown.Item href="#">In thuyết minh</Dropdown.Item>
+                      <Dropdown.Item>
+                        <span>
+                          <BsFileEarmarkWordFill />
+                        </span>
+                        In thuyết minh
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </td>

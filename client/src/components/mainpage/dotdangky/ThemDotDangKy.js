@@ -7,7 +7,6 @@ import Col from "react-bootstrap/Col";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import { CapDeTaiContext } from "../../../contexts/CapDeTaiContext";
 
-
 const ThemDotDangKy = () => {
   //context
   const {
@@ -18,9 +17,9 @@ const ThemDotDangKy = () => {
   } = useContext(DotDangKyContext);
   const {
     capdetaiState: { capdetais },
-    getCapDeTais
+    getCapDeTais,
   } = useContext(CapDeTaiContext);
-  useEffect(() => getCapDeTais(), [] )
+  useEffect(() => getCapDeTais(), []);
   //State
   const [newDotDangKy, setNewDotDangKy] = useState({
     madot: "",
@@ -29,6 +28,9 @@ const ThemDotDangKy = () => {
     capdetai: "",
     ngaymodangky: "",
     ngaykhoadangky: "",
+    thoihanduyetcapkhoa: "",
+    thoihanduyetcaptruong: "",
+    thoihannghiemthu: "",
     trangthai: "",
     ghichu: "",
     dinhkem: "",
@@ -40,11 +42,16 @@ const ThemDotDangKy = () => {
     nam,
     ngaymodangky,
     ngaykhoadangky,
+    thoihanduyetcapkhoa,
+    thoihanduyetcaptruong,
+    thoihannghiemthu,
     capdetai,
     trangthai,
     ghichu,
     dinhkem,
   } = newDotDangKy;
+
+  const [validated, setValidated] = useState(false);
 
   const onChangeInput = (event) =>
     setNewDotDangKy({
@@ -60,6 +67,9 @@ const ThemDotDangKy = () => {
       capdetai: "",
       ngaymodangky: "",
       ngaykhoadangky: "",
+      thoihanduyetcapkhoa: "",
+      thoihanduyetcaptruong: "",
+      thoihannghiemthu: "",
       trangthai: "",
       ghichu: "",
       dinhkem: "",
@@ -75,6 +85,12 @@ const ThemDotDangKy = () => {
     const { success, message } = await addDotDangKy(newDotDangKy);
     resetAddDotDangKy();
     setShowToast({ show: true, message, type: success ? "success" : "danger" });
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    setValidated(true);
   };
 
   return (
@@ -82,7 +98,7 @@ const ThemDotDangKy = () => {
       <Modal.Header closeButton>
         <Modal.Title>Thêm mới đợt đăng ký đề tài</Modal.Title>
       </Modal.Header>
-      <Form onSubmit={onSubmit}>
+      <Form noValidate validated={validated} onSubmit={onSubmit}>
         <Modal.Body>
           <Form.Group className="mb-3">
             <Form.Label>Mã đợt</Form.Label>
@@ -90,6 +106,7 @@ const ThemDotDangKy = () => {
               type="text"
               name="madot"
               required
+              isInvalid 
               aria-describedby="title-help"
               value={madot}
               onChange={onChangeInput}
@@ -131,7 +148,7 @@ const ThemDotDangKy = () => {
                   value={capdetai}
                   onChange={onChangeInput}
                 >
-                  <option >Chọn cấp đề tài</option>
+                  <option>Chọn cấp đề tài</option>
                   {capdetais.map((capdetai) => (
                     <option key={capdetai._id}>{capdetai.ten}</option>
                   ))}
@@ -167,6 +184,44 @@ const ThemDotDangKy = () => {
               </Form.Group>
             </Col>
           </Row>
+          <Row>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Thời hạn xét duyệt cấp Khoa/Phòng</Form.Label>
+                <Form.Control
+                  type="date"
+                  name="thoihanduyetcapkhoa"
+                  aria-describedby="title-help"
+                  required
+                  value={thoihanduyetcapkhoa}
+                  onChange={onChangeInput}
+                />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Thời hạn xét duyệt cấp trường</Form.Label>
+                <Form.Control
+                  type="date"
+                  name="thoihanduyetcaptruong"
+                  aria-describedby="title-help"
+                  required
+                  value={thoihanduyetcaptruong}
+                  onChange={onChangeInput}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Form.Group className="mb-3">
+            <Form.Label>Thời hạn nghiệm thu</Form.Label>
+            <Form.Control
+              type="date"
+              name="thoihannghiemthu"
+              aria-describedby="title-help"
+              value={thoihannghiemthu}
+              onChange={onChangeInput}
+            />
+          </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Trạng thái</Form.Label>
             <Form.Select

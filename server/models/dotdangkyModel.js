@@ -28,6 +28,18 @@ const dotdangkySchema = new mongoose.Schema({
         type: Date,
         // required: true
     },
+    thoihanduyetcapkhoa:{
+        type: Date,
+        // required: true
+    },
+    thoihanduyetcaptruong:{
+        type: Date,
+        // required: true
+    },
+    thoihannghiemthu:{
+        type: Date,
+        // required: true
+    },
     ghichu:{
         type: String,
     },

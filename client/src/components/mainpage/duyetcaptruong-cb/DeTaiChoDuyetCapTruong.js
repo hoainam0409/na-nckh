@@ -10,13 +10,15 @@ import {
   BsFillEyeFill,
   BsXLg,
   BsCheckLg,
-  BsFillFileEarmarkWordFill,
+  BsFileEarmarkWordFill,
+  BsReplyFill,
   BsPencilSquare,
 } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Dropdown from "react-bootstrap/Dropdown";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 const DeTaiDuyetCapKhoas = () => {
   const {
@@ -115,44 +117,61 @@ const DeTaiDuyetCapKhoas = () => {
                 </td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
-                  <Button
-                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                    data-tip
-                    data-for="Xem"
-                    variant="primary"
-                  >
-                    <ReactTooltip id="Xem" place="top" effect="solid">
-                      Xem
-                    </ReactTooltip>
-                    <BsFillEyeFill />
-                  </Button>
-                  <Button
-                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                    data-tip
-                    data-for="Sửa"
-                    variant="info"
-                  >
-                    <ReactTooltip id="Sửa" place="top" effect="solid">
-                      Sửa
-                    </ReactTooltip>
-                    <BsPencilSquare style={{ color: "white" }} />
-                  </Button>
-                  <Dropdown data-tip data-for="Chức năng khác">
-                    <ReactTooltip
-                      id="Chức năng khác"
-                      place="top"
-                      effect="solid"
+                  <Dropdown as={ButtonGroup}>
+                    <Button
+                      style={{ backgroundColor: "#337AB7" }}
+                      onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     >
-                      Chức năng khác
-                    </ReactTooltip>
+                      <span>
+                        <BsFillEyeFill />
+                      </span>
+                      Xem
+                    </Button>
                     <Dropdown.Toggle
-                      variant="light"
-                      id="dropdown-basic"
-                    ></Dropdown.Toggle>
+                      style={{ backgroundColor: "#337AB7" }}
+                      id="dropdown-split-basic"
+                      data-tip
+                      data-for="Chức năng khác"
+                    >
+                      <ReactTooltip
+                        id="Chức năng khác"
+                        place="top"
+                        effect="solid"
+                      >
+                        Chức năng khác
+                      </ReactTooltip>
+                    </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      <Dropdown.Item href="#">Duyệt</Dropdown.Item>
-                      <Dropdown.Item href="#">Không duyệt</Dropdown.Item>
-                      <Dropdown.Item href="#">In thuyết minh</Dropdown.Item>
+                      <Dropdown.Item
+                        onClick={chooseDeTaiCB.bind(this, detaicb._id)}
+                      >
+                        <span><BsPencilSquare /></span>
+                        Sửa
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <span>
+                          <BsCheckLg />
+                        </span>
+                        Duyệt
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <span>
+                          <BsXLg />
+                        </span>
+                        Không duyệt
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <span>
+                          <BsReplyFill />
+                        </span>
+                        Yêu cầu sửa
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <span>
+                          <BsFileEarmarkWordFill />
+                        </span>
+                        In thuyết minh
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </td>

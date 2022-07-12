@@ -8,12 +8,14 @@ import NhapKQNTDeTai from "./NhapKQNTDeTaiCB";
 import ReactTooltip from "react-tooltip";
 import {
   BsFillEyeFill,
+  BsFileEarmarkWordFill,
   BsPencilSquare,
 } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 
 const DeTaiNhapKQNTs = () => {
@@ -120,47 +122,52 @@ const DeTaiNhapKQNTs = () => {
                 </td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
-                  <Button
-                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                    data-tip
-                    data-for="Xem"
-                    variant="primary"
-                  >
-                    <ReactTooltip id="Xem" place="top" effect="solid">
+                  <Dropdown as={ButtonGroup}>
+                    <Button
+                      // variant="primary"
+                      style={{ backgroundColor: "#337AB7" }}
+                      onClick={chooseDeTaiCB.bind(this, detaicb._id)}
+                    >
+                      <span>
+                        <BsFillEyeFill />
+                      </span>
                       Xem
-                    </ReactTooltip>
-                    <BsFillEyeFill />
-                  </Button>
-                  <Button
-                    onClick={SelectDeTaiCB.bind(this, detaicb._id)}
-                    data-tip
-                    data-for="Nhập kết quả nghiệm thu"
-                    variant="info"
-                  >
-                    <ReactTooltip
-                      id="Nhập kết quả nghiệm thu"
-                      place="top"
-                      effect="solid"
-                    >
-                      Nhập kết quả nghiệm thu
-                    </ReactTooltip>
-                    <BsPencilSquare style={{ color: "white" }} />
-                  </Button>
-                  <Dropdown data-tip data-for="Chức năng khác">
-                    <ReactTooltip
-                      id="Chức năng khác"
-                      place="top"
-                      effect="solid"
-                    >
-                      Chức năng khác
-                    </ReactTooltip>
+                    </Button>
                     <Dropdown.Toggle
-                      variant="light"
-                      id="dropdown-basic"
-                    ></Dropdown.Toggle>
+                      style={{ backgroundColor: "#337AB7" }}
+                      id="dropdown-split-basic"
+                      data-tip
+                      data-for="Chức năng khác"
+                    >
+                      <ReactTooltip
+                        id="Chức năng khác"
+                        place="top"
+                        effect="solid"
+                      >
+                        Chức năng khác
+                      </ReactTooltip>
+                    </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      <Dropdown.Item href="#">In thuyết minh</Dropdown.Item>
-                      <Dropdown.Item href="#">In Biên bản họp hội đồng</Dropdown.Item>
+                      <Dropdown.Item
+                        onClick={SelectDeTaiCB.bind(this, detaicb._id)}
+                      >
+                        <span>
+                          <BsPencilSquare />
+                        </span>
+                        Nhập kết quả nghiệm thu
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <span>
+                          <BsFileEarmarkWordFill />
+                        </span>
+                        In thuyết minh
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <span>
+                          <BsFileEarmarkWordFill />
+                        </span>
+                        In iên bản họp hội đồng
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </td>

@@ -17,7 +17,7 @@ code {
 }
 .App{
   max-width: 100%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   margin: 0 auto;
 }
 a{
@@ -81,4 +81,7 @@ body button{
 }
 body .chucnang{
   width: 200px;
+}
+body span{
+  margin-right: 0.6rem;
 }

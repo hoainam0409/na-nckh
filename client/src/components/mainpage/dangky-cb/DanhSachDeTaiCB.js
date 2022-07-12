@@ -7,11 +7,19 @@ import SideBar from "../../sidebar/SideBar";
 import ThemDeTaiCB from "./ThemDeTaiCB";
 import SuaDeTaiCB from "./SuaDeTaiCB";
 import ReactTooltip from "react-tooltip";
-import { BsFillEyeFill, BsPencilSquare, BsTrashFill } from "react-icons/bs";
+import {
+  BsFillEyeFill,
+  BsPencilSquare,
+  BsTrashFill,
+  BsCursorFill,
+  BsFileEarmarkWordFill,
+  BsFileEarmarkFill,
+} from "react-icons/bs";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Dropdown from "react-bootstrap/Dropdown";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 const DeTaiCBs = () => {
   const {
@@ -128,59 +136,65 @@ const DeTaiCBs = () => {
                 <td>{detaicb.kinhphi}</td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
-                  <Button
-                    variant="primary"
-                    data-tip
-                    data-for="Xem"
-                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                  >
-                    <ReactTooltip id="Xem" place="top" effect="solid">
-                      Xem
-                    </ReactTooltip>
-                    <BsFillEyeFill />
-                  </Button>
-                  <Button
-                    variant="info"
-                    data-tip
-                    data-for="Sửa"
-                    onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                  >
-                    <ReactTooltip id="Sửa" place="top" effect="solid">
-                      Sửa
-                    </ReactTooltip>
-                    <BsPencilSquare style={{ color: "white" }} />
-                  </Button>
-                  <Button
-                    variant="danger"
-                    data-tip
-                    data-for="Xóa"
-                    onClick={() => deleteDeTaiCB(detaicb._id)}
-                  >
-                    <ReactTooltip id="Xóa" place="top" effect="solid">
-                      Xóa
-                    </ReactTooltip>
-                    <BsTrashFill />
-                  </Button>
-                  <Dropdown data-tip data-for="Chức năng khác">
-                    <ReactTooltip
-                      id="Chức năng khác"
-                      place="top"
-                      effect="solid"
+                  <Dropdown as={ButtonGroup}>
+                    <Button
+                      style={{ backgroundColor: "#337AB7" }}
+                      onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     >
-                      Chức năng khác
-                    </ReactTooltip>
+                      <span>
+                        <BsFillEyeFill />
+                      </span>
+                      Xem
+                    </Button>
                     <Dropdown.Toggle
-                      variant="light"
-                      id="dropdown-basic"
-                    ></Dropdown.Toggle>
+                      style={{ backgroundColor: "#337AB7" }}
+                      id="dropdown-split-basic"
+                      data-tip
+                      data-for="Chức năng khác"
+                    >
+                      <ReactTooltip
+                        id="Chức năng khác"
+                        place="top"
+                        effect="solid"
+                      >
+                        Chức năng khác
+                      </ReactTooltip>
+                    </Dropdown.Toggle>
                     <Dropdown.Menu>
                       <Dropdown.Item
-                        href="#"
+                        onClick={chooseDeTaiCB.bind(this, detaicb._id)}
+                      >
+                        <span>
+                          <BsPencilSquare />
+                        </span>
+                        Sửa
+                      </Dropdown.Item>
+                      <Dropdown.Item
                         onClick={() => selectDeTaiCB(this, detaicb._id)}
                       >
+                        <span>
+                          <BsCursorFill />
+                        </span>
                         Gửi duyệt
                       </Dropdown.Item>
-                      <Dropdown.Item href="#">In thuyết minh</Dropdown.Item>
+                      <Dropdown.Item onClick={() => deleteDeTaiCB(detaicb._id)}>
+                        <span>
+                          <BsTrashFill />
+                        </span>
+                        Xóa
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <span>
+                          <BsFileEarmarkFill />
+                        </span>
+                        Cập nhật thuyết minh
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <span>
+                          <BsFileEarmarkWordFill />
+                        </span>
+                        In thuyết minh
+                      </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </td>
