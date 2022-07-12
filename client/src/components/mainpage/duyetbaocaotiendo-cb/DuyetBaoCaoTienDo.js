@@ -16,6 +16,7 @@ import {
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const DeTaiBaoCaoTienDo = () => {
   const {
@@ -119,45 +120,23 @@ const DeTaiBaoCaoTienDo = () => {
                     style={{ backgroundColor: "#337AB7" }}
                     onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     data-tip
-                    data-for="Xem"
-                  >
-                    <ReactTooltip id="Xem" place="top" effect="solid">
-                      Xem chi tiết
-                    </ReactTooltip>
+                    data-for="Xem">
+                    <ReactTooltip id="Xem" place="top" effect="solid"> Xem chi tiết</ReactTooltip>
                     <BsFillEyeFill />
                   </Button>
-                  <Button variant="success" data-tip data-for="Duyệt">
-                    <ReactTooltip id="Duyệt" place="top" effect="solid">
-                      Duyệt
-                    </ReactTooltip>
-                    <BsCheckLg />
-                  </Button>
-                  <Button variant="danger" data-tip data-for="Không duyệt">
-                    <ReactTooltip id="Không duyệt" place="top" effect="solid">
-                      Không duyệt
-                    </ReactTooltip>
-                    <BsXLg />
-                  </Button>
-                  <Button variant="warning" data-tip data-for="Yêu cầu sửa">
-                    <ReactTooltip id="Yêu cầu sửa" place="top" effect="solid">
-                      Yêu cầu sửa
-                    </ReactTooltip>
-                    <BsReplyFill />
-                  </Button>
-                  <Button
-                    style={{ backgroundColor: "#337AB7" }}
-                    data-tip
-                    data-for="In thuyết minh"
-                  >
-                    <ReactTooltip
-                      id="In thuyết minh"
-                      place="top"
-                      effect="solid"
-                    >
-                      In thuyết minh
-                    </ReactTooltip>
-                    <BsFillFileEarmarkWordFill />
-                  </Button>
+                  <Dropdown data-tip data-for="Chức năng khác">
+                    <ReactTooltip id="Chức năng khác" place="top" effect="solid">Chức năng khác</ReactTooltip>
+                    <Dropdown.Toggle
+                      variant="light"
+                      id="dropdown-basic"
+                    ></Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item>Duyệt</Dropdown.Item>
+                      <Dropdown.Item>Không duyệt</Dropdown.Item>
+                      <Dropdown.Item>Yêu cầu sửa</Dropdown.Item>
+                      <Dropdown.Item href="#">In thuyết minh</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
                 </td>
               </tr>
             ))}
