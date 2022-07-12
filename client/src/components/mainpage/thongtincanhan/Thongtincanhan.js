@@ -17,29 +17,40 @@ const Thongtincanhan = () => {
             fontSize: "24px",
           }}
         >
-          Thông tin tài khoản
+          Thông tin cá nhân
         </h1>
         <div style={{ display: "flex" }}>
           <div style={{ width: "400px" }}>
-          <div>
-          <Figure>
-            <Figure.Image
-              width={171}
-              height={180}
-              alt="171x180"
-              src={noImage}
-            />
-            <Figure.Caption>
-             Chọn ảnh
-            </Figure.Caption>
-          </Figure>
-        </div>
+            <div>
+              <Figure>
+                <Figure.Image
+                  width={171}
+                  height={180}
+                  alt="171x180"
+                  src={noImage}
+                />
+                <Figure.Caption>
+                  Chọn ảnh
+                </Figure.Caption>
+              </Figure>
+            </div>
           </div>
           <Form style={{ width: "100%" }}>
             <Row>
               <Col>
                 <Form.Group className="mb-3">
-                  <Form.Label>Họ và tên </Form.Label>
+                  <Form.Label>Mã giảng viên</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="magiangvien"
+                    disabled
+                    aria-describedby="title-help"
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Họ và tên</Form.Label>
                   <Form.Control
                     type="text"
                     name="hovaten"
@@ -48,17 +59,26 @@ const Thongtincanhan = () => {
                   />
                 </Form.Group>
               </Col>
+            </Row>
+            <Row>
               <Col>
                 <Form.Group className="mb-3">
-                  <Form.Label> Giới tính</Form.Label>
-                  <Form.Select
+                  <Form.Label>Giới tính</Form.Label>
+                  <Form.Control
+                    type="text"
                     name="gioitinh"
                     required
                     aria-describedby="title-help"
-                  >
-                  <option value='Nam'>Nam</option>
-                  <option value='Nữ'>Nữ</option>
-                  </Form.Select>
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Ngày sinh</Form.Label>
+                  <Form.Control
+                    type="date"
+                    name="ngaysinh"
+                  />
                 </Form.Group>
               </Col>
             </Row>
@@ -90,19 +110,19 @@ const Thongtincanhan = () => {
             <Row>
               <Col>
                 <Form.Group className="mb-3">
-                  <Form.Label>Ngày sinh</Form.Label>
+                  <Form.Label>Chức danh công tác</Form.Label>
                   <Form.Control
-                    type="date"
-                    name="ngaysinh"
+                    type="text"
+                    name="chucdanhct"
                   />
                 </Form.Group>
               </Col>
               <Col>
                 <Form.Group className="mb-3">
-                  <Form.Label>Khóa</Form.Label>
+                  <Form.Label>Chức danh khoa học</Form.Label>
                   <Form.Control
                     type="text"
-                    name="khoa"
+                    name="chucdanhkh"
                     required
                     aria-describedby="title-help"
                   />
@@ -110,13 +130,35 @@ const Thongtincanhan = () => {
               </Col>
             </Row>
             <Form.Group className="mb-3">
-              <Form.Label>Địa chỉ</Form.Label>
+              <Form.Label>Địa chỉ nhà riêng</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
-                name="noidung"
+                name="diachi"
               />
             </Form.Group>
+            <Row>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Đơn vị công tác</Form.Label>
+                  <Form.Select
+                    type="text"
+                    name="donvict"
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Địa chỉ cơ quan</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="diachicq"
+                    required
+                    aria-describedby="title-help"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
             <Form.Group className="mb-3">
               <Form.Label>Ghi chú</Form.Label>
               <Form.Control

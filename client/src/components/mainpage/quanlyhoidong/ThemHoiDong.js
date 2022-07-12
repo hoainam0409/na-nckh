@@ -168,6 +168,40 @@ const ThemHoiDong = () => {
           </Row>
           <Row>
             <Col>
+            <Form.Group className="mb-3">
+                <Form.Label>Thuộc khoa</Form.Label>
+                <Form.Select
+                  name="khoa"
+                  aria-describedby="title-help"
+                  // value={khoa}
+                  onChange={onChangeInput}
+                >
+                  {/* <option value="">Chọn khoa</option>
+                  {loaiHĐs.map((loaiHĐ) => (
+                    <option key={loaiHĐ._id}>{loaiHĐ.ten}</option>
+                  ))} */}
+                </Form.Select>
+              </Form.Group></Col>
+            <Col>
+            <Form.Group className="mb-3">
+                <Form.Label>Lĩnh vực</Form.Label>
+                <Form.Select
+                  // value={linhvuc}
+                  name="linhvuc"
+                  onChange={onChangeInput}
+                  aria-label="Default select example"
+                >
+                  {/* <option>Chọn lĩnh vực</option>
+                  {linhvucs.map((linhvuc) => (
+                    <option key={linhvuc._id}>
+                      {linhvuc.ten}
+                    </option>
+                  ))} */}
+                </Form.Select>
+              </Form.Group></Col>
+          </Row>
+          <Row>
+            <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Năm </Form.Label>
                 <Form.Control

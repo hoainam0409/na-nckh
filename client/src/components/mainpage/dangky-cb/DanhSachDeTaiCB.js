@@ -113,6 +113,7 @@ const DeTaiCBs = () => {
               <th>Đợt đăng ký</th>
               <th>Khoa xét duyệt</th>
               <th>Thành viên tham gia</th>
+              <th>Kinh phí(đồng)</th>
               <th>Trạng thái</th>
               <th>Chức năng</th>
             </tr>
@@ -129,6 +130,7 @@ const DeTaiCBs = () => {
                     <div key={q._id}>- {q.hovaten}</div>
                   ))}
                 </td>
+                <td>{detaicb.kinhphi}</td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button

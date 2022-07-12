@@ -149,6 +149,7 @@ const SuaDeTaiCB = () => {
                   aria-describedby="title-help"
                   value={madetai}
                   onChange={onChangeUpdated}
+                  disabled
                 />
               </Form.Group>
             </Col>

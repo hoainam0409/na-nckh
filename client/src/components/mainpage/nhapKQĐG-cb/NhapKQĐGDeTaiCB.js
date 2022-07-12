@@ -146,7 +146,13 @@ const NhapKQĐGDeTaiCB = () => {
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Kết luận chung</Form.Label>
-                <Form.Select > </Form.Select>
+                <Form.Select 
+                  onChange={onChangeUpdated}
+                  >
+                <option>Chọn</option>
+                  <option value="Đạt yêu cầu">Đạt yêu cầu</option>
+                  <option value="Không đạt yêu cầu">Không đạt yêu cầu</option>
+                </Form.Select>
               </Form.Group>
             </Col>
           </Row>

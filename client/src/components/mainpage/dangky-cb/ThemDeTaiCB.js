@@ -273,17 +273,6 @@ const ThemDeTaiCB = () => {
             </Col>
           </Row>
           <Form.Group className="mb-3">
-            <Form.Label>Mục tiêu</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={5}
-              name="muctieu"
-              aria-describedby="title-help"
-              value={muctieu}
-              onChange={onChangeInput}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
             <Form.Label>Tóm tắt nội dung nghiên cứu</Form.Label>
             <Form.Control
               as="textarea"
