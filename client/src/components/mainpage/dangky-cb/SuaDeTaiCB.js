@@ -255,7 +255,7 @@ const SuaDeTaiCB = () => {
             <Form.Label>Tóm tắt nội dung nghiên cứu</Form.Label>
             <Form.Control
               as="textarea"
-              rows={5}
+              rows={15}
               name="noidung"
               aria-describedby="title-help"
               value={noidung}

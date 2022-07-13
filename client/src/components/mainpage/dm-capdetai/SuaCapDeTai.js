@@ -98,7 +98,7 @@ const SuaCapDeTai = () => {
             </Col>
             <Col>
               <Form.Group className="mb-3">
-                <Form.Label>Quy trình xét duyệt</Form.Label>
+                <Form.Label>Đối tượng tham gia</Form.Label>
                 <Form.Select
                   value={doituong}
                   name="doituong"
