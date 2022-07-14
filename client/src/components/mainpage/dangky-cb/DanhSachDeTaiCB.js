@@ -12,7 +12,7 @@ import {
   BsPencilSquare,
   BsTrashFill,
   BsCursorFill,
-  BsFileEarmarkWordFill,
+  BsFileEarmarkWord,
   BsFileEarmarkFill,
 } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
@@ -191,7 +191,7 @@ const DeTaiCBs = () => {
                       </Dropdown.Item>
                       <Dropdown.Item>
                         <span>
-                          <BsFileEarmarkWordFill />
+                          <BsFileEarmarkWord />
                         </span>
                         In thuyết minh
                       </Dropdown.Item>

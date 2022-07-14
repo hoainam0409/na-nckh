@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+const Schema = mongoose.Schema
 
 const dotdangkySchema = new mongoose.Schema({
     madot:{
@@ -48,7 +48,8 @@ const dotdangkySchema = new mongoose.Schema({
     },
     dinhkem:{
         type: Object,
-    }
+    },
+    
 }, {
     timestamps: true //important
 })

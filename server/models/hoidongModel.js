@@ -23,9 +23,7 @@ const hoidongSchema = new mongoose.Schema({
     ngayraquyetdinh:{
         type: Date,
     },
-    nam:{
-        type: String
-    },
+    nam:{type: String},
     ghichu:{
         type: String,
     },

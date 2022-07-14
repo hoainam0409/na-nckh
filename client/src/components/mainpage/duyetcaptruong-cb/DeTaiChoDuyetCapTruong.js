@@ -10,7 +10,7 @@ import {
   BsFillEyeFill,
   BsXLg,
   BsCheckLg,
-  BsFileEarmarkWordFill,
+  BsFileEarmarkWord,
   BsReplyFill,
   BsPencilSquare,
 } from "react-icons/bs";
@@ -99,6 +99,7 @@ const DeTaiDuyetCapKhoas = () => {
               <th>Đợt đăng ký</th>
               <th>Khoa xét duyệt</th>
               <th>Thành viên tham gia</th>
+              <th>Kinh phí (đồng)</th>
               <th>Trạng thái</th>
               <th className="chucnang">Chức năng</th>
             </tr>
@@ -115,6 +116,7 @@ const DeTaiDuyetCapKhoas = () => {
                     <div key={q._id}>- {q.hovaten}</div>
                   ))}
                 </td>
+                <td>{detaicb.kinhphi}</td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Dropdown as={ButtonGroup}>
@@ -168,7 +170,7 @@ const DeTaiDuyetCapKhoas = () => {
                       </Dropdown.Item>
                       <Dropdown.Item>
                         <span>
-                          <BsFileEarmarkWordFill />
+                          <BsFileEarmarkWord />
                         </span>
                         In thuyết minh
                       </Dropdown.Item>

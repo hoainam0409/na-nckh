@@ -54,7 +54,6 @@ const HoiDongContextProvider = ({ children }) => {
         {
           id: newHoiDong.user1._id,
           hovaten: newHoiDong.user1.hovaten,
-          // vaitro: newHoiDong.vaitro1
           idVaiTro: newHoiDong.vaitro1._id,
           ten: newHoiDong.vaitro1.ten,
           chucdanhKH: newHoiDong.chucdanhKH1,
@@ -93,28 +92,6 @@ const HoiDongContextProvider = ({ children }) => {
           donvi: newHoiDong.donvi5
         },
       )
-      // newHoiDong.danhsachthanhvien.push(
-      //   {
-      //     id: newHoiDong.vaitro1._id,
-      //     ten: newHoiDong.vaitro1.ten,
-      //   },
-      //   {
-      //     id: newHoiDong.vaitro2._id,
-      //     ten: newHoiDong.vaitro2.ten,
-      //   },
-      //   {
-      //     id: newHoiDong.vaitro3._id,
-      //     ten: newHoiDong.vaitro3.ten,
-      //   },
-      //   {
-      //     id: newHoiDong.vaitro4._id,
-      //     ten: newHoiDong.vaitro4.ten,
-      //   },
-      //   {
-      //     id: newHoiDong.vaitro5._id,
-      //     ten: newHoiDong.vaitro5.ten,
-      //   }
-      // )
       const response = await axios.post(
         `${apiUrl}/quanly/hoidong`,
         newHoiDong

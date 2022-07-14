@@ -9,7 +9,7 @@ import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
 import ReactTooltip from "react-tooltip";
 import {
   BsFillEyeFill,
-  BsFileEarmarkWordFill,
+  BsFileEarmarkWord,
   BsPencilSquare,
 } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
@@ -103,6 +103,7 @@ const DeTaiNhapKQDGs = () => {
               <th>Đợt đăng ký</th>
               <th>Khoa xét duyệt</th>
               <th>Thành viên tham gia</th>
+              <th>Kinh phí (đồng)</th>
               <th>Trạng thái</th>
               <th className="chucnang">Chức năng</th>
             </tr>
@@ -119,6 +120,7 @@ const DeTaiNhapKQDGs = () => {
                     <div key={q._id}>- {q.hovaten}</div>
                   ))}
                 </td>
+                <td>{detaicb.kinhphi}</td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Dropdown as={ButtonGroup}>
@@ -156,13 +158,13 @@ const DeTaiNhapKQDGs = () => {
                       </Dropdown.Item>
                       <Dropdown.Item>
                         <span>
-                          <BsFileEarmarkWordFill />
+                          <BsFileEarmarkWord />
                         </span>
                         In thuyết minh
                       </Dropdown.Item>
                       <Dropdown.Item>
                         <span>
-                          <BsFileEarmarkWordFill />
+                          <BsFileEarmarkWord />
                         </span>
                         In iên bản họp hội đồng
                       </Dropdown.Item>

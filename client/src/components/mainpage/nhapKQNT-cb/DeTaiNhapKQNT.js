@@ -8,7 +8,7 @@ import NhapKQNTDeTai from "./NhapKQNTDeTaiCB";
 import ReactTooltip from "react-tooltip";
 import {
   BsFillEyeFill,
-  BsFileEarmarkWordFill,
+  BsFileEarmarkWord,
   BsPencilSquare,
 } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
@@ -104,6 +104,7 @@ const DeTaiNhapKQNTs = () => {
               <th>Đợt đăng ký</th>
               <th>Khoa xét duyệt</th>
               <th>Thành viên tham gia</th>
+              <th>Kinh phí (đồng)</th>
               <th>Trạng thái</th>
               <th className="chucnang">Chức năng</th>
             </tr>
@@ -120,11 +121,11 @@ const DeTaiNhapKQNTs = () => {
                     <div key={q._id}>- {q.hovaten}</div>
                   ))}
                 </td>
+                <td>{detaicb.kinhphi}</td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Dropdown as={ButtonGroup}>
                     <Button
-                      // variant="primary"
                       style={{ backgroundColor: "#337AB7" }}
                       onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     >
@@ -158,15 +159,15 @@ const DeTaiNhapKQNTs = () => {
                       </Dropdown.Item>
                       <Dropdown.Item>
                         <span>
-                          <BsFileEarmarkWordFill />
+                          <BsFileEarmarkWord />
                         </span>
                         In thuyết minh
                       </Dropdown.Item>
                       <Dropdown.Item>
                         <span>
-                          <BsFileEarmarkWordFill />
+                          <BsFileEarmarkWord />
                         </span>
-                        In iên bản họp hội đồng
+                        In biên bản họp hội đồng
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>

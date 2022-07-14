@@ -8,7 +8,7 @@ import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
 import ReactTooltip from "react-tooltip";
 import {
   BsFillEyeFill,
-  BsFileEarmarkWordFill,
+  BsFileEarmarkWord,
   BsXLg,
   BsCheckLg,
   BsReplyFill,
@@ -99,6 +99,7 @@ const DeTaiBaoCaoTienDo = () => {
               <th>Đợt đăng ký</th>
               <th>Khoa xét duyệt</th>
               <th>Thành viên tham gia</th>
+              <th>Kinh phí (đồng)</th>
               <th>Trạng thái</th>
               <th className="chucnang">Chức năng</th>
             </tr>
@@ -115,6 +116,7 @@ const DeTaiBaoCaoTienDo = () => {
                     <div key={q._id}>-{q.hovaten}</div>
                   ))}
                 </td>
+                <td>{detaicb.kinhphi}</td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Dropdown as={ButtonGroup}>
@@ -162,7 +164,7 @@ const DeTaiBaoCaoTienDo = () => {
                       </Dropdown.Item>
                       <Dropdown.Item>
                         <span>
-                          <BsFileEarmarkWordFill />
+                          <BsFileEarmarkWord />
                         </span>
                         In thuyết minh
                       </Dropdown.Item>
