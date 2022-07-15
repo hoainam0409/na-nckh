@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+const Schema = mongoose.Schema
 
 const hoidongSchema = new mongoose.Schema({
     tenhoidong:{
@@ -39,6 +39,10 @@ const hoidongSchema = new mongoose.Schema({
     ],
     dinhkem:{
         type: Object,
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
     }
 }, {
     timestamps: true //important

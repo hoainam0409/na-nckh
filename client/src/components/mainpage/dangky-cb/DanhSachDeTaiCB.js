@@ -15,11 +15,13 @@ import {
   BsFileEarmarkWord,
   BsFileEarmarkFill,
 } from "react-icons/bs";
+import { BiHistory } from 'react-icons/bi'
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Dropdown from "react-bootstrap/Dropdown";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
+import CapNhatThuyetMinh from "./CapNhatThuyetMinh";
 
 const DeTaiCBs = () => {
   const {
@@ -33,6 +35,7 @@ const DeTaiCBs = () => {
     setShowSuaDeTaiCB,
     trangThai,
     updateTrangThai,
+    setShowCapNhatThuyetMinh
   } = useContext(DeTaiCBContext);
 
   // Start: Get all
@@ -46,12 +49,16 @@ const DeTaiCBs = () => {
     findDeTaiCB(detaicbId);
     updateTrangThai("Chờ duyệt cấp khoa");
   };
-
+  const CapNhatThuyetMinhDeTaiCB = (detaicbId) => {
+    findDeTaiCB(detaicbId);
+    setShowCapNhatThuyetMinh(true);
+  };
   return (
     <div>
       <SideBar />
       <ThemDeTaiCB />
       {detaicb !== null && <SuaDeTaiCB />}
+      {detaicb !== null && <CapNhatThuyetMinh />}
       <div className="style-mainpage">
         <div>
           <h1 style={{ fontSize: "24px" }}>Danh sách đăng ký đề tài</h1>
@@ -139,11 +146,8 @@ const DeTaiCBs = () => {
                   <Dropdown as={ButtonGroup}>
                     <Button
                       style={{ backgroundColor: "#337AB7" }}
-                      onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                    >
-                      <span>
-                        <BsFillEyeFill />
-                      </span>
+                      onClick={chooseDeTaiCB.bind(this, detaicb._id)}>
+                      <span><BsFillEyeFill /></span>
                       Xem
                     </Button>
                     <Dropdown.Toggle
@@ -161,38 +165,28 @@ const DeTaiCBs = () => {
                       </ReactTooltip>
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      <Dropdown.Item
-                        onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                      >
-                        <span>
-                          <BsPencilSquare />
-                        </span>
-                        Sửa
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => selectDeTaiCB(this, detaicb._id)}
-                      >
-                        <span>
-                          <BsCursorFill />
-                        </span>
+                      <Dropdown.Item onClick={() => selectDeTaiCB(this, detaicb._id)}>
+                        <span><BsCursorFill /></span>
                         Gửi duyệt
                       </Dropdown.Item>
+                      <Dropdown.Item onClick={chooseDeTaiCB.bind(this, detaicb._id)}>
+                        <span><BsPencilSquare /></span>
+                        Sửa
+                      </Dropdown.Item>
                       <Dropdown.Item onClick={() => deleteDeTaiCB(detaicb._id)}>
-                        <span>
-                          <BsTrashFill />
-                        </span>
+                        <span><BsTrashFill /></span>
                         Xóa
                       </Dropdown.Item>
-                      <Dropdown.Item>
-                        <span>
-                          <BsFileEarmarkFill />
-                        </span>
+                      <Dropdown.Item onClick={CapNhatThuyetMinhDeTaiCB.bind(this, detaicb._id)}>
+                        <span><BsFileEarmarkFill /></span>
                         Cập nhật thuyết minh
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <span>
-                          <BsFileEarmarkWord />
-                        </span>
+                        <span><BiHistory /></span>
+                        Xem quá trình xử lý
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <span><BsFileEarmarkWord /></span>
                         In thuyết minh
                       </Dropdown.Item>
                     </Dropdown.Menu>

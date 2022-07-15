@@ -134,7 +134,7 @@ const NhapKQHĐKhoa = () => {
             <Form.Control />
           </Form.Group>
           <div>
-            <h1>KẾT QUẢ XÉT DUYỆT </h1>
+            <h1>DANH SÁCH THÀNH VIÊN HỘI ĐỒNG</h1>
             <Table borderless bordered hover>
               <thead>
                 <tr className="table-header">
@@ -148,7 +148,8 @@ const NhapKQHĐKhoa = () => {
                   <th>Điểm</th>
                 </tr>
               </thead>
-              <tbody></tbody>
+              <tbody>
+              </tbody>
             </Table>
             <div>
               <h1>PHẦN ĐIỂM SỐ</h1>
@@ -202,12 +203,12 @@ const NhapKQHĐKhoa = () => {
               </div>
             </div>
             <Form.Group className="mb-3">
-            <Form.Label>Kết luận của hội đồng</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={5}
-            />
-          </Form.Group>
+              <Form.Label>Kết luận của hội đồng</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={5}
+              />
+            </Form.Group>
           </div>
           <Form.Group className="mb-3">
             <Form.Label>Đính kèm</Form.Label>
@@ -221,12 +222,8 @@ const NhapKQHĐKhoa = () => {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" type="submit">
-            Lưu
-          </Button>
-          <Button variant="secondary" onClick={closeDialog}>
-            Đóng
-          </Button>
+          <Button variant="primary" type="submit"> Lưu</Button>
+          <Button variant="secondary" onClick={closeDialog}>Đóng</Button>
         </Modal.Footer>
       </Form>
     </Modal>

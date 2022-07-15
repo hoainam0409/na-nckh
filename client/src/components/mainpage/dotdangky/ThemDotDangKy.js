@@ -98,7 +98,7 @@ const ThemDotDangKy = () => {
       <Modal.Header closeButton>
         <Modal.Title>Thêm mới đợt đăng ký đề tài</Modal.Title>
       </Modal.Header>
-      <Form noValidate validated={validated} onSubmit={onSubmit}>
+      <Form validated={validated} onSubmit={onSubmit}>
         <Modal.Body>
           <Form.Group className="mb-3">
             <Form.Label>Mã đợt</Form.Label>
@@ -106,7 +106,7 @@ const ThemDotDangKy = () => {
               type="text"
               name="madot"
               required
-              isInvalid 
+              // isInvalid 
               aria-describedby="title-help"
               value={madot}
               onChange={onChangeInput}

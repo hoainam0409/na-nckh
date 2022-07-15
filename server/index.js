@@ -36,16 +36,6 @@ app.use('/quanly', require('./routers/hoidongRouter'))
 // app.use('/api', require('./routers/upload'))
 
 
-
-
-
-
-
-
-
-
-
-
 // Connect to mongodb
 const connectDB = async () => {
     try {

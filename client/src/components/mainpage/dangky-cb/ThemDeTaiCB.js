@@ -23,7 +23,9 @@ const ThemDeTaiCB = () => {
     getDotDangKys,
   } = useContext(DotDangKyContext);
 
-  useEffect(() => {getDotDangKys()}, []);
+  useEffect(() => {
+    getDotDangKys();
+  }, []);
 
   const {
     khoaState: { khoas },
@@ -166,7 +168,7 @@ const ThemDeTaiCB = () => {
                 >
                   <option>Chọn đợt đăng ký đề tài</option>
                   {dotdangkys.map((dotdangky) => (
-                    <option key={dotdangky._id} value ={dotdangky._id}>
+                    <option key={dotdangky._id} value={dotdangky._id}>
                       {dotdangky.tendot}
                     </option>
                   ))}
@@ -246,9 +248,7 @@ const ThemDeTaiCB = () => {
                 >
                   <option>Chọn lĩnh vực nghiên cứu</option>
                   {linhvucs.map((linhvuc) => (
-                    <option key={linhvuc._id}>
-                      {linhvuc.ten}
-                    </option>
+                    <option key={linhvuc._id}>{linhvuc.ten}</option>
                   ))}
                 </Form.Select>
               </Form.Group>
@@ -264,9 +264,7 @@ const ThemDeTaiCB = () => {
                 >
                   <option>Chọn khoa xét duyệt đề tài</option>
                   {khoas.map((khoa) => (
-                    <option key={khoa._id}>
-                      {khoa.ten}
-                    </option>
+                    <option key={khoa._id}>{khoa.ten}</option>
                   ))}
                 </Form.Select>
               </Form.Group>
@@ -294,7 +292,7 @@ const ThemDeTaiCB = () => {
               onChange={onChangeInput}
             />
           </Form.Group>
-          
+
           <Form.Group className="mb-3">
             <Form.Label>Kết quả dự kiến</Form.Label>
             <Form.Control
@@ -329,7 +327,7 @@ const ThemDeTaiCB = () => {
                     value={thanhvienthamgia.hovaten}
                     onChange={onChangeUser}
                   >
-                    <option >Chọn thành viên</option>
+                    <option>Chọn thành viên</option>
                     {users.map((user) => (
                       <option
                         key={user._id}
@@ -364,17 +362,15 @@ const ThemDeTaiCB = () => {
                     onChange={onChangeVaiTroThamGia}
                   >
                     <option value="">Chọn vai trò</option>
-                    {
-                      vaitroTGs.map((vaitroTG) => (
-                        <option
-                          key={vaitroTG._id}
-                          value={vaitroTG._id}
-                          name={vaitroTG.ten}
-                        >
-                          {vaitroTG.ten}
-                        </option>
-                      ))
-                    }
+                    {vaitroTGs.map((vaitroTG) => (
+                      <option
+                        key={vaitroTG._id}
+                        value={vaitroTG._id}
+                        name={vaitroTG.ten}
+                      >
+                        {vaitroTG.ten}
+                      </option>
+                    ))}
                   </Form.Select>
                 </Form.Group>
               </Col>
@@ -436,17 +432,15 @@ const ThemDeTaiCB = () => {
                     onChange={onChangeVaiTroThamGia}
                   >
                     <option value="">Chọn vai trò</option>
-                    {
-                      vaitroTGs.map((vaitroTG) => (
-                        <option
-                          key={vaitroTG._id}
-                          value={vaitroTG._id}
-                          name={vaitroTG.ten}
-                        >
-                          {vaitroTG.ten}
-                        </option>
-                      ))
-                    }
+                    {vaitroTGs.map((vaitroTG) => (
+                      <option
+                        key={vaitroTG._id}
+                        value={vaitroTG._id}
+                        name={vaitroTG.ten}
+                      >
+                        {vaitroTG.ten}
+                      </option>
+                    ))}
                   </Form.Select>
                 </Form.Group>
               </Col>
@@ -463,37 +457,40 @@ const ThemDeTaiCB = () => {
                 </Form.Group>
               </Col>
             </Row>
-            <Button style={{ backgroundColor: '#337AB7', borderColor: '#2d6da3', marginBottom: '20px' }}>Thêm mới</Button>
+            <Button
+              style={{
+                backgroundColor: "#337AB7",
+                borderColor: "#2d6da3",
+                marginBottom: "20px",
+              }}
+            >
+              Thêm mới
+            </Button>
           </div>
           <SanPham />
           <div>
             <h1>ĐỐI TÁC NCKH</h1>
-            <Button style={{ backgroundColor: '#337AB7', borderColor: '#2d6da3', marginBottom: '20px' }}>Thêm mới</Button>
             <Table borderless bordered hover style={{ cursor: "pointer" }}>
               <thead>
-                <tr>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    STT
-                  </th>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    Tên đơn vị
-                  </th>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    Họ và tên đại diện
-                  </th>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    Nội dung phối hợp
-                  </th>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    Kinh phí hỗ trợ
-                  </th>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    Chức năng
-                  </th>
+                <tr className="table-header">
+                  <th>STT</th>
+                  <th>Tên đơn vị</th>
+                  <th>Họ và tên đại diện</th>
+                  <th>Nội dung phối hợp</th>
+                  <th>Kinh phí hỗ trợ</th>
+                  <th>Chức năng</th>
                 </tr>
               </thead>
-              <tbody>
-              </tbody>
+              <Button
+              style={{
+                backgroundColor: "#337AB7",
+                borderColor: "#2d6da3",
+                marginBottom: "20px",
+              }}
+            >
+              Thêm mới
+            </Button>
+              <tbody></tbody>
             </Table>
           </div>
           <Form.Group className="mb-3">

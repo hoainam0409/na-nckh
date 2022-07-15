@@ -4,15 +4,15 @@ import Tabs from "react-bootstrap/Tabs";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import DeTai from "./DeTai";
-import SanPham from "../dangky-cb/SanPham";
+import SanPham from "../duyetcapkhoa-cb/SanPham";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
+import ShowKQĐG from "../../../until/KQHDDG";
+import TienDoThucHien from "../../../until/TienDoThucHien";
 
 const XemDeTaiCB = () => {
   const [key, setKey] = useState("Thông tin đề tài");
   const {
     detaicbState: { detaicb },
-    updateDeTaiCB,
-    setShowToast,
     showXemDeTaiCB,
     setShowXemDeTaiCB,
   } = useContext(DeTaiCBContext);
@@ -45,9 +45,15 @@ const XemDeTaiCB = () => {
           <Tab eventKey="Sản phẩm và ứng dụng" title="Sản phẩm và ứng dụng">
             <SanPham />
           </Tab>
-          {/* <Tab eventKey="contact" title="Contact" disabled>
-        <Sonnet />
-      </Tab> */}
+          <Tab eventKey="Hội đồng xét duyệt" title="Hội đồng xét duyệt">
+            {/* /> */}
+          </Tab>
+          <Tab eventKey="Hội đồng đánh giá" title="Hội đồng đánh giá">
+            <ShowKQĐG />
+          </Tab>
+          <Tab eventKey="Tiến độ thực hiện" title="Tiến độ thực hiện">
+            <TienDoThucHien />
+          </Tab>
         </Tabs>
       </Modal.Body>
       <Modal.Footer>

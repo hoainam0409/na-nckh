@@ -25,6 +25,7 @@ const DeTaiCBContextProvider = ({ children }) => {
   const [showSuaDeTaiCB, setShowSuaDeTaiCB] = useState(false);
   const [showXemDeTaiCB, setShowXemDeTaiCB] = useState(false);
   const [showNhapKQHĐ, setShowNhapKQHĐ] = useState(false);
+  const [showCapNhatThuyetMinh, setShowCapNhatThuyetMinh] = useState(false);
   const [showNhapKQĐG, setShowNhapKQĐG] = useState(false);
   const [showNhapKQNT, setShowNhapKQNT] = useState(false);
   const [showBaoCaoTienDo, setShowBaoCaoTienDo] = useState(false);
@@ -66,8 +67,6 @@ const DeTaiCBContextProvider = ({ children }) => {
           id: newDeTaiCB.user1._id,
           hovaten: newDeTaiCB.user1.hovaten,
           vaitrothamgia: newDeTaiCB.vaitrothamgia1,
-          // idVaiTro: newDeTaiCB.vaitrothamgia1._id, 
-          // vaitrothamgia: newDeTaiCB.vaitrothamgia1.ten,
           chucdanhKH: newDeTaiCB.chucdanhKH1,
           donvi: newDeTaiCB.donvi1
         },
@@ -75,8 +74,6 @@ const DeTaiCBContextProvider = ({ children }) => {
           id: newDeTaiCB.user2._id,
           hovaten: newDeTaiCB.user2.hovaten,
           vaitrothamgia: newDeTaiCB.vaitrothamgia2,
-          // idVaiTro: newDeTaiCB.vaitrothamgia2._id, 
-          // vaitrothamgia: newDeTaiCB.vaitrothamgia2.ten,
           chucdanhKH: newDeTaiCB.chucdanhKH2,
           donvi: newDeTaiCB.donvi2
         }
@@ -167,7 +164,9 @@ const DeTaiCBContextProvider = ({ children }) => {
     showBaoCaoTienDo, 
     setShowBaoCaoTienDo,
     showXemDeTaiCB, 
-    setShowXemDeTaiCB
+    setShowXemDeTaiCB,
+    showCapNhatThuyetMinh,
+    setShowCapNhatThuyetMinh
   };
 
   return (

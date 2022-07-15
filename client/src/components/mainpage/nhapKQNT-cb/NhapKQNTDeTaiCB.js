@@ -150,7 +150,7 @@ const NhapKQNTDeTaiCB = () => {
             </Col>
           </Row>
           <div>
-            <h1>KẾT QUẢ ĐÁNH GIÁ </h1>
+            <h1>KẾT QUẢ NGHIỆM THU</h1>
             <Row>
               <Col>
                 <Form.Group className="mb-3">

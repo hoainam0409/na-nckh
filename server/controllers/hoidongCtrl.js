@@ -3,7 +3,7 @@ const HoiDong = require("../models/hoidongModel");
 const hoidongCtrl = {
   getHoiDongs: async (req, res) => {
     try {
-      const hoidongs = await HoiDong.find();
+      const hoidongs = await HoiDong.find({user: req.userId});
       res.json({ success: true, hoidongs });
     } catch (err) {
       return res.status(500).json({ message: err.message });
@@ -40,6 +40,8 @@ const hoidongCtrl = {
         ghichu,
         danhsachthanhvien,
         dinhkem,
+        user: req.userId,
+
       });
       await newHoiDong.save();
       res.json({ success: true, message: "Thêm mới thành công!" , hoidong: newHoiDong});

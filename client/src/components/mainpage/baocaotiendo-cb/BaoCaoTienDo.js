@@ -6,7 +6,7 @@ import Table from "react-bootstrap/Table";
 import Col from "react-bootstrap/Col";
 import { useContext, useState, useEffect } from "react";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
-import { DotKiemTraTĐContext } from '../../../contexts/DotKiemTraTĐContext'
+import { DotKiemTraTĐContext } from "../../../contexts/DotKiemTraTĐContext";
 
 const BaoCaoTienDo = () => {
   // Contexts
@@ -20,22 +20,16 @@ const BaoCaoTienDo = () => {
 
   const {
     dotkiemtraTĐState: { dotkiemtraTĐs },
-    getDotKiemTraTĐs
-
-  } = useContext(DotKiemTraTĐContext)
+    getDotKiemTraTĐs,
+  } = useContext(DotKiemTraTĐContext);
   useEffect(() => getDotKiemTraTĐs(), []);
-
 
   // State
   const [updatedDeTaiCB, setUpdatedDeTaiCB] = useState(detaicb);
 
   useEffect(() => setUpdatedDeTaiCB(detaicb), [detaicb]);
 
-  const {
-    madetai,
-    tendetai,
-    dotkiemtraTĐ
-  } = updatedDeTaiCB;
+  const { madetai, tendetai, dotkiemtraTĐ } = updatedDeTaiCB;
 
   const onChangeUpdated = (event) =>
     setUpdatedDeTaiCB({
@@ -93,9 +87,7 @@ const BaoCaoTienDo = () => {
             >
               <option>Chọn đợt kiểm tra tiến độ</option>
               {dotkiemtraTĐs.map((dotkiemtraTĐ) => (
-                <option key={dotkiemtraTĐ._id}>
-                  {dotkiemtraTĐ.tendot}
-                </option>
+                <option key={dotkiemtraTĐ._id}>{dotkiemtraTĐ.tendot}</option>
               ))}
             </Form.Select>
           </Form.Group>
@@ -105,90 +97,62 @@ const BaoCaoTienDo = () => {
               <Col>
                 <Form.Group className="mb-3">
                   <Form.Label>Kinh phí được cấp</Form.Label>
-                  <Form.Control
-                  />
-                </Form.Group></Col>
+                  <Form.Control />
+                </Form.Group>
+              </Col>
               <Col>
                 <Form.Group className="mb-3">
                   <Form.Label>Kinh phí đã chi</Form.Label>
-                  <Form.Control
-                  />
-                </Form.Group></Col>
+                  <Form.Control />
+                </Form.Group>
+              </Col>
             </Row>
             <Row>
               <Col>
                 <Form.Group className="mb-3">
                   <Form.Label>Kinh phí đã quyết toán</Form.Label>
-                  <Form.Control
-                  />
-                </Form.Group></Col>
+                  <Form.Control />
+                </Form.Group>
+              </Col>
               <Col>
                 <Form.Group className="mb-3">
                   <Form.Label>Kinh phí chưa quyết toán</Form.Label>
-                  <Form.Control
-                  />
-                </Form.Group></Col>
+                  <Form.Control />
+                </Form.Group>
+              </Col>
             </Row>
             <div className="loaisanpham">
               <h2>Giải trình kinh phí </h2>
-              <Button>Thêm mới</Button>
               <Table borderless bordered hover style={{ cursor: "pointer" }}>
                 <thead>
-                  <tr>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      STT
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Nội dung chi
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Ngày chi
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Số tiền
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Chức năng
-                    </th>
+                  <tr className="table-header">
+                    <th>STT</th>
+                    <th>Nội dung chi</th>
+                    <th>Ngày chi</th>
+                    <th>Số tiền</th>
+                    <th>Chức năng</th>
                   </tr>
                 </thead>
-                <tbody>
-                </tbody>
+                <Button>Thêm mới</Button>
+                <tbody></tbody>
               </Table>
-
-
             </div>
             <div className="loaisanpham">
               <h2>Nội dung nghiên cứu </h2>
-              <Button>Thêm mới</Button>
               <Table borderless bordered hover style={{ cursor: "pointer" }}>
                 <thead>
-                  <tr>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      STT
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Nội dung đăng ký
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Ngày bắt đầu
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Ngày kết thúc
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Trạng thái
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Chức năng
-                    </th>
+                  <tr className="table-header">
+                    <th>STT</th>
+                    <th>Nội dung đăng ký</th>
+                    <th>Ngày bắt đầu</th>
+                    <th>Ngày kết thúc</th>
+                    <th>Trạng thái</th>
+                    <th>Chức năng</th>
                   </tr>
                 </thead>
-                <tbody>
-                </tbody>
+                <Button>Thêm mới</Button>
+                <tbody></tbody>
               </Table>
-
-
             </div>
           </div>
           <div>
@@ -196,195 +160,135 @@ const BaoCaoTienDo = () => {
             <div className="loaisanpham">
               <h2>Sản phẩm khoa học </h2>
               <div className="sanpham">
-                <div><h3>Bài báo, báo cáo</h3>
-                  <Button>Thêm mới</Button>
-                  <Table borderless bordered hover style={{ cursor: "pointer" }}>
+                <div>
+                  <h3>Bài báo, báo cáo</h3>
+                  <Table
+                    borderless
+                    bordered
+                    hover
+                    style={{ cursor: "pointer" }}
+                  >
                     <thead>
-                      <tr>
-                        <th style={{ textAlign: "center", color: "#495057" }}>
-                          STT
-                        </th>
-                        <th style={{ textAlign: "center", color: "#495057" }}>
-                          Loại bài báo, báo cáo
-                        </th>
-                        <th style={{ textAlign: "center", color: "#495057" }}>
-                          Số lượng đăng ký
-                        </th>
-                        <th style={{ textAlign: "center", color: "#495057" }}>
-                          Đã thực hiện
-                        </th>
-                        <th style={{ textAlign: "center", color: "#495057" }}>
-                          Chức năng
-                        </th>
+                      <tr className="table-header">
+                        <th>STT</th>
+                        <th>Loại bài báo, báo cáo</th>
+                        <th>Số lượng đăng ký</th>
+                        <th>Đã thực hiện</th>
+                        <th>Chức năng</th>
                       </tr>
                     </thead>
-                    <tbody>
-                    </tbody>
-                  </Table>
-
-                </div>
-                <div> <h3>Sách, giáo trình khoa học</h3>
-                  <Button>Thêm mới</Button>
-                  <Table borderless bordered hover style={{ cursor: "pointer" }}>
-                    <thead>
-                      <tr>
-                        <th style={{ textAlign: "center", color: "#495057" }}>
-                          STT
-                        </th>
-                        <th style={{ textAlign: "center", color: "#495057" }}>
-                          Loại sách, giáo trình khoa học
-                        </th>
-                        <th style={{ textAlign: "center", color: "#495057" }}>
-                          Số lượng đăng ký
-                        </th>
-                        <th style={{ textAlign: "center", color: "#495057" }}>
-                          Đã thực hiện
-                        </th>
-                        <th style={{ textAlign: "center", color: "#495057" }}>
-                          Chức năng
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
+                    <Button>Thêm mới</Button>
+                    <tbody></tbody>
                   </Table>
                 </div>
-                <div><h3>Sản phẩm khoa học khác</h3>
-                  <Button>Thêm mới</Button>
-                  <Table borderless bordered hover style={{ cursor: "pointer" }}>
+                <div>
+                  {" "}
+                  <h3>Sách, giáo trình khoa học</h3>
+                  <Table
+                    borderless
+                    bordered
+                    hover
+                    style={{ cursor: "pointer" }}
+                  >
                     <thead>
-                      <tr>
-                        <th style={{ textAlign: "center", color: "#495057" }}>
-                          STT
-                        </th>
-                        <th style={{ textAlign: "center", color: "#495057" }}>
-                          Loại sản phẩm khoa học khác
-                        </th>
-                        <th style={{ textAlign: "center", color: "#495057" }}>
-                          Số lượng đăng ký
-                        </th>
-                        <th style={{ textAlign: "center", color: "#495057" }}>
-                          Đã thực hiện
-                        </th>
-                        <th style={{ textAlign: "center", color: "#495057" }}>
-                          Chức năng
-                        </th>
+                      <tr className="table-header">
+                        <th>STT</th>
+                        <th>Loại sách, giáo trình khoa học</th>
+                        <th>Số lượng đăng ký</th>
+                        <th>Đã thực hiện</th>
+                        <th>Chức năng</th>
                       </tr>
                     </thead>
-                    <tbody>
-                    </tbody>
+                    <Button>Thêm mới</Button>
+                    <tbody></tbody>
+                  </Table>
+                </div>
+                <div>
+                  <h3>Sản phẩm khoa học khác</h3>
+                  <Table
+                    borderless
+                    bordered
+                    hover
+                    style={{ cursor: "pointer" }}
+                  >
+                    <thead>
+                      <tr className="table-header">
+                        <th>STT</th>
+                        <th>Loại sản phẩm khoa học khác</th>
+                        <th>Số lượng đăng ký</th>
+                        <th>Đã thực hiện</th>
+                        <th>Chức năng</th>
+                      </tr>
+                    </thead>
+                    <Button>Thêm mới</Button>
+                    <tbody></tbody>
                   </Table>
                 </div>
               </div>
             </div>
             <div className="loaisanpham">
               <h2>Sản phẩm đào tạo </h2>
-              <Button>Thêm mới</Button>
               <Table borderless bordered hover style={{ cursor: "pointer" }}>
                 <thead>
-                  <tr>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      STT
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Loại sản phẩm
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Số lượng đăng ký
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Đã thực hiện
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Chức năng
-                    </th>
+                  <tr className="table-header">
+                    <th>STT</th>
+                    <th>Loại sản phẩm</th>
+                    <th>Số lượng đăng ký</th>
+                    <th>Đã thực hiện</th>
+                    <th>Chức năng</th>
                   </tr>
                 </thead>
-                <tbody>
-                </tbody>
+                <Button>Thêm mới</Button>
+                <tbody></tbody>
               </Table>
-
             </div>
             <div className="loaisanpham">
               <h2>Sản phẩm ứng dụng </h2>
-              <Button>Thêm mới</Button>
               <Table borderless bordered hover style={{ cursor: "pointer" }}>
                 <thead>
-                  <tr>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      STT
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Loại sản phẩm
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Số lượng đăng ký
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Đã thực hiện
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Chức năng
-                    </th>
+                  <tr className="table-header">
+                    <th>STT</th>
+                    <th>Loại sản phẩm</th>
+                    <th>Số lượng đăng ký</th>
+                    <th>Đã thực hiện</th>
+                    <th>Chức năng</th>
                   </tr>
                 </thead>
-                <tbody>
-                </tbody>
+                <Button>Thêm mới</Button>
+                <tbody></tbody>
               </Table>
             </div>
             <div className="loaisanpham">
               <h2>Sản phẩm khác</h2>
-              <Button>Thêm mới</Button>
               <Table borderless bordered hover style={{ cursor: "pointer" }}>
                 <thead>
-                  <tr>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      STT
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Loại sản phẩm
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Số lượng đăng ký
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Đã thực hiện
-                    </th>
-                    <th style={{ textAlign: "center", color: "#495057" }}>
-                      Chức năng
-                    </th>
+                  <tr className="table-header">
+                    <th>STT</th>
+                    <th>Loại sản phẩm</th>
+                    <th>Số lượng đăng ký</th>
+                    <th>Đã thực hiện</th>
+                    <th>Chức năng</th>
                   </tr>
                 </thead>
-                <tbody>
-                </tbody>
+                <Button>Thêm mới</Button>
+                <tbody></tbody>
               </Table>
             </div>
           </div>
-          <div>
+          <div className="loaisanpham">
             <h1>KẾ HOẠCH THỰC HIỆN NGHIÊN CỨU</h1>
-            <Button>Thêm mới</Button>
             <Table borderless bordered hover style={{ cursor: "pointer" }}>
               <thead>
-                <tr>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    STT
-                  </th>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    Nội dung theo thuyết minh
-                  </th>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    Ngày bắt đầu
-                  </th>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    Ngày kết thúc
-                  </th>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    Chức năng
-                  </th>
+                <tr className="table-header">
+                  <th>STT</th>
+                  <th>Nội dung theo thuyết minh</th>
+                  <th>Ngày bắt đầu</th>
+                  <th>Ngày kết thúc</th>
+                  <th>Chức năng</th>
                 </tr>
               </thead>
-              <tbody>
-              </tbody>
+              <Button>Thêm mới</Button>
+              <tbody></tbody>
             </Table>
           </div>
         </Modal.Body>

@@ -16,6 +16,7 @@ import {
   BsXLg,
   BsCheckLg,
   BsPeople,
+  BsCursorFill
 } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -56,7 +57,7 @@ const DeTaiDuyetCapKhoas = () => {
       <SideBar />
       {detaicb !== null && <SuaDeTaiCB />}
       {detaicb !== null && <NhapKQHĐKhoa />}
-      {detaicb !== null && <XemDeTai/>}
+      {detaicb !== null && <XemDeTai />}
       <div className="style-mainpage">
         <div>
           <h1>Danh sách đề tài chờ duyệt cấp khoa</h1>
@@ -160,44 +161,32 @@ const DeTaiDuyetCapKhoas = () => {
                       </ReactTooltip>
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      <Dropdown.Item
-                        onClick={chooseCapNhatKQHĐ.bind(this, detaicb._id)}
-                      >
-                        <span>
-                          <BsPeople />
-                        </span>
+                      <Dropdown.Item onClick={chooseCapNhatKQHĐ.bind(this, detaicb._id)}>
+                        <span><BsPeople /></span>
                         Cập nhật kết quả HĐXD
                       </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                      >
-                        <span>
-                          <BsPencilSquare />
-                        </span>
+                      <Dropdown.Item onClick={chooseDeTaiCB.bind(this, detaicb._id)}>
+                        <span><BsPencilSquare /></span>
                         Sửa
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <span>
-                          <BsCheckLg />
-                        </span>
+                        <span><BsCheckLg /></span>
                         Duyệt
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <span>
-                          <BsXLg />
-                        </span>
+                        <span><BsXLg /></span>
                         Không duyệt
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <span>
-                          <BsReplyFill />
-                        </span>
+                        <span><BsReplyFill /></span>
                         Yêu cầu sửa
                       </Dropdown.Item>
+                      <Dropdown.Item onClick={() => SelectDeTaiCB(this, detaicb._id)}>
+                        <span><BsCursorFill /></span>
+                        Gửi duyệt
+                      </Dropdown.Item>
                       <Dropdown.Item>
-                        <span>
-                          <BsFileEarmarkWord />
-                        </span>
+                        <span><BsFileEarmarkWord /></span>
                         In thuyết minh
                       </Dropdown.Item>
                     </Dropdown.Menu>
