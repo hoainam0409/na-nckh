@@ -23,6 +23,8 @@ const DeTaiCBContextProvider = ({ children }) => {
 
   const [showThemDeTaiCB, setShowThemDeTaiCB] = useState(false);
   const [showSuaDeTaiCB, setShowSuaDeTaiCB] = useState(false);
+  const [showXemDeTaiCB, setShowXemDeTaiCB] = useState(false);
+  const [showNhapKQHĐ, setShowNhapKQHĐ] = useState(false);
   const [showNhapKQĐG, setShowNhapKQĐG] = useState(false);
   const [showNhapKQNT, setShowNhapKQNT] = useState(false);
   const [showBaoCaoTienDo, setShowBaoCaoTienDo] = useState(false);
@@ -156,12 +158,16 @@ const DeTaiCBContextProvider = ({ children }) => {
     findDeTaiCB,
     showNhapKQĐG,
     setShowNhapKQĐG,
+    showNhapKQHĐ,
+    setShowNhapKQHĐ,
     trangThai, 
     updateTrangThai,
     showNhapKQNT,
     setShowNhapKQNT,
     showBaoCaoTienDo, 
-    setShowBaoCaoTienDo
+    setShowBaoCaoTienDo,
+    showXemDeTaiCB, 
+    setShowXemDeTaiCB
   };
 
   return (

@@ -4,8 +4,9 @@ import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import SideBar from "../../sidebar/SideBar";
-import ThemDeTaiCB from "../dangky-cb/ThemDeTaiCB";
 import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
+import NhapKQHĐKhoa from "./NhapKQHĐ";
+import XemDeTai from "./XemChiTiet";
 import ReactTooltip from "react-tooltip";
 import {
   BsFillEyeFill,
@@ -14,6 +15,7 @@ import {
   BsReplyFill,
   BsXLg,
   BsCheckLg,
+  BsPeople,
 } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -28,21 +30,33 @@ const DeTaiDuyetCapKhoas = () => {
     showToast: { show, message, type },
     setShowToast,
     findDeTaiCB,
+    setShowXemDeTaiCB,
+    setShowNhapKQHĐ,
     setShowSuaDeTaiCB,
+
   } = useContext(DeTaiCBContext);
 
   // Start: Get all
   useEffect(() => getDeTaiCBs(), []);
 
+  const SelectDeTaiCB = (detaicbId) => {
+    findDeTaiCB(detaicbId);
+    setShowXemDeTaiCB(true);
+  };
   const chooseDeTaiCB = (detaicbId) => {
     findDeTaiCB(detaicbId);
     setShowSuaDeTaiCB(true);
   };
+  const chooseCapNhatKQHĐ = (detaicbId) => {
+    findDeTaiCB(detaicbId);
+    setShowNhapKQHĐ(true);
+  };
   return (
     <div>
       <SideBar />
-      <ThemDeTaiCB />
       {detaicb !== null && <SuaDeTaiCB />}
+      {detaicb !== null && <NhapKQHĐKhoa />}
+      {detaicb !== null && <XemDeTai/>}
       <div className="style-mainpage">
         <div>
           <h1>Danh sách đề tài chờ duyệt cấp khoa</h1>
@@ -124,7 +138,7 @@ const DeTaiDuyetCapKhoas = () => {
                   <Dropdown as={ButtonGroup}>
                     <Button
                       style={{ backgroundColor: "#337AB7" }}
-                      onClick={chooseDeTaiCB.bind(this, detaicb._id)}
+                      onClick={SelectDeTaiCB.bind(this, detaicb._id)}
                     >
                       <span>
                         <BsFillEyeFill />
@@ -147,6 +161,14 @@ const DeTaiDuyetCapKhoas = () => {
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                       <Dropdown.Item
+                        onClick={chooseCapNhatKQHĐ.bind(this, detaicb._id)}
+                      >
+                        <span>
+                          <BsPeople />
+                        </span>
+                        Cập nhật kết quả HĐXD
+                      </Dropdown.Item>
+                      <Dropdown.Item
                         onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                       >
                         <span>
@@ -157,7 +179,7 @@ const DeTaiDuyetCapKhoas = () => {
                       <Dropdown.Item>
                         <span>
                           <BsCheckLg />
-                        </span>{" "}
+                        </span>
                         Duyệt
                       </Dropdown.Item>
                       <Dropdown.Item>
@@ -169,7 +191,7 @@ const DeTaiDuyetCapKhoas = () => {
                       <Dropdown.Item>
                         <span>
                           <BsReplyFill />
-                        </span>{" "}
+                        </span>
                         Yêu cầu sửa
                       </Dropdown.Item>
                       <Dropdown.Item>
