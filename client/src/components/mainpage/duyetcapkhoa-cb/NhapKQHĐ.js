@@ -151,6 +151,7 @@ const NhapKQHĐKhoa = () => {
               <tbody>
               </tbody>
             </Table>
+            </div>
             <div>
               <h1>PHẦN ĐIỂM SỐ</h1>
               <div>
@@ -209,7 +210,6 @@ const NhapKQHĐKhoa = () => {
                 rows={5}
               />
             </Form.Group>
-          </div>
           <Form.Group className="mb-3">
             <Form.Label>Đính kèm</Form.Label>
             <Form.Control

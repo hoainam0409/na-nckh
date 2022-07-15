@@ -11,6 +11,7 @@ const SanPham = () => {
         <div className="sanpham">
           <div>
             <h3>Bài báo, báo cáo</h3>
+            <Button>Thêm mới</Button>
             <Table borderless bordered hover style={{ cursor: "pointer" }}>
               <thead>
                 <tr className="table-header">
@@ -21,13 +22,12 @@ const SanPham = () => {
                   <th>Chức năng</th>
                 </tr>
               </thead>
-              <Button>Thêm mới</Button>
               <tbody></tbody>
             </Table>
           </div>
           <div>
-            {" "}
             <h3>Sách, giáo trình khoa học</h3>
+            <Button>Thêm mới</Button>
             <Table borderless bordered hover style={{ cursor: "pointer" }}>
               <thead>
                 <tr className="table-header">
@@ -38,12 +38,12 @@ const SanPham = () => {
                   <th>Chức năng</th>
                 </tr>
               </thead>
-              <Button>Thêm mới</Button>
               <tbody></tbody>
             </Table>
           </div>
           <div>
             <h3>Sản phẩm khoa học khác</h3>
+            <Button>Thêm mới</Button>
             <Table borderless bordered hover style={{ cursor: "pointer" }}>
               <thead>
                 <tr className="table-header">
@@ -54,7 +54,6 @@ const SanPham = () => {
                   <th>Chức năng</th>
                 </tr>
               </thead>
-              <Button>Thêm mới</Button>
               <tbody></tbody>
             </Table>
           </div>
@@ -62,6 +61,7 @@ const SanPham = () => {
       </div>
       <div className="loaisanpham">
         <h2>Sản phẩm đào tạo </h2>
+        <Button>Thêm mới</Button>
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr className="table-header">
@@ -72,12 +72,12 @@ const SanPham = () => {
               <th>Chức năng</th>
             </tr>
           </thead>
-          <Button>Thêm mới</Button>
           <tbody></tbody>
         </Table>
       </div>
       <div className="loaisanpham">
         <h2>Sản phẩm ứng dụng </h2>
+        <Button>Thêm mới</Button>
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr className="table-header">
@@ -88,12 +88,12 @@ const SanPham = () => {
               <th>Chức năng</th>
             </tr>
           </thead>
-          <Button>Thêm mới</Button>
           <tbody></tbody>
         </Table>
       </div>
       <div className="loaisanpham">
         <h2>Sản phẩm khác</h2>
+        <Button>Thêm mới</Button>
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr className="table-header">
@@ -104,7 +104,6 @@ const SanPham = () => {
               <th>Chức năng</th>
             </tr>
           </thead>
-          <Button>Thêm mới</Button>
           <tbody></tbody>
         </Table>
       </div>

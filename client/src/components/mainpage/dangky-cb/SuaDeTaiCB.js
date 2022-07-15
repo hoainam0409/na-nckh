@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Table from "react-bootstrap/Table";
-import SanPham from './SanPham'
+import SanPham from "./SanPham";
 import { useContext, useState, useEffect } from "react";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
@@ -12,8 +12,7 @@ import { KhoaContext } from "../../../contexts/KhoaContext";
 import { LinhVucContext } from "../../../contexts/LinhVucContext";
 import { UserContext } from "../../../contexts/UserContext";
 import { VaiTroTGContext } from "../../../contexts/VaiTroTGContext";
-import Tabs from 'react-bootstrap/Tabs'
-
+import Tabs from "react-bootstrap/Tabs";
 
 const SuaDeTaiCB = () => {
   // Contexts
@@ -134,9 +133,7 @@ const SuaDeTaiCB = () => {
                 >
                   <option>Chọn đợt đăng ký đề tài</option>
                   {dotdangkys.map((dotdangky) => (
-                    <option key={dotdangky._id}>
-                      {dotdangky.tendot}
-                    </option>
+                    <option key={dotdangky._id}>{dotdangky.tendot}</option>
                   ))}
                 </Form.Select>
               </Form.Group>
@@ -214,9 +211,7 @@ const SuaDeTaiCB = () => {
                 >
                   <option>Chọn lĩnh vực nghiên cứu</option>
                   {linhvucs.map((linhvuc) => (
-                    <option key={linhvuc._id}>
-                      {linhvuc.ten}
-                    </option>
+                    <option key={linhvuc._id}>{linhvuc.ten}</option>
                   ))}
                 </Form.Select>
               </Form.Group>
@@ -232,9 +227,7 @@ const SuaDeTaiCB = () => {
                 >
                   <option>Chọn khoa xét duyệt đề tài</option>
                   {khoas.map((khoa) => (
-                    <option key={khoa._id}>
-                      {khoa.ten}
-                    </option>
+                    <option key={khoa._id}>{khoa.ten}</option>
                   ))}
                 </Form.Select>
               </Form.Group>
@@ -297,7 +290,7 @@ const SuaDeTaiCB = () => {
                     value={thanhvienthamgia.hovaten}
                     onChange={onChangeUser}
                   >
-                    <option >Chọn thành viên</option>
+                    <option>Chọn thành viên</option>
                     {users.map((user) => (
                       <option
                         key={user._id}
@@ -332,17 +325,15 @@ const SuaDeTaiCB = () => {
                     onChange={onChangeVaiTroThamGia}
                   >
                     <option value="">Chọn vai trò</option>
-                    {
-                      vaitroTGs.map((vaitroTG) => (
-                        <option
-                          key={vaitroTG._id}
-                          value={vaitroTG._id}
-                          name={vaitroTG.ten}
-                        >
-                          {vaitroTG.ten}
-                        </option>
-                      ))
-                    }
+                    {vaitroTGs.map((vaitroTG) => (
+                      <option
+                        key={vaitroTG._id}
+                        value={vaitroTG._id}
+                        name={vaitroTG.ten}
+                      >
+                        {vaitroTG.ten}
+                      </option>
+                    ))}
                   </Form.Select>
                 </Form.Group>
               </Col>
@@ -404,17 +395,15 @@ const SuaDeTaiCB = () => {
                     onChange={onChangeVaiTroThamGia}
                   >
                     <option value="">Chọn vai trò</option>
-                    {
-                      vaitroTGs.map((vaitroTG) => (
-                        <option
-                          key={vaitroTG._id}
-                          value={vaitroTG._id}
-                          name={vaitroTG.ten}
-                        >
-                          {vaitroTG.ten}
-                        </option>
-                      ))
-                    }
+                    {vaitroTGs.map((vaitroTG) => (
+                      <option
+                        key={vaitroTG._id}
+                        value={vaitroTG._id}
+                        name={vaitroTG.ten}
+                      >
+                        {vaitroTG.ten}
+                      </option>
+                    ))}
                   </Form.Select>
                 </Form.Group>
               </Col>
@@ -431,37 +420,40 @@ const SuaDeTaiCB = () => {
                 </Form.Group>
               </Col>
             </Row>
-            <Button style={{ backgroundColor: '#337AB7', borderColor: '#2d6da3', marginBottom: '20px' }}>Thêm mới</Button>
+            <Button
+              style={{
+                backgroundColor: "#337AB7",
+                borderColor: "#2d6da3",
+                marginBottom: "20px",
+              }}
+            >
+              Thêm mới
+            </Button>
           </div>
           <SanPham />
           <div>
             <h1>ĐỐI TÁC NCKH</h1>
-            <Button style={{ backgroundColor: '#337AB7', borderColor: '#2d6da3', marginBottom: '20px' }}>Thêm mới</Button>
+            <Button
+              style={{
+                backgroundColor: "#337AB7",
+                borderColor: "#2d6da3",
+                marginBottom: "20px",
+              }}
+            >
+              Thêm mới
+            </Button>
             <Table borderless bordered hover style={{ cursor: "pointer" }}>
-              <thead>
+              <thead className = "table-header">
                 <tr>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    STT
-                  </th>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    Tên đơn vị
-                  </th>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    Họ và tên đại diện
-                  </th>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    Nội dung phối hợp
-                  </th>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    Kinh phí hỗ trợ
-                  </th>
-                  <th style={{ textAlign: "center", color: "#495057" }}>
-                    Chức năng
-                  </th>
+                  <th>STT</th>
+                  <th>Tên đơn vị</th>
+                  <th>Họ và tên đại diện</th>
+                  <th>Nội dung phối hợp</th>
+                  <th>Kinh phí hỗ trợ</th>
+                  <th>Chức năng</th>
                 </tr>
               </thead>
-              <tbody>
-              </tbody>
+              <tbody></tbody>
             </Table>
           </div>
           <Form.Group className="mb-3">

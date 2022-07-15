@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
 import { useContext, useState, useEffect } from "react";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
-import { DotKiemTraTĐContext } from '../../../contexts/DotKiemTraTĐContext'
 import {BsCloudUploadFill} from 'react-icons/bs'
 
 const CapNhatThuyetMinh = () => {
@@ -33,7 +32,7 @@ const CapNhatThuyetMinh = () => {
       </Modal.Header>
       <Form >
         <Modal.Body>
-         <h1>Cập nhật thuyết minh đề tài {tendetai}</h1>
+         <h1 >Cập nhật thuyết minh đề tài "{detaicb.tendetai}"</h1>
          <div>
          <h1 style={{float: 'left'}}>Danh sách tài liệu</h1>
           <Button style={{float: 'right'}}><BsCloudUploadFill/></Button>
@@ -50,7 +49,6 @@ const CapNhatThuyetMinh = () => {
             </tr>
           </thead>
           <tbody></tbody>
-
          </Table>
         </Modal.Body>
         <Modal.Footer>

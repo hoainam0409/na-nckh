@@ -2,6 +2,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
+import Table from "react-bootstrap/esm/Table";
 import Col from "react-bootstrap/Col";
 import { useContext, useState, useEffect } from "react";
 import { HoiDongContext } from "../../../contexts/HoiDongContext";
@@ -15,7 +16,7 @@ const NhapKQNTDeTaiCB = () => {
     updateDeTaiCB,
     setShowToast,
     showNhapKQNT,
-    setShowNhapKQNT
+    setShowNhapKQNT,
   } = useContext(DeTaiCBContext);
 
   const {
@@ -92,8 +93,7 @@ const NhapKQNTDeTaiCB = () => {
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Chủ tịch hội đồng</Form.Label>
-                <Form.Control
-                />
+                <Form.Control />
               </Form.Group>
             </Col>
           </Row>
@@ -101,8 +101,7 @@ const NhapKQNTDeTaiCB = () => {
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Ủy viên phản biện</Form.Label>
-                <Form.Control
-                />
+                <Form.Control />
               </Form.Group>
             </Col>
             <Col>
@@ -131,25 +130,9 @@ const NhapKQNTDeTaiCB = () => {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Chủ nhiệm đề tài</Form.Label>
-            <Form.Control
-            />
+            <Form.Control />
           </Form.Group>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Điểm trung bình cuối cùng</Form.Label>
-                <Form.Control
-                ></Form.Control>
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Kết luận chung</Form.Label>
-                <Form.Select > </Form.Select>
-              </Form.Group>
-            </Col>
-          </Row>
-          <div>
+          {/* <div>
             <h1>KẾT QUẢ NGHIỆM THU</h1>
             <Row>
               <Col>
@@ -192,7 +175,45 @@ const NhapKQNTDeTaiCB = () => {
                 </Form.Group>
               </Col>
             </Row>
+          </div> */}
+          <div>
+            <h1>DANH SÁCH THÀNH VIÊN HỘI ĐỒNG</h1>
+            <Table borderless bordered hover>
+              <thead>
+                <tr className="table-header">
+                  <th>STT</th>
+                  <th>Họ và tên</th>
+                  <th>CDKH</th>
+                  <th>Đơn vị</th>
+                  <th>Chức vụ</th>
+                  <th>Vai trò hội đồng</th>
+                  <th>Vắng</th>
+                  <th>Điểm</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </Table>
           </div>
+          <Row>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Điểm trung bình cuối cùng</Form.Label>
+                <Form.Control></Form.Control>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Kết luận</Form.Label>
+                <Form.Select>
+                  <option>Chọn</option>
+                  <option value="Xuất sắc">Xuất sắc</option>
+                  <option value="Tốt">Tốt</option>
+                  <option value="Khá">Khá</option>
+                  <option value="Trung bình">Trung bình</option>
+                </Form.Select>
+              </Form.Group>
+            </Col>
+          </Row>
           <Form.Group className="mb-3">
             <Form.Label>Đính kèm</Form.Label>
             <Form.Control
@@ -217,4 +238,4 @@ const NhapKQNTDeTaiCB = () => {
   );
 };
 
-export default NhapKQNTDeTaiCB ;
+export default NhapKQNTDeTaiCB;
