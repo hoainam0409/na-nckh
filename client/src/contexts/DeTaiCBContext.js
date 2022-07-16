@@ -30,7 +30,7 @@ const DeTaiCBContextProvider = ({ children }) => {
   const [showNhapKQNT, setShowNhapKQNT] = useState(false);
   const [showBaoCaoTienDo, setShowBaoCaoTienDo] = useState(false);
 
-  const [showThemSP, setShowThemSP] = useState(false);
+  // const [showThemSP, setShowThemSP] = useState(false);
 
 
   const [showToast, setShowToast] = useState({
@@ -170,7 +170,7 @@ const DeTaiCBContextProvider = ({ children }) => {
     setShowXemDeTaiCB,
     showCapNhatThuyetMinh,
     setShowCapNhatThuyetMinh,
-    showThemSP, setShowThemSP
+    // showThemSP, setShowThemSP
   };
 
   return (

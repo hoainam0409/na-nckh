@@ -12,6 +12,7 @@ import { LinhVucContext } from "../../../contexts/LinhVucContext";
 import { UserContext } from "../../../contexts/UserContext";
 import { VaiTroTGContext } from "../../../contexts/VaiTroTGContext";
 import SanPham from "./SanPham";
+import ThemDoiTac from "./ThemDoiTac";
 
 const ThemDeTaiCB = () => {
   //context
@@ -73,6 +74,7 @@ const ThemDeTaiCB = () => {
     trangthai: "Đăng ký",
     dinhkem: "",
   });
+  const [showThemDoiTac, setShowThemDoiTac] = useState(false);
 
   const {
     madetai,
@@ -470,7 +472,7 @@ const ThemDeTaiCB = () => {
           <SanPham />
           <div>
             <h1>ĐỐI TÁC NCKH</h1>
-            <Button
+            <Button onClick={() => setShowThemDoiTac(true)}
               style={{
                 backgroundColor: "#337AB7",
                 borderColor: "#2d6da3",
@@ -479,6 +481,8 @@ const ThemDeTaiCB = () => {
             >
               Thêm mới
             </Button>
+            <ThemDoiTac show={showThemDoiTac}
+              onHide={() => setShowThemDoiTac(false)} />
             <Table borderless bordered hover style={{ cursor: "pointer" }}>
               <thead>
                 <tr className="table-header">

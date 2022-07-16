@@ -154,6 +154,16 @@ import {FaCube} from 'react-icons/fa'
           title: 'Vai trò tham gia',
           path: '/danhmuc/vaitro-thamgia',
           icon: <FaCube style ={{color: 'black', height: '14px', width: '14px'}}/>
+        },
+        {
+          title: 'Loại sản phẩm ứng dụng',
+          path: '/danhmuc/loai-san-pham-ung-dung',
+          icon: <FaCube style ={{color: 'black', height: '14px', width: '14px'}}/>
+        },
+        {
+          title: 'Loại sản phẩm NCKH',
+          path: '/danhmuc/loai-san-pham-NCKH',
+          icon: <FaCube style ={{color: 'black', height: '14px', width: '14px'}}/>
         }
       ]
     },

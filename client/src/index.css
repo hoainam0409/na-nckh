@@ -39,7 +39,7 @@ body h1 {
   font-size: 24px
 }
 body .modal-dialog{
-  max-width: 1400px;
+  max-width: 1800px;
   top: 35px;
 }
  
@@ -84,7 +84,4 @@ body .chucnang{
 }
 body span{
   margin-right: 0.6rem;
-}
-.modal-2.modal-dialog{
-  max-width: 800px;
 }
