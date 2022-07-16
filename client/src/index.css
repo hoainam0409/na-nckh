@@ -85,3 +85,6 @@ body .chucnang{
 body span{
   margin-right: 0.6rem;
 }
+.modal-2.modal-dialog{
+  max-width: 800px;
+}

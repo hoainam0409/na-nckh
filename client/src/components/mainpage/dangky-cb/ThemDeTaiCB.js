@@ -294,7 +294,7 @@ const ThemDeTaiCB = () => {
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Form.Label>Kết quả dự kiến</Form.Label>
+            <Form.Label>Kết quả dự kiến và địa chỉ ứng dụng</Form.Label>
             <Form.Control
               as="textarea"
               rows={5}
@@ -470,6 +470,15 @@ const ThemDeTaiCB = () => {
           <SanPham />
           <div>
             <h1>ĐỐI TÁC NCKH</h1>
+            <Button
+              style={{
+                backgroundColor: "#337AB7",
+                borderColor: "#2d6da3",
+                marginBottom: "20px",
+              }}
+            >
+              Thêm mới
+            </Button>
             <Table borderless bordered hover style={{ cursor: "pointer" }}>
               <thead>
                 <tr className="table-header">
@@ -481,15 +490,6 @@ const ThemDeTaiCB = () => {
                   <th>Chức năng</th>
                 </tr>
               </thead>
-              <Button
-              style={{
-                backgroundColor: "#337AB7",
-                borderColor: "#2d6da3",
-                marginBottom: "20px",
-              }}
-            >
-              Thêm mới
-            </Button>
               <tbody></tbody>
             </Table>
           </div>

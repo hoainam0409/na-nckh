@@ -1,17 +1,26 @@
-import React from "react";
+import React, {useContext} from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
+import ThemSP from "./ThemSP";
+
 
 const SanPham = () => {
+
+//context
+ const {setShowThemSP } =
+ useContext(DeTaiCBContext);
+
   return (
     <div>
+      <ThemSP/>
       <h1>SẢN PHẨM VÀ ỨNG DỤNG</h1>
       <div className="loaisanpham">
         <h2>Sản phẩm khoa học </h2>
         <div className="sanpham">
           <div>
             <h3>Bài báo, báo cáo</h3>
-            <Button>Thêm mới</Button>
+            <Button onClick={setShowThemSP.bind(true)}>Thêm mới</Button>
             <Table borderless bordered hover style={{ cursor: "pointer" }}>
               <thead>
                 <tr className="table-header">
