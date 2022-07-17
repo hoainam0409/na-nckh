@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState} from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -23,9 +23,9 @@ function ThemSP(props) {
   return (
     <Modal
       {...props}
-      size="sm"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
+      // size="sm"
+      // aria-labelledby="contained-modal-title-vcenter"
+      // centered
     >
       <Modal.Header closeButton>
         <Modal.Title>Thêm mới sản phẩm</Modal.Title>

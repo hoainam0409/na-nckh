@@ -35,6 +35,12 @@ import {FaCube} from 'react-icons/fa'
           cName: 'sub-nav'
         },
         {
+          title: 'Đề tài đã gửi duyệt',
+          path: '/detai-canbo/tat-ca-de-tai',
+          icon: <FaCube style ={{color: 'black', height: '14px', width: '14px'}}/>,
+          cName: 'sub-nav'
+        },
+        {
           title: 'Đề tài chờ duyệt cấp khoa',
           path: '/detai-canbo/cho-duyet-cap-khoa',
           icon: <FaCube style ={{color: 'black', height: '14px', width: '14px'}}/>,

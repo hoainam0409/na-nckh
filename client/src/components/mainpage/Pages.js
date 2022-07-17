@@ -11,6 +11,7 @@ import DanhSachDeTaiSV from './dangky-sv/DanhSachDeTaiSV'
 import DeTaiSVXacNhan from './detaisv-xacnhan/DeTaiSVXacNhan'
 import DeTaiSVChoDuyet from './detaisv-choduyet/DeTaiSVChoDuyet'
 import DanhSachDeTaiCB from './dangky-cb/DanhSachDeTaiCB'
+import DanhSachDeTaiCBAll from './detaicb-tatca/DanhSachDeTaiCB'
 import DanhSachLinhVuc from './dm-linhvuc/DanhSachLinhVuc'
 import DanhSachVaiTroTG from './dm- vaitroTG/DanhSachVaiTroTG'
 import DanhSachUser from './quanly-nguoidung/DanhSachUser'
@@ -41,6 +42,7 @@ function Pages() {
         <Route exact path="/detai-sinhvien/cho-xac-nhan" element={<DeTaiSVXacNhan/>}></Route>
         <Route exact path="/detai-sinhvien/cho-duyet" element={<DeTaiSVChoDuyet/>}></Route>
         <Route exact path="/detai-canbo/dangky" element={<DanhSachDeTaiCB/>}></Route>
+        <Route exact path="/detai-canbo/tat-ca-de-tai" element={<DanhSachDeTaiCBAll/>}></Route>
         <Route exact path="/user" element={<DanhSachUser/>}></Route>
         <Route exact path="/detai-canbo/cho-duyet-cap-khoa" element={<DeTaiChoDuyetKhoa/>}></Route>
         <Route exact path="/detai-canbo/nhap-ket-qua-danh-gia" element={<DeTaiNhapKQĐG/>}></Route>
