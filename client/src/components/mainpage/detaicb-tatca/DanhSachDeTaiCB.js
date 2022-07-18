@@ -176,50 +176,11 @@ const DeTaiCBs = () => {
                       </ReactTooltip>
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      <Dropdown.Item
-                        onClick={() => selectDeTaiCB(this, detaicb._id)}
-                      >
-                        <span>
-                          <BsCursorFill />
-                        </span>
-                        Gửi duyệt
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={chooseDeTaiCB.bind(this, detaicb._id)}
-                      >
-                        <span>
-                          <BsPencilSquare />
-                        </span>
-                        Sửa
-                      </Dropdown.Item>
-                      <Dropdown.Item onClick={() => deleteDeTaiCB(detaicb._id)}>
-                        <span>
-                          <BsTrashFill />
-                        </span>
-                        Xóa
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={CapNhatThuyetMinhDeTaiCB.bind(
-                          this,
-                          detaicb._id
-                        )}
-                      >
-                        <span>
-                          <BsFileEarmarkFill />
-                        </span>
-                        Cập nhật thuyết minh
-                      </Dropdown.Item>
-                      <Dropdown.Item>
-                        <span>
-                          <BiHistory />
-                        </span>
-                        Xem quá trình xử lý
-                      </Dropdown.Item>
                       <Dropdown.Item>
                         <span>
                           <BsFileEarmarkWord />
                         </span>
-                        In thuyết minh
+                        Thuyết minh đề tài
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>

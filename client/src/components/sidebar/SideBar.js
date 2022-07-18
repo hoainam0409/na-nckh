@@ -90,7 +90,7 @@ const NavAvatar = styled.div`
 `;
 const SidebarNav = styled.nav`
   background: #ffff;
-  width: 310px;
+  width: 330px;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -173,7 +173,6 @@ const Sidebar = () => {
                     />
                   </NavAvatar>
                 </Dropdown.Toggle>
-
                 <Dropdown.Menu>
                   <Dropdown.Item href="#">Thông tin cá nhân</Dropdown.Item>
                   <Dropdown.Item href="/login" onClick={logout}>

@@ -15,6 +15,8 @@ import {
   BsCursorFill,
   BsFileEarmarkWord,
   BsFileEarmarkFill,
+  BsCardChecklist,
+  BsClock
 } from "react-icons/bs";
 import { BiHistory } from 'react-icons/bi'
 import Form from "react-bootstrap/Form";
@@ -23,6 +25,9 @@ import Col from "react-bootstrap/Col";
 import Dropdown from "react-bootstrap/Dropdown";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import CapNhatThuyetMinh from "./CapNhatThuyetMinh";
+import BaoCaoTienDo from "../baocaotiendo-cb/BaoCaoTienDo";
+import XemDeTai from "../duyetcapkhoa-cb/XemChiTiet";
+
 
 const DeTaiCBs = () => {
   const {
@@ -36,7 +41,9 @@ const DeTaiCBs = () => {
     setShowSuaDeTaiCB,
     trangThai,
     updateTrangThai,
-    setShowCapNhatThuyetMinh
+    setShowXemDeTaiCB,
+    setShowCapNhatThuyetMinh,
+    setShowBaoCaoTienDo,
   } = useContext(DeTaiCBContext);
 
   // Start: Get all
@@ -50,16 +57,26 @@ const DeTaiCBs = () => {
     findDeTaiCB(detaicbId);
     updateTrangThai("Chờ duyệt cấp khoa");
   };
+  const XemDeTaiCB = (detaicbId) => {
+    findDeTaiCB(detaicbId);
+    setShowXemDeTaiCB(true);
+  };
   const CapNhatThuyetMinhDeTaiCB = (detaicbId) => {
     findDeTaiCB(detaicbId);
     setShowCapNhatThuyetMinh(true);
+  };
+  const BaoCaoTienDoDeTaiCB = (detaicbId) => {
+    findDeTaiCB(detaicbId);
+    setShowBaoCaoTienDo(true);
   };
   return (
     <div>
       <SideBar />
       <ThemDeTaiCB />
+      {detaicb !== null && <XemDeTai />}
       {detaicb !== null && <SuaDeTaiCB />}
       {detaicb !== null && <CapNhatThuyetMinh />}
+      {detaicb !== null && <BaoCaoTienDo />}
       <div className="style-mainpage">
         <div>
           <h1 style={{ fontSize: "24px" }}>Danh sách đăng ký đề tài</h1>
@@ -141,13 +158,13 @@ const DeTaiCBs = () => {
                     <div key={q._id}>- {q.hovaten}</div>
                   ))}
                 </td>
-                <td><NumberFormat value={detaicb.kinhphi} displayType={'text'} thousandSeparator={true}/></td>
+                <td><NumberFormat value={detaicb.kinhphi} displayType={'text'} thousandSeparator={true} /></td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Dropdown as={ButtonGroup}>
                     <Button
                       style={{ backgroundColor: "#337AB7" }}
-                      onClick={chooseDeTaiCB.bind(this, detaicb._id)}>
+                      onClick={XemDeTaiCB.bind(this, detaicb._id)}>
                       <span><BsFillEyeFill /></span>
                       Xem
                     </Button>
@@ -178,17 +195,25 @@ const DeTaiCBs = () => {
                         <span><BsTrashFill /></span>
                         Xóa
                       </Dropdown.Item>
+                      <Dropdown.Item>
+                        <span><BiHistory /></span>
+                        Xem quá trình xử lý
+                      </Dropdown.Item>
                       <Dropdown.Item onClick={CapNhatThuyetMinhDeTaiCB.bind(this, detaicb._id)}>
                         <span><BsFileEarmarkFill /></span>
                         Cập nhật thuyết minh
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <span><BiHistory /></span>
-                        Xem quá trình xử lý
+                        <span><BsFileEarmarkWord /></span>
+                        Thuyết minh đề tài
+                      </Dropdown.Item>
+                      <Dropdown.Item onClick={BaoCaoTienDoDeTaiCB.bind(this, detaicb._id)}>
+                        <span><BsCardChecklist /></span>
+                        Báo cáo tiến độ thực hiện
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <span><BsFileEarmarkWord /></span>
-                        In thuyết minh
+                        <span><BsClock /></span>
+                        Gia hạn đề tài
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
