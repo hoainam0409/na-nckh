@@ -16,6 +16,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
+import NumberFormat from 'react-number-format';
 import Dropdown from "react-bootstrap/Dropdown";
 
 const DeTaiNhapKQNTs = () => {
@@ -121,7 +122,7 @@ const DeTaiNhapKQNTs = () => {
                     <div key={q._id}>- {q.hovaten}</div>
                   ))}
                 </td>
-                <td>{detaicb.kinhphi}</td>
+                <td><NumberFormat value={detaicb.kinhphi} displayType={'text'} thousandSeparator={true}/></td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Dropdown as={ButtonGroup}>

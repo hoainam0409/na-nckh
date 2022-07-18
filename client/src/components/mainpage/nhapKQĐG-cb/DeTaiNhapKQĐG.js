@@ -6,6 +6,7 @@ import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import SideBar from "../../sidebar/SideBar";
 import NhapKQĐGDeTai from "./NhapKQĐGDeTaiCB";
 import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
+import NumberFormat from 'react-number-format';
 import ReactTooltip from "react-tooltip";
 import {
   BsFillEyeFill,
@@ -120,7 +121,7 @@ const DeTaiNhapKQDGs = () => {
                     <div key={q._id}>- {q.hovaten}</div>
                   ))}
                 </td>
-                <td>{detaicb.kinhphi}</td>
+                <td><NumberFormat value={detaicb.kinhphi} displayType={'text'} thousandSeparator={true}/></td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Dropdown as={ButtonGroup}>

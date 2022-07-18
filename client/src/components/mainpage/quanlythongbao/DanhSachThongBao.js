@@ -94,15 +94,14 @@ const Thongbaochungs = () => {
                       <BsFillEyeFill />
                     </Button>
                     <Button
-                      style={{
-                        backgroundColor: "#5bc0de",
-                      }}
+                      variant="info"
                       onClick={chooseThongBaoChung.bind(
                         this,
                         thongbaochung._id
                       )}
                       data-tip
                       data-for="Sửa"
+                      style={{color: 'white'}}
                     >
                       <ReactTooltip id="Sửa" place="top" effect="solid">
                         Sửa
