@@ -21,4 +21,4 @@ const CapDeTaiSchema = new Schema({
     enum: ['Cán bộ', 'Sinh viên']
   }
 });
-module.exports = mongoose.model("capdetai", CapDeTaiSchema);
+module.exports = mongoose.model("dm_capdetai", CapDeTaiSchema);

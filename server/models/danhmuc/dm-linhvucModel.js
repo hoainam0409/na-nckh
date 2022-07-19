@@ -14,4 +14,4 @@ const LinhVucSchema = new Schema({
     },
    
 })
-module.exports = mongoose.model('linhvuc', LinhVucSchema)
+module.exports = mongoose.model('dm_linhvuc', LinhVucSchema)

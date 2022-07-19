@@ -14,4 +14,4 @@ const ChucVuSchema = new Schema({
     },
    
 })
-module.exports = mongoose.model('chucvu', ChucVuSchema)
+module.exports = mongoose.model('dm_chucvu', ChucVuSchema)

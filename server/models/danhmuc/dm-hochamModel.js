@@ -14,4 +14,4 @@ const HocHamSchema = new Schema({
     },
    
 })
-module.exports = mongoose.model('hocham', HocHamSchema)
+module.exports = mongoose.model('dm_hocham', HocHamSchema)
