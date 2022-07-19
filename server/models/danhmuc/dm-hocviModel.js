@@ -14,4 +14,4 @@ const HocViSchema = new Schema({
     },
    
 })
-module.exports = mongoose.model('hocvi', HocViSchema)
+module.exports = mongoose.model('dm_hocvi', HocViSchema)

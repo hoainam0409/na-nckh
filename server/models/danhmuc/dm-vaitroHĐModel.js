@@ -11,4 +11,4 @@ const VaiTroHĐSchema = new Schema({
     required: true,
   },
 });
-module.exports = mongoose.model("vaitrohoidong", VaiTroHĐSchema);
+module.exports = mongoose.model("dm_vaitrohoidong", VaiTroHĐSchema);

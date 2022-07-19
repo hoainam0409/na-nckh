@@ -14,4 +14,4 @@ const PhongBanSchema = new Schema({
     },
    
 })
-module.exports = mongoose.model('phongban', PhongBanSchema)
+module.exports = mongoose.model('dm_phongban', PhongBanSchema)

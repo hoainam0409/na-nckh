@@ -12,4 +12,4 @@ const VaiTroTGSchema = new Schema({
   },
   capdetai: {type: String}
 });
-module.exports = mongoose.model("vaitrothamgia", VaiTroTGSchema);
+module.exports = mongoose.model("dm_vaitrothamgia", VaiTroTGSchema);

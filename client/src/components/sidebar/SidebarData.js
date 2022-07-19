@@ -57,25 +57,26 @@ import {FaCube} from 'react-icons/fa'
           icon: <FaCube style ={{color: 'black', height: '14px', width: '14px'}}/>
         },
         {
-          title: 'Đợt kiểm tra tiến độ thực hiện  ',
-          path: '/detai-canbo/dot-kiem-tra-tien-do',
-          icon: <FaCube style ={{color: 'black', height: '14px', width: '14px'}}/>
-        },
-        {
-          title: 'Báo cáo tiến độ thực hiện ',
-          path: '/detai-canbo/bao-cao-tien-do',
-          icon: <FaCube style ={{color: 'black', height: '14px', width: '14px'}}/>
-        },
-        {
-          title: 'Duyệt báo cáo tiến độ',
-          path: '/detai-canbo/duyet-bao-cao-tien-do',
+          title: 'Đề tài chờ duyệt nghiệm thu  ',
+          path: '/detai-canbo/duyet-nghiem-thu',
           icon: <FaCube style ={{color: 'black', height: '14px', width: '14px'}}/>
         },
         {
           title: 'Nhập kết quả nghiệm thu',
           path: '/detai-canbo/nhap-ket-qua-nghiem-thu',
           icon: <FaCube style ={{color: 'black', height: '14px', width: '14px'}}/>
-        }
+        },
+        {
+          title: 'Đề tài gia hạn ',
+          path: '/detai-canbo/duyet-gia-han',
+          icon: <FaCube style ={{color: 'black', height: '14px', width: '14px'}}/>
+        },
+        {
+          title: 'Thanh lý đề tài',
+          path: '/detai-canbo/duyet-thanh-ly',
+          icon: <FaCube style ={{color: 'black', height: '14px', width: '14px'}}/>
+        },
+       
       ]
     },
     {
@@ -110,6 +111,16 @@ import {FaCube} from 'react-icons/fa'
       ]
     },
     {
+      title: 'Đợt kiểm tra tiến độ thực hiện  ',
+      path: '/detai-canbo/dot-kiem-tra-tien-do',
+      icon: <FaCube style ={{color: 'black', height: '14px', width: '14px'}}/>
+    },
+    {
+      title: 'Duyệt báo cáo tiến độ',
+      path: '/detai-canbo/duyet-bao-cao-tien-do',
+      icon: <FaCube style ={{color: 'black', height: '14px', width: '14px'}}/>
+    },
+    {
       title: 'Quản lý hội đồng khoa học',
       path: '',
       icon: <FaCube style ={{color: 'black'}}/>,
@@ -134,7 +145,7 @@ import {FaCube} from 'react-icons/fa'
       icon: <FaCube style ={{color: 'black'}}/>,
     },
     {
-      title: 'Quản lý danh mục',
+      title: 'Quản lý danh mục NCKH',
       path: '',
       icon: <FaCube style ={{color: 'black'}}/>,
       iconClosed: <RiIcons.RiArrowDownSFill style ={{color: 'black'}}/>,

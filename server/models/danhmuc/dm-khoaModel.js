@@ -14,4 +14,4 @@ const KhoaSchema = new Schema({
     },
    
 })
-module.exports = mongoose.model('khoa', KhoaSchema)
+module.exports = mongoose.model('dm_khoa', KhoaSchema)

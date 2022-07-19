@@ -13,4 +13,4 @@ const LoaiHĐSchema = new Schema({
     required: true,
   },
 });
-module.exports = mongoose.model("loaiHĐ", LoaiHĐSchema);
+module.exports = mongoose.model("dm_loaiHĐ", LoaiHĐSchema);
