@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect} from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
@@ -27,6 +27,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import CapNhatThuyetMinh from "./CapNhatThuyetMinh";
 import BaoCaoTienDo from "../baocaotiendo-cb/BaoCaoTienDo";
 import XemDeTai from "../duyetcapkhoa-cb/XemChiTiet";
+import GiaHanDeTai from './GiaHanDeTai'
 
 
 const DeTaiCBs = () => {
@@ -44,6 +45,7 @@ const DeTaiCBs = () => {
     setShowXemDeTaiCB,
     setShowCapNhatThuyetMinh,
     setShowBaoCaoTienDo,
+    setShowGiaHanDeTai
   } = useContext(DeTaiCBContext);
 
   // Start: Get all
@@ -69,6 +71,10 @@ const DeTaiCBs = () => {
     findDeTaiCB(detaicbId);
     setShowBaoCaoTienDo(true);
   };
+  const GiaHanDeTaiCB = (detaicbId) => {
+    findDeTaiCB(detaicbId);
+    setShowGiaHanDeTai(true);
+  };
   return (
     <div>
       <SideBar />
@@ -77,6 +83,7 @@ const DeTaiCBs = () => {
       {detaicb !== null && <SuaDeTaiCB />}
       {detaicb !== null && <CapNhatThuyetMinh />}
       {detaicb !== null && <BaoCaoTienDo />}
+      {detaicb !== null && <GiaHanDeTai/>}
       <div className="style-mainpage">
         <div>
           <h1 style={{ fontSize: "24px" }}>Danh sách đăng ký đề tài</h1>
@@ -211,7 +218,7 @@ const DeTaiCBs = () => {
                         <span><BsCardChecklist /></span>
                         Báo cáo tiến độ thực hiện
                       </Dropdown.Item>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={GiaHanDeTaiCB.bind(this, detaicb._id)}>
                         <span><BsClock /></span>
                         Gia hạn đề tài
                       </Dropdown.Item>
