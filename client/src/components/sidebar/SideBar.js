@@ -12,8 +12,10 @@ import {
   BsFillQuestionCircleFill,
   BsBell,
   BsGridFill,
+  BsSearch
 } from "react-icons/bs";
 // import TopLogo from "../../assets/images/logo/logo.png";
+import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -66,14 +68,20 @@ const TopBarRight2 = styled.div`
   display: flex;
   width: 45%;
 `;
-const NavSearch = styled.li`
+const NavSearch = styled.div`
   list-style-type: none;
+  height: 35px;
+  display: flex;
 `;
 const InputSearch = styled.input`
-  height: 35px;
   font-size: 15px;
   width: 300px;
 `;
+const ButtonSearch = styled.div`
+width: 35px;
+background-color: #ffff ;
+margin: 1px 0 1px 0;
+`
 const NavProfile = styled.div`
   height: 46px;
   align-items: center;
@@ -145,6 +153,20 @@ const Sidebar = () => {
           <TopBarRight2>
             <NavSearch>
               <InputSearch placeholder="Nhập từ khoa tìm kiếm" />
+              <ButtonSearch>
+                <BsSearch style={{color: '#000', height: '20px', width: '20px', marginLeft: '8px'}}/>
+              </ButtonSearch>
+              <Dropdown>
+                <Dropdown.Toggle style={{backgroundColor: 'white', color: '#000', margin: '0', borderRadius: '0', height: '35px'}} id="dropdown-basic">Tìm kiếm nâng cao
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                <Form.Group className="mb-3">
+                <Form.Control
+                />
+              </Form.Group>
+                </Dropdown.Menu>
+              </Dropdown>
             </NavSearch>
             <BsGridFill
               style={{ width: "24px", height: "24px", margin: "15px" }}
