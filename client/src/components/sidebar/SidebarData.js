@@ -113,12 +113,12 @@ export const SidebarData =
   {
     title: 'Đợt kiểm tra tiến độ thực hiện  ',
     path: '/detai-canbo/dot-kiem-tra-tien-do',
-    icon: <FaCube style={{ color: 'black', height: '14px', width: '14px' }} />
+    icon: <FaCube style={{ color: 'black'}} />
   },
   {
     title: 'Duyệt báo cáo tiến độ',
     path: '/detai-canbo/duyet-bao-cao-tien-do',
-    icon: <FaCube style={{ color: 'black', height: '14px', width: '14px' }} />
+    icon: <FaCube style={{ color: 'black'}} />
   },
   {
     title: 'Quản lý hội đồng khoa học',
