@@ -102,14 +102,6 @@ const ThemDeTaiCB = () => {
       [event.target.name]: event.target.value,
     });
 
-    const onChangeDotDangKy = (event) => {
-      const dotdangkySelected = dotdangkys.find((q) => q._id === event.target.value);
-      setNewDeTaiCB({
-        ...newDeTaiCB,
-        [event.target.name]: dotdangkySelected,
-      });
-    };
-  
   const onChangeUser = (event) => {
     const userSelected = users.find((q) => q._id === event.target.value);
     setNewDeTaiCB({
@@ -173,7 +165,7 @@ const ThemDeTaiCB = () => {
                 <Form.Select
                   value={dotdangky}
                   name="dotdangky"
-                  onChange={onChangeDotDangKy}
+                  onChange={onChangeInput}
                   aria-label="Default select example"
                 >
                   <option>Chọn đợt đăng ký đề tài</option>
@@ -304,7 +296,7 @@ const ThemDeTaiCB = () => {
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Form.Label>Kết quả dự kiến và địa chỉ ứng dụng</Form.Label>
+            <Form.Label>Kết quả dự kiến và địa chỉ ứng dung</Form.Label>
             <Form.Control
               as="textarea"
               rows={5}
