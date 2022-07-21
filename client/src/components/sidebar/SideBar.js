@@ -169,11 +169,11 @@ const Sidebar = () => {
               </Dropdown>
             </NavSearch>
             <BsGridFill
-              style={{ width: "24px", height: "24px", margin: "15px" }}
+              style={{ width: "24px", height: "24px", margin: "10px" }}
             />
             <BsBell style={{ width: "24px", height: "24px", margin: "10px" }} />
             <BsFillQuestionCircleFill
-              style={{ width: "24px", height: "24px", margin: "15px" }}
+              style={{ width: "24px", height: "24px", margin: "10px" }}
             />
             <NavProfile>
               <Dropdown>
@@ -196,7 +196,7 @@ const Sidebar = () => {
                   </NavAvatar>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#">Thông tin cá nhân</Dropdown.Item>
+                  <Dropdown.Item href="/nckh/thongtin-canhan">Thông tin cá nhân</Dropdown.Item>
                   <Dropdown.Item href="/login" onClick={logout}>
                     Đăng xuất
                   </Dropdown.Item>
