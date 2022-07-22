@@ -24,6 +24,7 @@ export const DETAICB_LOADED_FAIL = 'DETAICB_LOADED_FAIL'
 export const DETAICB_ADD = 'DETAICB_ADD'
 export const DELETE_DETAICB = 'DELETE_DETAICB'
 export const UPDATE_DETAICB = 'UPDATE_DETAICB'
+export const UPDATE_TRANGTHAI = 'UPDATE_TRANGTHAI'
 export const FIND_DETAICB = 'FIND_DETAICB'
 
 //Đăng ký đề tài sinh viên

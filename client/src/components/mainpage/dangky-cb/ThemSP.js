@@ -23,9 +23,6 @@ function ThemSP(props) {
   return (
     <Modal
       {...props}
-      // size="sm"
-      // aria-labelledby="contained-modal-title-vcenter"
-      // centered
     >
       <Modal.Header closeButton>
         <Modal.Title>Thêm mới sản phẩm</Modal.Title>

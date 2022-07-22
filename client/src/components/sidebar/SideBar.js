@@ -198,9 +198,13 @@ const Sidebar = () => {
                   </NavAvatar>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
+<<<<<<< HEAD
                   <Dropdown.Item href="#">
                     <span><BsPersonLinesFill style={{ color: 'black' }} /></span>
                     Thông tin cá nhân</Dropdown.Item>
+=======
+                  <Dropdown.Item href="/nckh/thongtin-canhan">Thông tin cá nhân</Dropdown.Item>
+>>>>>>> 0710bb6746166e1c35c83b7d920ee57c42f02e65
                   <Dropdown.Item href="/login" onClick={logout}>
                     <span><BsBoxArrowRight style={{ color: 'black' }} /></span>
                     Đăng xuất

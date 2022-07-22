@@ -297,7 +297,7 @@ const ThemDeTaiCB = () => {
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Form.Label>Kết quả dự kiến và địa chỉ ứng dụng</Form.Label>
+            <Form.Label>Kết quả dự kiến và địa chỉ ứng dung</Form.Label>
             <Form.Control
               as="textarea"
               rows={5}

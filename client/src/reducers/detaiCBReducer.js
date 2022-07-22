@@ -5,6 +5,7 @@ import {
     DELETE_DETAICB,
     FIND_DETAICB,
     UPDATE_DETAICB,
+    UPDATE_TRANGTHAI,
   } from "../contexts/constant";
   
   export const detaiCBReducer = (state, action) => {
@@ -45,6 +46,14 @@ import {
           ...state,
           detaicbs: newdetaicbs,
         };
+        // case UPDATE_TRANGTHAI:
+        //   const newtrangthai = state.detaicbs.map((detaicb) =>
+        //   detaicb._id === payload._id ? payload : detaicb
+        //   );
+        //   return {
+        //     ...state,
+        //     detaicbs: newdetaicbs,
+        //   };
       default:
         return state;
     }
