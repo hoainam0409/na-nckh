@@ -67,8 +67,8 @@ const LoaiSPs = () => {
             <tr className="table-header">
               <th>Mã</th>
               <th>Tên</th>
-              <th>Cấp đề tài</th>
               <th>Loại sản phẩm ứng dụng</th>
+              <th>Cấp đề tài</th>
               <th>Chức năng</th>
             </tr>
           </thead>
@@ -77,8 +77,8 @@ const LoaiSPs = () => {
               <tr key={loaisanpham._id}>
                 <td>{loaisanpham.ma}</td>
                 <td>{loaisanpham.ten}</td>
-                <td></td>
-                <td>{loaisanpham.sanphamungdung} </td>
+                <td>{loaisanpham.sanphamUD}</td>
+                <td>{loaisanpham.capdetai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Button
                     variant="primary"

@@ -12,8 +12,7 @@ const LoaiSanPhamSchema = new Schema({
     type: String,
     required: true,
   },
-  sanphamUD: {
-    type: String
-  }
+  capdetai: {type: String},
+  sanphamUD: {type: String}
 });
-module.exports = mongoose.model("dm_loáianpham", LoaiSanPhamSchema);
+module.exports = mongoose.model("dm_loaisanpham", LoaiSanPhamSchema);

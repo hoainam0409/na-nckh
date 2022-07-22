@@ -67,6 +67,7 @@ const SanPhamUDs = () => {
             <tr className="table-header">
               <th>Mã</th>
               <th>Tên</th>
+              <th>Cấp đề tài</th>
               <th>Chức năng</th>
             </tr>
           </thead>
@@ -75,6 +76,7 @@ const SanPhamUDs = () => {
               <tr key={sanphamUD._id}>
                 <td>{sanphamUD.ma}</td>
                 <td>{sanphamUD.ten} </td>
+                <td>{sanphamUD.capdetai} </td>
                 <td style={{ textAlign: "center" }}>
                   <Button
                     variant="primary"

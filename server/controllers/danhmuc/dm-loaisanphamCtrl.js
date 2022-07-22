@@ -13,14 +13,15 @@ const loaisanphamCtrl = {
 
   addLoaiSanPham: async (req, res) => {
     try {
-      const { ma, ten, samphamUD} = req.body;
+      const { ma, ten, capdetai, sanphamUD} = req.body;
       const loaisanpham = await LoaiSanPham.findOne({ ma })
-      if (loaisanpham) return res.status(400).json({success: false,  message: "Mã cấp đề tài đã tồn tại." })
+      if (loaisanpham) return res.status(400).json({success: false,  message: "Mã đã tồn tại." })
 
       const newLoaiSanPham = new LoaiSanPham({
         ma,
         ten,
-        samphamUD
+        capdetai,
+        sanphamUD
       });
       await newLoaiSanPham.save();
       res.json({
@@ -33,7 +34,7 @@ const loaisanphamCtrl = {
     }
   },
   updateLoaiSanPham: async (req, res) => {
-    const { ma, ten, samphamUD} = req.body;
+    const { ma, ten, capdetai, sanphamUD} = req.body;
     // Simple validation
     if (!ma || !ten)
       return res.status(400).json({
@@ -44,7 +45,8 @@ const loaisanphamCtrl = {
       let updatedLoaiSanPham = {
         ma,
         ten,
-        samphamUD
+        capdetai,
+        sanphamUD
       };
       //Điều kiện để chỉnh sửa thông báo
       // const UpdateCondition = { _id: req.params.id, user: req.userId }

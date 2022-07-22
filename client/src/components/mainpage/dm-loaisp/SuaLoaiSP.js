@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import { useContext, useState, useEffect } from "react";
 import { SanPhamUDContext } from "../../../contexts/SanPhamUDContext";
 import { LoaiSPContext } from "../../../contexts/LoaiSPContext";
+import { CapDeTaiContext } from "../../../contexts/CapDeTaiContext";
 
 const SuaLoaiSP = () => {
   // Contexts
@@ -17,8 +18,12 @@ const SuaLoaiSP = () => {
     setShowToast,
   } = useContext(LoaiSPContext);
 
-  const { sanphamUDSate: { sanphamUDs}, getSanPhamUDs  } = useContext(SanPhamUDContext)
+  const { sanphamUDState: { sanphamUDs}, getSanPhamUDs  } = useContext(SanPhamUDContext)
   useEffect(() => getSanPhamUDs(), [])
+
+  const { capdetaiState: { capdetais }, getCapDeTais } = useContext(CapDeTaiContext)
+  useEffect(() => getCapDeTais(), [])
+
 
   // State
   const [updatedLoaiSP, setUpdatedLoaiSP] =
@@ -26,7 +31,7 @@ const SuaLoaiSP = () => {
 
   useEffect(() => setUpdatedLoaiSP(loaisanpham), []);
 
-  const { ma, ten, sanphamUD } =
+  const { ma, ten, capdetai, sanphamUD } =
     updatedLoaiSP;
 
   const onChangeUpdated = (event) =>
@@ -99,7 +104,20 @@ const SuaLoaiSP = () => {
                 </Form.Select>
               </Form.Group>
             </Col>
-            <Col></Col>
+            <Col>
+            <Form.Group className="mb-3">
+                <Form.Label>Cấp đề tài</Form.Label>
+                <Form.Select
+                  value={capdetai}
+                  name="capdetai"
+                  onChange={onChangeUpdated}
+                >
+                  <option> Chọn </option>
+                  {capdetais.map((capdetai) => (
+                    <option key={capdetai._id}>{capdetai.ten}</option>
+                  ))}
+                </Form.Select>
+              </Form.Group></Col>
           </Row>
 
         </Modal.Body>

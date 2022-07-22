@@ -6,23 +6,29 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { LoaiSPContext } from "../../../contexts/LoaiSPContext";
 import { SanPhamUDContext } from "../../../contexts/SanPhamUDContext";
+import { CapDeTaiContext } from "../../../contexts/CapDeTaiContext";
 
 const ThemLoaiSP = () => {
   //context
   const { showThemLoaiSP, setShowThemLoaiSP, addLoaiSP, setShowToast } =
     useContext(LoaiSPContext);
 
-  const { sanphamUDState: { sanphamUDs }, getSanPhamUDs} = useContext(SanPhamUDContext)
+  const { sanphamUDState: { sanphamUDs }, getSanPhamUDs } = useContext(SanPhamUDContext)
   useEffect(() => getSanPhamUDs(), [])
+
+  const { capdetaiState: { capdetais }, getCapDeTais } = useContext(CapDeTaiContext)
+  useEffect(() => getCapDeTais(), [])
+
 
   //State
   const [newLoaiSP, setNewLoaiSP] = useState({
     ma: "",
     ten: "",
+    capdetai: "",
     sanphamUD: ""
 
   });
-  const { ma, ten, sanphamUD } =
+  const { ma, ten, capdetai, sanphamUD } =
     newLoaiSP;
 
   const onChangeInput = (event) =>
@@ -36,6 +42,7 @@ const ThemLoaiSP = () => {
     setNewLoaiSP({
       ma: "",
       ten: "",
+      capdetai: "",
       sanphamUD: ""
     });
     setShowThemLoaiSP(false);
@@ -103,7 +110,23 @@ const ThemLoaiSP = () => {
                 </Form.Select>
               </Form.Group>
             </Col>
-            <Col></Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Cấp đề tài</Form.Label>
+                <Form.Select
+                  name="capdetai"
+                  required
+                  aria-describedby="title-help"
+                  value={capdetai}
+                  onChange={onChangeInput}
+                >
+                  <option>Chọn</option>
+                  {capdetais.map((capdetai) => (
+                    <option key={capdetai._id}>{capdetai.ten}</option>
+                  ))}
+                </Form.Select>
+              </Form.Group>
+            </Col>
           </Row>
 
         </Modal.Body>

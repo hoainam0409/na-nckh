@@ -90,7 +90,7 @@ const ThemSanPhamUD = () => {
           <Form.Group className="mb-3">
             <Form.Label>Cấp đề tài</Form.Label>
             <Form.Select
-              name="ten"
+              name="capdetai"
               required
               aria-describedby="title-help"
               value={capdetai}
