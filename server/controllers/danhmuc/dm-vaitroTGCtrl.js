@@ -47,7 +47,7 @@ const vaitroTGCtrl = {
       };
 
       updatedVaiTroTG = await VaiTroTG.findOneAndUpdate(
-        req.params.id,
+        {_id: req.params.id},
         updatedVaiTroTG,
         { new: true }
       );

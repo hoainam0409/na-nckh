@@ -51,7 +51,6 @@ const LinhVucs = () => {
         </Toast>
         <Button
           style={{
-            marginTop: "70px",
             marginBottom: "20px",
             backgroundColor: "#337AB7",
           }}

@@ -91,7 +91,7 @@ const ThemVaiTroTG = () => {
                 >
                   <option>Chọn cấp đề tài</option>
                   {capdetais.map((capdetai) => (
-                    <option key={capdetai._id}>
+                    <option key={capdetai._id} value={capdetai.ten}>
                       {capdetai.ten}
                     </option>
                   ))}

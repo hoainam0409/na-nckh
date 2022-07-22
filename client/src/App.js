@@ -16,6 +16,8 @@ import HoiDongContextProvider from "./contexts/HoiDongContext";
 import LoaiHĐContextProvider from "./contexts/LoaiHĐContext";
 import VaiTroHĐContextProvider from './contexts/VaiTroHĐContext'
 import VaiTroTGContextProvider from './contexts/VaiTroTGContext'
+import LoaiSPContextProvider from "./contexts/LoaiSPContext";
+import SanPhamUDContextProvider from "./contexts/SanPhamUDContext";
 import DotKiemTraTĐContextProvider from "./contexts/DotKiemTraTĐContext";
 
 
@@ -28,25 +30,29 @@ function App() {
             <DeTaiSVContextProvider>
               <DeTaiCBContextProvider>
                 <HoiDongContextProvider>
-                <UserContextProvider>
-                  <LoaiHĐContextProvider>
-                  <VaiTroTGContextProvider>
-                  <VaiTroHĐContextProvider>
-                  <KhoaContextProvider>
-                    <LinhVucContextProvider>
-                      <ChucVuContextProvider>
-                        <DotKiemTraTĐContextProvider>
-                        <Router>
-                          <Mainpages />
-                        </Router>
-                        </DotKiemTraTĐContextProvider>
-                      </ChucVuContextProvider>
-                    </LinhVucContextProvider>
-                  </KhoaContextProvider>
-                  </VaiTroHĐContextProvider>
-                  </VaiTroTGContextProvider>
-                  </LoaiHĐContextProvider>
-                </UserContextProvider>
+                  <UserContextProvider>
+                    <LoaiHĐContextProvider>
+                      <VaiTroTGContextProvider>
+                        <VaiTroHĐContextProvider>
+                          <KhoaContextProvider>
+                            <LinhVucContextProvider>
+                              <ChucVuContextProvider>
+                                <LoaiSPContextProvider>
+                                  <SanPhamUDContextProvider>
+                                    <DotKiemTraTĐContextProvider>
+                                      <Router>
+                                        <Mainpages />
+                                      </Router>
+                                    </DotKiemTraTĐContextProvider>
+                                  </SanPhamUDContextProvider>
+                                </LoaiSPContextProvider>
+                              </ChucVuContextProvider>
+                            </LinhVucContextProvider>
+                          </KhoaContextProvider>
+                        </VaiTroHĐContextProvider>
+                      </VaiTroTGContextProvider>
+                    </LoaiHĐContextProvider>
+                  </UserContextProvider>
                 </HoiDongContextProvider>
               </DeTaiCBContextProvider>
             </DeTaiSVContextProvider>

@@ -97,7 +97,7 @@ const dotdangkyCtrl = {
       // const UpdateCondition = { _id: req.params.id, user: req.userId }
 
       updatedDotDangKy= await DotDangKy.findOneAndUpdate(
-        req.params.id,
+        {_id: req.params.id},
         updatedDotDangKy,
         { new: true }
       );

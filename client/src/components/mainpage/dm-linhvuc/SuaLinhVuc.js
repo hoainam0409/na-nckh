@@ -46,7 +46,7 @@ const SuaLinhVuc = () => {
   return (
     <Modal show={showSuaLinhVuc} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Chỉnh sửa cấp đề tài</Modal.Title>
+        <Modal.Title>Chỉnh sửa lĩnh vực nghiên cứu</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>

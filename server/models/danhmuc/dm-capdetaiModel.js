@@ -12,13 +12,18 @@ const CapDeTaiSchema = new Schema({
     type: String,
     required: true,
   },
-  quytrinh:{
+  quytrinh: {
     type: Object,
-    enum: ['Quy trình xét duyệt đề tài cấp trường trọng điểm phiên bản 2', 'Quy trình xét duyệt đề tài cấp bộ GD và ĐT phiên bản 2', 'Quy trình xét duyệt đề tài cấp trường phiên bản 2 ', 'Quy trình xét duyệt đề tài cấp trường sinh viên phiên bản 2']
+    enum: [
+      "Quy trình xét duyệt đề tài cấp trường trọng điểm phiên bản 2",
+      "Quy trình xét duyệt đề tài cấp bộ GD và ĐT phiên bản 2",
+      "Quy trình xét duyệt đề tài cấp trường cán bộ phiên bản 2 ",
+      "Quy trình xét duyệt đề tài cấp trường sinh viên phiên bản 2",
+    ],
   },
-  doituong:{
+  doituong: {
     type: String,
-    enum: ['Cán bộ', 'Sinh viên']
-  }
+    enum: ["Cán bộ", "Sinh viên"],
+  },
 });
 module.exports = mongoose.model("dm_capdetai", CapDeTaiSchema);

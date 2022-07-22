@@ -82,7 +82,7 @@ const hoidongCtrl = {
         dinhkem,
       };
       updatedHoiDong= await HoiDong.findOneAndUpdate(
-        req.params.id,
+        {_id: req.params.id},
         updatedHoiDong,
         { new: true }
       );

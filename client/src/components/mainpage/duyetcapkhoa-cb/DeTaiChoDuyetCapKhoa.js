@@ -6,7 +6,7 @@ import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import SideBar from "../../sidebar/SideBar";
 import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
 import NhapKQHĐKhoa from "./NhapKQHĐ";
-import XemDeTai from "./XemChiTiet";
+import XemChTiet from "./XemChiTiet";
 import NumberFormat from 'react-number-format';
 import ReactTooltip from "react-tooltip";
 import {
@@ -56,9 +56,9 @@ const DeTaiDuyetCapKhoas = () => {
   return (
     <div>
       <SideBar />
-      {detaicb !== null && <SuaDeTaiCB />}
-      {detaicb !== null && <NhapKQHĐKhoa />}
-      {detaicb !== null && <XemDeTai />}
+      {detaicb !== null && <SuaDeTaiCB/>}
+      {detaicb !== null && <NhapKQHĐKhoa/>}
+      {detaicb !== null && <XemChTiet/>}
       <div className="style-mainpage">
         <div>
           <h1>Danh sách đề tài chờ duyệt cấp khoa</h1>

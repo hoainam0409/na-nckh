@@ -10,5 +10,9 @@ const VaiTroHĐSchema = new Schema({
     type: String,
     required: true,
   },
+  capdetai:{
+    type: Schema.Types.ObjectId,
+		ref: 'capdetais'
+	}
 });
 module.exports = mongoose.model("dm_vaitrohoidong", VaiTroHĐSchema);

@@ -37,10 +37,10 @@ const UserSchema = new Schema({
     hocvi: {
         type: String
     },
-    detai:{
-        type: Array,
-        default: [],
-    }
+    detai:[{
+        type: Schema.Types.ObjectId,
+        ref: 'detaicb',
+    }]
 })
 module.exports = mongoose.model('users', UserSchema)
 //users: tên của table

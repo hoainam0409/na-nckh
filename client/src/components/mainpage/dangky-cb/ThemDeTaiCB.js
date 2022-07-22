@@ -13,6 +13,7 @@ import { UserContext } from "../../../contexts/UserContext";
 import { VaiTroTGContext } from "../../../contexts/VaiTroTGContext";
 import SanPham from "./SanPham";
 import ThemDoiTac from "./ThemDoiTac";
+import {BsCloudUploadFill} from "react-icons/bs"
 
 const ThemDeTaiCB = () => {
   //context
@@ -248,7 +249,7 @@ const ThemDeTaiCB = () => {
                   onChange={onChangeInput}
                   aria-label="Default select example"
                 >
-                  <option>Chọn lĩnh vực nghiên cứu</option>
+                  <option>Chọn lĩnh vực nghên cứu</option>
                   {linhvucs.map((linhvuc) => (
                     <option key={linhvuc._id}>{linhvuc.ten}</option>
                   ))}
@@ -497,7 +498,7 @@ const ThemDeTaiCB = () => {
               <tbody></tbody>
             </Table>
           </div>
-          <Form.Group className="mb-3">
+          {/* <Form.Group className="mb-3">
             <Form.Label>Đính kèm</Form.Label>
             <Form.Control
               type="file"
@@ -506,7 +507,26 @@ const ThemDeTaiCB = () => {
               value={dinhkem}
               onChange={onChangeInput}
             />
-          </Form.Group>
+          </Form.Group> */}
+          <div>
+            <div>
+              <div>Danh sách tài liệu</div>
+              <Button style={{ float: 'right' }}><BsCloudUploadFill /></Button>
+            </div>
+            <Table borderless bordered hover style={{ cursor: "pointer" }}>
+              <thead>
+                <tr className="table-header">
+                  <th>STT</th>
+                  <th>Tên tài liệu</th>
+                  <th>Kích thước</th>
+                  <th>Ngày tạo</th>
+                  <th>Phiên bản</th>
+                  <th className="chucnang">Chức năng</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+              </Table>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" type="submit">

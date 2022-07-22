@@ -46,7 +46,7 @@ const vaitroHĐCtrl = {
       };
 
       updatedVaiTroHĐ = await VaiTroHĐ.findOneAndUpdate(
-        req.params.id,
+        {_id: req.params.id},
         updatedVaiTroHĐ,
         { new: true }
       );

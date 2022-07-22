@@ -20,7 +20,7 @@ const SuaCapDeTai = () => {
   const [updatedCapDeTai, setUpdatedCapDeTai] =
     useState(capdetai);
 
-  useEffect(() => setUpdatedCapDeTai(capdetai), [capdetai]);
+  useEffect(() => setUpdatedCapDeTai(capdetai), []);
 
   const { ma, ten, quytrinh, doituong } =
     updatedCapDeTai;
@@ -91,7 +91,7 @@ const SuaCapDeTai = () => {
                   <option> Chọn quy trình xét duyệt đề tài</option>
                   <option value="Quy trình xét duyệt đề tài cấp trường trọng điểm phiên bản 2">Quy trình xét duyệt đề tài cấp trường trọng điểm phiên bản 2</option>
                   <option value="Quy trình xét duyệt đề tài cấp bộ GD và ĐT phiên bản 2">Quy trình xét duyệt đề tài cấp bộ GD và ĐT phiên bản 2</option>
-                  <option value="Quy trình xét duyệt đề tài cấp trường phiên bản 2">Quy trình xét duyệt đề tài cấp trường phiên bản 2</option>
+                  <option value="Quy trình xét duyệt đề tài cấp trường cán bộ phiên bản 2">Quy trình xét duyệt đề tài cấp trường phiên bản 2</option>
                   <option value="Quy trình xét duyệt đề tài cấp trường sinh viên phiên bản 2" >Quy trình xét duyệt đề tài cấp trường sinh viên phiên bản 2 </option>
                 </Form.Select>
               </Form.Group>

@@ -2,7 +2,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/esm/Table";
 
-const ShowKQĐG = () => {
+const ShowTienDo = () => {
   return (
     <Form>
       <Modal.Body>
@@ -26,4 +26,4 @@ const ShowKQĐG = () => {
   );
 };
 
-export default ShowKQĐG;
+export default ShowTienDo;

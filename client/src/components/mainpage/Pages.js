@@ -5,15 +5,12 @@ import Home from './home-nckh/Home-nckh'
 import Landing from '../layout/Landing'
 import DanhSachThongBao from '../mainpage/quanlythongbao/DanhSachThongBao'
 import Thongtincanhan from './thongtincanhan/Thongtincanhan'
-import DanhSachCapDeTai from './dm-capdetai/DanhSachCapDeTai'
 import DanhSachDotDangKy from './dotdangky/DanhSachDotDangKy'
 import DanhSachDeTaiSV from './dangky-sv/DanhSachDeTaiSV'
 import DeTaiSVXacNhan from './detaisv-xacnhan/DeTaiSVXacNhan'
 import DeTaiSVChoDuyet from './detaisv-choduyet/DeTaiSVChoDuyet'
 import DanhSachDeTaiCB from './dangky-cb/DanhSachDeTaiCB'
 import DanhSachDeTaiCBAll from './detaicb-tatca/DanhSachDeTaiCB'
-import DanhSachLinhVuc from './dm-linhvuc/DanhSachLinhVuc'
-import DanhSachVaiTroTG from './dm- vaitroTG/DanhSachVaiTroTG'
 import DanhSachUser from './quanly-nguoidung/DanhSachUser'
 import DeTaiChoDuyetKhoa from './duyetcapkhoa-cb/DeTaiChoDuyetCapKhoa'
 import DeTaiNhapKQĐG from './nhapKQĐG-cb/DeTaiNhapKQĐG'
@@ -24,7 +21,11 @@ import DanhSachDotKiemTraTĐ from './dotkiemtratiendo/DanhSachDotKTTD'
 import DeTaiBaoCaoTienDo from './baocaotiendo-cb/DeTaiBaoCaoTienDo'
 import DuyetBaoCaoTienDo from './duyetbaocaotiendo-cb/DuyetBaoCaoTienDo'
 
-
+import DanhSachLinhVuc from './dm-linhvuc/DanhSachLinhVuc'
+import DanhSachVaiTroTG from './dm- vaitroTG/DanhSachVaiTroTG'
+import DanhSachCapDeTai from './dm-capdetai/DanhSachCapDeTai'
+import DanhSachLoaiSP from './dm-loaisp/DanhSachLoaiSP'
+import DanhSachSanPhamUD from './dm-sanphamungdung/DanhSachSanPhamUD'
 
 function Pages() {
   return (
@@ -36,6 +37,8 @@ function Pages() {
         <Route exact path="/nckh/thongtin-canhan" element={<Thongtincanhan/>}></Route>
         <Route exact path="/danhmuc/capdetai" element={<DanhSachCapDeTai/>}></Route>
         <Route exact path="/danhmuc/linhvuc" element={<DanhSachLinhVuc/>}></Route>
+        <Route exact path="/danhmuc/loai-san-pham" element={<DanhSachLoaiSP/>}></Route>
+        <Route exact path="/danhmuc/loai-san-pham-ung-dung" element={<DanhSachSanPhamUD/>}></Route>
         <Route exact path="/danhmuc/vaitro-thamgia" element={<DanhSachVaiTroTG/>}></Route>
         <Route exact path="/detai/dotdangky" element={<DanhSachDotDangKy/>}></Route>
         <Route exact path="/detai-sinhvien/dangky" element={<DanhSachDeTaiSV/>}></Route>

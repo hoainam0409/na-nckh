@@ -179,7 +179,7 @@ export const SidebarData =
       },
       {
         title: 'Loại sản phẩm NCKH',
-        path: '/danhmuc/loai-san-pham-NCKH',
+        path: '/danhmuc/loai-san-pham',
         icon: <FaCube style={{ color: 'black', height: '14px', width: '14px' }} />
       }
     ]

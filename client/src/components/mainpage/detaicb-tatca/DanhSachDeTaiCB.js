@@ -3,24 +3,22 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
+import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import SideBar from "../../sidebar/SideBar";
 import NumberFormat from 'react-number-format';
 import ReactTooltip from "react-tooltip";
 import {
   BsFillEyeFill,
-  BsPencilSquare,
-  BsTrashFill,
-  BsCursorFill,
   BsFileEarmarkWord,
-  BsFileEarmarkFill,
   BsDownload
 } from "react-icons/bs";
-import { BiHistory } from "react-icons/bi";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Dropdown from "react-bootstrap/Dropdown";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
+import XemChiTiet from '../duyetcapkhoa-cb/XemChiTiet'
+import ChonTieuChi from './ChonTieuChi'
 
 const DeTaiCBs = () => {
   const {
@@ -28,32 +26,33 @@ const DeTaiCBs = () => {
     getDeTaiCBs,
     showToast: { show, message, type },
     setShowToast,
-    deleteDeTaiCB,
     findDeTaiCB,
-    setShowSuaDeTaiCB,
+    setShowXemDeTaiCB,
     trangThai,
-    updateTrangThai,
-    setShowCapNhatThuyetMinh,
   } = useContext(DeTaiCBContext);
+
+  // const {
+  //   dotdangkyState: {dotdangky}
+  // } = useContext(DotDangKyContext)
 
   // Start: Get all
   useEffect(() => getDeTaiCBs(), []);
 
+  const [modalShow, setModalShow] = useState(false);
+
   const chooseDeTaiCB = (detaicbId) => {
     findDeTaiCB(detaicbId);
-    setShowSuaDeTaiCB(true);
+    setShowXemDeTaiCB(true);
   };
-  const selectDeTaiCB = (detaicbId) => {
-    findDeTaiCB(detaicbId);
-    updateTrangThai("Chờ duyệt cấp khoa");
-  };
-  const CapNhatThuyetMinhDeTaiCB = (detaicbId) => {
-    findDeTaiCB(detaicbId);
-    setShowCapNhatThuyetMinh(true);
-  };
+
   return (
     <div>
       <SideBar />
+      {detaicb !== null && <XemChiTiet />}
+      <ChonTieuChi
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
       <div className="style-mainpage">
         <div>
           <h1 style={{ fontSize: "24px" }}>Danh sách đề tài đã gửi duyệt</h1>
@@ -82,19 +81,18 @@ const DeTaiCBs = () => {
               </Col>
               <Col>
                 <Dropdown>
-                  <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    <span><BsDownload/></span>
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                    <span><BsDownload /></span>
                     Tải xuống
                   </Dropdown.Toggle>
-
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">
-                    <span><BsFileEarmarkWord /></span>
-                    Danh mục đề tài
+                    <Dropdown.Item onClick={() => setModalShow(true)}>
+                      <span><BsFileEarmarkWord /></span>
+                      Danh mục đề tài
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
-                    <span><BsFileEarmarkWord /></span>
-                    Danh mục đề tài được thực hiện
+                    <Dropdown.Item onClick={() => setModalShow(true)}>
+                      <span><BsFileEarmarkWord /></span>
+                      Danh mục đề tài được thực hiện
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
@@ -128,6 +126,7 @@ const DeTaiCBs = () => {
             <tr className="table-header">
               <th>Mã đề tài</th>
               <th>Tên đề tài</th>
+              {/* <th>Cấp đề tài</th> */}
               <th>Đợt đăng ký</th>
               <th>Khoa xét duyệt</th>
               <th>Thành viên tham gia</th>
@@ -141,6 +140,7 @@ const DeTaiCBs = () => {
               <tr key={detaicb._id}>
                 <td>{detaicb.madetai} </td>
                 <td>{detaicb.tendetai}</td>
+                {/* <td>{dotdangky.capdetai}</td> */}
                 <td>{detaicb.dotdangky} </td>
                 <td>{detaicb.khoaxetduyet}</td>
                 <td>
@@ -148,7 +148,7 @@ const DeTaiCBs = () => {
                     <div key={q._id}>- {q.hovaten}</div>
                   ))}
                 </td>
-                <td><NumberFormat value={detaicb.kinhphi} displayType={'text'} thousandSeparator={true}/></td>
+                <td><NumberFormat value={detaicb.kinhphi} displayType={'text'} thousandSeparator={true} /></td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Dropdown as={ButtonGroup}>

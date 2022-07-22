@@ -12,7 +12,9 @@ import {
   BsFillQuestionCircleFill,
   BsBell,
   BsGridFill,
-  BsSearch
+  BsSearch,
+  BsBoxArrowRight,
+  BsPersonLinesFill
 } from "react-icons/bs";
 // import TopLogo from "../../assets/images/logo/logo.png";
 import Form from "react-bootstrap/Form";
@@ -154,26 +156,26 @@ const Sidebar = () => {
             <NavSearch>
               <InputSearch placeholder="Nhập từ khoa tìm kiếm" />
               <ButtonSearch>
-                <BsSearch style={{color: '#000', height: '20px', width: '20px', marginLeft: '8px'}}/>
+                <BsSearch style={{ color: '#000', height: '20px', width: '20px', marginLeft: '8px' }} />
               </ButtonSearch>
               <Dropdown>
-                <Dropdown.Toggle style={{backgroundColor: 'white', color: '#000', margin: '0', borderRadius: '0', height: '35px'}} id="dropdown-basic">Tìm kiếm nâng cao
+                <Dropdown.Toggle style={{ backgroundColor: 'white', color: '#000', margin: '0', borderRadius: '0', height: '35px' }} id="dropdown-basic">Tìm kiếm nâng cao
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                <Form.Group className="mb-3">
-                <Form.Control
-                />
-              </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Control
+                    />
+                  </Form.Group>
                 </Dropdown.Menu>
               </Dropdown>
             </NavSearch>
             <BsGridFill
-              style={{ width: "24px", height: "24px", margin: "15px" }}
+              style={{ width: "24px", height: "24px", margin: "10px" }}
             />
             <BsBell style={{ width: "24px", height: "24px", margin: "10px" }} />
             <BsFillQuestionCircleFill
-              style={{ width: "24px", height: "24px", margin: "15px" }}
+              style={{ width: "24px", height: "24px", margin: "10px" }}
             />
             <NavProfile>
               <Dropdown>
@@ -196,8 +198,11 @@ const Sidebar = () => {
                   </NavAvatar>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#">Thông tin cá nhân</Dropdown.Item>
+                  <Dropdown.Item href="#">
+                    <span><BsPersonLinesFill style={{ color: 'black' }} /></span>
+                    Thông tin cá nhân</Dropdown.Item>
                   <Dropdown.Item href="/login" onClick={logout}>
+                    <span><BsBoxArrowRight style={{ color: 'black' }} /></span>
                     Đăng xuất
                   </Dropdown.Item>
                 </Dropdown.Menu>

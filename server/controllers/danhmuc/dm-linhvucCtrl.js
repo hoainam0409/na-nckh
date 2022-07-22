@@ -51,7 +51,7 @@ const linhvucCtrl = {
       // const UpdateCondition = { _id: req.params.id, user: req.userId }
 
       updatedLinhVuc = await LinhVuc.findOneAndUpdate(
-        req.params.id,
+        {_id: req.params.id},
         updatedLinhVuc,
         { new: true }
       );

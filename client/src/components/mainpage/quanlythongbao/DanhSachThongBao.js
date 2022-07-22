@@ -49,7 +49,6 @@ const Thongbaochungs = () => {
           <h1>Danh sách thông báo</h1>
           <Button
             style={{
-              marginTop: "70px",
               marginBottom: "20px",
               backgroundColor: "#337AB7",
               borderColor: "#2d6da3",

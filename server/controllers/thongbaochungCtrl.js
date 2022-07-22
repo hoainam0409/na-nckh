@@ -58,7 +58,7 @@ const thongbaochungCtrl = {
         dinhkem: dinhkem || "",
       };
       updatedThongbaochung = await Thongbaochung.findOneAndUpdate(
-        req.params.id,
+        {_id: req.params.id},
         updatedThongbaochung,
         { new: true }
       );

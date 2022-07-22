@@ -2,38 +2,37 @@ import React, { useContext, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
-import { UserContext } from "../../../contexts/UserContext";
+import { SanPhamUDContext } from "../../../contexts/SanPhamUDContext";
 import SideBar from "../../sidebar/SideBar";
-import ThemUser from "./ThemUser";
-import SuaUser from "./SuaUser";
+import ThemSanPhamUD from "./ThemSanPhamUD";
+import SuaSanPhamUD from "./SuaSanPhamUD";
 import ReactTooltip from "react-tooltip";
 import { BsFillEyeFill, BsPencilSquare, BsTrashFill } from "react-icons/bs";
-import { RiH1 } from "react-icons/ri";
 
-const Users = () => {
+const SanPhamUDs = () => {
   const {
-    userState: { user, users, usersLoading },
-    getUsers,
-    setShowThemUser,
+    sanphamUDState: { sanphamUD, sanphamUDs, sanphamUDsLoading },
+    getSanPhamUDs,
+    setShowThemSanPhamUD,
     showToast: { show, message, type },
     setShowToast,
-    deleteUser,
-    findUser,
-    setShowSuaUser,
-  } = useContext(UserContext);
+    deleteSanPhamUD,
+    findSanPhamUD,
+    setShowSuaSanPhamUD,
+  } = useContext(SanPhamUDContext);
 
   // Start: Get all
-  useEffect(() => getUsers(), []);
+  useEffect(() => getSanPhamUDs(), []);
 
-  const chooseUser = (userId) => {
-    findUser(userId);
-    setShowSuaUser(true);
+  const chooseSanPhamUD = (sanphamUDId) => {
+    findSanPhamUD(sanphamUDId);
+    setShowSuaSanPhamUD(true);
   };
   return (
     <div>
       <SideBar />
       <div className="style-mainpage">
-        <h1>Danh sách cán bộ</h1>
+        <h1>Danh sách loại sản phẩm ứng dụng</h1>
         <Toast
           show={show}
           style={{ position: "fixed", right: "10px" }}
@@ -56,41 +55,32 @@ const Users = () => {
             backgroundColor: "#337AB7",
             borderColor: "#2d6da3",
           }}
-          onClick={setShowThemUser.bind(this, true)}
+          onClick={setShowThemSanPhamUD.bind(this, true)}
         >
           Thêm mới
         </Button>
-        <ThemUser />
-        {user !== null && <SuaUser />}
+        <ThemSanPhamUD/>
+        {sanphamUD !== null && <SuaSanPhamUD/>}
 
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr className="table-header">
-              <th>Tài khoản</th>
-              <th>Họ và tên</th>
-              <th>Khoa/Phòng ban</th>
-              <th>Chức vụ</th>
-              <th>Học Hàm</th>
-              <th>Học vị</th>
+              <th>Mã</th>
+              <th>Tên</th>
               <th>Chức năng</th>
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
-              <tr key={user._id}>
-                <td>{user.username}</td>
-                <td>{user.hovaten} </td>
-                <td>{user.phongban} </td>
-                <td>{user.chucvu} </td>
-                <td>{user.hocham} </td>
-                <td>{user.hocvi} </td>
-
+            {sanphamUDs.map((sanphamUD) => (
+              <tr key={sanphamUD._id}>
+                <td>{sanphamUD.ma}</td>
+                <td>{sanphamUD.ten} </td>
                 <td style={{ textAlign: "center" }}>
                   <Button
                     variant="primary"
+                    onClick={chooseSanPhamUD.bind(this, sanphamUD._id)}
                     data-tip
                     data-for="Xem"
-                    onClick={chooseUser.bind(this, user._id)}
                   >
                     <ReactTooltip id="Xem" place="top" effect="solid">
                       Xem
@@ -99,9 +89,7 @@ const Users = () => {
                   </Button>
                   <Button
                     variant="info"
-                    data-tip
-                    data-for="Sửa"
-                    onClick={chooseUser.bind(this, user._id)}
+                    onClick={chooseSanPhamUD.bind(this, sanphamUD._id)}
                   >
                     <ReactTooltip id="Sửa" place="top" effect="solid">
                       Sửa
@@ -109,15 +97,15 @@ const Users = () => {
                     <BsPencilSquare style={{ color: "white" }} />
                   </Button>
                   <Button
-                    variant="danger"
                     data-tip
+                    variant="danger"
                     data-for="Xóa"
-                    onClick={() => deleteUser(user._id)}
+                    onClick={() => deleteSanPhamUD(sanphamUD._id)}
                   >
+                    <BsTrashFill />
                     <ReactTooltip id="Xóa" place="top" effect="solid">
                       Xóa
                     </ReactTooltip>
-                    <BsTrashFill />
                   </Button>
                 </td>
               </tr>
@@ -129,4 +117,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default SanPhamUDs;

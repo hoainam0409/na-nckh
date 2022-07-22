@@ -46,7 +46,7 @@ const khoaCtrl = {
         ten,
       };
       updatedKhoa = await Khoa.findOneAndUpdate(
-        req.params.id,
+        {_id: req.params.id},
         updatedKhoa,
         { new: true }
       );

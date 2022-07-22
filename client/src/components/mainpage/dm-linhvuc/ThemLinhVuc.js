@@ -46,7 +46,7 @@ const ThemLinhVuc = () => {
   return (
     <Modal show={showThemLinhVuc} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Thêm mới cấp đề tài</Modal.Title>
+        <Modal.Title>Thêm mới lĩnh vực</Modal.Title>
       </Modal.Header>
       <Form onSubmit = {onSubmit}>
         <Modal.Body>

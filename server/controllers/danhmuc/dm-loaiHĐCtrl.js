@@ -45,7 +45,7 @@ const loaiHĐCtrl = {
       };
 
       updatedLoaiHĐ = await LoaiHĐ.findOneAndUpdate(
-        req.params.id,
+        {_id: req.params.id},
         updatedLoaiHĐ,
         { new: true }
       );

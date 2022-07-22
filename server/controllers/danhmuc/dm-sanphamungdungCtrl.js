@@ -1,65 +1,61 @@
-const CapDeTai = require("../../models/danhmuc/dm-capdetaiModel");
-const Users = require("../../models/UserModel");
+const SanPhamUD = require("../../models/danhmuc/dm-sanphamungdungModel");
 // const mongoose = require("mongoose");
 
-const capdetaiCtrl = {
-  getCapDeTai: async (req, res) => {
+const sanphamUDCtrl = {
+  getSanPhamUD: async (req, res) => {
     try {
-      const capdetais = await CapDeTai.find();
-      res.json({ success: true, capdetais });
+      const sanphamUDs = await SanPhamUD.find();
+      res.json({ success: true, sanphamUDs });
     } catch (err) {
       return res.status(500).json({success: false,  message: err.message });
     }
   },
 
-  addCapDeTai: async (req, res) => {
+  addSanPhamUD: async (req, res) => {
     try {
-      const { ma, ten, quytrinh, doituong } = req.body;
-      const capdetai = await CapDeTai.findOne({ ma })
-      if (capdetai) return res.status(400).json({success: false,  message: "Mã cấp đề tài đã tồn tại." })
+      const { ma, ten, capdetai} = req.body;
+      const sanphamUD = await SanPhamUD.findOne({ ma })
+      if (sanphamUD) return res.status(400).json({success: false,  message: "Mã cấp đề tài đã tồn tại." })
 
-      const newCapDeTai = new CapDeTai({
+      const newSanPhamUD = new SanPhamUD({
         ma,
         ten,
-        quytrinh,
-        doituong
+        capdetai
       });
-      await newCapDeTai.save();
+      await newSanPhamUD.save();
       res.json({
         success: true,
         message: "Thêm mới thành công!",
-        capdetai: newCapDeTai,
+        sanphamUD: newSanPhamUD,
       });
     } catch (err) {
       return res.status(500).json({ success: false, message: err.message });
     }
   },
-  updateCapDeTai: async (req, res) => {
-    const { ma, ten, quytrinh, doituong} = req.body;
+  updateSanPhamUD: async (req, res) => {
+    const { ma, ten, capdetai} = req.body;
     // Simple validation
-    if (!ma || !ten)
+    if (!ma || !ten||!capdetai)
       return res.status(400).json({
         success: false,
         message: "Vui lòng nhập thông tin trường bắt buộc!",
       });
     try {
-      let updatedCapDeTai = {
+      let updatedSanPhamUD = {
         ma,
         ten,
-        quytrinh,
-        doituong
+        capdetai
       };
-
       //Điều kiện để chỉnh sửa thông báo
       // const UpdateCondition = { _id: req.params.id, user: req.userId }
 
-      updatedCapDeTai = await CapDeTai.findOneAndUpdate(
+      updatedSanPhamUD= await SanPhamUD.findOneAndUpdate(
         {_id: req.params.id},
-        updatedCapDeTai,
+        updatedSanPhamUD,
         { new: true }
       );
       // User not authorised to update post or post not found
-      if (!updatedCapDeTai)
+      if (!updatedSanPhamUD)
         return res.status(401).json({
           success: false,
           message: "Có lỗi xảy ra vui lòng liên hệ quản trị viên!",
@@ -68,19 +64,19 @@ const capdetaiCtrl = {
       res.json({
         success: true,
         message: "Chỉnh sửa thành công!",
-        capdetai: updatedCapDeTai,
+        sanphamUD: updatedSanPhamUD,
       });
     } catch (err) {
       return res.status(500).json({ success: false, message: err.message });
     }
   },
-  deleteCapDeTai: async (req, res) => {
+  deleteSanPhamUD: async (req, res) => {
     try {
-      await CapDeTai.findByIdAndDelete(req.params.id);
+      await SanPhamUD.findByIdAndDelete(req.params.id);
       res.json({ success: true, message: "Xóa thành công!" });
     } catch (err) {
       return res.status(500).json({ message: err.message });
     }
   },
 };
-module.exports = capdetaiCtrl;
+module.exports = sanphamUDCtrl;

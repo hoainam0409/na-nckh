@@ -70,7 +70,7 @@ const dotkiemtraTĐCtrl = {
       };
 
       updatedDotKiemTraTĐ= await DotKiemTraTĐ.findOneAndUpdate(
-        req.params.id,
+        {_id: req.params.id},
         updatedDotKiemTraTĐ,
         { new: true }
       );

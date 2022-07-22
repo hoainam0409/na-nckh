@@ -4,13 +4,12 @@ import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
 import { useContext, useState, useEffect } from "react";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
-import {BsCloudUploadFill} from 'react-icons/bs'
+import { BsCloudUploadFill } from 'react-icons/bs'
 
 const CapNhatThuyetMinh = () => {
   // Contexts
   const {
     detaicbState: { detaicb },
-    detaicb: {tendetai},
     showCapNhatThuyetMinh,
     setShowCapNhatThuyetMinh,
   } = useContext(DeTaiCBContext);
@@ -32,24 +31,24 @@ const CapNhatThuyetMinh = () => {
       </Modal.Header>
       <Form >
         <Modal.Body>
-         <h1 >Cập nhật thuyết minh đề tài "{detaicb.tendetai}"</h1>
-         <div>
-         <h1 style={{float: 'left'}}>Danh sách tài liệu</h1>
-          <Button style={{float: 'right'}}><BsCloudUploadFill/></Button>
+          <h1 >Cập nhật thuyết minh đề tài "{detaicb.tendetai}"</h1>
+          <div>
+            <div style={{ float: 'left' }}>Danh sách tài liệu</div>
+            <Button style={{ float: 'right' }}><BsCloudUploadFill /></Button>
           </div>
-         <Table borderless bordered hover style={{ cursor: "pointer" }}>
-         <thead>
-            <tr className="table-header">
-              <th>STT</th>
-              <th>Tên tài liệu</th>
-              <th>Kích thước</th>
-              <th>Ngày tạo</th>
-              <th>Phiên bản</th>
-              <th className="chucnang">Chức năng</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-         </Table>
+          <Table borderless bordered hover style={{ cursor: "pointer" }}>
+            <thead>
+              <tr className="table-header">
+                <th>STT</th>
+                <th>Tên tài liệu</th>
+                <th>Kích thước</th>
+                <th>Ngày tạo</th>
+                <th>Phiên bản</th>
+                <th className="chucnang">Chức năng</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </Table>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" type="submit">

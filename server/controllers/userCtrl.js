@@ -47,7 +47,7 @@ const userCtrl = {
   },
   getUsers: async (req, res) => {
     try {
-      const users = await Users.find();
+      const users = await Users.find().populate("detai");
       res.json({ success: true, users });
     } catch (err) {
       return res.status(500).json({ success: false, message: err.message });
@@ -75,7 +75,7 @@ const userCtrl = {
       };
 
       updatedUser = await Users.findOneAndUpdate(
-        req.params.id,
+        {_id: req.params.id},
         updatedUser,
         { new: true }
       );
