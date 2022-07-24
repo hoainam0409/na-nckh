@@ -25,14 +25,6 @@ const NhapKQHĐKhoa = () => {
   } = useContext(HoiDongContext);
 
   useEffect(() => getHoiDongs(), []);
-
-  const {
-    userState: { users },
-    getUsers,
-  } = useContext(UserContext);
-
-  useEffect(() => getUsers(), []);
-
   // State
   const [updatedDeTaiCB, setUpdatedDeTaiCB] = useState(detaicb);
 
@@ -42,6 +34,7 @@ const NhapKQHĐKhoa = () => {
     madetai,
     tendetai,
     dotdangky,
+    chunhiem,
     thanhvienthamgia,
     ghichu,
     trangthai,
@@ -121,17 +114,23 @@ const NhapKQHĐKhoa = () => {
           <Form.Group className="mb-3">
             <Form.Label>Tên đề tài</Form.Label>
             <Form.Control
-              type="text"
+              as = "textarea"
+              row ={3}
               name="tendetai"
-              required
               aria-describedby="title-help"
               value={tendetai}
-              onChange={onChangeUpdated}
+              disabled
             />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Chủ nhiệm đề tài</Form.Label>
-            <Form.Control />
+            <Form.Control
+              type="text"
+              name="chunhiem"
+              aria-describedby="title-help"
+              value={chunhiem}
+              disabled
+            />
           </Form.Group>
           <div>
             <h1>DANH SÁCH THÀNH VIÊN HỘI ĐỒNG</h1>

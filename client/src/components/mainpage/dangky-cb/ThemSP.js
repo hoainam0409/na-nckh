@@ -1,11 +1,15 @@
-import React, { useState} from "react";
+import React, { useState, useContext, useEffect} from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import {LoaiSPContext} from '../../../contexts/LoaiSPContext'
 
 function ThemSP(props) {
+  const { loaisanphamState: { loaisanphams }, getLoaiSPs } = useContext(LoaiSPContext)
+  useEffect(() => getLoaiSPs(), [])
+
   //State
   const [newSP, setNewSP] = useState({
     danhmucsp: "",
@@ -54,10 +58,10 @@ function ThemSP(props) {
                   value={loaisp}
                   onChange={onChangeInput}
                 >
-                  <option></option>
-                  <option>Bài báo, tạp chí thuộc danh mục SCIE</option>
-                  <option>Bài báo, tạp chí thuộc danh mục Scopus</option>
-
+                  <option>Chọn</option>
+                  {loaisanphams.map((loaisanpham) => (
+                    <option key={loaisanpham._id}>{loaisanpham.ten}</option>
+                  ))}
                 </Form.Select>
               </Form.Group>
             </Col>

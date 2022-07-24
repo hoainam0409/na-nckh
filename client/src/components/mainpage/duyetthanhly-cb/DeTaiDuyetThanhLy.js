@@ -1,61 +1,55 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
-import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import SideBar from "../../sidebar/SideBar";
+import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
 import NumberFormat from 'react-number-format';
 import ReactTooltip from "react-tooltip";
 import {
   BsFillEyeFill,
+  BsPencilSquare,
   BsFileEarmarkWord,
-  BsDownload
+  BsCheckLg
 } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Dropdown from "react-bootstrap/Dropdown";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-import XemChiTiet from '../duyetcapkhoa-cb/XemChiTiet'
-import ChonTieuChi from './ChonTieuChi'
+import CapNhatBienBan from "./CapNhatBienBan";
 
-const DeTaiCBs = () => {
+const DeTaiDuyetThanhLy = () => {
   const {
     detaicbState: { detaicb, detaicbs, detaicbsLoading },
     getDeTaiCBs,
     showToast: { show, message, type },
     setShowToast,
     findDeTaiCB,
-    setShowXemDeTaiCB,
-    trangThai,
+    setShowSuaDeTaiCB,
+    setShowCapNhatBienBan,
   } = useContext(DeTaiCBContext);
-
-  // const {
-  //   dotdangkyState: {dotdangky}
-  // } = useContext(DotDangKyContext)
 
   // Start: Get all
   useEffect(() => getDeTaiCBs(), []);
 
-  const [modalShow, setModalShow] = useState(false);
-
   const chooseDeTaiCB = (detaicbId) => {
     findDeTaiCB(detaicbId);
-    setShowXemDeTaiCB(true);
+    setShowSuaDeTaiCB(true);
   };
-
+  const SelectDeTaiCB = (detaicbId) => {
+    findDeTaiCB(detaicbId);
+    setShowCapNhatBienBan(true);
+  };
   return (
     <div>
       <SideBar />
-      {detaicb !== null && <XemChiTiet />}
-      <ChonTieuChi
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
+      {detaicb !== null && <CapNhatBienBan />}
+      {detaicb !== null && <SuaDeTaiCB />}
       <div className="style-mainpage">
         <div>
-          <h1 style={{ fontSize: "24px" }}>Danh sách đề tài đã gửi duyệt</h1>
+          <h1>Danh sách đề tài thanh lý</h1>
           <div className="filter">
             <Row className="controls">
               <Col>
@@ -78,24 +72,6 @@ const DeTaiCBs = () => {
                   <option value="2022">2022</option>
                   <option value="2021">2021</option>
                 </Form.Select>
-              </Col>
-              <Col>
-                <Dropdown>
-                  <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                    <span><BsDownload /></span>
-                    Tải xuống
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => setModalShow(true)}>
-                      <span><BsFileEarmarkWord /></span>
-                      Danh mục đề tài
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => setModalShow(true)}>
-                      <span><BsFileEarmarkWord /></span>
-                      Danh mục đề tài được thực hiện
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
               </Col>
             </Row>
           </div>
@@ -120,17 +96,17 @@ const DeTaiCBs = () => {
           borderless
           bordered
           hover
-          style={{ cursor: "pointer", marginTop: "128px" }}
+          style={{ cursor: "pointer", marginTop: "100px" }}
         >
           <thead>
             <tr className="table-header">
               <th>Mã đề tài</th>
               <th>Tên đề tài</th>
-              {/* <th>Cấp đề tài</th> */}
               <th>Đợt đăng ký</th>
-              <th>Khoa xét duyệt</th>
+              <th>Khoa/Phòng ban xét duyệt</th>
+              <th>Chủ nhiệm đề tài</th>
               <th>Thành viên tham gia</th>
-              <th>Kinh phí(đồng)</th>
+              <th>Kinh phí (đồng)</th>
               <th>Trạng thái</th>
               <th className="chucnang">Chức năng</th>
             </tr>
@@ -140,15 +116,15 @@ const DeTaiCBs = () => {
               <tr key={detaicb._id}>
                 <td>{detaicb.madetai} </td>
                 <td>{detaicb.tendetai}</td>
-                {/* <td>{dotdangky.capdetai}</td> */}
                 <td>{detaicb.dotdangky} </td>
                 <td>{detaicb.khoaxetduyet}</td>
+                <td>{detaicb.chunhiem}</td>
                 <td>
                   {detaicb.thanhvienthamgia.map((q) => (
-                    <div key={q._id}>- {q.hovaten}</div>
+                    <div key={q._id}>-{q.hovaten}</div>
                   ))}
                 </td>
-                <td><NumberFormat value={detaicb.kinhphi} displayType={'text'} thousandSeparator={true} /></td>
+                <td><NumberFormat value={detaicb.kinhphi} displayType={'text'} thousandSeparator={true}/></td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Dropdown as={ButtonGroup}>
@@ -156,9 +132,7 @@ const DeTaiCBs = () => {
                       style={{ backgroundColor: "#337AB7" }}
                       onClick={chooseDeTaiCB.bind(this, detaicb._id)}
                     >
-                      <span>
-                        <BsFillEyeFill />
-                      </span>
+                      <span><BsFillEyeFill /></span>
                       Xem
                     </Button>
                     <Dropdown.Toggle
@@ -176,11 +150,23 @@ const DeTaiCBs = () => {
                       </ReactTooltip>
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
+                      <Dropdown.Item
+                        onClick={SelectDeTaiCB.bind(this, detaicb._id)}
+                      >
+                        <span>
+                          <BsPencilSquare />
+                        </span>
+                        Cập nhật biên bản thanh lý
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <span><BsCheckLg/></span>
+                        Duyệt
+                      </Dropdown.Item>
                       <Dropdown.Item>
                         <span>
                           <BsFileEarmarkWord />
                         </span>
-                        Thuyết minh đề tài
+                        In biên bản thanh lý
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
@@ -193,5 +179,4 @@ const DeTaiCBs = () => {
     </div>
   );
 };
-
-export default DeTaiCBs;
+export default DeTaiDuyetThanhLy;

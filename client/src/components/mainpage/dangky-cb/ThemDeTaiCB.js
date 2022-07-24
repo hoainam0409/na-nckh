@@ -13,7 +13,7 @@ import { UserContext } from "../../../contexts/UserContext";
 import { VaiTroTGContext } from "../../../contexts/VaiTroTGContext";
 import SanPham from "./SanPham";
 import ThemDoiTac from "./ThemDoiTac";
-import {BsCloudUploadFill} from "react-icons/bs"
+import { BsCloudUploadFill } from "react-icons/bs";
 
 const ThemDeTaiCB = () => {
   //context
@@ -59,6 +59,7 @@ const ThemDeTaiCB = () => {
   const [newDeTaiCB, setNewDeTaiCB] = useState({
     madetai: "",
     tendetai: "",
+    chunhiem: "",
     dotdangky: "",
     capdetai: "",
     ngaybd: "",
@@ -80,6 +81,7 @@ const ThemDeTaiCB = () => {
   const {
     madetai,
     tendetai,
+    chunhiem,
     dotdangky,
     capdetai,
     ngaybd,
@@ -123,6 +125,7 @@ const ThemDeTaiCB = () => {
     setNewDeTaiCB({
       madetai: "",
       tendetai: "",
+      chunhiem: "",
       dotdangky: "",
       capdetai: "",
       ngaybd: "",
@@ -171,7 +174,7 @@ const ThemDeTaiCB = () => {
                 >
                   <option>Chọn đợt đăng ký đề tài</option>
                   {dotdangkys.map((dotdangky) => (
-                    <option key={dotdangky._id} value={dotdangky._id}>
+                    <option key={dotdangky._id}>
                       {dotdangky.tendot}
                     </option>
                   ))}
@@ -195,13 +198,30 @@ const ThemDeTaiCB = () => {
           <Form.Group className="mb-3">
             <Form.Label>Tên đề tài</Form.Label>
             <Form.Control
-              type="text"
+              as = "textarea"
+              row = {3}
               name="tendetai"
               required
               aria-describedby="title-help"
               value={tendetai}
               onChange={onChangeInput}
             />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Chủ nhiệm đề tài</Form.Label>
+            <Form.Select
+              value={chunhiem}
+              name="chunhiem"
+              onChange={onChangeInput}
+              aria-label="Default select example"
+            >
+              <option>Chọn</option>
+              {users.map((user) => (
+                <option key={user._id} value={user._id}>
+                  {user.hovaten}
+                </option>
+              ))}
+            </Form.Select>
           </Form.Group>
           <Row>
             <Col>
@@ -473,7 +493,8 @@ const ThemDeTaiCB = () => {
           <SanPham />
           <div>
             <h1>ĐỐI TÁC NCKH</h1>
-            <Button onClick={() => setShowThemDoiTac(true)}
+            <Button
+              onClick={() => setShowThemDoiTac(true)}
               style={{
                 backgroundColor: "#337AB7",
                 borderColor: "#2d6da3",
@@ -482,8 +503,10 @@ const ThemDeTaiCB = () => {
             >
               Thêm mới
             </Button>
-            <ThemDoiTac show={showThemDoiTac}
-              onHide={() => setShowThemDoiTac(false)} />
+            <ThemDoiTac
+              show={showThemDoiTac}
+              onHide={() => setShowThemDoiTac(false)}
+            />
             <Table borderless bordered hover style={{ cursor: "pointer" }}>
               <thead>
                 <tr className="table-header">
@@ -511,7 +534,9 @@ const ThemDeTaiCB = () => {
           <div>
             <div>
               <div>Danh sách tài liệu</div>
-              <Button style={{ float: 'right' }}><BsCloudUploadFill /></Button>
+              <Button style={{ float: "right" }}>
+                <BsCloudUploadFill />
+              </Button>
             </div>
             <Table borderless bordered hover style={{ cursor: "pointer" }}>
               <thead>
@@ -525,7 +550,7 @@ const ThemDeTaiCB = () => {
                 </tr>
               </thead>
               <tbody></tbody>
-              </Table>
+            </Table>
           </div>
         </Modal.Body>
         <Modal.Footer>

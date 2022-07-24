@@ -4,9 +4,13 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* --bs-body-font-size: 14px; */
+  padding: 0;
+  min-height: 100%;
+  background-color: #EEF2F6; 
  
 }
+
 body a{
   text-decoration: none;
 }
@@ -19,9 +23,6 @@ code {
   max-width: 100%;
   /* min-height: 100vh; */
   margin: 0 auto;
-}
-a{
-  text-decoration: none;
 }
 ul li {
   list-style: none;

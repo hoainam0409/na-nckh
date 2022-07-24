@@ -25,9 +25,10 @@ import Col from "react-bootstrap/Col";
 import Dropdown from "react-bootstrap/Dropdown";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import CapNhatThuyetMinh from "./CapNhatThuyetMinh";
-import BaoCaoTienDo from "../baocaotiendo-cb/BaoCaoTienDo";
+import BaoCaoTienDo from "../dangky-cb/BaoCaoTienDo";
 import XemDeTai from "../duyetcapkhoa-cb/XemChiTiet";
 import GiaHanDeTai from './GiaHanDeTai'
+import History from '../../../until/History'
 
 
 const DeTaiCBs = () => {
@@ -45,7 +46,8 @@ const DeTaiCBs = () => {
     setShowXemDeTaiCB,
     setShowCapNhatThuyetMinh,
     setShowBaoCaoTienDo,
-    setShowGiaHanDeTai
+    setShowGiaHanDeTai,
+    setShowHistory
   } = useContext(DeTaiCBContext);
 
   // Start: Get all
@@ -67,6 +69,10 @@ const DeTaiCBs = () => {
     findDeTaiCB(detaicbId);
     setShowCapNhatThuyetMinh(true);
   };
+  const ShowHistory = (detaicbId) => {
+    findDeTaiCB(detaicbId);
+    setShowHistory(true);
+  };
   const BaoCaoTienDoDeTaiCB = (detaicbId) => {
     findDeTaiCB(detaicbId);
     setShowBaoCaoTienDo(true);
@@ -82,6 +88,7 @@ const DeTaiCBs = () => {
       {detaicb !== null && <XemDeTai />}
       {detaicb !== null && <SuaDeTaiCB />}
       {detaicb !== null && <CapNhatThuyetMinh />}
+      {detaicb !== null && <History/>}
       {detaicb !== null && <BaoCaoTienDo />}
       {detaicb !== null && <GiaHanDeTai/>}
       <div className="style-mainpage">
@@ -145,7 +152,8 @@ const DeTaiCBs = () => {
               <th>Mã đề tài</th>
               <th>Tên đề tài</th>
               <th>Đợt đăng ký</th>
-              <th>Khoa xét duyệt</th>
+              <th>Khoa/Phòng ban xét duyệt</th>
+              <th>Chủ nhiệm đề tài</th>
               <th>Thành viên tham gia</th>
               <th>Kinh phí(đồng)</th>
               <th>Trạng thái</th>
@@ -159,6 +167,7 @@ const DeTaiCBs = () => {
                 <td>{detaicb.tendetai}</td>
                 <td>{detaicb.dotdangky} </td>
                 <td>{detaicb.khoaxetduyet}</td>
+                <td>{detaicb.chunhiem}</td>
                 <td>
                   {detaicb.thanhvienthamgia.map((q) => (
                     <div key={q._id}>- {q.hovaten}</div>
@@ -201,7 +210,7 @@ const DeTaiCBs = () => {
                         <span><BsTrashFill /></span>
                         Xóa
                       </Dropdown.Item>
-                      <Dropdown.Item>
+                      <Dropdown.Item onClick={ShowHistory.bind(this, detaicb._id)}>
                         <span><BiHistory /></span>
                         Xem quá trình xử lý
                       </Dropdown.Item>

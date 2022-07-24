@@ -17,6 +17,7 @@ const detaiCBCtrl = {
     const {
       madetai,
       tendetai,
+      chunhiem,
       dotdangky,
       capdetai,
       ngaybd,
@@ -36,6 +37,7 @@ const detaiCBCtrl = {
     } = req.body;
     if (
       !tendetai ||
+      !chunhiem||
       !dotdangky ||
       !khoaxetduyet ||
       !linhvuc ||
@@ -52,6 +54,7 @@ const detaiCBCtrl = {
       const newDeTaiCB = new DeTaiCB({
         madetai,
         tendetai,
+        chunhiem,
         dotdangky,
         capdetai,
         ngaybd,
@@ -84,6 +87,7 @@ const detaiCBCtrl = {
     const {
       madetai,
       tendetai,
+      chunhiem,
       dotdangky,
       capdetai,
       ngaybd,
@@ -104,6 +108,7 @@ const detaiCBCtrl = {
     // Simple validation
     if (
       !tendetai ||
+      !chunhiem||
       !dotdangky ||
       !khoaxetduyet ||
       !linhvuc ||
@@ -120,6 +125,7 @@ const detaiCBCtrl = {
       let updatedDeTaiCB = {
         madetai,
         tendetai,
+        chunhiem,
         dotdangky,
         capdetai,
         ngaybd,

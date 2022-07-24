@@ -12,7 +12,6 @@ import { LinhVucContext } from "../../../contexts/LinhVucContext";
 import { UserContext } from "../../../contexts/UserContext";
 import { VaiTroTGContext } from "../../../contexts/VaiTroTGContext";
 
-
 const ThongTinDeTai = () => {
   // Contexts
   const {
@@ -64,6 +63,7 @@ const ThongTinDeTai = () => {
     madetai,
     tendetai,
     dotdangky,
+    chunhiem,
     capdetai,
     ngaybd,
     ngaykt,
@@ -114,7 +114,7 @@ const ThongTinDeTai = () => {
   };
 
   return (
-    <Form >
+    <Form>
       <Row>
         <Col>
           <Form.Group className="mb-3">
@@ -127,9 +127,7 @@ const ThongTinDeTai = () => {
             >
               <option>Chọn đợt đăng ký đề tài</option>
               {dotdangkys.map((dotdangky) => (
-                <option key={dotdangky._id}>
-                  {dotdangky.tendot}
-                </option>
+                <option key={dotdangky._id}>{dotdangky.tendot}</option>
               ))}
             </Form.Select>
           </Form.Group>
@@ -158,6 +156,20 @@ const ThongTinDeTai = () => {
           value={tendetai}
           onChange={onChangeUpdated}
         />
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>Chủ nhiệm đề tài</Form.Label>
+        <Form.Select
+          value={chunhiem}
+          name="chunhiem"
+          onChange={onChangeUpdated}
+          aria-label="Default select example"
+        >
+          <option>Chọn</option>
+          {users.map((user) => (
+            <option key={user._id}>{user.hovaten}</option>
+          ))}
+        </Form.Select>
       </Form.Group>
       <Row>
         <Col>
@@ -207,9 +219,7 @@ const ThongTinDeTai = () => {
             >
               <option>Chọn lĩnh vực nghiên cứu</option>
               {linhvucs.map((linhvuc) => (
-                <option key={linhvuc._id}>
-                  {linhvuc.ten}
-                </option>
+                <option key={linhvuc._id}>{linhvuc.ten}</option>
               ))}
             </Form.Select>
           </Form.Group>
@@ -225,9 +235,7 @@ const ThongTinDeTai = () => {
             >
               <option>Chọn khoa xét duyệt đề tài</option>
               {khoas.map((khoa) => (
-                <option key={khoa._id}>
-                  {khoa.ten}
-                </option>
+                <option key={khoa._id}>{khoa.ten}</option>
               ))}
             </Form.Select>
           </Form.Group>
@@ -290,13 +298,9 @@ const ThongTinDeTai = () => {
                 value={thanhvienthamgia.hovaten}
                 onChange={onChangeUser}
               >
-                <option >Chọn thành viên</option>
+                <option>Chọn thành viên</option>
                 {users.map((user) => (
-                  <option
-                    key={user._id}
-                    value={user._id}
-                    name={user.hovaten}
-                  >
+                  <option key={user._id} value={user._id} name={user.hovaten}>
                     {user.hovaten}
                   </option>
                 ))}
@@ -325,17 +329,15 @@ const ThongTinDeTai = () => {
                 onChange={onChangeVaiTroThamGia}
               >
                 <option value="">Chọn vai trò</option>
-                {
-                  vaitroTGs.map((vaitroTG) => (
-                    <option
-                      key={vaitroTG._id}
-                      value={vaitroTG._id}
-                      name={vaitroTG.ten}
-                    >
-                      {vaitroTG.ten}
-                    </option>
-                  ))
-                }
+                {vaitroTGs.map((vaitroTG) => (
+                  <option
+                    key={vaitroTG._id}
+                    value={vaitroTG._id}
+                    name={vaitroTG.ten}
+                  >
+                    {vaitroTG.ten}
+                  </option>
+                ))}
               </Form.Select>
             </Form.Group>
           </Col>
@@ -364,11 +366,7 @@ const ThongTinDeTai = () => {
               >
                 <option>Chọn thành viên</option>
                 {users.map((user) => (
-                  <option
-                    key={user._id}
-                    value={user._id}
-                    name={user.hovaten}
-                  >
+                  <option key={user._id} value={user._id} name={user.hovaten}>
                     {user.hovaten}
                   </option>
                 ))}
@@ -397,17 +395,15 @@ const ThongTinDeTai = () => {
                 onChange={onChangeVaiTroThamGia}
               >
                 <option value="">Chọn vai trò</option>
-                {
-                  vaitroTGs.map((vaitroTG) => (
-                    <option
-                      key={vaitroTG._id}
-                      value={vaitroTG._id}
-                      name={vaitroTG.ten}
-                    >
-                      {vaitroTG.ten}
-                    </option>
-                  ))
-                }
+                {vaitroTGs.map((vaitroTG) => (
+                  <option
+                    key={vaitroTG._id}
+                    value={vaitroTG._id}
+                    name={vaitroTG.ten}
+                  >
+                    {vaitroTG.ten}
+                  </option>
+                ))}
               </Form.Select>
             </Form.Group>
           </Col>
@@ -430,9 +426,7 @@ const ThongTinDeTai = () => {
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr>
-              <th style={{ textAlign: "center", color: "#495057" }}>
-                STT
-              </th>
+              <th style={{ textAlign: "center", color: "#495057" }}>STT</th>
               <th style={{ textAlign: "center", color: "#495057" }}>
                 Tên đơn vị
               </th>
@@ -450,8 +444,7 @@ const ThongTinDeTai = () => {
               </th>
             </tr>
           </thead>
-          <tbody>
-          </tbody>
+          <tbody></tbody>
         </Table>
       </div>
       <Form.Group className="mb-3">

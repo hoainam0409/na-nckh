@@ -9,6 +9,10 @@ const detaiCBSchema = new Schema({
         type: String,
         required: true
     },
+    chunhiem:{
+        type: String,
+        required: true
+    },
     dotdangky: {
         type: String,
         required: true
@@ -52,7 +56,6 @@ const detaiCBSchema = new Schema({
         {
             idThanhVien: String,
             hovaten: String,
-            // idVaiTro: String,
             vaitrothamgia: String,
             chucdanhKH: String,
             donvi: String,

@@ -64,6 +64,7 @@ const SuaDeTaiCB = () => {
   const {
     madetai,
     tendetai,
+    chunhiem,
     dotdangky,
     capdetai,
     ngaybd,
@@ -155,13 +156,28 @@ const SuaDeTaiCB = () => {
           <Form.Group className="mb-3">
             <Form.Label>Tên đề tài</Form.Label>
             <Form.Control
-              type="text"
+              as = "textarea"
+              row = {3}
               name="tendetai"
               required
               aria-describedby="title-help"
               value={tendetai}
               onChange={onChangeUpdated}
             />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Chủ nhiệm đề tài</Form.Label>
+            <Form.Select
+              value={chunhiem}
+              name="chunhiem"
+              onChange={onChangeUpdated}
+              aria-label="Default select example"
+            >
+              <option>Chọn</option>
+              {users.map((user) => (
+                <option key={user._id}>{user.hovaten}</option>
+              ))}
+            </Form.Select>
           </Form.Group>
           <Row>
             <Col>
@@ -443,7 +459,7 @@ const SuaDeTaiCB = () => {
               Thêm mới
             </Button>
             <Table borderless bordered hover style={{ cursor: "pointer" }}>
-              <thead className = "table-header">
+              <thead className="table-header">
                 <tr>
                   <th>STT</th>
                   <th>Tên đơn vị</th>

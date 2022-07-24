@@ -3,53 +3,59 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
+import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import SideBar from "../../sidebar/SideBar";
-import NhapKQNTDeTai from "./NhapKQNTDeTaiCB";
+import NumberFormat from 'react-number-format';
 import ReactTooltip from "react-tooltip";
 import {
   BsFillEyeFill,
   BsFileEarmarkWord,
-  BsPencilSquare,
+  BsDownload
 } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import NumberFormat from 'react-number-format';
 import Dropdown from "react-bootstrap/Dropdown";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import XemChiTiet from '../duyetcapkhoa-cb/XemChiTiet'
+import ChonTieuChi from './ChonTieuChi'
 
-const DeTaiNhapKQNTs = () => {
+const DeTaiCBs = () => {
   const {
     detaicbState: { detaicb, detaicbs, detaicbsLoading },
     getDeTaiCBs,
     showToast: { show, message, type },
     setShowToast,
     findDeTaiCB,
-    setShowSuaDeTaiCB,
-    setShowNhapKQNT,
+    setShowXemDeTaiCB,
+    trangThai,
   } = useContext(DeTaiCBContext);
+
+  // const {
+  //   dotdangkyState: {dotdangky}
+  // } = useContext(DotDangKyContext)
 
   // Start: Get all
   useEffect(() => getDeTaiCBs(), []);
 
+  const [modalShow, setModalShow] = useState(false);
+
   const chooseDeTaiCB = (detaicbId) => {
     findDeTaiCB(detaicbId);
-    setShowSuaDeTaiCB(true);
+    setShowXemDeTaiCB(true);
   };
 
-  const SelectDeTaiCB = (detaicbId) => {
-    findDeTaiCB(detaicbId);
-    setShowNhapKQNT(true);
-  };
   return (
     <div>
       <SideBar />
-      {detaicb !== null && <SuaDeTaiCB />}
-      {detaicb !== null && <NhapKQNTDeTai />}
+      {detaicb !== null && <XemChiTiet />}
+      <ChonTieuChi
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
       <div className="style-mainpage">
         <div>
-          <h1>Danh sách nghiệm thu đề tài</h1>
+          <h1 style={{ fontSize: "24px" }}>Danh sách đề tài đã gửi duyệt</h1>
           <div className="filter">
             <Row className="controls">
               <Col>
@@ -72,6 +78,24 @@ const DeTaiNhapKQNTs = () => {
                   <option value="2022">2022</option>
                   <option value="2021">2021</option>
                 </Form.Select>
+              </Col>
+              <Col>
+                <Dropdown>
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                    <span><BsDownload /></span>
+                    Tải xuống
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => setModalShow(true)}>
+                      <span><BsFileEarmarkWord /></span>
+                      Danh mục đề tài
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => setModalShow(true)}>
+                      <span><BsFileEarmarkWord /></span>
+                      Danh mục đề tài được thực hiện
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </Col>
             </Row>
           </div>
@@ -96,26 +120,28 @@ const DeTaiNhapKQNTs = () => {
           borderless
           bordered
           hover
-          style={{ cursor: "pointer", marginTop: "100px" }}
+          style={{ cursor: "pointer", marginTop: "128px" }}
         >
           <thead>
             <tr className="table-header">
               <th>Mã đề tài</th>
               <th>Tên đề tài</th>
+              {/* <th>Cấp đề tài</th> */}
               <th>Đợt đăng ký</th>
               <th>Khoa/Phòng ban xét duyệt</th>
               <th>Chủ nhiệm đề tài</th>
               <th>Thành viên tham gia</th>
-              <th>Kinh phí (đồng)</th>
+              <th>Kinh phí(đồng)</th>
               <th>Trạng thái</th>
               <th className="chucnang">Chức năng</th>
             </tr>
           </thead>
           <tbody>
             {detaicbs.map((detaicb) => (
-              <tr key={detaicb._id} value={detaicb._id}>
+              <tr key={detaicb._id}>
                 <td>{detaicb.madetai} </td>
                 <td>{detaicb.tendetai}</td>
+                {/* <td>{dotdangky.capdetai}</td> */}
                 <td>{detaicb.dotdangky} </td>
                 <td>{detaicb.khoaxetduyet}</td>
                 <td>{detaicb.chunhiem}</td>
@@ -124,7 +150,7 @@ const DeTaiNhapKQNTs = () => {
                     <div key={q._id}>- {q.hovaten}</div>
                   ))}
                 </td>
-                <td><NumberFormat value={detaicb.kinhphi} displayType={'text'} thousandSeparator={true}/></td>
+                <td><NumberFormat value={detaicb.kinhphi} displayType={'text'} thousandSeparator={true} /></td>
                 <td>{detaicb.trangthai}</td>
                 <td style={{ textAlign: "center" }}>
                   <Dropdown as={ButtonGroup}>
@@ -152,25 +178,27 @@ const DeTaiNhapKQNTs = () => {
                       </ReactTooltip>
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      <Dropdown.Item
-                        onClick={SelectDeTaiCB.bind(this, detaicb._id)}
-                      >
+                      <Dropdown.Item>
                         <span>
-                          <BsPencilSquare />
+                          <BsFileEarmarkWord />
                         </span>
-                        Nhập kết quả nghiệm thu
+                        Thuyết minh đề tài
                       </Dropdown.Item>
                       <Dropdown.Item>
                         <span>
                           <BsFileEarmarkWord />
                         </span>
-                        In thuyết minh
-                      </Dropdown.Item>
-                      <Dropdown.Item>
+                        Phiếu báo cáo kết quả thực hiện
+                      </Dropdown.Item><Dropdown.Item>
                         <span>
                           <BsFileEarmarkWord />
                         </span>
-                        In biên bản họp hội đồng
+                        Quyết định thành lập hội đồng nghiệm thu
+                      </Dropdown.Item><Dropdown.Item>
+                        <span>
+                          <BsFileEarmarkWord />
+                        </span>
+                        Đơn xin gia hạn đề tài
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
@@ -183,4 +211,5 @@ const DeTaiNhapKQNTs = () => {
     </div>
   );
 };
-export default DeTaiNhapKQNTs;
+
+export default DeTaiCBs;

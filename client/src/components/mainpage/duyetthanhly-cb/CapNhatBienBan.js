@@ -2,27 +2,28 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
+import Table from "react-bootstrap/Table";
 import Col from "react-bootstrap/Col";
 import { useContext, useState, useEffect } from "react";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
+import { DotKiemTraTĐContext } from "../../../contexts/DotKiemTraTĐContext";
 
-const BaoCaoTienDo = () => {
+const CapNhatBienBan = () => {
   // Contexts
   const {
     detaicbState: { detaicb },
     updateDeTaiCB,
     setShowToast,
-    showGiaHanDeTai,
-    setShowGiaHanDeTai,
+    showCapNhatBienBan,
+    setShowCapNhatBienBan,
   } = useContext(DeTaiCBContext);
 
-  
   // State
   const [updatedDeTaiCB, setUpdatedDeTaiCB] = useState(detaicb);
 
   useEffect(() => setUpdatedDeTaiCB(detaicb), [detaicb]);
 
-  const { madetai, tendetai, chunhiem} = updatedDeTaiCB;
+  const { madetai, tendetai, chunhiem } = updatedDeTaiCB;
 
   const onChangeUpdated = (event) =>
     setUpdatedDeTaiCB({
@@ -32,20 +33,20 @@ const BaoCaoTienDo = () => {
 
   const closeDialog = () => {
     setUpdatedDeTaiCB(detaicb);
-    setShowGiaHanDeTai(false);
+    setShowCapNhatBienBan(false);
   };
 
   const onSubmit = async (event) => {
     event.preventDefault();
     const { success, message } = await updateDeTaiCB(updatedDeTaiCB);
-    setShowGiaHanDeTai(false);
+    setShowCapNhatBienBan(false);
     setShowToast({ show: true, message, type: success ? "success" : "danger" });
   };
 
   return (
-    <Modal show={showGiaHanDeTai} onHide={closeDialog}>
+    <Modal show={showCapNhatBienBan} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Gia hạn thực hiện đề tài </Modal.Title>
+        <Modal.Title>Cập nhật biên bản thanh lý đề tài </Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>
@@ -56,19 +57,18 @@ const BaoCaoTienDo = () => {
               name="madetai"
               aria-describedby="title-help"
               value={madetai}
-              onChange={onChangeUpdated}
               disabled
             />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Tên đề tài</Form.Label>
             <Form.Control
-              type="text"
+              as = "textarea"
+              row = {3}
               name="tendetai"
+              disabled
               aria-describedby="title-help"
               value={tendetai}
-              onChange={onChangeUpdated}
-              disabled
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -76,60 +76,45 @@ const BaoCaoTienDo = () => {
             <Form.Control
               type="text"
               name="chunhiem"
+              required
               aria-describedby="title-help"
               value={chunhiem}
-              onChange={onChangeUpdated}
               disabled
             />
           </Form.Group>
-          <Row>
-            <Col>
-            <Form.Group className="mb-3">
-                <Form.Label>Ngày xin gia hạn</Form.Label>
-                <Form.Control
-                  name="ngaygiahan"
-                  type="date"
-                  onChange={onChangeUpdated}
-                  aria-label="Default select example"
-                ></Form.Control>
-              </Form.Group>
-            </Col>
-            <Col>
-            <Form.Group className="mb-3">
-                <Form.Label>Gia hạn đến ngày</Form.Label>
-                <Form.Control
-                  name="giahandenngay"
-                  type="date"
-                  onChange={onChangeUpdated}
-                  aria-label="Default select example"
-                ></Form.Control>
-              </Form.Group>
-            </Col>
-          </Row>
-          <Form.Group className="mb-3">
-            <Form.Label>Lý do gia hạn</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={5}
-              name="lydo"
-              aria-describedby="title-help"
-              onChange={onChangeUpdated}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Đính kèm</Form.Label>
-            <Form.Control
-              type="file"
-              name="dinhkem"
-              aria-describedby="title-help"
-              onChange={onChangeUpdated}
-            />
-          </Form.Group>
+          <div>
+            <h1>BIÊN BẢN THANH LÝ</h1>
+            <Row>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Kinh phí được cấp</Form.Label>
+                  <Form.Control />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Kinh phí đã chi</Form.Label>
+                  <Form.Control />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Kinh phí đã quyết toán</Form.Label>
+                  <Form.Control />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Kinh phí chưa quyết toán</Form.Label>
+                  <Form.Control />
+                </Form.Group>
+              </Col>
+            </Row>
+            </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" type="submit">
-            Gửi duyệt
-          </Button>
           <Button variant="primary" type="submit">
             Lưu
           </Button>
@@ -142,4 +127,4 @@ const BaoCaoTienDo = () => {
   );
 };
 
-export default BaoCaoTienDo;
+export default CapNhatBienBan;

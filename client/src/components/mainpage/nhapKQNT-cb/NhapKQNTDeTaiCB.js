@@ -41,6 +41,7 @@ const NhapKQNTDeTaiCB = () => {
     madetai,
     tendetai,
     dotdangky,
+    chunhiem,
     thanhvienthamgia,
     ghichu,
     trangthai,
@@ -93,7 +94,7 @@ const NhapKQNTDeTaiCB = () => {
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Chủ tịch hội đồng</Form.Label>
-                <Form.Control />
+                <Form.Control disabled/>
               </Form.Group>
             </Col>
           </Row>
@@ -101,7 +102,7 @@ const NhapKQNTDeTaiCB = () => {
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Ủy viên phản biện</Form.Label>
-                <Form.Control />
+                <Form.Control disabled/>
               </Form.Group>
             </Col>
             <Col>
@@ -112,7 +113,7 @@ const NhapKQNTDeTaiCB = () => {
                   name="madetai"
                   aria-describedby="title-help"
                   value={madetai}
-                  onChange={onChangeUpdated}
+                  disabled
                 />
               </Form.Group>
             </Col>
@@ -120,17 +121,23 @@ const NhapKQNTDeTaiCB = () => {
           <Form.Group className="mb-3">
             <Form.Label>Tên đề tài</Form.Label>
             <Form.Control
-              type="text"
+              as="textarea"
+              row={3}
               name="tendetai"
-              required
+              disabled
               aria-describedby="title-help"
               value={tendetai}
-              onChange={onChangeUpdated}
             />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Chủ nhiệm đề tài</Form.Label>
-            <Form.Control />
+            <Form.Control
+              type="text"
+              name="chunhiem"
+              disabled
+              aria-describedby="title-help"
+              value={chunhiem}
+            />
           </Form.Group>
           {/* <div>
             <h1>KẾT QUẢ NGHIỆM THU</h1>

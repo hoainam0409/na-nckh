@@ -10,16 +10,20 @@ import DanhSachDeTaiSV from './dangky-sv/DanhSachDeTaiSV'
 import DeTaiSVXacNhan from './detaisv-xacnhan/DeTaiSVXacNhan'
 import DeTaiSVChoDuyet from './detaisv-choduyet/DeTaiSVChoDuyet'
 import DanhSachDeTaiCB from './dangky-cb/DanhSachDeTaiCB'
-import DanhSachDeTaiCBAll from './detaicb-tatca/DanhSachDeTaiCB'
+import DanhSachDeTaiCBAll from './daguiduyet-cb/DanhSachDeTaiCB'
 import DanhSachUser from './quanly-nguoidung/DanhSachUser'
 import DeTaiChoDuyetKhoa from './duyetcapkhoa-cb/DeTaiChoDuyetCapKhoa'
 import DeTaiNhapKQĐG from './nhapKQĐG-cb/DeTaiNhapKQĐG'
 import DeTaiChoDuyetTruong from './duyetcaptruong-cb/DeTaiChoDuyetCapTruong'
+import DeTaiRaQuyetDinh from './raquyetdinh-cb/DeTaiRaQuyetDinh'
 import DeTaiNhapKQNT from './nhapKQNT-cb/DeTaiNhapKQNT'
 import DanhSachHoiDong from './quanlyhoidong/DanhSachHoiDong'
 import DanhSachDotKiemTraTĐ from './dotkiemtratiendo/DanhSachDotKTTD'
-import DeTaiBaoCaoTienDo from './baocaotiendo-cb/DeTaiBaoCaoTienDo'
+import DeTaiDuyetGiaHan from './duyetgiahan-cb/DeTaiDuyetGiaHan'
+import DeTaiDuyetThanhLy from './duyetthanhly-cb/DeTaiDuyetThanhLy'
 import DuyetBaoCaoTienDo from './duyetbaocaotiendo-cb/DuyetBaoCaoTienDo'
+import DeTaiDuyetNghiemThu from './duyetnghiemthu-cb/DeTaiDuyetNghiemThu'
+
 
 import DanhSachLinhVuc from './dm-linhvuc/DanhSachLinhVuc'
 import DanhSachVaiTroTG from './dm- vaitroTG/DanhSachVaiTroTG'
@@ -46,15 +50,20 @@ function Pages() {
         <Route exact path="/detai-sinhvien/cho-duyet" element={<DeTaiSVChoDuyet/>}></Route>
         <Route exact path="/detai-canbo/dangky" element={<DanhSachDeTaiCB/>}></Route>
         <Route exact path="/detai-canbo/tat-ca-de-tai" element={<DanhSachDeTaiCBAll/>}></Route>
-        <Route exact path="/user" element={<DanhSachUser/>}></Route>
         <Route exact path="/detai-canbo/cho-duyet-cap-khoa" element={<DeTaiChoDuyetKhoa/>}></Route>
         <Route exact path="/detai-canbo/nhap-ket-qua-danh-gia" element={<DeTaiNhapKQĐG/>}></Route>
         <Route exact path="/detai-canbo/cho-duyet-cap-truong" element={<DeTaiChoDuyetTruong/>}></Route>
+        <Route exact path="/detai-canbo/quyet-dinh-chu-tri" element={<DeTaiRaQuyetDinh/>}></Route>
         <Route exact path="/detai-canbo/dot-kiem-tra-tien-do" element={<DanhSachDotKiemTraTĐ/>}></Route>
-        <Route exact path="/detai-canbo/bao-cao-tien-do" element={<DeTaiBaoCaoTienDo />}></Route>
+        <Route exact path="/detai-canbo/duyet-gia-han" element={<DeTaiDuyetGiaHan />}></Route>
+        <Route exact path="/detai-canbo/duyet-thanh-ly" element={<DeTaiDuyetThanhLy />}></Route>
         <Route exact path="/detai-canbo/duyet-bao-cao-tien-do" element={<DuyetBaoCaoTienDo />}></Route>
+        <Route exact path="/detai-canbo/duyet-nghiem-thu" element={<DeTaiDuyetNghiemThu />}></Route>
         <Route exact path="/detai-canbo/nhap-ket-qua-nghiem-thu" element={<DeTaiNhapKQNT/>}></Route>
         <Route exact path="/quanly/hoidong" element={<DanhSachHoiDong/>}></Route>
+
+
+        <Route exact path="/user" element={<DanhSachUser/>}></Route>
 
     </Routes>
   )

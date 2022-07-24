@@ -2,21 +2,22 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
+import Table from "react-bootstrap/Table";
 import Col from "react-bootstrap/Col";
 import { useContext, useState, useEffect } from "react";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
+import {BsCloudUploadFill } from 'react-icons/bs'
 
-const BaoCaoTienDo = () => {
+const CapNhatQuyetDinh = () => {
   // Contexts
   const {
     detaicbState: { detaicb },
     updateDeTaiCB,
     setShowToast,
-    showGiaHanDeTai,
-    setShowGiaHanDeTai,
+    showCapNhatQuyetDinh,
+    setShowCapNhatQuyetDinh,
   } = useContext(DeTaiCBContext);
 
-  
   // State
   const [updatedDeTaiCB, setUpdatedDeTaiCB] = useState(detaicb);
 
@@ -32,20 +33,20 @@ const BaoCaoTienDo = () => {
 
   const closeDialog = () => {
     setUpdatedDeTaiCB(detaicb);
-    setShowGiaHanDeTai(false);
+    setShowCapNhatQuyetDinh(false);
   };
 
   const onSubmit = async (event) => {
     event.preventDefault();
     const { success, message } = await updateDeTaiCB(updatedDeTaiCB);
-    setShowGiaHanDeTai(false);
+    setShowCapNhatQuyetDinh(false);
     setShowToast({ show: true, message, type: success ? "success" : "danger" });
   };
 
   return (
-    <Modal show={showGiaHanDeTai} onHide={closeDialog}>
+    <Modal show={showCapNhatQuyetDinh} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Gia hạn thực hiện đề tài </Modal.Title>
+        <Modal.Title>Cập nhật quyết định giao nhiệm vụ chủ trì đề tài </Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>
@@ -56,7 +57,6 @@ const BaoCaoTienDo = () => {
               name="madetai"
               aria-describedby="title-help"
               value={madetai}
-              onChange={onChangeUpdated}
               disabled
             />
           </Form.Group>
@@ -67,7 +67,6 @@ const BaoCaoTienDo = () => {
               name="tendetai"
               aria-describedby="title-help"
               value={tendetai}
-              onChange={onChangeUpdated}
               disabled
             />
           </Form.Group>
@@ -76,60 +75,66 @@ const BaoCaoTienDo = () => {
             <Form.Control
               type="text"
               name="chunhiem"
+              required
               aria-describedby="title-help"
               value={chunhiem}
-              onChange={onChangeUpdated}
               disabled
             />
           </Form.Group>
-          <Row>
-            <Col>
-            <Form.Group className="mb-3">
-                <Form.Label>Ngày xin gia hạn</Form.Label>
-                <Form.Control
-                  name="ngaygiahan"
-                  type="date"
-                  onChange={onChangeUpdated}
-                  aria-label="Default select example"
-                ></Form.Control>
-              </Form.Group>
-            </Col>
-            <Col>
-            <Form.Group className="mb-3">
-                <Form.Label>Gia hạn đến ngày</Form.Label>
-                <Form.Control
-                  name="giahandenngay"
-                  type="date"
-                  onChange={onChangeUpdated}
-                  aria-label="Default select example"
-                ></Form.Control>
-              </Form.Group>
-            </Col>
-          </Row>
-          <Form.Group className="mb-3">
-            <Form.Label>Lý do gia hạn</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={5}
-              name="lydo"
-              aria-describedby="title-help"
-              onChange={onChangeUpdated}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Đính kèm</Form.Label>
-            <Form.Control
-              type="file"
-              name="dinhkem"
-              aria-describedby="title-help"
-              onChange={onChangeUpdated}
-            />
-          </Form.Group>
+          <div>
+            <h1>THÔNG TIN QUYẾT ĐỊNH</h1>
+            <Row>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Số quyết định</Form.Label>
+                  <Form.Control />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Ngày ra quyết định</Form.Label>
+                  <Form.Control />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Người ra quyết định</Form.Label>
+                  <Form.Control />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Chức vụ ký</Form.Label>
+                  <Form.Control />
+                </Form.Group>
+              </Col>
+            </Row>
+           </div>
+           <div>
+            <div>
+              <div>Danh sách tài liệu</div>
+              <Button style={{ float: "right" }}>
+                <BsCloudUploadFill />
+              </Button>
+            </div>
+            <Table borderless bordered hover style={{ cursor: "pointer" }}>
+              <thead>
+                <tr className="table-header">
+                  <th>STT</th>
+                  <th>Tên tài liệu</th>
+                  <th>Kích thước</th>
+                  <th>Ngày tạo</th>
+                  <th>Phiên bản</th>
+                  <th className="chucnang">Chức năng</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </Table>
+          </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" type="submit">
-            Gửi duyệt
-          </Button>
           <Button variant="primary" type="submit">
             Lưu
           </Button>
@@ -142,4 +147,4 @@ const BaoCaoTienDo = () => {
   );
 };
 
-export default BaoCaoTienDo;
+export default CapNhatQuyetDinh;

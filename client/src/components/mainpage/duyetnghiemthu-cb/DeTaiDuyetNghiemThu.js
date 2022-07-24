@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
@@ -9,7 +9,9 @@ import NumberFormat from 'react-number-format';
 import ReactTooltip from "react-tooltip";
 import {
   BsFillEyeFill,
-  BsPencilSquare,
+  BsCheckLg,
+  BsXLg,
+  BsReplyFill,
   BsFileEarmarkWord,
 } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
@@ -19,7 +21,7 @@ import BaoCaoTienDo from "./BaoCaoTienDo";
 import Dropdown from "react-bootstrap/Dropdown";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 
-const DeTaiBaoCaoTienDo = () => {
+const DeTaiDuyetNghiemThu = () => {
   const {
     detaicbState: { detaicb, detaicbs, detaicbsLoading },
     getDeTaiCBs,
@@ -48,7 +50,7 @@ const DeTaiBaoCaoTienDo = () => {
       {detaicb !== null && <SuaDeTaiCB />}
       <div className="style-mainpage">
         <div>
-          <h1>Danh sách đề tài báo cáo tiến độ</h1>
+          <h1>Danh sách đề tài chờ duyệt nghiệm thu</h1>
           <div className="filter">
             <Row className="controls">
               <Col>
@@ -102,7 +104,7 @@ const DeTaiBaoCaoTienDo = () => {
               <th>Mã đề tài</th>
               <th>Tên đề tài</th>
               <th>Đợt đăng ký</th>
-              <th>Khoa xét duyệt</th>
+              <th>Khoa/Phòng ban xét duyệt</th>
               <th>Thành viên tham gia</th>
               <th>Kinh phí (đồng)</th>
               <th>Trạng thái</th>
@@ -147,18 +149,20 @@ const DeTaiBaoCaoTienDo = () => {
                       </ReactTooltip>
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      <Dropdown.Item
-                        onClick={SelectDeTaiCB.bind(this, detaicb._id)}
-                      >
-                        <span>
-                          <BsPencilSquare />
-                        </span>
-                        Báo cáo tiến độ
+                      <Dropdown.Item onClick={SelectDeTaiCB.bind(this, detaicb._id)}>
+                        <span><BsCheckLg /></span>
+                        Duyệt
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <span>
-                          <BsFileEarmarkWord />
-                        </span>
+                        <span><BsXLg /></span>
+                        Không duyệt
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <span><BsReplyFill /></span>
+                        Yêu cầu sửa
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <span><BsFileEarmarkWord/></span>
                         In thuyết minh
                       </Dropdown.Item>
                     </Dropdown.Menu>
@@ -172,4 +176,4 @@ const DeTaiBaoCaoTienDo = () => {
     </div>
   );
 };
-export default DeTaiBaoCaoTienDo;
+export default DeTaiDuyetNghiemThu;

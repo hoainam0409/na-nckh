@@ -102,7 +102,8 @@ const DeTaiNhapKQDGs = () => {
               <th>Mã đề tài</th>
               <th>Tên đề tài</th>
               <th>Đợt đăng ký</th>
-              <th>Khoa xét duyệt</th>
+              <th>Khoa/Phòng ban xét duyệt</th>
+              <th>Chủ nhiệm đề tài</th>
               <th>Thành viên tham gia</th>
               <th>Kinh phí (đồng)</th>
               <th>Trạng thái</th>
@@ -116,6 +117,7 @@ const DeTaiNhapKQDGs = () => {
                 <td>{detaicb.tendetai}</td>
                 <td>{detaicb.dotdangky} </td>
                 <td>{detaicb.khoaxetduyet}</td>
+                <td>{detaicb.chunhiem}</td>
                 <td>
                   {detaicb.thanhvienthamgia.map((q) => (
                     <div key={q._id}>- {q.hovaten}</div>
