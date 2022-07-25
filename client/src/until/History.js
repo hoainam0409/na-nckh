@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
 import { useContext} from "react";
 import { DeTaiCBContext } from "../contexts/DeTaiCBContext";
-import { BsCloudUploadFill } from 'react-icons/bs'
 
 const History = () => {
   // Contexts
