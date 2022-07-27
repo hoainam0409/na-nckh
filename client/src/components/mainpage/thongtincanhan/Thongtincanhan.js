@@ -11,14 +11,8 @@ const Thongtincanhan = () => {
   return (
     <div>
       <SideBar />
-      <div style={{ margin: "10px 20px 20px 330px" }}>
-        <h1
-          style={{
-            fontSize: "24px",
-          }}
-        >
-          Thông tin cá nhân
-        </h1>
+      <div className='style-mainpage'>
+        <h1>Thông tin cá nhân</h1>
         <div style={{ display: "flex" }}>
           <div style={{ width: "400px" }}>
             <div>

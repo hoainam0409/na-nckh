@@ -13,7 +13,7 @@ import { UserContext } from "../../../contexts/UserContext";
 import { VaiTroTGContext } from "../../../contexts/VaiTroTGContext";
 import SanPham from "./SanPham";
 import ThemDoiTac from "./ThemDoiTac";
-import { BsCloudUploadFill } from "react-icons/bs";
+import  {ControlFile}  from "../../../until/ControlFile";
 
 const ThemDeTaiCB = () => {
   //context
@@ -531,27 +531,8 @@ const ThemDeTaiCB = () => {
               onChange={onChangeInput}
             />
           </Form.Group> */}
-          <div>
-            <div>
-              <div>Danh sách tài liệu</div>
-              <Button style={{ float: "right" }}>
-                <BsCloudUploadFill />
-              </Button>
-            </div>
-            <Table borderless bordered hover style={{ cursor: "pointer" }}>
-              <thead>
-                <tr className="table-header">
-                  <th>STT</th>
-                  <th>Tên tài liệu</th>
-                  <th>Kích thước</th>
-                  <th>Ngày tạo</th>
-                  <th>Phiên bản</th>
-                  <th className="chucnang">Chức năng</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </Table>
-          </div>
+         
+          <ControlFile/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" type="submit">

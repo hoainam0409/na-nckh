@@ -92,8 +92,11 @@ const DeTaiBaoCaoTienDo = () => {
             <strong>{message}</strong>
           </Toast.Body>
         </Toast>
-        <div>
-          <ToolBar />
+        <div className="grid">
+          <Row className="custom-toolbar">
+            <Col></Col>
+            <Col><ToolBar /></Col>
+          </Row>
           <Table
             borderless
             bordered
@@ -161,7 +164,7 @@ const DeTaiBaoCaoTienDo = () => {
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
                         <Dropdown.Item>
-                          <span><BsCheckLg/></span>
+                          <span><BsCheckLg /></span>
                           Duyệt
                         </Dropdown.Item>
                         <Dropdown.Item>
@@ -169,7 +172,7 @@ const DeTaiBaoCaoTienDo = () => {
                           Không duyệt
                         </Dropdown.Item>
                         <Dropdown.Item>
-                          <span><BsReplyFill/></span>
+                          <span><BsReplyFill /></span>
                           Yêu cầu sửa
                         </Dropdown.Item>
                         <Dropdown.Item>

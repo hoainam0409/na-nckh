@@ -43,6 +43,7 @@ const ThemHoiDong = () => {
     tenhoidong: "",
     loaihoidong: "",
     dotdangky: "",
+    caphoidong: "",
     ngaydenghi: "",
     soquyetdinh: "",
     ngayraquyetdinh: "",
@@ -55,6 +56,7 @@ const ThemHoiDong = () => {
   const {
     tenhoidong,
     loaihoidong,
+    caphoidong,
     dotdangky,
     ngaydenghi,
     soquyetdinh,
@@ -89,6 +91,7 @@ const ThemHoiDong = () => {
     setNewHoiDong({
       tenhoidong: "",
       loaihoidong: "",
+      caphoidong: "",
       dotdangky: "",
       ngaydenghi: "",
       soquyetdinh: "",
@@ -149,26 +152,40 @@ const ThemHoiDong = () => {
             </Col>
             <Col>
               <Form.Group className="mb-3">
-                <Form.Label>Đợt đăng ký</Form.Label>
+                <Form.Label>Cấp hội đồng</Form.Label>
                 <Form.Select
                   type="text"
-                  name="dotdangky"
-                  required
+                  name="caphoidong"
                   aria-describedby="title-help"
-                  value={dotdangky}
+                  value={caphoidong}
                   onChange={onChangeInput}
                 >
-                  <option>Chọn đợt đăng ký đề tài</option>
-                  {dotdangkys.map((dotdangky) => (
-                    <option key={dotdangky._id}>{dotdangky.tendot}</option>
-                  ))}
+                  <option>Chọn</option>
+                  <option>Cấp cơ sở</option>
+                  <option>Cấp chủ quản</option>
                 </Form.Select>
               </Form.Group>
             </Col>
           </Row>
+          <Form.Group className="mb-3">
+            <Form.Label>Đợt đăng ký</Form.Label>
+            <Form.Select
+              type="text"
+              name="dotdangky"
+              required
+              aria-describedby="title-help"
+              value={dotdangky}
+              onChange={onChangeInput}
+            >
+              <option>Chọn đợt đăng ký đề tài</option>
+              {dotdangkys.map((dotdangky) => (
+                <option key={dotdangky._id}>{dotdangky.tendot}</option>
+              ))}
+            </Form.Select>
+          </Form.Group>
           <Row>
             <Col>
-            <Form.Group className="mb-3">
+              <Form.Group className="mb-3">
                 <Form.Label>Thuộc khoa</Form.Label>
                 <Form.Select
                   name="khoa"
@@ -183,7 +200,7 @@ const ThemHoiDong = () => {
                 </Form.Select>
               </Form.Group></Col>
             <Col>
-            <Form.Group className="mb-3">
+              <Form.Group className="mb-3">
                 <Form.Label>Lĩnh vực</Form.Label>
                 <Form.Select
                   // value={linhvuc}

@@ -140,20 +140,25 @@ const DeTaiCBs = () => {
             <strong>{message}</strong>
           </Toast.Body>
         </Toast>
-        <div>
-          <Button
-            style={{
-              backgroundColor: "#337AB7",
-              borderColor: "#2d6da3",
-            }}
-            onClick={setShowThemDeTaiCB.bind(this, true)}
-          >
-            Thêm mới
-          </Button>
-          <ToolBar />
+        <div className="grid">
+          <Row className="custom-toolbar">
+            <Col>
+              <Button
+                style={{
+                  backgroundColor: "#337AB7",
+                  borderColor: "#2d6da3",
+                }}
+                onClick={setShowThemDeTaiCB.bind(this, true)}
+              >
+                Thêm mới
+              </Button></Col>
+            <Col>
+              <ToolBar /></Col>
+          </Row>
           <Table borderless bordered hover style={{ cursor: "pointer" }}>
             <thead>
               <tr className="table-header">
+                <th>STT</th>
                 <th>Mã đề tài</th>
                 <th>Tên đề tài</th>
                 <th>Đợt đăng ký</th>
@@ -168,6 +173,7 @@ const DeTaiCBs = () => {
             <tbody>
               {detaicbs.map((detaicb) => (
                 <tr key={detaicb._id}>
+                  <td>1</td>
                   <td>{detaicb.madetai} </td>
                   <td>{detaicb.tendetai}</td>
                   <td>{detaicb.dotdangky} </td>

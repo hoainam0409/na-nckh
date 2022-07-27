@@ -108,8 +108,11 @@ const DeTaiDuyetCapKhoas = () => {
             <strong>{message}</strong>
           </Toast.Body>
         </Toast>
-        <div>
-          <ToolBar />
+        <div className="grid">
+          <Row className="custom-toolbar">
+            <Col></Col>
+            <Col> <ToolBar /></Col>
+          </Row>
           <Table borderless bordered hover style={{ cursor: "pointer" }}>
             <thead>
               <tr className="table-header">

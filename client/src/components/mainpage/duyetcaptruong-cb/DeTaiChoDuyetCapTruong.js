@@ -107,8 +107,11 @@ const DeTaiDuyetCapKhoas = () => {
             <strong>{message}</strong>
           </Toast.Body>
         </Toast>
-        <div>
-          <ToolBar />
+        <div className="grid">
+          <Row>
+            <Col></Col>
+            <Col><ToolBar /></Col>
+          </Row>
           <Table
             borderless
             bordered

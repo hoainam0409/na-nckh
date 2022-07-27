@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import { useContext, useState, useEffect } from "react";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import { CapDeTaiContext } from "../../../contexts/CapDeTaiContext";
-
+import { ControlFile } from "../../../until/ControlFile";
 
 const SuaDotDangKy = () => {
   // Contexts
@@ -21,7 +21,7 @@ const SuaDotDangKy = () => {
     capdetaiState: { capdetais },
     getCapDeTais
   } = useContext(CapDeTaiContext);
-  useEffect(() => getCapDeTais(), [] )
+  useEffect(() => getCapDeTais(), [])
 
   // State
   const [updatedDotDangKy, setUpdatedDotDangKy] =
@@ -29,7 +29,7 @@ const SuaDotDangKy = () => {
 
   useEffect(() => setUpdatedDotDangKy(dotdangky), [dotdangky]);
 
-  const { madot, tendot, nam, capdetai, ngaymodangky, ngaykhoadangky,trangthai, ghichu, dinhkem } =
+  const { madot, tendot, nam, capdetai, ngaymodangky, ngaykhoadangky, thoihanduyetcapkhoa, thoihanduyetcaptruong, thoihannghiemthu, trangthai, ghichu, dinhkem } =
     updatedDotDangKy;
 
   const onChangeUpdated = (event) =>
@@ -106,9 +106,9 @@ const SuaDotDangKy = () => {
                   value={capdetai}
                   onChange={onChangeUpdated}
                 >
-                   <option >Chọn cấp đề tài</option>
+                  <option >Chọn cấp đề tài</option>
                   {capdetais.map((capdetai) => (
-                    <option key={capdetai._id} value={capdetai._id}>{capdetai.ten}</option>
+                    <option key={capdetai._id}>{capdetai.ten}</option>
                   ))}
                 </Form.Select>
               </Form.Group>
@@ -142,17 +142,55 @@ const SuaDotDangKy = () => {
               </Form.Group>
             </Col>
           </Row>
+          <Row>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Thời hạn xét duyệt cấp Khoa/Phòng</Form.Label>
+                <Form.Control
+                  type="date"
+                  name="thoihanduyetcapkhoa"
+                  aria-describedby="title-help"
+                  required
+                  value={thoihanduyetcapkhoa}
+                  onChange={onChangeUpdated}
+                />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group className="mb-3">
+                <Form.Label>Thời hạn xét duyệt cấp trường</Form.Label>
+                <Form.Control
+                  type="date"
+                  name="thoihanduyetcaptruong"
+                  aria-describedby="title-help"
+                  required
+                  value={thoihanduyetcaptruong}
+                  onChange={onChangeUpdated}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Form.Group className="mb-3" >
+            <Form.Label>Thời hạn nghiệm thu</Form.Label>
+            <Form.Control
+              type="date"
+              name="thoihannghiemthu"
+              aria-describedby="title-help"
+              value={thoihannghiemthu}
+              onChange={onChangeUpdated}
+            />
+          </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Trạng thái</Form.Label>
-            <Form.Control
-							as='select'
-							value={trangthai}
-							name='trangthai'
-							onChange={onChangeUpdated}
-						>
-							<option value='Mở đăng ký'>Mở đăng ký</option>
-							<option value='Khóa đăng ký'>Khóa đăng ký</option>
-						</Form.Control>
+            <Form.Select
+              value={trangthai}
+              name='trangthai'
+              onChange={onChangeUpdated}
+            >
+              <option value=''>Chọn</option>
+              <option value='Mở đăng ký'>Mở đăng ký</option>
+              <option value='Khóa đăng ký'>Khóa đăng ký</option>
+            </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Ghi chú</Form.Label>
@@ -165,7 +203,7 @@ const SuaDotDangKy = () => {
               onChange={onChangeUpdated}
             />
           </Form.Group>
-          <Form.Group className="mb-3">
+          {/* <Form.Group className="mb-3">
             <Form.Label>Đính kèm</Form.Label>
             <Form.Control
               type="file"
@@ -174,7 +212,8 @@ const SuaDotDangKy = () => {
               value={dinhkem}
               onChange={onChangeUpdated}
             />
-          </Form.Group>
+          </Form.Group> */}
+          <ControlFile/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" type="submit">

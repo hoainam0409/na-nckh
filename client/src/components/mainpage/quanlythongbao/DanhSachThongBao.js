@@ -9,6 +9,10 @@ import SuaThongBao from "./SuaThongBao";
 import Spinner from "react-bootstrap/Spinner";
 import ReactTooltip from "react-tooltip";
 import { BsFillEyeFill, BsPencilSquare, BsTrashFill } from "react-icons/bs";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import ToolBar from "../../../until/ToolBar";
 
 const Thongbaochungs = () => {
   const {
@@ -45,84 +49,110 @@ const Thongbaochungs = () => {
   } else {
     body = (
       <>
+        <ThemThongBao />
+        {thongbaochung !== null && <SuaThongBao />}
         <div className="style-mainpage">
-          <h1>Danh sách thông báo</h1>
-          <Button
-            style={{
-              marginBottom: "20px",
-              backgroundColor: "#337AB7",
-              borderColor: "#2d6da3",
-            }}
-            onClick={setShowThemThongBao.bind(this, true)}
-          >
-            Thêm mới
-          </Button>
-          <ThemThongBao />
-          {thongbaochung !== null && <SuaThongBao />}
+          <Row>
+            <Col sm={4}><h1>Danh sách thông báo</h1></Col>
+            <Col sm={8}>
+              <div className="filter">
+                <Row className="controls">
+                  <Col>
+                    <Form.Group>
+                      <Form.Control type="date">
+                      </Form.Control>
+                    </Form.Group>
 
-          <Table borderless bordered hover style={{ cursor: "pointer" }}>
-            <thead>
-              <tr className="table-header">
-                <th>Tiêu đề</th>
-                <th>Ngày thông báo</th>
-                <th>Người thông báo</th>
-                <th>Chức năng</th>
-              </tr>
-            </thead>
-            <tbody>
-              {thongbaochungs.map((thongbaochung) => (
-                <tr key={thongbaochung._id}>
-                  <td>{thongbaochung.tieude}</td>
-                  <td>
-                    {new Date(thongbaochung.ngaythongbao).toLocaleDateString(["ban", "id",])}
-                  </td>
-                  <td>{thongbaochung.nguoithongbao}</td>
-                  <td style={{ textAlign: "center" }}>
-                    <Button
-                      variant="primary"
-                      onClick={chooseThongBaoChung.bind(
-                        this,
-                        thongbaochung._id
-                      )}
-                      data-tip
-                      data-for="Xem"
-                    >
-                      <ReactTooltip id="Xem" place="top" effect="solid">
-                        Xem
-                      </ReactTooltip>
-                      <BsFillEyeFill />
-                    </Button>
-                    <Button
-                      variant="info"
-                      onClick={chooseThongBaoChung.bind(
-                        this,
-                        thongbaochung._id
-                      )}
-                      data-tip
-                      data-for="Sửa"
-                      style={{color: 'white'}}
-                    >
-                      <ReactTooltip id="Sửa" place="top" effect="solid">
-                        Sửa
-                      </ReactTooltip>
-                      <BsPencilSquare />
-                    </Button>
-                    <Button
-                      variant="danger"
-                      onClick={() => deleteThongBaoChung(thongbaochung._id)}
-                      data-tip
-                      data-for="Xóa"
-                    >
-                      <ReactTooltip id="Xóa" place="top" effect="solid">
-                        Xóa
-                      </ReactTooltip>
-                      <BsTrashFill />
-                    </Button>
-                  </td>
+                  </Col>
+                  <Col>
+                    <Form.Group>
+                      <Form.Control type="date">
+                      </Form.Control>
+                    </Form.Group>
+                  </Col>
+                </Row>
+              </div>
+            </Col>
+          </Row>
+          <div className="grid">
+            <Row className="custom-toolbar">
+              <Col>
+                <Button
+                  style={{
+                    marginBottom: "20px",
+                    backgroundColor: "#337AB7",
+                    borderColor: "#2d6da3",
+                  }}
+                  onClick={setShowThemThongBao.bind(this, true)}
+                >
+                  Thêm mới
+                </Button></Col>
+              <Col><ToolBar/></Col>
+            </Row>
+            <Table borderless bordered hover style={{ cursor: "pointer" }}>
+              <thead>
+                <tr className="table-header">
+                  <th>Tiêu đề</th>
+                  <th>Ngày thông báo</th>
+                  <th>Người thông báo</th>
+                  <th>Chức năng</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
+              </thead>
+              <tbody>
+                {thongbaochungs.map((thongbaochung) => (
+                  <tr key={thongbaochung._id}>
+                    <td>{thongbaochung.tieude}</td>
+                    <td>
+                      {new Date(thongbaochung.ngaythongbao).toLocaleDateString(["ban", "id",])}
+                    </td>
+                    <td>{thongbaochung.nguoithongbao}</td>
+                    <td style={{ textAlign: "center" }}>
+                      <Button
+                        variant="primary"
+                        onClick={chooseThongBaoChung.bind(
+                          this,
+                          thongbaochung._id
+                        )}
+                        data-tip
+                        data-for="Xem"
+                      >
+                        <ReactTooltip id="Xem" place="top" effect="solid">
+                          Xem
+                        </ReactTooltip>
+                        <BsFillEyeFill />
+                      </Button>
+                      <Button
+                        variant="info"
+                        onClick={chooseThongBaoChung.bind(
+                          this,
+                          thongbaochung._id
+                        )}
+                        data-tip
+                        data-for="Sửa"
+                        style={{ color: 'white' }}
+                      >
+                        <ReactTooltip id="Sửa" place="top" effect="solid">
+                          Sửa
+                        </ReactTooltip>
+                        <BsPencilSquare />
+                      </Button>
+                      <Button
+                        variant="danger"
+                        onClick={() => deleteThongBaoChung(thongbaochung._id)}
+                        data-tip
+                        data-for="Xóa"
+                      >
+                        <ReactTooltip id="Xóa" place="top" effect="solid">
+                          Xóa
+                        </ReactTooltip>
+                        <BsTrashFill />
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
         </div>
       </>
     );

@@ -34,7 +34,7 @@ button{
   cursor: pointer;
 }
 body .style-mainpage{
-  margin: 10px 20px 20px 350px
+  margin: 10px 20px 20px 340px
 }
 body h1 {
   font-size: 24px
@@ -92,10 +92,19 @@ body span{
 } 
 
 #style-nav::-webkit-scrollbar-thumb {
-  background-color: #000000;
+  background-color: #6c757d;
+  
 }
 
 #style-nav::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   background-color: #F5F5F5;
+}
+
+.custom-toolbar{
+  align-items: center;
+  height: 60px;
+}
+.grid, col{
+  padding: 0.5em;
 }

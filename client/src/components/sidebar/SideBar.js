@@ -122,13 +122,13 @@ const Sidebar = () => {
 
   const hiddenSidebar = () => setSidebar(!sidebar);
   const {
-    // authState: {
-    //   user: { hovaten },
-    // },
+    authState: {
+      user: { hovaten },
+    },
     logoutUser,
   } = useContext(AuthContext);
-
   const logout = () => logoutUser();
+
 
   return (
     <>
@@ -141,13 +141,13 @@ const Sidebar = () => {
                 onClick={hiddenSidebar}
               />
             </NavIcon>
-            <NavLogo to="">
+            {/* <NavLogo to="">
               <img
-                // src={TopLogo}
+                src={TopLogo}
                 alt=""
                 style={{ height: "40px", width: "40px" }}
               />
-            </NavLogo>
+            </NavLogo> */}
             <NavTitle>Hệ thống đại học thông minh</NavTitle>
           </TopBarLeft>
           <TopBarRight1 />
@@ -201,7 +201,7 @@ const Sidebar = () => {
                     display: "inline-flex",
                   }}
                 >
-                  {/* <NavName>{hovaten}</NavName> */}
+                  <NavName>{hovaten}</NavName>
                   <NavAvatar>
                     <BsPersonCircle
                       style={{

@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import { CapDeTaiContext } from "../../../contexts/CapDeTaiContext";
+import { ControlFile } from "../../../until/ControlFile";
 
 const ThemDotDangKy = () => {
   //context
@@ -202,7 +203,7 @@ const ThemDotDangKy = () => {
               <Form.Group className="mb-3">
                 <Form.Label>Thời hạn xét duyệt cấp trường</Form.Label>
                 <Form.Control
-                  type="date"
+                  type="date" dateFormat="dd/mm/yyyy"
                   name="thoihanduyetcaptruong"
                   aria-describedby="title-help"
                   required
@@ -229,6 +230,7 @@ const ThemDotDangKy = () => {
               name="trangthai"
               onChange={onChangeInput}
             >
+              <option value=''>Chọn</option>
               <option value="Mở đăng ký">Mở đăng ký</option>
               <option value="Khóa đăng ký">Khóa đăng ký</option>
             </Form.Select>
@@ -244,7 +246,10 @@ const ThemDotDangKy = () => {
               onChange={onChangeInput}
             />
           </Form.Group>
-          <Form.Group className="mb-3">
+          <Form.Group>
+            <Form.Check type="type" label="Gửi thông báo công khai"/>
+          </Form.Group>
+          {/* <Form.Group className="mb-3">
             <Form.Label>Đính kèm</Form.Label>
             <Form.Control
               type="file"
@@ -253,7 +258,8 @@ const ThemDotDangKy = () => {
               value={dinhkem}
               onChange={onChangeInput}
             />
-          </Form.Group>
+          </Form.Group> */}
+          <ControlFile/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" type="submit">

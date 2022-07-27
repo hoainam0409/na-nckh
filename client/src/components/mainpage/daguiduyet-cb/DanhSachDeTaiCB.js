@@ -27,9 +27,6 @@ const DeTaiCBs = () => {
     trangThai,
   } = useContext(DeTaiCBContext);
 
-  // const {
-  //   dotdangkyState: {dotdangky}
-  // } = useContext(DotDangKyContext)
 
   // Start: Get all
   useEffect(() => getDeTaiCBs(), []);
@@ -119,8 +116,11 @@ const DeTaiCBs = () => {
             <strong>{message}</strong>
           </Toast.Body>
         </Toast>
-        <div>
-          <ToolBar />
+        <div className="grid">
+          <Row className="custom-toolbar">
+            <Col></Col>
+            <Col><ToolBar /></Col>
+          </Row>
           <Table borderless bordered hover style={{ cursor: "pointer" }}>
             <thead>
               <tr className="table-header">

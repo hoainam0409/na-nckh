@@ -97,8 +97,11 @@ const DeTaiDuyetThanhLy = () => {
             <strong>{message}</strong>
           </Toast.Body>
         </Toast>
-        <div>
-          <ToolBar/>
+        <div className="grid">
+          <Row className="custom-grid">
+            <Col></Col>
+            <Col><ToolBar/></Col>
+          </Row>
           <Table
           borderless
           bordered

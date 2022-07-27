@@ -22,32 +22,34 @@ const DanhSachBieuMau = () => {
     <div>
       <SideBar />
       <div className="style-mainpage">
-        <div>
-          <h1>Danh sách biểu mẫu</h1>
-        </div>
-        <Button
-          style={{
-            backgroundColor: "#337AB7",
-            borderColor: "#2d6da3",
-          }}
-        >
-          Thêm mới
-        </Button>
-        <div>
-          <ToolBar />
-          <Table borderless bordered hover style={{ cursor: "pointer" }}>
-            <thead>
-              <tr className="table-header">
-                <th>Tên biểu mẫu</th>
-                <th>Mã</th>
-                <th>Mô tả</th>
-                <th>Entity</th>
-                <th className="chucnang">Chức năng</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </Table>
-        </div>
+        <Row>
+          <Col sm={4}><h1>Danh sách biểu mẫu</h1></Col>
+          <Col sm={8}></Col>
+        </Row>
+        <div className="grid"></div>
+        <Row className="custom-toolbar">
+          <Col> <Button
+            style={{
+              backgroundColor: "#337AB7",
+              borderColor: "#2d6da3",
+            }}
+          >
+            Thêm mới
+          </Button></Col>
+          <Col><ToolBar /></Col>
+        </Row>
+        <Table borderless bordered hover style={{ cursor: "pointer" }}>
+          <thead>
+            <tr className="table-header">
+              <th>Tên biểu mẫu</th>
+              <th>Mã</th>
+              <th>Mô tả</th>
+              <th>Entity</th>
+              <th className="chucnang">Chức năng</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </Table>
       </div>
     </div>
   );

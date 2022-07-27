@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const LoaiHĐSchema = new Schema({
+const CapHĐSchema = new Schema({
   ma: {
     type: String,
     required: true,
@@ -12,8 +12,5 @@ const LoaiHĐSchema = new Schema({
     type: String,
     required: true,
   },
-  caphoidong:{
-    type: String
-  }
 });
-module.exports = mongoose.model("dm_loaiHĐ", LoaiHĐSchema);
+module.exports = mongoose.model("dm_capHĐ", CapHĐSchema);

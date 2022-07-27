@@ -36,6 +36,7 @@ app.use('/danhmuc', require('./routers/danhmuc/dm-khoaRouter'))
 app.use('/danhmuc', require('./routers/danhmuc/dm-vaitroHĐRouter'))
 app.use('/danhmuc', require('./routers/danhmuc/dm-vaitroTGRouter'))
 app.use('/danhmuc', require('./routers/danhmuc/dm-loaiHĐRouter'))
+app.use('/danhmuc', require('./routers/danhmuc/dm-capHĐRouter'))
 app.use('/danhmuc', require('./routers/danhmuc/dm-sanphamungdungRouter'))
 app.use('/danhmuc', require('./routers/danhmuc/dm-loaisanphamRouter'))
 
