@@ -6,7 +6,7 @@ import Sidebar from '../../sidebar/SideBar';
 
 const MainDash = styled.div`
 // margin-left: ${({ sidebar }) => (sidebar ? '310px' : '0')};
-  margin-left: 310px;
+  margin-left: 330px;
 `
 function Home() {
   return (

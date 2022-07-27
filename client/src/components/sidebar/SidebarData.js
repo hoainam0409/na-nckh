@@ -62,6 +62,11 @@ export const SidebarData =
         icon: <FaCube style={{ color: 'black', height: '14px', width: '14px' }} />
       },
       {
+        title: 'Quản lý hợp đồng thực hiện đề tài ',
+        path: '/detai-canbo/ky-hop-dong',
+        icon: <FaCube style={{ color: 'black', height: '14px', width: '14px' }} />
+      },
+      {
         title: 'Đề tài chờ duyệt nghiệm thu  ',
         path: '/detai-canbo/duyet-nghiem-thu',
         icon: <FaCube style={{ color: 'black', height: '14px', width: '14px' }} />

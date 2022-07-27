@@ -14,7 +14,7 @@ import {
   BsGridFill,
   BsSearch,
   BsBoxArrowRight,
-  BsPersonLinesFill
+  BsPersonLinesFill,
 } from "react-icons/bs";
 // import TopLogo from "../../assets/images/logo/logo.png";
 import Form from "react-bootstrap/Form";
@@ -39,7 +39,7 @@ const NavTitle = styled.div`
   font-weight: 700;
   text-transform: uppercase;
 `;
-const NavIcon = styled(Link)`
+const NavIcon = styled.div`
   font-weight: 700;
   align-items: center;
   color: #337ab7;
@@ -80,10 +80,10 @@ const InputSearch = styled.input`
   width: 300px;
 `;
 const ButtonSearch = styled.div`
-width: 35px;
-background-color: #ffff ;
-margin: 1px 0 1px 0;
-`
+  width: 35px;
+  background-color: #ffff;
+  margin: 1px 0 1px 0;
+`;
 const NavProfile = styled.div`
   height: 46px;
   align-items: center;
@@ -98,7 +98,7 @@ const NavAvatar = styled.div`
   width: 24px;
   height: 24px;
 `;
-const SidebarNav = styled.nav`
+const SidebarNav = styled.div`
   background: #ffff;
   width: 330px;
   height: 100vh;
@@ -118,14 +118,13 @@ const SidebarWrap = styled.div`
 `;
 
 const Sidebar = () => {
-
   const [sidebar, setSidebar] = useState(true);
 
   const hiddenSidebar = () => setSidebar(!sidebar);
   const {
-    authState: {
-      user: { hovaten },
-    },
+    // authState: {
+    //   user: { hovaten },
+    // },
     logoutUser,
   } = useContext(AuthContext);
 
@@ -156,16 +155,32 @@ const Sidebar = () => {
             <NavSearch>
               <InputSearch placeholder="Nhập từ khoa tìm kiếm" />
               <ButtonSearch>
-                <BsSearch style={{ color: '#000', height: '20px', width: '20px', marginLeft: '8px' }} />
+                <BsSearch
+                  style={{
+                    color: "#000",
+                    height: "20px",
+                    width: "20px",
+                    marginLeft: "8px",
+                  }}
+                />
               </ButtonSearch>
               <Dropdown>
-                <Dropdown.Toggle style={{ backgroundColor: 'white', color: '#000', margin: '0', borderRadius: '0', height: '35px' }} id="dropdown-basic">Tìm kiếm nâng cao
+                <Dropdown.Toggle
+                  style={{
+                    backgroundColor: "white",
+                    color: "#000",
+                    margin: "0",
+                    borderRadius: "0",
+                    height: "35px",
+                  }}
+                  id="dropdown-basic"
+                >
+                  Tìm kiếm nâng cao
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
                   <Form.Group className="mb-3">
-                    <Form.Control
-                    />
+                    <Form.Control />
                   </Form.Group>
                 </Dropdown.Menu>
               </Dropdown>
@@ -186,7 +201,7 @@ const Sidebar = () => {
                     display: "inline-flex",
                   }}
                 >
-                  <NavName>{hovaten}</NavName>
+                  {/* <NavName>{hovaten}</NavName> */}
                   <NavAvatar>
                     <BsPersonCircle
                       style={{
@@ -198,11 +213,16 @@ const Sidebar = () => {
                   </NavAvatar>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#">
-                    <span><BsPersonLinesFill style={{ color: 'black' }} /></span>
-                    Thông tin cá nhân</Dropdown.Item>
+                  <Dropdown.Item href="/nckh/thongtin-canhan">
+                    <span>
+                      <BsPersonLinesFill style={{ color: "black" }} />
+                    </span>
+                    Thông tin cá nhân
+                  </Dropdown.Item>
                   <Dropdown.Item href="/login" onClick={logout}>
-                    <span><BsBoxArrowRight style={{ color: 'black' }} /></span>
+                    <span>
+                      <BsBoxArrowRight style={{ color: "black" }} />
+                    </span>
                     Đăng xuất
                   </Dropdown.Item>
                 </Dropdown.Menu>
@@ -210,15 +230,13 @@ const Sidebar = () => {
             </NavProfile>
           </TopBarRight2>
         </Nav>
-        <SidebarNav sidebar={sidebar}>
+        <SidebarNav sidebar={sidebar} id="style-nav">
           <SidebarWrap>
-            <NavIcon to="">
-              <BsFillGridFill
-                style={{ color: "#337ab7 ", marginLeft: "10px" }}
-              />
-              <span style={{ marginLeft: "10px" }}>Quản lý đề tài NCKH</span>
-              <AiIcons.AiOutlineClose onClick={hiddenSidebar} />
-            </NavIcon>
+          <NavIcon>
+            <BsFillGridFill style={{ color: "#337ab7 ", marginLeft: "10px" }} />
+            <span style={{ marginLeft: "10px" }}>Quản lý đề tài NCKH</span>
+            <AiIcons.AiOutlineClose onClick={hiddenSidebar} />
+          </NavIcon>
             {SidebarData.map((item, index) => {
               return <SubMenu item={item} key={index} />;
             })}

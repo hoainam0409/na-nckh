@@ -4,7 +4,11 @@ import Button from "react-bootstrap/Button";
 import { ThongbaochungContext } from "../../../contexts/ThongbaochungContext";
 import SuaThongBao from "../quanlythongbao/SuaThongBao";
 import ReactTooltip from "react-tooltip";
-import { BsFillEyeFill, BsPencilSquare, BsTrashFill } from "react-icons/bs";
+import { BsFillEyeFill} from "react-icons/bs";
+import ToolBar from "../../../until/ToolBar";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const Thongbaochungs = () => {
   const {
@@ -29,13 +33,37 @@ const Thongbaochungs = () => {
   };
   return (
     <div style={{ margin: "20px" }}>
-      <h1>Danh sách thông báo</h1>
       {thongbaochung !== null && <SuaThongBao />}
+      <Row>
+        <Col sm={4}><h1>Danh sách thông báo</h1></Col>
+        <Col sm={8}>
+        <div className="filter">
+              <Row className="controls">
+                <Col>
+                <Form.Group>
+                <Form.Control type="date">
+                  </Form.Control>
+                </Form.Group>
+                  
+                </Col>
+                <Col>
+                <Form.Group>
+                <Form.Control type="date">
+                  </Form.Control>
+                </Form.Group>
+                </Col>
+                
+              </Row>
+            </div>
+        </Col>
+      </Row>
+      <div>
+        <ToolBar/>
       <Table
         borderless
         bordered
         hover
-        style={{ cursor: "pointer", marginTop: "70px" }}
+        style={{ cursor: "pointer"}}
       >
         <thead>
           <tr className="table-header">
@@ -73,6 +101,8 @@ const Thongbaochungs = () => {
           ))}
         </tbody>
       </Table>
+      </div>
+      
     </div>
   );
 };

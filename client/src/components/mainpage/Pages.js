@@ -16,6 +16,7 @@ import DeTaiChoDuyetKhoa from './duyetcapkhoa-cb/DeTaiChoDuyetCapKhoa'
 import DeTaiNhapKQĐG from './nhapKQĐG-cb/DeTaiNhapKQĐG'
 import DeTaiChoDuyetTruong from './duyetcaptruong-cb/DeTaiChoDuyetCapTruong'
 import DeTaiRaQuyetDinh from './raquyetdinh-cb/DeTaiRaQuyetDinh'
+import DeTaiKyHopDong from './kyhopdong-cb/DeTaiKyHopDong'
 import DeTaiNhapKQNT from './nhapKQNT-cb/DeTaiNhapKQNT'
 import DanhSachHoiDong from './quanlyhoidong/DanhSachHoiDong'
 import DanhSachDotKiemTraTĐ from './dotkiemtratiendo/DanhSachDotKTTD'
@@ -23,6 +24,8 @@ import DeTaiDuyetGiaHan from './duyetgiahan-cb/DeTaiDuyetGiaHan'
 import DeTaiDuyetThanhLy from './duyetthanhly-cb/DeTaiDuyetThanhLy'
 import DuyetBaoCaoTienDo from './duyetbaocaotiendo-cb/DuyetBaoCaoTienDo'
 import DeTaiDuyetNghiemThu from './duyetnghiemthu-cb/DeTaiDuyetNghiemThu'
+
+import DanhSachBieuMau from './quanlybieumau/DanhSachBieuMau'
 
 
 import DanhSachLinhVuc from './dm-linhvuc/DanhSachLinhVuc'
@@ -54,6 +57,7 @@ function Pages() {
         <Route exact path="/detai-canbo/nhap-ket-qua-danh-gia" element={<DeTaiNhapKQĐG/>}></Route>
         <Route exact path="/detai-canbo/cho-duyet-cap-truong" element={<DeTaiChoDuyetTruong/>}></Route>
         <Route exact path="/detai-canbo/quyet-dinh-chu-tri" element={<DeTaiRaQuyetDinh/>}></Route>
+        <Route exact path="/detai-canbo/ky-hop-dong" element={<DeTaiKyHopDong/>}></Route>
         <Route exact path="/detai-canbo/dot-kiem-tra-tien-do" element={<DanhSachDotKiemTraTĐ/>}></Route>
         <Route exact path="/detai-canbo/duyet-gia-han" element={<DeTaiDuyetGiaHan />}></Route>
         <Route exact path="/detai-canbo/duyet-thanh-ly" element={<DeTaiDuyetThanhLy />}></Route>
@@ -62,7 +66,7 @@ function Pages() {
         <Route exact path="/detai-canbo/nhap-ket-qua-nghiem-thu" element={<DeTaiNhapKQNT/>}></Route>
         <Route exact path="/quanly/hoidong" element={<DanhSachHoiDong/>}></Route>
 
-
+        <Route exact path="/quanly/bieumau/bookarks" element={<DanhSachBieuMau/>}></Route>
         <Route exact path="/user" element={<DanhSachUser/>}></Route>
 
     </Routes>
