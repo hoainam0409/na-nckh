@@ -124,9 +124,10 @@ const DeTaiCBs = () => {
           <Table borderless bordered hover style={{ cursor: "pointer" }}>
             <thead>
               <tr className="table-header">
+                <th>STT</th>
                 <th>Mã đề tài</th>
                 <th>Tên đề tài</th>
-                {/* <th>Cấp đề tài</th> */}
+                <th>Cấp đề tài</th>
                 <th>Đợt đăng ký</th>
                 <th>Khoa/Phòng ban xét duyệt</th>
                 <th>Chủ nhiệm đề tài</th>
@@ -139,9 +140,10 @@ const DeTaiCBs = () => {
             <tbody>
               {detaicbs.map((detaicb) => (
                 <tr key={detaicb._id}>
+                  <td>1</td>
                   <td>{detaicb.madetai} </td>
                   <td>{detaicb.tendetai}</td>
-                  {/* <td>{dotdangky.capdetai}</td> */}
+                  <td>Cấp trường</td>
                   <td>{detaicb.dotdangky} </td>
                   <td>{detaicb.khoaxetduyet}</td>
                   <td>{detaicb.chunhiem}</td>

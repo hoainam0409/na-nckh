@@ -65,6 +65,7 @@ const SanPhamUDs = () => {
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr className="table-header">
+              <th>STT</th>
               <th>Mã</th>
               <th>Tên</th>
               <th>Cấp đề tài</th>
@@ -74,6 +75,7 @@ const SanPhamUDs = () => {
           <tbody>
             {sanphamUDs.map((sanphamUD) => (
               <tr key={sanphamUD._id}>
+                <td>1</td>
                 <td>{sanphamUD.ma}</td>
                 <td>{sanphamUD.ten} </td>
                 <td>{sanphamUD.capdetai} </td>

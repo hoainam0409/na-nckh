@@ -2,11 +2,10 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import Table from "react-bootstrap/Table";
 import Col from "react-bootstrap/Col";
 import { useContext, useState, useEffect } from "react";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
-import { DotKiemTraTĐContext } from "../../../contexts/DotKiemTraTĐContext";
+import {ControlFile} from '../../../until/ControlFile'
 
 const CapNhatBienBan = () => {
   // Contexts
@@ -83,36 +82,52 @@ const CapNhatBienBan = () => {
             />
           </Form.Group>
           <div>
-            <h1>BIÊN BẢN THANH LÝ</h1>
+            <h1>THÔNG TIN HỢP ĐỒNG</h1>
             <Row>
               <Col>
                 <Form.Group className="mb-3">
+                  <Form.Label>Số hợp đồng</Form.Label>
+                  <Form.Control />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Ngày ký</Form.Label>
+                  <Form.Control type="date"/>
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Từ ngày</Form.Label>
+                  <Form.Control type="date"/>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Đến ngày</Form.Label>
+                  <Form.Control type="date"/>
+                </Form.Group>
+              </Col>
+              <Form.Group className="mb-3">
                   <Form.Label>Kinh phí được cấp</Form.Label>
                   <Form.Control />
                 </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label>Kinh phí đã chi</Form.Label>
-                  <Form.Control />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label>Kinh phí đã quyết toán</Form.Label>
-                  <Form.Control />
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label>Kinh phí chưa quyết toán</Form.Label>
-                  <Form.Control />
-                </Form.Group>
-              </Col>
             </Row>
             </div>
+          <div>
+            <h1>BIÊN BẢN THANH LÝ</h1>
+                <Form.Group className="mb-3">
+                  <Form.Label>Ngày thanh lý</Form.Label>
+                  <Form.Control />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Nội dung thanh lý</Form.Label>
+                  <Form.Control as='textarea' row={5}/>
+                </Form.Group>
+            </div>
+            <ControlFile/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" type="submit">

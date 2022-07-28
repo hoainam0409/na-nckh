@@ -109,6 +109,7 @@ const DeTaiHopDong = () => {
           >
             <thead>
               <tr className="table-header">
+                <th>STT</th>
                 <th>Mã đề tài</th>
                 <th>Tên đề tài</th>
                 <th>Đợt đăng ký</th>
@@ -123,7 +124,8 @@ const DeTaiHopDong = () => {
             <tbody>
               {detaicbs.map((detaicb) => (
                 <tr key={detaicb._id}>
-                  <td>{detaicb.madetai} </td>
+                  <td>1</td>
+                  <td>{detaicb.madetai}T2022-CNTT-001</td>
                   <td>{detaicb.tendetai}</td>
                   <td>{detaicb.dotdangky} </td>
                   <td>{detaicb.khoaxetduyet}</td>

@@ -65,6 +65,7 @@ const LoaiSPs = () => {
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr className="table-header">
+              <th>STT</th>
               <th>Mã</th>
               <th>Tên</th>
               <th>Loại sản phẩm ứng dụng</th>
@@ -75,6 +76,7 @@ const LoaiSPs = () => {
           <tbody>
             {loaisanphams.map((loaisanpham) => (
               <tr key={loaisanpham._id}>
+                <td>1</td>
                 <td>{loaisanpham.ma}</td>
                 <td>{loaisanpham.ten}</td>
                 <td>{loaisanpham.sanphamUD}</td>

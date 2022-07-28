@@ -65,6 +65,7 @@ const VaiTroTGs = () => {
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr className="table-header">
+              <th>STT</th>
               <th>Mã</th>
               <th>Tên</th>
               <th>Cấp đề tài</th>
@@ -74,6 +75,7 @@ const VaiTroTGs = () => {
           <tbody>
             {vaitroTGs.map((vaitroTG) => (
               <tr key={vaitroTG._id}>
+                <td>1</td>
                 <td>{vaitroTG.ma}</td>
                 <td>{vaitroTG.ten} </td>
                 <td>{vaitroTG.capdetai}</td>

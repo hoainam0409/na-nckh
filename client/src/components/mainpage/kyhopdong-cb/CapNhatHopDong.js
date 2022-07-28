@@ -58,7 +58,7 @@ const CapNhatHopDong = () => {
               aria-describedby="title-help"
               value={madetai}
               disabled
-            />
+            ></Form.Control>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Tên đề tài</Form.Label>
@@ -93,7 +93,7 @@ const CapNhatHopDong = () => {
               <Col>
                 <Form.Group className="mb-3">
                   <Form.Label>Ngày ký</Form.Label>
-                  <Form.Control />
+                  <Form.Control type="date" />
                 </Form.Group>
               </Col>
             </Row>

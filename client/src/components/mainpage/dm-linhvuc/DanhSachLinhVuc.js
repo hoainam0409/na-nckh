@@ -64,6 +64,7 @@ const LinhVucs = () => {
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr className="table-header">
+              <th>STT</th>
               <th>Mã</th>
               <th>Tên</th>
               <th>Chức năng</th>
@@ -72,6 +73,7 @@ const LinhVucs = () => {
           <tbody>
             {linhvucs.map((linhvuc) => (
               <tr key={linhvuc._id}>
+                <td>1</td>
                 <td>{linhvuc.ma}</td>
                 <td>{linhvuc.ten} </td>
                 <td style={{ textAlign: "center" }}>

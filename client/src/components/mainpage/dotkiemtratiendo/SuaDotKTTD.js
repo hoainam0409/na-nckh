@@ -63,7 +63,13 @@ const SuaDotKiemTraTĐ = () => {
               onChange={onChangeUpdated}
             />
           </Form.Group>
-
+          <Form.Group className="mb-3">
+            <Form.Label>Đợt đăng ký đề tài</Form.Label>
+            <Form.Select>
+              <option>Chọn</option>
+            </Form.Select>
+              
+          </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Năm </Form.Label>
             <Form.Control

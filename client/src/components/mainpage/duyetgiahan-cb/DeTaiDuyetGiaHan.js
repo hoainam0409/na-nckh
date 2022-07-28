@@ -111,10 +111,12 @@ const DeTaiDuyetGiaHan = () => {
           >
             <thead>
               <tr className="table-header">
+                <th>STT</th>
                 <th>Mã đề tài</th>
                 <th>Tên đề tài</th>
                 <th>Đợt đăng ký</th>
                 <th>Khoa/Phòng ban xét duyệt</th>
+                <th>Chủ nhiệm đề tài</th>
                 <th>Thành viên tham gia</th>
                 <th>Kinh phí (đồng)</th>
                 <th>Trạng thái</th>
@@ -124,10 +126,12 @@ const DeTaiDuyetGiaHan = () => {
             <tbody>
               {detaicbs.map((detaicb) => (
                 <tr key={detaicb._id}>
-                  <td>{detaicb.madetai} </td>
+                  <td>1</td>
+                  <td>{detaicb.madetai}T2022-CNTT-001</td>
                   <td>{detaicb.tendetai}</td>
                   <td>{detaicb.dotdangky} </td>
                   <td>{detaicb.khoaxetduyet}</td>
+                  <td>{detaicb.chunhiem}</td>
                   <td>
                     {detaicb.thanhvienthamgia.map((q) => (
                       <div key={q._id}>-{q.hovaten}</div>

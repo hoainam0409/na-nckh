@@ -65,6 +65,7 @@ const CapDeTais = () => {
         <Table borderless bordered hover style={{ cursor: "pointer" }}>
           <thead>
             <tr className="table-header">
+              <th>STT</th>
               <th>Mã</th>
               <th>Tên</th>
               <th>Đối tượng tham gia</th>
@@ -75,6 +76,7 @@ const CapDeTais = () => {
           <tbody>
             {capdetais.map((capdetai) => (
               <tr key={capdetai._id}>
+                <td>1</td>
                 <td>{capdetai.ma}</td>
                 <td>{capdetai.ten} </td>
                 <td>{capdetai.doituong} </td>

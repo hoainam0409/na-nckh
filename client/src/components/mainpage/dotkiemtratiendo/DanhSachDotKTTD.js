@@ -96,7 +96,9 @@ const DotKiemTraTĐs = () => {
           <Table borderless bordered hover style={{ cursor: "pointer" }}>
             <thead>
               <tr className="table-header">
+                <th>STT</th>
                 <th>Tên đợt</th>
+                <th>Đợt đăng ký đề tài</th>
                 <th>Năm</th>
                 <th>Ngày bắt đầu</th>
                 <th>Ngày kết thúc</th>
@@ -107,7 +109,9 @@ const DotKiemTraTĐs = () => {
             <tbody>
               {dotkiemtraTĐs.map((dotkiemtraTĐ) => (
                 <tr key={dotkiemtraTĐ._id}>
+                  <td>1</td>
                   <td>{dotkiemtraTĐ.tendot}</td>
+                  <td>NAM2022</td>
                   <td>{dotkiemtraTĐ.nam} </td>
                   <td>{new Date(dotkiemtraTĐ.ngaybd).toLocaleDateString(["ban", "id",])} </td>
                   <td>{new Date(dotkiemtraTĐ.ngaykt).toLocaleDateString(["ban", "id",])} </td>

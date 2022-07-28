@@ -8,6 +8,7 @@ import { HoiDongContext } from "../../../contexts/HoiDongContext";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import { UserContext } from "../../../contexts/UserContext";
 import Table from "react-bootstrap/esm/Table";
+import {ControlFile} from '../../../until/ControlFile'
 
 const NhapKQHĐKhoa = () => {
   // Contexts
@@ -209,7 +210,7 @@ const NhapKQHĐKhoa = () => {
                 rows={5}
               />
             </Form.Group>
-          <Form.Group className="mb-3">
+          {/* <Form.Group className="mb-3">
             <Form.Label>Đính kèm</Form.Label>
             <Form.Control
               type="file"
@@ -218,7 +219,8 @@ const NhapKQHĐKhoa = () => {
               value={dinhkem}
               onChange={onChangeUpdated}
             />
-          </Form.Group>
+          </Form.Group> */}
+          <ControlFile/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" type="submit"> Lưu</Button>

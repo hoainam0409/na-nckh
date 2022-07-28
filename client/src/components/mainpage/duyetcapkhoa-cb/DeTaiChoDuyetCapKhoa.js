@@ -116,6 +116,7 @@ const DeTaiDuyetCapKhoas = () => {
           <Table borderless bordered hover style={{ cursor: "pointer" }}>
             <thead>
               <tr className="table-header">
+                <th>STT</th>
                 <th>Mã đề tài</th>
                 <th>Tên đề tài</th>
                 <th>Đợt đăng ký</th>
@@ -130,6 +131,7 @@ const DeTaiDuyetCapKhoas = () => {
             <tbody>
               {detaicbs.map((detaicb) => (
                 <tr key={detaicb._id}>
+                  <td>1</td>
                   <td>{detaicb.madetai} </td>
                   <td>{detaicb.tendetai}</td>
                   <td>{detaicb.dotdangky} </td>

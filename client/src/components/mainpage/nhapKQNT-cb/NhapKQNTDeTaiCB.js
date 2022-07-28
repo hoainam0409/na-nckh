@@ -8,6 +8,7 @@ import { useContext, useState, useEffect } from "react";
 import { HoiDongContext } from "../../../contexts/HoiDongContext";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import { UserContext } from "../../../contexts/UserContext";
+import {ControlFile} from '../../../until/ControlFile'
 
 const NhapKQNTDeTaiCB = () => {
   // Contexts
@@ -221,7 +222,7 @@ const NhapKQNTDeTaiCB = () => {
               </Form.Group>
             </Col>
           </Row>
-          <Form.Group className="mb-3">
+          {/* <Form.Group className="mb-3">
             <Form.Label>Đính kèm</Form.Label>
             <Form.Control
               type="file"
@@ -230,7 +231,8 @@ const NhapKQNTDeTaiCB = () => {
               value={dinhkem}
               onChange={onChangeUpdated}
             />
-          </Form.Group>
+          </Form.Group> */}
+          <ControlFile/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" type="submit">

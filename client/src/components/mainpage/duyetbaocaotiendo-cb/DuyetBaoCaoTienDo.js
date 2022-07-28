@@ -105,6 +105,7 @@ const DeTaiBaoCaoTienDo = () => {
           >
             <thead>
               <tr className="table-header">
+                <th>STT</th>
                 <th>Mã đề tài</th>
                 <th>Tên đề tài</th>
                 <th>Đợt đăng ký</th>
@@ -112,6 +113,8 @@ const DeTaiBaoCaoTienDo = () => {
                 <th>Chủ nhiệm đề tài</th>
                 <th>Thành viên tham gia</th>
                 <th>Kinh phí (đồng)</th>
+                <th>Gia hạn</th>
+                <th>Lý do</th>
                 <th>Trạng thái</th>
                 <th className="chucnang">Chức năng</th>
               </tr>
@@ -119,7 +122,8 @@ const DeTaiBaoCaoTienDo = () => {
             <tbody>
               {detaicbs.map((detaicb) => (
                 <tr key={detaicb._id}>
-                  <td>{detaicb.madetai} </td>
+                  <td>1</td>
+                  <td>{detaicb.madetai} T2022-CNTT-001 </td>
                   <td>{detaicb.tendetai}</td>
                   <td>{detaicb.dotdangky} </td>
                   <td>{detaicb.khoaxetduyet}</td>
@@ -136,6 +140,8 @@ const DeTaiBaoCaoTienDo = () => {
                       thousandSeparator={true}
                     />
                   </td>
+                  <td></td>
+                  <td></td>
                   <td>{detaicb.trangthai}</td>
                   <td style={{ textAlign: "center" }}>
                     <Dropdown as={ButtonGroup}>

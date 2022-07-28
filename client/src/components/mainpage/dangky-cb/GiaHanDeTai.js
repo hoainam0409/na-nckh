@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useContext, useState, useEffect } from "react";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
+import {ControlFile} from '../../../until/ControlFile'
 
 const BaoCaoTienDo = () => {
   // Contexts
@@ -116,7 +117,7 @@ const BaoCaoTienDo = () => {
               onChange={onChangeUpdated}
             />
           </Form.Group>
-          <Form.Group className="mb-3">
+          {/* <Form.Group className="mb-3">
             <Form.Label>Đính kèm</Form.Label>
             <Form.Control
               type="file"
@@ -124,7 +125,8 @@ const BaoCaoTienDo = () => {
               aria-describedby="title-help"
               onChange={onChangeUpdated}
             />
-          </Form.Group>
+          </Form.Group> */}
+          <ControlFile/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" type="submit">
