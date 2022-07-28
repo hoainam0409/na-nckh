@@ -2,7 +2,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
-import { useContext, useState, useEffect } from "react";
+import { useContext} from "react";
 import { DeTaiCBContext } from "../../../contexts/DeTaiCBContext";
 import { BsCloudUploadFill } from 'react-icons/bs'
 
@@ -14,18 +14,8 @@ const CapNhatThuyetMinh = () => {
     setShowCapNhatThuyetMinh,
   } = useContext(DeTaiCBContext);
 
-  // State
-  const [updatedDeTaiCB, setUpdatedDeTaiCB] = useState(detaicb);
-
-  useEffect(() => setUpdatedDeTaiCB(detaicb), [detaicb]);
-
-  const closeDialog = () => {
-    setUpdatedDeTaiCB(detaicb);
-    setShowCapNhatThuyetMinh(false);
-  };
-
   return (
-    <Modal show={showCapNhatThuyetMinh} onHide={closeDialog}>
+    <Modal show={showCapNhatThuyetMinh} onHide={() => setShowCapNhatThuyetMinh(false)}>
       <Modal.Header closeButton>
         <Modal.Title>Cập nhật thuyết minh đề tài</Modal.Title>
       </Modal.Header>
@@ -54,7 +44,7 @@ const CapNhatThuyetMinh = () => {
           <Button variant="primary" type="submit">
             Cập nhật
           </Button>
-          <Button variant="secondary" onClick={closeDialog}>
+          <Button variant="secondary" onClick={() => setShowCapNhatThuyetMinh(false)}>
             Đóng
           </Button>
         </Modal.Footer>

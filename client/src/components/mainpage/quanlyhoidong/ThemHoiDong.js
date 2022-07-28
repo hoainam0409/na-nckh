@@ -9,6 +9,7 @@ import { HoiDongContext } from "../../../contexts/HoiDongContext";
 import { LoaiHĐContext } from "../../../contexts/LoaiHĐContext";
 import { UserContext } from "../../../contexts/UserContext";
 import { VaiTroHĐContext } from "../../../contexts/VaiTroHĐContext";
+import Table from "react-bootstrap/esm/Table";
 
 const ThemHoiDong = () => {
   //context
@@ -293,7 +294,7 @@ const ThemHoiDong = () => {
           </Form.Group>
           <div>
             <h1>DANH SÁCH THÀNH VIÊN THAM GIA HỘI ĐỒNG</h1>
-            <Row>
+            {/* <Row>
               <Col>
                 <Form.Group className="mb-3">
                   <Form.Label>Họ và tên</Form.Label>
@@ -647,7 +648,30 @@ const ThemHoiDong = () => {
                   ></Form.Control>
                 </Form.Group>
               </Col>
-            </Row>
+            </Row> */}
+             <Button
+                  style={{
+                    marginBottom: "20px",
+                    backgroundColor: "#337AB7",
+                    borderColor: "#2d6da3",
+                  }}
+                >
+                  Thêm mới
+                </Button>
+                <Table borderless bordered hover style={{ cursor: "pointer" }}>
+              <thead>
+                <tr className="table-header">
+                  <th>STT</th>
+                  <th>Họ và tên</th>
+                  <th>CDKH-HV</th>
+                  <th>Chức vụ</th>
+                  <th>Đơn vị</th>
+                  <th>Vai trò hội đồng</th>
+                  <th>Chức năng</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+              </Table>
           </div>
         </Modal.Body>
         <Modal.Footer>

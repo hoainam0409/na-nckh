@@ -30,7 +30,7 @@ const XemDeTaiCB = () => {
   return (
     <Modal show={showXemDeTaiCB} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Xem chi tiết đề tài</Modal.Title>
+        <Modal.Title>Chi tiết đề tài</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Tabs

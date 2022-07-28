@@ -48,7 +48,7 @@ const SuaDotKiemTraTĐ = () => {
   return (
     <Modal show={showSuaDotKiemTraTĐ} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Chỉnh sửa đợt kiểm tra tiến độ</Modal.Title>
+        <Modal.Title>Chi tiết đợt kiểm tra tiến độ</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>

@@ -48,7 +48,7 @@ const SuaCapDeTai = () => {
   return (
     <Modal show={showSuaCapDeTai} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Chỉnh sửa cấp đề tài</Modal.Title>
+        <Modal.Title>Chi tiết cấp đề tài</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>

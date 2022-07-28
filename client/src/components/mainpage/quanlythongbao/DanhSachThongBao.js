@@ -92,6 +92,7 @@ const Thongbaochungs = () => {
             <Table borderless bordered hover style={{ cursor: "pointer" }}>
               <thead>
                 <tr className="table-header">
+                  <th>STT</th>
                   <th>Tiêu đề</th>
                   <th>Ngày thông báo</th>
                   <th>Người thông báo</th>
@@ -101,6 +102,7 @@ const Thongbaochungs = () => {
               <tbody>
                 {thongbaochungs.map((thongbaochung) => (
                   <tr key={thongbaochung._id}>
+                    <td>1</td>
                     <td>{thongbaochung.tieude}</td>
                     <td>
                       {new Date(thongbaochung.ngaythongbao).toLocaleDateString(["ban", "id",])}

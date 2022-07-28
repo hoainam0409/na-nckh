@@ -8,6 +8,8 @@ import { DotDangKyContext } from "../../../contexts/DotDangKyContext";
 import { HoiDongContext } from "../../../contexts/HoiDongContext";
 import { LoaiHĐContext} from "../../../contexts/LoaiHĐContext";
 import {UserContext} from '../../../contexts/UserContext'
+import {BsFillEyeFill, BsPencilSquare, BsTrashFill } from 'react-icons/bs'
+import Table from "react-bootstrap/esm/Table";
 
 const SuaHoiDong = () => {
   // Contexts
@@ -82,7 +84,7 @@ const SuaHoiDong = () => {
   return (
     <Modal show={showSuaHoiDong} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Chỉnh sửa cấp đề tài</Modal.Title>
+        <Modal.Title>Chi tiết hội đồng</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
       <Modal.Body>
@@ -215,7 +217,7 @@ const SuaHoiDong = () => {
           </Form.Group>
           <div>
           <h1>DANH SÁCH THÀNH VIÊN THAM GIA HỘI ĐỒNG</h1>
-          <Row>
+          {/* <Row>
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Họ và tên</Form.Label>
@@ -404,7 +406,126 @@ const SuaHoiDong = () => {
                 />
               </Form.Group>
             </Col>
-          </Row>
+          </Row> */}
+            <Button
+                  style={{
+                    marginBottom: "20px",
+                    backgroundColor: "#337AB7",
+                    borderColor: "#2d6da3",
+                  }}
+                >
+                  Thêm mới
+                </Button>
+          <Table borderless bordered hover style={{ cursor: "pointer" }}>
+              <thead>
+                <tr className="table-header">
+                  <th>STT</th>
+                  <th>Họ và tên</th>
+                  <th>CDKH-HV</th>
+                  <th>Chức vụ</th>
+                  <th>Đơn vị</th>
+                  <th>Vai trò hội đồng</th>
+                  <th>Chức năng</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Nguyễn Văn Hòa</td>
+                    <td></td>
+                    <td>Trưởng khoa</td>
+                    <td>Khoa Công nghệ thông tin</td>
+                    <td>Chủ tịch hội đồng</td>
+                    <td style={{ textAlign: "center" }}>
+                      <Button variant="primary">
+                        <BsFillEyeFill />
+                      </Button>
+                      <Button variant="info">
+                        <BsPencilSquare />
+                      </Button>
+                      <Button variant="danger">
+                        <BsTrashFill />
+                      </Button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Nguyễn Thị Phương</td>
+                    <td></td>
+                    <td></td>
+                    <td>Bộ môn công nghệ phần mềm</td>
+                    <td>Ủy viên</td>
+                    <td style={{ textAlign: "center" }}>
+                      <Button variant="primary">
+                        <BsFillEyeFill />
+                      </Button>
+                      <Button variant="info">
+                        <BsPencilSquare />
+                      </Button>
+                      <Button variant="danger">
+                        <BsTrashFill />
+                      </Button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Nguyễn Văn Ban</td>
+                    <td></td>
+                    <td></td>
+                    <td>Bộ môn Khoa học máy tính</td>
+                    <td>Ủy viên</td>
+                    <td style={{ textAlign: "center" }}>
+                      <Button variant="primary">
+                        <BsFillEyeFill />
+                      </Button>
+                      <Button variant="info">
+                        <BsPencilSquare />
+                      </Button>
+                      <Button variant="danger">
+                        <BsTrashFill />
+                      </Button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Nguyễn Bá Thành</td>
+                    <td></td>
+                    <td>Phó trưởng bộ môn</td>
+                    <td>Bộ môn Công nghệ phần mềm</td>
+                    <td>Ủy viên</td>
+                    <td style={{ textAlign: "center" }}>
+                      <Button variant="primary">
+                        <BsFillEyeFill />
+                      </Button>
+                      <Button variant="info">
+                        <BsPencilSquare />
+                      </Button>
+                      <Button variant="danger">
+                        <BsTrashFill />
+                      </Button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Nguyễn Trần Phương</td>
+                    <td></td>
+                    <td></td>
+                    <td>Khoa Công nghệ thông tin</td>
+                    <td>Ủy viên</td>
+                    <td style={{ textAlign: "center" }}>
+                      <Button variant="primary">
+                        <BsFillEyeFill />
+                      </Button>
+                      <Button variant="info">
+                        <BsPencilSquare />
+                      </Button>
+                      <Button variant="danger">
+                        <BsTrashFill />
+                      </Button>
+                    </td>
+                  </tr>
+              </tbody>
+            </Table>
           </div>
         </Modal.Body>
         <Modal.Footer>

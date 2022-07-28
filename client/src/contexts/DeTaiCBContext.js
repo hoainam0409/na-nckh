@@ -33,6 +33,8 @@ const DeTaiCBContextProvider = ({ children }) => {
   const [showCapNhatQuyetDinh, setShowCapNhatQuyetDinh] = useState(false);
   const [showCapNhatBienBan, setShowCapNhatBienBan] = useState(false);
   const [showGiaHanDeTai, setShowGiaHanDeTai] = useState(false);
+  const [showYeuCauSua, setShowYeuCauSua] = useState(false);
+
 
   // const [showThemSP, setShowThemSP] = useState(false);
 
@@ -181,7 +183,9 @@ const DeTaiCBContextProvider = ({ children }) => {
     showCapNhatBienBan,
     setShowCapNhatBienBan,
     showHistory,
-    setShowHistory
+    setShowHistory,
+    showYeuCauSua, 
+    setShowYeuCauSua
   };
 
   return (

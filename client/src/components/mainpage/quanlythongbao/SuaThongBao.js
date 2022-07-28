@@ -54,7 +54,7 @@ const SuaThongBao = () => {
   return (
     <Modal show={showSuaThongBaoChung} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Chỉnh sửa thông báo</Modal.Title>
+        <Modal.Title>Chi tiết thông báo</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>

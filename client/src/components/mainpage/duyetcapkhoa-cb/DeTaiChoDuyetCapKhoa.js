@@ -7,6 +7,7 @@ import SideBar from "../../sidebar/SideBar";
 import SuaDeTaiCB from "../dangky-cb/SuaDeTaiCB";
 import NhapKQHĐKhoa from "./NhapKQHĐ";
 import XemChTiet from "./XemChiTiet";
+import YeuCauSua from "../../../until/YeuCauSua";
 import NumberFormat from "react-number-format";
 import ReactTooltip from "react-tooltip";
 import {
@@ -36,6 +37,7 @@ const DeTaiDuyetCapKhoas = () => {
     setShowXemDeTaiCB,
     setShowNhapKQHĐ,
     setShowSuaDeTaiCB,
+    setShowYeuCauSua
   } = useContext(DeTaiCBContext);
 
   // Start: Get all
@@ -53,12 +55,17 @@ const DeTaiDuyetCapKhoas = () => {
     findDeTaiCB(detaicbId);
     setShowNhapKQHĐ(true);
   };
+  const GuiYeuCauSua = (detaicbId) => {
+    findDeTaiCB(detaicbId);
+    setShowYeuCauSua(true);
+  };
   return (
     <div>
       <SideBar />
       {detaicb !== null && <SuaDeTaiCB />}
       {detaicb !== null && <NhapKQHĐKhoa />}
       {detaicb !== null && <XemChTiet />}
+      {detaicb !== null && <YeuCauSua />}
       <div className="style-mainpage">
         <Row>
           <Col sm={4}>
@@ -204,14 +211,14 @@ const DeTaiDuyetCapKhoas = () => {
                           </span>
                           Không duyệt
                         </Dropdown.Item>
-                        <Dropdown.Item>
+                        <Dropdown.Item onClick={GuiYeuCauSua.bind(this, detaicb._id)}>
                           <span>
                             <BsReplyFill />
                           </span>
                           Yêu cầu sửa
                         </Dropdown.Item>
                         <Dropdown.Item
-                          onClick={() => SelectDeTaiCB(this, detaicb._id)}
+                          onClick={SelectDeTaiCB.bind(this, detaicb._id)}
                         >
                           <span>
                             <BsCursorFill />

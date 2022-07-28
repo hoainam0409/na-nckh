@@ -55,7 +55,7 @@ const SuaSanPhamUD = () => {
   return (
     <Modal show={showSuaSanPhamUD} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Chỉnh sửa loại sản phẩm ứng dụng</Modal.Title>
+        <Modal.Title>Chi tiết loại sản phẩm ứng dụng</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>

@@ -57,7 +57,7 @@ const SuaLoaiSP = () => {
   return (
     <Modal show={showSuaLoaiSP} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Chỉnh sửa cấp đề tài</Modal.Title>
+        <Modal.Title>Chi tiết loại sản phẩm NCKH</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>

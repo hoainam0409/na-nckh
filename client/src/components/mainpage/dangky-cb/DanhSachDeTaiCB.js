@@ -17,6 +17,7 @@ import {
   BsFileEarmarkFill,
   BsCardChecklist,
   BsClock,
+  BsSkipForward
 } from "react-icons/bs";
 import { BiHistory } from "react-icons/bi";
 import Form from "react-bootstrap/Form";
@@ -30,7 +31,6 @@ import XemDeTai from "../duyetcapkhoa-cb/XemChiTiet";
 import GiaHanDeTai from "./GiaHanDeTai";
 import History from "../../../until/History";
 import ToolBar from "../../../until/ToolBar";
-
 const DeTaiCBs = () => {
   const {
     detaicbState: { detaicb, detaicbs, detaicbsLoading },
@@ -81,6 +81,8 @@ const DeTaiCBs = () => {
     findDeTaiCB(detaicbId);
     setShowGiaHanDeTai(true);
   };
+
+
   return (
     <div>
       <SideBar />
@@ -219,7 +221,7 @@ const DeTaiCBs = () => {
                       </Dropdown.Toggle>
                       <Dropdown.Menu>
                         <Dropdown.Item
-                          onClick={() => selectDeTaiCB(this, detaicb._id)}
+                          // onClick={selectDeTaiCB(this, detaicb._id)}
                         >
                           <span>
                             <BsCursorFill />
@@ -282,6 +284,20 @@ const DeTaiCBs = () => {
                             <BsClock />
                           </span>
                           Gia hạn đề tài
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                        >
+                          <span>
+                            <BsSkipForward />
+                          </span>
+                          Cập nhật thông tin nghiệm thu
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                        >
+                          <span>
+                            <BsSkipForward />
+                          </span>
+                          Thanh lý
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

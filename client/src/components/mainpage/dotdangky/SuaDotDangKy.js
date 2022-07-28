@@ -55,7 +55,7 @@ const SuaDotDangKy = () => {
   return (
     <Modal show={showSuaDotDangKy} onHide={closeDialog}>
       <Modal.Header closeButton>
-        <Modal.Title>Chỉnh sửa đợt đăng ký đề tài</Modal.Title>
+        <Modal.Title>Chi tiết đợt đăng ký đề tài</Modal.Title>
       </Modal.Header>
       <Form onSubmit={onSubmit}>
         <Modal.Body>
