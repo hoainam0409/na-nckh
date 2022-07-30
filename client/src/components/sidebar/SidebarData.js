@@ -47,13 +47,13 @@ export const SidebarData =
         cName: 'sub-nav'
       },
       {
-        title: 'Nhập kết quả đánh giá đề tài',
-        path: '/detai-canbo/nhap-ket-qua-danh-gia',
+        title: 'Đề tài chờ duyệt cấp trường',
+        path: '/detai-canbo/cho-duyet-cap-truong',
         icon: <FaCube style={{ color: 'black', height: '14px', width: '14px' }} />
       },
       {
-        title: 'Đề tài chờ duyệt cấp trường',
-        path: '/detai-canbo/cho-duyet-cap-truong',
+        title: 'Nhập kết quả đánh giá đề tài',
+        path: '/detai-canbo/nhap-ket-qua-danh-gia',
         icon: <FaCube style={{ color: 'black', height: '14px', width: '14px' }} />
       },
       {

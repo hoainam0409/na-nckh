@@ -31,6 +31,7 @@ import DanhSachBieuMau from './quanlybieumau/DanhSachBieuMau'
 import DanhSachLinhVuc from './dm-linhvuc/DanhSachLinhVuc'
 import DanhSachVaiTroTG from './dm- vaitroTG/DanhSachVaiTroTG'
 import DanhSachCapDeTai from './dm-capdetai/DanhSachCapDeTai'
+import DanhSachLoaiĐT from './dm-loaidetai/DanhSachLoaiĐT'
 import DanhSachLoaiSP from './dm-loaisp/DanhSachLoaiSP'
 import DanhSachSanPhamUD from './dm-sanphamungdung/DanhSachSanPhamUD'
 
@@ -43,6 +44,7 @@ function Pages() {
         <Route exact path="/nckh/quanly-thongbao" element={<DanhSachThongBao/>}></Route>
         <Route exact path="/nckh/thongtin-canhan" element={<Thongtincanhan/>}></Route>
         <Route exact path="/danhmuc/capdetai" element={<DanhSachCapDeTai/>}></Route>
+        <Route exact path="/danhmuc/loaidetai" element={<DanhSachLoaiĐT/>}></Route>
         <Route exact path="/danhmuc/linhvuc" element={<DanhSachLinhVuc/>}></Route>
         <Route exact path="/danhmuc/loai-san-pham" element={<DanhSachLoaiSP/>}></Route>
         <Route exact path="/danhmuc/loai-san-pham-ung-dung" element={<DanhSachSanPhamUD/>}></Route>

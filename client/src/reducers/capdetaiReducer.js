@@ -5,6 +5,13 @@ import {
   DELETE_CAPDETAI,
   FIND_CAPDETAI,
   UPDATE_CAPDETAI,
+
+  LOAIDETAI_LOADED_SUCCESS,
+  LOAIDETAI_LOADED_FAIL,
+  LOAIDETAI_ADD,
+  DELETE_LOAIDETAI,
+  FIND_LOAIDETAI,
+  UPDATE_LOAIDETAI,
 } from "../contexts/constant";
 
 export const capdetaiReducer = (state, action) => {
@@ -43,7 +50,7 @@ export const capdetaiReducer = (state, action) => {
       );
       return {
         ...state,
-        capdetais: newcapdetais,
+        loaiĐTs: newcapdetais,
       };
     default:
       return state;

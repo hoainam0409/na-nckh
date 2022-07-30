@@ -19,6 +19,7 @@ import VaiTroTGContextProvider from './contexts/VaiTroTGContext'
 import LoaiSPContextProvider from "./contexts/LoaiSPContext";
 import SanPhamUDContextProvider from "./contexts/SanPhamUDContext";
 import DotKiemTraTĐContextProvider from "./contexts/DotKiemTraTĐContext";
+import LoaiĐTContextProvider from "./contexts/LoaiĐTContext";
 
 
 function App() {
@@ -40,9 +41,11 @@ function App() {
                                 <LoaiSPContextProvider>
                                   <SanPhamUDContextProvider>
                                     <DotKiemTraTĐContextProvider>
+                                      <LoaiĐTContextProvider>
                                       <Router>
                                         <Mainpages />
                                       </Router>
+                                      </LoaiĐTContextProvider>
                                     </DotKiemTraTĐContextProvider>
                                   </SanPhamUDContextProvider>
                                 </LoaiSPContextProvider>
